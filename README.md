@@ -1,5 +1,5 @@
 # csmn
-Centro de Seguimiento Musinetwork v2
+Centro Seguimiento MN v2
 
 Autores:
 Hibam Iru Dionisio Alor - http://inovanto.com/
