@@ -1,4 +1,4 @@
-# csmusinetwork
+# csmn
 Centro de Seguimiento Musinetwork v2
 
 Autores:
