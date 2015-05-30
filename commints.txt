@@ -1,0 +1,65 @@
+commit 6fc4f286886e94fe05433d30baa7342cd52c6132
+Author: Hibam Iru Dionisio Alor <hibamiru@gmail.com>
+Date:   Fri May 29 20:00:12 2015 -0500
+
+    quité test.txt
+
+commit dad243d7968c34e164a4abf7c82701b462c6693c
+Author: Hibam Iru Dionisio Alor <hibamiru@gmail.com>
+Date:   Fri May 29 19:57:10 2015 -0500
+
+    agregué test.txt y verifico que no se suba constants.php
+
+commit d46027731e25714724d79e70749460b63543c540
+Author: Hibam Iru Dionisio Alor <hibamiru@gmail.com>
+Date:   Fri May 29 19:50:46 2015 -0500
+
+    Agregué constants.php a .gitignore
+
+commit cd26b694d50a0523fd2685f50e52407d783ea37b
+Author: hibamiru <hibamiru@gmail.com>
+Date:   Fri May 29 15:01:52 2015 -0500
+
+    Delete .gititgnore
+
+commit 154c10e0e0dadc23b90e3afe4027a2deb8274482
+Author: hibamiru <hibamiru@gmail.com>
+Date:   Fri May 29 15:01:36 2015 -0500
+
+    Delete .gitnore.swp
+
+commit f6129567dfb14834ef70ac57cb40c91b9bf1d3b0
+Author: Hibam Iru Dionisio Alor <hibamiru@gmail.com>
+Date:   Thu May 28 14:16:30 2015 -0500
+
+    se igonoró constant.php
+
+commit bab0a01733c535bb90415d837ac016420631b8a8
+Author: Hibam Iru Dionisio Alor <hibamiru@gmail.com>
+Date:   Thu May 28 13:36:45 2015 -0500
+
+    Se agregaron los archivos por primera vez con los emails desactivados para alumnos
+
+commit 0ffebca9652b4e52bf365ee17398803428a5ea17
+Author: Alejandro Sobrevilla <hunabix@gmail.com>
+Date:   Mon May 25 20:03:55 2015 -0500
+
+    Cambié el nombre del proyecto a uno más secreto
+
+commit bc5a5d2299e57f423412bbfccb420f83da489ffc
+Author: Alejandro Sobrevilla <hunabix@gmail.com>
+Date:   Mon May 25 19:28:17 2015 -0500
+
+    Update README.md
+
+commit eccdeaa49782f83938711fa22bfe565e511eb10c
+Author: Alejandro Sobrevilla <hunabix@gmail.com>
+Date:   Mon May 25 18:41:53 2015 -0500
+
+    Update README.md
+
+commit 79adec00bb95c04c9d5317d7166b8d4f2be31e10
+Author: Alejandro Sobrevilla <hunabix@gmail.com>
+Date:   Mon May 25 18:38:57 2015 -0500
+
+    Initial commit
