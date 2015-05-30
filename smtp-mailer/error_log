@@ -1,0 +1,3 @@
+[12-Aug-2013 13:17:58 America/Detroit] PHP Warning:  include_once(Net/SMTP.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/musine/public_html/smtp-mailer/Mail/smtp.php on line 348
+[12-Aug-2013 13:17:58 America/Detroit] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'Net/SMTP.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/musine/public_html/smtp-mailer/Mail/smtp.php on line 348
+[12-Aug-2013 13:17:58 America/Detroit] PHP Fatal error:  Class 'Net_SMTP' not found in /home/musine/public_html/smtp-mailer/Mail/smtp.php on line 349
