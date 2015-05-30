@@ -368,7 +368,7 @@ if (isset($_POST['nuevo-registro-btn'])) { // el formulario ha sido enviado
 			 'username' => $username,
 			 'password' => $password));
 			
-			$mail = $smtp->send($to, $headers, $message);
+			//$mail = $smtp->send($to, $headers, $message); //DEV
 			
 			if (PEAR::isError($mail)) {
 			echo("<p>" . $mail->getMessage() . "</p>");
