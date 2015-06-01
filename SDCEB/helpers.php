@@ -3,13 +3,6 @@
 * Archivo de funciones de apoyo 	 
 */
 
-//Función para definir las vistas
-function view($template, $vars = array())
-{
-	extract($vars);
-	require 'views/' . $template . '.tpl.php';
-}
-
 //Función para definir los controladores
 function controller($name)
 {
@@ -31,5 +24,12 @@ function controller($name)
 		header("HTTP/1.0 404 Not Found");
 		exit("Pagina no encontrada");
 	}
+}
+
+//Función para definir las vistas
+function view($template, $vars = array())
+{
+	extract($vars);
+	require 'views/' . $template . '.tpl.php';
 }
 

@@ -5,7 +5,7 @@
 	<title><?= $titulo ?></title>
 </head>
 <body>
-	<h1>Home : Mini framework MN</h1>	
+	<h1><?= $nombre_vista ?> : Mini framework MN</h1>	
 	<h3><?= $saludo;  ?></h3>
 </body>
 </html>
