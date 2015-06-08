@@ -1,5 +1,5 @@
 <?php require_once("includes/header.php"); ?>
-<?php //confirm_logged_in(); //revisa si el operador ha ingresado ?>
+
 <?php //COMIENZA A PROCESAR EL DOCUMENTO
 
 $nombre = ""; $mail = ""; $telefono = ""; $instrumento = "";
@@ -392,7 +392,22 @@ if (isset($_POST['nuevo-registro-btn'])) { // el formulario ha sido enviado
 		</script>
 	</div><!-- fin #content-->
 	
-<?php } else  { 
+<?php }  // fin el formulario ha sido enviado
+
+
+
+
+
+else
+
+
+
+
+
+
+
+
+{  //Si no se envio formulario se hace esto
 //Se asigna el contenido de las variables que imprimen el contenido HTML de las plantillas de correo para el operador.
 $infomacionb = htmlentities(utf8_decode('<!-- Correo de información enviado -->
 <p>Te escribimos de <strong>Musinetwork School of Music</strong> para confirmar si recibiste la información que solicitaste hace algunos días y ponernos nuevamente a tus órdenes en caso de que tengas alguna otra duda o comentario.</p><br />
@@ -438,7 +453,7 @@ $recordatoriodepagosb = htmlentities(utf8_decode('<!-- Recordatorio de pago envi
 ?>
 		
 <div id="content">
-	<h1 class="titulo">Registrar nuevo caso de seguimiento</h1>
+	<h1 class="titulo">Registrar nuevo caso de seguimiento*</h1>
 	<div id="nuevo-registro">
 		<form method="post" action="nuevo-registro.php">	
 			<div id="info-general" class="contenedor full">

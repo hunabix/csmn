@@ -51,7 +51,18 @@ if (isset($_POST['inscritos-btn'])) { // Si el formulario ha sido enviado pidien
 		</div><!-- fin #reporte -->
 	</div><!-- fin #content-->  
 	
-<?php } else if (isset($_POST['lista-btn'])) { // Si el formulario ha sido enviado pidiendo consulta de lista general 
+<?php } //Fin consulta inscritos
+
+
+
+
+
+else if (isset($_POST['lista-btn'])) { // Si el formulario ha sido enviado pidiendo consulta de lista general 
+
+
+
+
+
 	$casos_set =obten_casos_inactivos(); //obtengo array con los casos de interesados inscritos ?>
 	<div id="content">
 		<h1 class="titulo">Consulta: Lista de interesados que se enviaron a lista general</h1>  
@@ -99,7 +110,18 @@ if (isset($_POST['inscritos-btn'])) { // Si el formulario ha sido enviado pidien
 		</div><!-- fin #reporte -->
 	</div><!-- fin #content-->  
 
-<?php } else { // Si no se ha registrado ninguna solicitud de consulta ?>
+<?php }
+
+
+
+
+else //Si no se envió post se imprime esto último
+
+
+
+
+
+{ // Si no se ha registrado ninguna solicitud de consulta ?>
 <div id="content">
 	<h1 class="titulo">Consultas</h1>  
 	<div id="consultas" class="contenedor">

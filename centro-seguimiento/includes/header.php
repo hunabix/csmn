@@ -1,6 +1,5 @@
-<?php 
-// archibos a resubir header.php, style.css, consultas.php, componer-mensaje.php, functions.php
-
+<?php // archibos a resubir header.php, style.css, consultas.php, componer-mensaje.php, functions.php
+//Este header se carga al iniciar sesión, de lo contrario redirige a login.php
 require_once("includes/session.php"); ?>
 <?php confirm_logged_in(); //revisa si el operador ha ingresado ?>
 <?php require_once("includes/connection.php"); ?>
@@ -22,10 +21,10 @@ require_once("includes/session.php"); ?>
 <header id="cabecera">	
 	<div id="header-content">
 		<div id="logo"><a href="index.php"><img src="imagenes/logo.png" height="75"></a></div><!-- fin #logo -->
-		<h1 class="titulo">Centro de Seguimiento a Interesados en Musinetwork</h1>
+		<h1 class="titulo">Centro de Seguimiento a Interesados en Musinetwork*</h1>
 		<nav id="navigation" role="navigation" class="group">
 			<ul id="menu">			
-				<li><a href="index.php">Inicio</a></li>
+				<li><a href="http://localhost/dev.musinetwork.com/centro-seguimiento/">Inicio</a></li>
 				<li><a href="nuevo-registro.php">Nuevo registro</a></li>
 				<li><a href="consultas.php">Consultas</a></li>
 				<li><a class="opcion-final" href="configuracion.php">Configuración</a></li>

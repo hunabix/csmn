@@ -2,9 +2,10 @@
 <?php //confirm_logged_in(); //revisa si el operador ha ingresado ?>
 <?php
 	//Obtenemos la información de configuración para imprimirla en mails y scripts de plantillas
-	// ---------  Se obtiene las fechas de inscripción e inicio de cursos --------------//
-	
+
+	// ---------  Se obtiene las fechas de inscripción e inicio de cursos --------------//	
 	$configuracion = obten_configuracion();
+
 	// Se guarda la consulta en variables
 	$inicio_ins = $configuracion['inicio_ins'];
 	$inicio_cur = $configuracion['inicio_cur'];

@@ -1,6 +1,7 @@
 <?php
 require("constants.php");
 	// 1. Creo la conexion a MySQL
+	global $connection;
 	$connection = mysql_connect(DB_SERVER,DB_USER,DB_PASS); 
 	if (!$connection) {
 		die("Fallo la conexion con la base de datos: " . mysql_error());

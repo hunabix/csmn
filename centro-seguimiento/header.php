@@ -23,7 +23,7 @@
 		<h1 class="titulo">Centro de Seguimiento a Interesados en Musinetwork</h1>
 		<nav id="navigation" role="navigation" class="group">
 			<ul id="menu">			
-				<li><a href="index.php">Inicio</a></li>
+				<li><a href="http://localhost/dev.musinetwork.com/centro-seguimiento/">Inicio</a></li>
 				<li><a href="nuevo-registro.php">Nuevo registro</a></li>
 				<li><a class="opcion-final" href="configuracion.php">Configuración</a></li>
 			</ul>
