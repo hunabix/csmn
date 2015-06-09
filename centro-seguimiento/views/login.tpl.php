@@ -53,7 +53,7 @@
 				$_SESSION['nombre'] = $operador['nombre']; 
 				//redirijo por javascript a index ?>				
 				<script type="text/javascript">			
-					window.location="http://localhost/dev.musinetwork.com/centro-seguimiento/home";			
+					window.location="<?php echo cs_url; ?>/home";			
 				</script>
 			<?php }
 			else {

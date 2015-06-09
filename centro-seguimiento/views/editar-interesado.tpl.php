@@ -54,7 +54,7 @@ if (isset($_POST['actualizar-registro-btn'])) { // el formulario ha sido enviado
 		<script type="text/javascript">
 			setTimeout(redirige(), '',5000);
 			function redirige() {
-				window.location="http://localhost/dev.musinetwork.com/centro-seguimiento/";
+				window.location="<?php echo cs_url; ?>/";
 			}
 		</script>
 	</div><!-- fin #content-->

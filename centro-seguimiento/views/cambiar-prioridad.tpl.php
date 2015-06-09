@@ -25,7 +25,7 @@ if (isset($_POST['accion-ind-btn'])) {
 <script type="text/javascript">
 			setTimeout(redirige(), '',0);
 			function redirige() {
-				window.location="http://localhost/dev.musinetwork.com/centro-seguimiento/";
+				window.location="<?php echo cs_url; ?>/";
 			}
 		</script>
 

@@ -387,7 +387,7 @@ if (isset($_POST['nuevo-registro-btn'])) { // el formulario ha sido enviado
 		<script type="text/javascript">
 			setTimeout(redirige(), '',5000);
 			function redirige() {
-				window.location="http://localhost/dev.musinetwork.com/centro-seguimiento/";
+				window.location="<?php echo cs_url; ?>/";
 			}
 		</script>
 	</div><!-- fin #content-->
@@ -614,16 +614,16 @@ $recordatoriodepagosb = htmlentities(utf8_decode('<!-- Recordatorio de pago envi
 				</div><!-- #mensaje-op -->
                 
 <!-- Scripts para los botones de copiado del contenido las plantillas de correo -->
-		    <script src="http://localhost/dev.musinetwork.com/centro-seguimiento/zc/ZeroClipboard.js"></script>
+		    <script src="<?php echo cs_url; ?>/zc/ZeroClipboard.js"></script>
 		    <script>
 				var clip = new ZeroClipboard( document.getElementById("infomacionb"), {
-				  moviePath: "http://localhost/dev.musinetwork.com/centro-seguimiento/zc/ZeroClipboard.swf"} );
+				  moviePath: "<?php echo cs_url; ?>/zc/ZeroClipboard.swf"} );
 				var clip = new ZeroClipboard( document.getElementById("seguimientob"), {
-				  moviePath: "http://localhost/dev.musinetwork.com/centro-seguimiento/zc/ZeroClipboard.swf"} );
+				  moviePath: "<?php echo cs_url; ?>/zc/ZeroClipboard.swf"} );
 				var clip = new ZeroClipboard( document.getElementById("iniciodecursosb"), {
-				  moviePath: "http://localhost/dev.musinetwork.com/centro-seguimiento/zc/ZeroClipboard.swf"} );
+				  moviePath: "<?php echo cs_url; ?>/zc/ZeroClipboard.swf"} );
 				var clip = new ZeroClipboard( document.getElementById("recordatoriodepagosb"), {
-				  moviePath: "http://localhost/dev.musinetwork.com/centro-seguimiento/zc/ZeroClipboard.swf"} );
+				  moviePath: "<?php echo cs_url; ?>/zc/ZeroClipboard.swf"} );
 
 				clip.on( 'load', function(client) {
 				  // alert( "movie is loaded" );
