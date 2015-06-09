@@ -120,25 +120,25 @@ if (isset($_POST['casos_rp'])) { // el formulario ha sido enviado
 
 			<select name="tipo_accion" id="inp" name="inp" style="float:left; margin-right: 20px;">
 
-				<option value="componer-mensaje.php?tipo=responder">Responder por correo</option>
+				<option value="componer-mensaje?tipo=responder">Responder por correo</option>
 
-				<option value="componer-mensaje.php?tipo=informacion">Correo de información</option>
+				<option value="componer-mensaje?tipo=informacion">Correo de información</option>
 
-				<option value="componer-mensaje.php?tipo=seguimiento">Correo de seguimiento</option>
+				<option value="componer-mensaje?tipo=seguimiento">Correo de seguimiento</option>
 
-				<option value="componer-mensaje.php?tipo=inicio">Correo de inicio de cursos</option>
+				<option value="componer-mensaje?tipo=inicio">Correo de inicio de cursos</option>
 
-				<option value="nueva-interaccion.php?tipo=llamada">Registrar llamada</option>
+				<option value="nueva-interaccion?tipo=llamada">Registrar llamada</option>
 
-				<option value="componer-mensaje.php?tipo=recordatorio">Recordatorio de pago</option>
+				<option value="componer-mensaje?tipo=recordatorio">Recordatorio de pago</option>
 
-				<option value="nueva-interaccion.php?tipo=lista">Enviar a lista general</option>
+				<option value="nueva-interaccion?tipo=lista">Enviar a lista general</option>
 
-				<option value="nueva-interaccion.php?tipo=inscribir">Registrar inscripción</option>	
+				<option value="nueva-interaccion?tipo=inscribir">Registrar inscripción</option>	
 
-				<option value="nueva-interaccion.php?tipo=nota">Agregar nota personalizada</option>	
+				<option value="nueva-interaccion?tipo=nota">Agregar nota personalizada</option>	
 
-				<option value="borrar-caso.php" onclick="return window.confirm('Advertencia: ¿Estas seguro de querer borrar éstos casos de manera permanente?');">Eliminar permanentemente</option>	
+				<option value="borrar-caso" onclick="return window.confirm('Advertencia: ¿Estas seguro de querer borrar éstos casos de manera permanente?');">Eliminar permanentemente</option>	
 
 			</select>
 
@@ -268,7 +268,7 @@ if (isset($_POST['casos_rp'])) { // el formulario ha sido enviado
 
 				<span class="caso-nombre">
 
-					<button type="submit"  formaction="historial.php" value="<?php echo $id_interesado;?>" name="casohist-btn"><?php echo $nombre; ?></button>					
+					<button type="submit"  formaction="historial" value="<?php echo $id_interesado;?>" name="casohist-btn"><?php echo $nombre; ?></button>					
 
 				</span>
 
@@ -314,7 +314,7 @@ if (isset($_POST['casos_rp'])) { // el formulario ha sido enviado
 
 						<!-- Enviar correo -->
 
-						<button type="submit" name="accion-ind-btn" formaction="componer-mensaje.php?tipo=responder" value="<?php echo $id_interesado; ?>" class="accion-ind-btn">
+						<button type="submit" name="accion-ind-btn" formaction="componer-mensaje?tipo=responder" value="<?php echo $id_interesado; ?>" class="accion-ind-btn">
 
 							<span class="accion-ind-ico"><img src="imagenes/email-16.png" /></span>Enviar correo
 
@@ -322,13 +322,13 @@ if (isset($_POST['casos_rp'])) { // el formulario ha sido enviado
 
 						<!-- Agregar nota -->
 
-						<button type="submit" name="accion-ind-btn" formaction="nueva-interaccion.php?tipo=llamada" value="<?php echo $id_interesado; ?>" class="accion-ind-btn">
+						<button type="submit" name="accion-ind-btn" formaction="nueva-interaccion?tipo=llamada" value="<?php echo $id_interesado; ?>" class="accion-ind-btn">
 
 							<span class="accion-ind-ico"><img src="imagenes/file.png" /></span>Otras acciones
 
 						<!-- Lista general -->
 
-						<button type="submit" name="accion-ind-btn" formaction="nueva-interaccion.php?tipo=lista" value="<?php echo $id_interesado; ?>" class="accion-ind-btn">
+						<button type="submit" name="accion-ind-btn" formaction="nueva-interaccion?tipo=lista" value="<?php echo $id_interesado; ?>" class="accion-ind-btn">
 
 							<span class="accion-ind-ico"><img src="imagenes/list-16.png" /></span>Enviar a lista general
 
@@ -336,7 +336,7 @@ if (isset($_POST['casos_rp'])) { // el formulario ha sido enviado
 
 						<!-- Inscribir -->
 
-						<button type="submit" name="accion-ind-btn" formaction="nueva-interaccion.php?tipo=inscribir" value="<?php echo $id_interesado; ?>" class="accion-ind-btn">
+						<button type="submit" name="accion-ind-btn" formaction="nueva-interaccion?tipo=inscribir" value="<?php echo $id_interesado; ?>" class="accion-ind-btn">
 
 							<span class="accion-ind-ico"><img src="imagenes/insc-16.png" /></span>Registrar inscripción
 
@@ -370,14 +370,14 @@ if (isset($_POST['casos_rp'])) { // el formulario ha sido enviado
 
 						<!-- Lista general -->
 
-						<button type="submit" name="accion-ind-btn" formaction="borrar-caso.php" value="<?php echo $id_interesado; ?>" class="accion-ind-btn" onclick="return window.confirm('Advertencia: ¿Estas seguro de querer borrar éste caso de manera permanente?');">
+						<button type="submit" name="accion-ind-btn" formaction="borrar-caso" value="<?php echo $id_interesado; ?>" class="accion-ind-btn" onclick="return window.confirm('Advertencia: ¿Estas seguro de querer borrar éste caso de manera permanente?');">
 
 							<span class="accion-ind-ico"><img src="imagenes/x-mark-16.png" /></span>Eliminar
 
 						</button>	
-						<button type="submit" class="prioridad-roja" name="accion-ind-btn" formaction="cambiar-prioridad.php?color=roja" value="<?php echo $id_interesado; ?>" ></button>
-						<button type="submit" class="prioridad-verde" name="accion-ind-btn" formaction="cambiar-prioridad.php?color=verde" value="<?php echo $id_interesado; ?>" ></button>
-						<button type="submit" class="prioridad-azul" name="accion-ind-btn" formaction="cambiar-prioridad.php?color=azul" value="<?php echo $id_interesado; ?>" ></button>
+						<button type="submit" class="prioridad-roja" name="accion-ind-btn" formaction="cambiar-prioridad?color=roja" value="<?php echo $id_interesado; ?>" ></button>
+						<button type="submit" class="prioridad-verde" name="accion-ind-btn" formaction="cambiar-prioridad?color=verde" value="<?php echo $id_interesado; ?>" ></button>
+						<button type="submit" class="prioridad-azul" name="accion-ind-btn" formaction="cambiar-prioridad?color=azul" value="<?php echo $id_interesado; ?>" ></button>
 					</ul>
 
 				</div><!-- fin #controles-individuales -->

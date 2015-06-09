@@ -107,7 +107,7 @@ for ($i = 1; $i <= $num_casos; $i++) {
 		<!-- SECCIÓN DEL WYSIWYG -->
         <div id="mensaje-op">
         <!-- Se manda a llamar la API de KCeditor -->
-        <script src="http://dev.musinetwork.com/centro-seguimiento/ckeditor/ckeditor.js"></script>
+        <script src="http://localhost/dev.musinetwork.com/centro-seguimiento/ckeditor/ckeditor.js"></script>
         <!-- Se coloca un <textarea> cualquiera y se le asigna un identificador en el nombre -->
         <textarea name="mensaje_op"></textarea>
         <!-- Se coloca el textarea por una instancia de KCeditor colocando el identificador en la llamada al API -->

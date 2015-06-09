@@ -32,15 +32,15 @@ if (isset($_POST['inscritos-btn'])) { // Si el formulario ha sido enviado pidien
 									<span class="accion-ind-ico"><img src="imagenes/shift-16.png" /></span>Mover a activos
 								</button>
 								<!-- Mover caso a inscritos -->
-								<button type="submit" name="accion-ind-btn" formaction="nueva-interaccion.php" value="<?php echo $caso['ID']; ?>" class="accion-ind-btn">
+								<button type="submit" name="accion-ind-btn" formaction="nueva-interaccion" value="<?php echo $caso['ID']; ?>" class="accion-ind-btn">
 									<span class="accion-ind-ico"><img src="imagenes/file.png" /></span>Otras acciones
 								</button>
 								<!-- Editar datos -->
-								<button type="submit" name="id_caso" formaction="editar-interesado.php" value="<?php echo $caso['ID']; ?>" class="accion-ind-btn">
+								<button type="submit" name="id_caso" formaction="editar-interesado" value="<?php echo $caso['ID']; ?>" class="accion-ind-btn">
 									<span class="accion-ind-ico"><img src="imagenes/edit-6-16.png" /></span>Editar información
 								</button>
 								<!-- Borrar permanentemente -->
-								<button type="submit" name="accion-ind-btn" formaction="borrar-caso.php" value="<?php echo $caso['ID']; ?>" class="accion-ind-btn" onclick="return window.confirm('Advertencia: ¿Estas seguro de querer borrar éste caso de manera permanente?');">
+								<button type="submit" name="accion-ind-btn" formaction="borrar-caso" value="<?php echo $caso['ID']; ?>" class="accion-ind-btn" onclick="return window.confirm('Advertencia: ¿Estas seguro de querer borrar éste caso de manera permanente?');">
 									<span class="accion-ind-ico"><img src="imagenes/x-mark-16.png" /></span>Eliminar
 								</button>
 							</span>	
@@ -91,15 +91,15 @@ else if (isset($_POST['lista-btn'])) { // Si el formulario ha sido enviado pidie
 									<span class="accion-ind-ico"><img src="imagenes/shift-16.png" /></span>Mover a activos
 								</button>
 								<!-- Mover caso a inscritos -->
-								<button type="submit" name="accion-ind-btn" formaction="nueva-interaccion.php" value="<?php echo $caso['ID']; ?>" class="accion-ind-btn">
+								<button type="submit" name="accion-ind-btn" formaction="nueva-interaccion" value="<?php echo $caso['ID']; ?>" class="accion-ind-btn">
 									<span class="accion-ind-ico"><img src="imagenes/file.png" /></span>Otras acciones
 								</button>
 								<!-- Editar datos -->
-								<button type="submit" name="id_caso" formaction="editar-interesado.php" value="<?php echo $caso['ID']; ?>" class="accion-ind-btn">
+								<button type="submit" name="id_caso" formaction="editar-interesado" value="<?php echo $caso['ID']; ?>" class="accion-ind-btn">
 									<span class="accion-ind-ico"><img src="imagenes/edit-6-16.png" /></span>Editar información
 								</button>
 								<!-- Borrar permanentemente -->
-								<button type="submit" name="accion-ind-btn" formaction="borrar-caso.php" value="<?php echo $caso['ID']; ?>" class="accion-ind-btn" onclick="return window.confirm('Advertencia: ¿Estas seguro de querer borrar éste caso de manera permanente?');">
+								<button type="submit" name="accion-ind-btn" formaction="borrar-caso" value="<?php echo $caso['ID']; ?>" class="accion-ind-btn" onclick="return window.confirm('Advertencia: ¿Estas seguro de querer borrar éste caso de manera permanente?');">
 									<span class="accion-ind-ico"><img src="imagenes/x-mark-16.png" /></span>Eliminar
 								</button>
 							</span>	
@@ -125,7 +125,7 @@ else //Si no se envió post se imprime esto último
 <div id="content">
 	<h1 class="titulo">Consultas</h1>  
 	<div id="consultas" class="contenedor">
-		<form method="post" action="consultas.php" id="consultas-form">
+		<form method="post" action="" id="consultas-form">
 			<input name="inscritos-btn" type="submit" id="submit" value="Consultar lista de interesados que se inscribieron a Musinetwork" class="btn"/>
 			<input name="lista-btn" type="submit" id="submit" value="Consultar lista de interesados que se enviaron a lista general" class="btn"/>
 		</form>

@@ -48,7 +48,8 @@
 ?>
 <?php // se reciben parametros de componer-mensaje
 
-if (isset($_POST['nuevo-mensaje'])) { 
+if (isset($_POST['nuevo-mensaje'])) {
+
 	// ------------------------------------------------------------------------//
 	// ---- SE PROCESA LA INFORMACIÓN PARA CADA UNO DE LOS INTERESADOS --------//
 	// ------------------------------------------------------------------------//
@@ -81,7 +82,7 @@ if (isset($_POST['nuevo-mensaje'])) {
 				VALUES ('$tipo','$id_interesado[$i]', '$fecha', '$mensaje_op', '', '$comentarios')";
 	$resultado = mysql_query($consulta, $connection);
 	confirm_query($resultado);
-	
+
 	$configuracion = obten_configuracion();
 	$tipo_estatus = utf8_encode($tipo);	
 	actualiza_recordatorio($configuracion['temporada'], $tipo_estatus, $fecha, $id_interesado[$i], 0);
@@ -164,29 +165,6 @@ if (isset($_POST['nuevo-mensaje'])) {
     // -----------------------------------------------------------------//
 	// ---------  SE PREPARA Y ENVÍA EL EMAIL AL ALUMNO  --------------//
 	// ----------------------------------------------------------------//
-			
-			//headers must be an array
-			
-			$from = "Musinetwork School of Music <informacion@musinetwork.com>";
-			//$to = $email[$i]; DEV
-			$to = 'soporte@inovanto.com';
-			$subject = base64_encode( $asuntop ) ;
-			$headers = array (
-				'From' => $from,
-				'To' => $to,
-				'Subject' => "=?UTF-8?B?" . $subject . "?=",
-				'MIME-Version' => '1.0',
-				'Content-Type' => 'text/html; charset=utf-8',
-				'Content-Transfer-Encoding' => '8bit',
-				//'Reply-To' => 'reply@address.com' 
-			);
-			
-			//$to = 'soporte@metrorama.mx, hibam_iru@yahoo.com.mx';
-			/*$to = $email[$i];
-			$subject = $asuntop;
-			$headers = "From: Musinetwork School of Music <informacion@musinetwork.com>\r\n";
-			$headers .= "MIME-Version: 1.0\r\n";
-			$headers .= "Content-Type: text/html; charset=utf-8\r\n";*/
 			 
 			$message = '<html>';
 			  
@@ -237,34 +215,41 @@ if (isset($_POST['nuevo-mensaje'])) {
 			$message .= '</table><!-- Cierra tabla contenedor -->';
 			$message .= '</td></tr></table><!-- Cierra tabla principal -->';
 			$message .= '</body></html>';
-			 
 
-
-			/*require_once "../smtp-mailer/Mail.php"; // calls pear mail packages
-			$host = "ssl://smtp.gmail.com";
-			$port = "465";
-			$username = "soporte@metrorama.mx";
-			$password = "";*/
-
-			require_once "../smtp-mailer/Mail.php"; // calls pear mail packages
+			require_once "lib/PHPMailer/PHPMailerAutoload.php"; // PHPMailer
 			$host = "ssl://email-smtp.us-east-1.amazonaws.com";
 			$port = "465";
 			$username = "AKIAIXA2XV6TZOOCK5KQ";
-			$password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";			
+			$password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
+			//$to = $email[$i]; DEV
+			$to = 'hibamiru@gmail.com';	
+			$subject = utf8_encode($asuntop);
+		
+			//Refactoring mail php
+			$mail = new PHPMailer();
+			$mail->CharSet = 'UTF-8';
+			$mail->isSMTP();
+			$mail->isHTML(true);
+			$mail->SMTPDebug = 0;
+			$mail->Debugoutput = 'html';
+			$mail->Host = "ssl://email-smtp.us-east-1.amazonaws.com";
+			$mail->Port = 465;
+			$mail->SMTPAuth = true;
+			$mail->Username = "AKIAIXA2XV6TZOOCK5KQ";
+			$mail->Password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
+			$mail->addAddress($to, '');
+			$mail->Subject = $subject;
+			$mail->Body = $message;
+			$mail->setFrom('informacion@musinetwork.com', 'Musinetwork School of Music');
 			
-			$smtp = Mail::factory('smtp', //prepares smtp vars
-			array ('host' => $host,
-			 'port' => $port,
-			 'auth' => true,
-			 'username' => $username,
-			 'password' => $password));
+			//$mail = $smtp->send($to, $headers, $message);
+
 			
-			$mail = $smtp->send($to, $headers, $message);
-			
-			if (PEAR::isError($mail)) {
-			echo("<p>" . $mail->getMessage() . "</p>");
+			//send the message, check for errors
+			if (!$mail->send()) {
+				//echo "Mailer Error: " . $mail->ErrorInfo;
 			} else {
-			//echo("<p>Message successfully sent!</p>");
+				//echo "Message sent!";
 			}
 			
 			//mail($to, $subject, $message, $headers);
@@ -275,13 +260,13 @@ if (isset($_POST['nuevo-mensaje'])) {
 	<div id="content">
 		<h1 class="aviso">Se ha guardado y enviado la información con éxito</h1>
 				
-		<!--<script type="text/javascript">
+		<script type="text/javascript">
 			setTimeout(redirige(), '',5000);
 			function redirige() {
-				window.location="http://dev.musinetwork.com/centro-seguimiento/";
+				window.location="http://localhost/dev.musinetwork.com/centro-seguimiento/";
 			}
-		</script>-->
-        <a href="http://dev.musinetwork.com/centro-seguimiento/"><h1 style="text-align:center;">Clic aquí si no eres redirigido en 2 segundos</h1></a>
+		</script>
+        <a href="http://localhost/dev.musinetwork.com/centro-seguimiento/"><h1 style="text-align:center;">Clic aquí si no eres redirigido en 2 segundos</h1></a>
 	</div><!-- fin #content-->
 	
 <?php } else  {  
@@ -377,7 +362,7 @@ $completarinscripcionb = htmlentities(utf8_decode('<!-- Recordatorio de pago env
 	<h1 class="titulo">Componer mensaje a interesado(s)</h1>  
 	
 		
-	<form method="post" action="componer-mensaje.php">			
+	<form method="post" action="componer-mensaje">			
 		
 		<div id="destinatarios" class="group">
 			<ul>
@@ -454,16 +439,16 @@ $completarinscripcionb = htmlentities(utf8_decode('<!-- Recordatorio de pago env
 		</div><!-- #mensaje-op -->
                     
             <!-- Scripts para los botones de copiado del contenido las plantillas de correo -->
-		    <script src="http://dev.musinetwork.com/centro-seguimiento/zc/ZeroClipboard.js"></script>
+		    <script src="http://localhost/dev.musinetwork.com/centro-seguimiento/zc/ZeroClipboard.js"></script>
 		    <script>
 				var clip = new ZeroClipboard( document.getElementById("infomacionb"), {
-				  moviePath: "http://dev.musinetwork.com/centro-seguimiento/zc/ZeroClipboard.swf"} );
+				  moviePath: "http://localhost/dev.musinetwork.com/centro-seguimiento/zc/ZeroClipboard.swf"} );
 				var clip = new ZeroClipboard( document.getElementById("seguimientob"), {
-				  moviePath: "http://dev.musinetwork.com/centro-seguimiento/zc/ZeroClipboard.swf"} );
+				  moviePath: "http://localhost/dev.musinetwork.com/centro-seguimiento/zc/ZeroClipboard.swf"} );
 				var clip = new ZeroClipboard( document.getElementById("iniciodecursosb"), {
-				  moviePath: "http://dev.musinetwork.com/centro-seguimiento/zc/ZeroClipboard.swf"} );
+				  moviePath: "http://localhost/dev.musinetwork.com/centro-seguimiento/zc/ZeroClipboard.swf"} );
 				var clip = new ZeroClipboard( document.getElementById("recordatoriodepagosb"), {
-				  moviePath: "http://dev.musinetwork.com/centro-seguimiento/zc/ZeroClipboard.swf"} );
+				  moviePath: "http://localhost/dev.musinetwork.com/centro-seguimiento/zc/ZeroClipboard.swf"} );
 
 				clip.on( 'load', function(client) {
 				  // alert( "movie is loaded" );

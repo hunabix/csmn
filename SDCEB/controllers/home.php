@@ -10,4 +10,3 @@ $saludo = "Hola, bienvenidos";
 		
 //Llamando una vista
 view('home', compact('titulo', 'nombre_vista', 'saludo'));
-

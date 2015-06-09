@@ -54,7 +54,7 @@ if (isset($_POST['actualizar-registro-btn'])) { // el formulario ha sido enviado
 		<script type="text/javascript">
 			setTimeout(redirige(), '',5000);
 			function redirige() {
-				window.location="http://dev.musinetwork.com/centro-seguimiento/";
+				window.location="http://localhost/dev.musinetwork.com/centro-seguimiento/";
 			}
 		</script>
 	</div><!-- fin #content-->
@@ -64,7 +64,7 @@ if (isset($_POST['actualizar-registro-btn'])) { // el formulario ha sido enviado
 <div id="content">
 	<h1 class="titulo">Editar información general del interesado</h1>  
 	<div id="nuevo-registro">
-		<form method="post" action="editar-interesado.php">	
+		<form method="post" action="">	
 			<div id="info-general" class="contenedor full">
 				<h3 class="titulo">Datos generales</h3>		
 				<input type="text" name="nombre" value="<?php echo $nombre; ?>" placeholder="Nombre completo" required/> 

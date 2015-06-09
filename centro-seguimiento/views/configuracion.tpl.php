@@ -106,7 +106,7 @@ switch ($configuracion['ciclo_esc'] ) {
 		echo '<h1 class="aviso">Se ha guardado y enviado la información con éxito</h1>';
 	}?>
 	<div id="configuracion" class="contenedor">
-		<form method="post" action="configuracion.php">
+		<form method="post" action="">
 			<label style="margin-right:41px;" for="temporada"><strong>Elige la temporada:</strong></label>
             <select name="temporada">
 				<option value="Temporada A" <?php echo $tmpa ;?>>Temporada A</option>

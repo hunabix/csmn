@@ -8,7 +8,7 @@ function logged_in() {
 	
 function confirm_logged_in() {
 	if (!logged_in()) {
-		header("Location: login.php");
+		header("Location: http://localhost/dev.musinetwork.com/centro-seguimiento/login");
 		exit;
 	}	
 }

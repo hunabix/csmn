@@ -1,6 +1,12 @@
 <IfModule mod_rewrite.c>
+	#Enciende mod rewrite
 	RewriteEngine On
+	#Indica en que lugar se encuentra instalado el script
+	RewriteBase /dev.musinetwork.com/centro-seguimiento/
+	#Esta condición es verdadera cuando la ruta al REQUEST_FILENAME no hace referencia a un archivo que existe en el servidor.
 	RewriteCond %{REQUEST_FILENAME} !-f
+	#Esta condición es verdadera cuando la ruta al REQUEST_FILENAME no hace referencia a una carpeta que existe en el servidor.
+	#RewriteCond %{REQUEST_FILENAME} !-d
 	#Pasa un valor a GET['url']
-	RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+	RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]	
 </IfModule>

@@ -455,7 +455,7 @@ $recordatoriodepagosb = htmlentities(utf8_decode('<!-- Recordatorio de pago envi
 <div id="content">
 	<h1 class="titulo">Registrar nuevo caso de seguimiento*</h1>
 	<div id="nuevo-registro">
-		<form method="post" action="nuevo-registro.php">	
+		<form method="post" action="">	
 			<div id="info-general" class="contenedor full">
 				<h3 class="titulo">Datos generales</h3>		
 				<input type="text" name="nombre" placeholder="Nombre completo" required/> 

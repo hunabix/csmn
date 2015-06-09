@@ -56,7 +56,7 @@ if (isset($_POST['nuevo-mensaje'])) {
 		<script type="text/javascript">
 			setTimeout(redirige(), '',5000);
 			function redirige() {
-				window.location="http://dev.musinetwork.com/centro-seguimiento/";
+				window.location="http://localhost/dev.musinetwork.com/centro-seguimiento/";
 			}
 		</script>
 	</div><!-- fin #content-->
@@ -100,7 +100,7 @@ for ($i = 1; $i <= $num_casos; $i++) {
 
 <div id="content">
 	<h1 class="titulo">Realizar una nueva interacción con los siguientes casos</h1>
-	<form method="post" action="nueva-interaccion.php">	
+	<form method="post" action="">	
 		
 		
 		<div id="destinatarios" class="group">

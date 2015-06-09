@@ -18,7 +18,7 @@ if (isset($_POST['casohist-btn'])) { // el formulario ha sido enviado
 	<div id="destinatarios" class="group">
 			<span class="nombre-hist group">
 				<strong><?php echo $nombre; ?></strong>
-				<form action="editar-interesado.php" method="post">
+				<form action="editar-interesado" method="post">
 				<button type="submit" name="id_caso" value="<?php echo $id_interesado; ?>" class="editar-interesado">					
 						Editar Información del interesado
 				</button>

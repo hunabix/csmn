@@ -40,7 +40,7 @@ if (isset($_POST['accion-ind-btn'])) {
 		<script type="text/javascript">
 			setTimeout(redirige(), '',5000);
 			function redirige() {
-				window.location="http://dev.musinetwork.com/centro-seguimiento/";
+				window.location="http://localhost/dev.musinetwork.com/centro-seguimiento/";
 			}
 		</script>
 	</div><!-- fin #content-->
