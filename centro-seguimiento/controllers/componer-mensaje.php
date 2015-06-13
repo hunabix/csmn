@@ -1,6 +1,6 @@
 <?php
 /*
-* Controlador del Home / Página principal
+* Controlador del Componer mensaje / Página principal
 */
 		
 //Llamando una vista
