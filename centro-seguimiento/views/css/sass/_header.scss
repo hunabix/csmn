@@ -1,0 +1,85 @@
+/*------------------------------------------------*/
+/*------------------[HEADER]----------------------*/
+/*------------------------------------------------*/
+
+.header {
+	width: 100%;
+	padding: 0 10%;
+	display: inline-block;
+	background: $primary-color;
+	position: relative;
+	border-top: $primary-color-dark .2rem solid;
+	
+	@media (max-width: 1300px) {
+		padding: 0 1.5rem;
+	}
+	@media (max-width: 900px) {
+		height: auto;
+	}
+	.logo {
+		width: 141px;
+		padding: .3rem 0;
+		display: inline-block;
+
+		img { width: 100%; }
+	}
+	.main-title {
+		color: $primary-color-text;
+		font-size: 1.5rem;
+		display: inline-block;
+		padding: 0 .5rem .25rem;
+		margin: 0;
+		vertical-align: bottom;
+		font-family: $main-font;
+		font-weight: 300;
+	}
+	.main-nav {
+		background: $accent-color;
+		border-bottom: .2rem solid $primary-color;
+		@include rounded( .5rem );
+		max-width: 20rem;
+		position: absolute;
+		display: block;
+		bottom: -1rem;
+		right: 10%;
+		padding: 0;
+		height: 3.2rem;
+		line-height: 3rem;
+		z-index: 1;
+		
+		@media (max-width: 1300px) {
+			right: 1.5rem;
+		}
+		@media (max-width: 900px) {
+			width: 20rem;
+			margin: 0 auto;
+			max-width: none;
+			position: relative;
+		}
+
+		ul {		
+			@include ul-base;
+			line-height: 1;
+
+			li {
+				float: left;
+								
+				a {
+					width: 3rem;
+					display: inline-block;
+					line-height: 2.1rem;
+					font-size: 2rem;			
+					color: $primary-color-text;
+					padding: .5rem;
+					text-align: center;					
+				}
+				&:hover {
+					background: $primary-color-dark;
+					@include rounded( .5rem );
+				}
+			}
+		}
+
+	}
+
+}

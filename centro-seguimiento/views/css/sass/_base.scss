@@ -1,0 +1,41 @@
+/*------------------------------------------------*/
+/*-------------------[BASE]-----------------------*/
+/*------------------------------------------------*/
+
+html {
+	font-size: 16px;
+}
+
+body {
+	background: $primary-color;
+
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: $main-font;
+}
+
+// Utilidades
+.u-loading {
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	display: none;
+}
+
+// Contenido principal 
+.main {
+	font-family: $main-font;
+	vertical-align: text-bottom;
+	display: inline-block;
+	background-color: #fff;
+	width: 100%;
+	padding: 2rem 0;
+
+	.section-title {
+		font-size: 1.6rem;
+		font-weight: 300;
+		text-align: center;
+		margin: .5rem 0 3rem;
+	}
+	
+}

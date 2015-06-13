@@ -1,0 +1,29 @@
+/*!
+Author: Alejandro Sobrevilla Viveros - Soluciones Hipermedia
+Author URI: http://www.solucioneshipermedia.com/
+Description: Estilos del CS Musinetwork
+Version: 2.0
+*/
+
+/* Support
+------------------------------------------*/
+@import "support/_data-mixins.scss";
+@import "support/_bootstrap.scss";
+@import "support/_font-awesome.scss";
+@import "support/_fonts.scss";
+@import "support/_animate.scss";
+@import "support/_bootstrap-datepicker.scss";
+
+/* Project styles
+------------------------------------------*/
+@import "base.scss";
+@import "header.scss";
+@import "footer.scss";
+@import "forms.scss";
+@import "monitoring.scss";
+
+// .main { background: peru !important; }
+
+.contenido {
+	display: none;
+}

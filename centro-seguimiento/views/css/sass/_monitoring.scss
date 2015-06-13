@@ -1,0 +1,211 @@
+/*------------------------------------------------*/
+/*-------------------[BASE]-----------------------*/
+/*------------------------------------------------*/
+
+.monitoring {
+	padding: 0 1.5rem 2rem;
+
+	// Formulario de acciones y recordatorios en lote mag-form = monitoring action group form
+	.mag-form {
+		display: inline-block;
+		width: 100%;
+		margin-bottom: 2rem;
+
+		.action-list,
+		.mag-date,
+		.mag-reminder,
+		.mag-reminder-btn {			
+			max-width: 200px;
+			float: left;
+			margin-right: 1.5rem;
+			@include anim();
+
+			@media (max-width: 700px) {
+				width: 60%;
+				margin: 0px 20%;
+			}
+			@media (max-width: 360px) {
+				max-width: none;
+				width: 100%;
+				margin: 0;
+			}
+		}
+		.action-list {
+			margin-right: 4rem;
+
+			@media (max-width: 900px) {
+				max-width: none;
+				width: 100%;
+			}
+		}
+		.mag-date {	max-width: 160px;	}
+		.mag-reminder {
+			max-width: 160px;
+			@include anim();
+
+			.form-control {
+				width: 130px;
+				@include anim();				
+				
+				&:focus {
+					width: 480px;
+				}
+			}
+			
+		}
+	}
+	// Botón para deseleccionar todos los checkboxes
+	.uncheck-all {
+		color: #fefefe;
+		padding: 0px 0.2rem 0px 0.5rem;
+		font-size: 1.25rem;
+		@include anim(.25s);
+		text-decoration: none;
+
+		&:hover {
+			color:$divider-color;
+		}
+	}
+	// Lista de prospectos
+	.leads {
+
+		// Titulos
+		.titles {
+			border-bottom: 1px solid $divider-color;
+
+			h4 {
+				padding: .5rem .5rem .5rem 0;
+				margin: 0;
+				@include inline-box;
+				font-size: 1rem;
+			}
+			.lt-name {
+				width: 21%;
+
+				@media (max-width: 1350px) { width: 20%; }
+				@media (max-width: 1300px) { width: 25%; }
+				@media (max-width: 800px) { width: 100%; }
+			}
+			.lt-status {
+				width: 22%;
+
+				@media (max-width: 1350px) { width: 22%; }
+				@media (max-width: 1300px) { width: 36%; }
+				@media (max-width: 800px) { display: none; }
+			}
+			.lt-reminder {
+				width: 22%;
+
+				@media (max-width: 1350px) { width: 22%; }
+				@media (max-width: 1300px) { width: 36%; }
+				@media (max-width: 800px) { display: none; }
+			}
+			.lt-actions {
+				width: 33%;
+
+				@media (max-width: 1350px) { width: 33%; }
+				@media (max-width: 1300px) { display: none; }
+			}
+		}
+
+		// Prospectos
+		.lead {
+
+			width: 100%;
+			border-bottom: $divider-color 1px dotted;
+			margin: 0;
+			display: inline-block;
+
+			&:hover {
+				background: #FAFAFA;
+			}
+			p {
+				@media (max-width: 1000px) { margin: 0; }
+			}
+			.date-status,
+			.date-reminder {
+				font-weight: 600;
+				font-size: .8rem;
+				padding-right: .5rem;
+				color: #666;
+			}
+			.lead-name {
+				@include inline-box;
+				padding: .75rem .5rem .25rem;
+				width: 20%;
+				margin: 0;
+				position: relative;
+
+				&:hover {
+					color: $accent-color;
+					.check-icon { color: $accent-color; }
+				}
+
+				@media (max-width: 1350px) { width: 20%; }
+				@media (max-width: 1300px) { width: 25%; }
+				@media (max-width: 800px) { width: 100%; }
+
+				.icons {
+					@include inline-box;
+					position: relative;
+				}				
+
+				.fancy-check {
+					@include inline-box;
+					font-weight: 400;
+					font-size: .95rem;
+				}
+			}
+			.status {
+				@include inline-box;
+				padding: .75rem .5rem .25rem;
+				width: 22%;
+				font-size: .9rem;
+
+				@media (max-width: 1350px) { width: 22%; }
+				@media (max-width: 1300px) { width: 36%; }
+				@media (max-width: 800px) { width: 100%; }
+			}
+			.reminder {
+				@include inline-box;
+				padding: .75rem .5rem .25rem;
+				width: 22%;
+				font-size: .9rem;
+
+				@media (max-width: 1350px) { width: 22%; }
+				@media (max-width: 1300px) { width: 36%; }
+				@media (max-width: 800px) { width: 100%; }
+			}
+			.actions {
+				@include inline-box;
+				padding: .75rem .5rem .25rem;
+				width: 33%;
+				
+				@media (max-width: 1350px) { width: 33%; }
+				@media (max-width: 1300px) { width: 420px; float: right; }
+				@media (max-width: 800px) { float: left; max-width: 500px; }
+
+				.action {
+					color: #888;
+					padding: 0 .35rem;
+					@include rounded(.5rem);
+					text-align: center;
+					font-size: 21px;
+
+					&:hover {
+						color: $primary-color-text;
+						background: $accent-color;
+						text-decoration: none;
+					}
+					&:hover.a-user {
+						background: #FF9500;
+					}
+					&:hover.a-close {
+						background: #FF3B30;
+					}
+				}
+
+			}
+		}
+	}
+}
