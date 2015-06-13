@@ -10,7 +10,7 @@
     <title>Centro de Seguimiento - Musinetwork</title>
     <!-- CSS
     ================================================== -->
-    <link href="css/style.css" rel="stylesheet" /> 
+    <link href="views/css/style.css" rel="stylesheet" /> 
 
     <!-- Favicon
     ================================================== -->  
@@ -23,7 +23,7 @@
         <div class="header-content">
             <!-- Logo -->
             <figure class="logo animated flipInY">
-                <img src="img/logo.png" alt="Musinetwork School of Music">
+                <img src="views/img/logo.png" alt="Musinetwork School of Music">
             </figure>
             <!-- Título -->
             <h1 class="main-title">Centro de Seguimiento</h1>

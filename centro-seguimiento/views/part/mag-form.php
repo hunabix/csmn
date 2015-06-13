@@ -1,5 +1,5 @@
 <!-- Acciones y recordatorios en lote : mag-form = monitoring action group form-->
-<form action="part/process.php" name="mag-form" id="mag-form" class="mag-form form" method="post">
+<form action="views/part/process.php" name="mag-form" id="mag-form" class="mag-form form" method="post">
     
     <!-- Campo para saber si el formulario fué enviado -->
     <input type="hidden" name="form-name" value="mag-form">

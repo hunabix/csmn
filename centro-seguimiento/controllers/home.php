@@ -4,9 +4,9 @@
 */
 
 
-require_once("includes/header.php"); ?>
+/*require_once("includes/header.php"); ?>
 
-<?php //confirm_logged_in(); //revisa si el operador ha ingresado 
+<?php*/ //confirm_logged_in(); //revisa si el operador ha ingresado 
 
 
 
