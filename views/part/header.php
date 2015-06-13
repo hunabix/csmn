@@ -1,8 +1,3 @@
-<?php require_once("includes/session.php"); ?>
-<?php confirm_logged_in(); //revisa si el operador ha ingresado ?>
-<?php require_once("includes/connection.php"); ?>
-<?php require_once("includes/functions.php"); ?>
-
 <!doctype html>
 <html lang=""es>
 

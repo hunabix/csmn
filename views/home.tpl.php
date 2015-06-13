@@ -4,7 +4,6 @@
  **/
 require_once("part/header.php"); ?>
 
-
 <!-- Muestreo de variables [PRUEBAS]
 ================================================== --> 
 <div id="trace-block" class="contenido alert alert-warning alert-dismissible fade in" role="alert">

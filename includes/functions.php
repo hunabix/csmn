@@ -1,6 +1,9 @@
 <?php
 // Aquí irán todas las funciones
-
+//Echo test
+function echotest() {
+	echo 'test';
+}
 // Confirma si la consulta se realizó con éxito
 function confirm_query($result_set) {
 	if (!$result_set) {
