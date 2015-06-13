@@ -412,7 +412,7 @@ $completarinscripcionb = htmlentities(utf8_decode('<!-- Recordatorio de pago env
         <div id="mensaje-op">
         <input style="width: 900px;" type="text" name="asunto" placeholder="Escribe el asunto del correo" />
         <!-- Se manda a llamar la API de KCeditor -->
-		<script src="../centro-seguimiento/ckeditor/ckeditor.js"></script>
+		<script src="lib/ckeditor/ckeditor.js"></script>
         <!-- Se coloca un <textarea> cualquiera y se le asigna un identificador en el nombre -->
         <textarea name="mensaje_op"></textarea>
         <!-- Se coloca el textarea por una instancia de KCeditor colocando el identificador en la llamada al API -->
@@ -433,22 +433,22 @@ $completarinscripcionb = htmlentities(utf8_decode('<!-- Recordatorio de pago env
 				{ name: 'others', items: [ '-' ] },
 				{ name: 'about', items: [ 'About' ] },
 			],
-			templates_files : [ '../centro-seguimiento/ckeditor/plugins/templates/templates/cs-mail-templates.php' ]
+			templates_files : [ 'lib/ckeditor/plugins/templates/templates/cs-mail-templates.php' ]
 			} );
 		</script>
 		</div><!-- #mensaje-op -->
                     
             <!-- Scripts para los botones de copiado del contenido las plantillas de correo -->
-		    <script src="<?php echo cs_url; ?>/zc/ZeroClipboard.js"></script>
+		    <script src="<?php echo cs_url; ?>/lib/zc/ZeroClipboard.js"></script>
 		    <script>
 				var clip = new ZeroClipboard( document.getElementById("infomacionb"), {
-				  moviePath: "<?php echo cs_url; ?>/zc/ZeroClipboard.swf"} );
+				  moviePath: "<?php echo cs_url; ?>/lib/zc/ZeroClipboard.swf"} );
 				var clip = new ZeroClipboard( document.getElementById("seguimientob"), {
-				  moviePath: "<?php echo cs_url; ?>/zc/ZeroClipboard.swf"} );
+				  moviePath: "<?php echo cs_url; ?>/lib/zc/ZeroClipboard.swf"} );
 				var clip = new ZeroClipboard( document.getElementById("iniciodecursosb"), {
-				  moviePath: "<?php echo cs_url; ?>/zc/ZeroClipboard.swf"} );
+				  moviePath: "<?php echo cs_url; ?>/lib/zc/ZeroClipboard.swf"} );
 				var clip = new ZeroClipboard( document.getElementById("recordatoriodepagosb"), {
-				  moviePath: "<?php echo cs_url; ?>/zc/ZeroClipboard.swf"} );
+				  moviePath: "<?php echo cs_url; ?>/lib/zc/ZeroClipboard.swf"} );
 
 				clip.on( 'load', function(client) {
 				  // alert( "movie is loaded" );

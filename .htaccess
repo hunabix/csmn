@@ -2,7 +2,7 @@
 	#Enciende mod rewrite
 	RewriteEngine On
 	#Indica en que lugar se encuentra instalado el script
-	RewriteBase /dev.musinetwork.com/centro-seguimiento/
+	RewriteBase /dev.musinetwork.com/
 	#Esta condición es verdadera cuando la ruta al REQUEST_FILENAME no hace referencia a un archivo que existe en el servidor.
 	RewriteCond %{REQUEST_FILENAME} !-f
 	#Esta condición es verdadera cuando la ruta al REQUEST_FILENAME no hace referencia a una carpeta que existe en el servidor.
