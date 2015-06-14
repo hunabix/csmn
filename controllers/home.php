@@ -110,5 +110,5 @@ $data = $query->fetchAll();
 print_array($data);
 	
 //Llamando una vista
-view('home', compact('data', 'nombre_vista', 'saludo'));
+view('home', compact('casos', 'nombre_vista', 'saludo'));
 
