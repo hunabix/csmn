@@ -14,7 +14,7 @@ class connection {
 
         try {
             
-			$this->con = new PDO("mysql:host=$this->host;dbname=$this->dbname",$this->username, $this->password); //Initiates connection
+			$this->con = new PDO("mysql:host=$this->host;charset=utf8;dbname=$this->dbname",$this->username, $this->password); //Initiates connection
             
 			$this->con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Sets error mode
         
@@ -27,6 +27,17 @@ class connection {
         }
 		
     }
+	
+	//Returns instance of PDO and enables PDO methods
+	public function getDb() {
+		
+		if ($this->con instanceof PDO) {
+			
+			return $this->con;
+			
+		}
+		
+	}
 
     //Called automatically when there are no further references to object
     function __destruct() {

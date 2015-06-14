@@ -102,18 +102,13 @@ if (isset($_POST['casos_rp'])) { // el formulario ha sido enviado
 	
 
 }
-$casos_set = obten_casos();
+$con = db_con();
+$query = $con->prepare('SELECT * FROM interesado_cs WHERE activo = :status ORDER BY recordatorio ASC');
+$query->execute(array('status' => 'Si'));
+$data = $query->fetchAll();
 
-/*while ($caso = mysql_fetch_array($casos_set)) {
-
-	echo $id_interesado = utf8_encode($caso["ID"]);
-
-}*/
-
-$casos = mysqli_fetch_array($casos_set);
-
-
+print_array($data);
 	
 //Llamando una vista
-view('home', compact('titulo', 'nombre_vista', 'saludo'));
+view('home', compact('data', 'nombre_vista', 'saludo'));
 

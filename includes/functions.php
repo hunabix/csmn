@@ -1,7 +1,7 @@
 <?php
 // Aquí irán todas las funciones
 
-//Debug mode
+// Debug mode
 if (DEBUG) {
 	
 	ini_set('display_errors', true);
@@ -14,7 +14,7 @@ if (DEBUG) {
 
 }
 
-//Echo test
+// Echo test
 function echotest() {
 	echo 'test';
 }
@@ -22,6 +22,15 @@ function echotest() {
 function print_array($array = array()) {
 	echo '<pre style="display:block;">'; print_r($array); echo '</pre>'; // PRINT_R
 }
+
+// Database connection
+function db_con() {
+	$con = new connection;
+	$con = $con->getDb();
+	return $con;
+}
+
+//OLD FUNCTIOS BELOW
 
 // Confirma si la consulta se realizó con éxito
 function confirm_query($result_set) {
