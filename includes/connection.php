@@ -1,5 +1,4 @@
 <?php
-require("constants.php");
 	// 1. Creo la conexion a MySQL
 	global $connection;
 	$connection = mysql_connect(DB_SERVER,DB_USER,DB_PASS); 
@@ -12,5 +11,3 @@ require("constants.php");
 	if (!$db_select) {
 		die("Database selection failed: " . mysql_error());
 	}
-
-?>

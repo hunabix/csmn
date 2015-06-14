@@ -1,4 +1,5 @@
 <?php require_once("includes/header.php"); ?>
+<?php global $connection; ?>
 <?php //confirm_logged_in(); //revisa si el operador ha ingresado ?>
 <?php // se reciben parametros de componer-mensaje
 

@@ -1,6 +1,7 @@
 <?php require_once("includes/header.php"); ?>
 <?php //confirm_logged_in(); //revisa si el operador ha ingresado ?>
-<?php 
+<?php
+global $connection;
 if (isset($_POST['id_caso'])) { // el formulario ha sido enviado
 	$id_interesado = $_POST['id_caso'];
 	$casos_set = obten_caso_x_id($id_interesado);

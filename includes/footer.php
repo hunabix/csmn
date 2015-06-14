@@ -14,6 +14,7 @@
 </body>
 </html>
 <?php
+	global $connection;
 	// 5. Cierro la conexion a la BD
 	if(isset($connection)) {
 		mysql_close($connection);

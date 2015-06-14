@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-// redirecciona al URL que se le pase por parámetro
+// redirecciona al HOME si no ha iniciado sesión
 
 function logged_in() {
 	return isset($_SESSION['user_id']);				

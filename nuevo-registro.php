@@ -2,6 +2,8 @@
 
 <?php //COMIENZA A PROCESAR EL DOCUMENTO
 
+global $connection;
+
 $nombre = ""; $mail = ""; $telefono = ""; $instrumento = "";
 $pais = ""; $ciudad = ""; $medio_contacto = ""; 
 $info_sobre[1] = ""; $info_sobre[2] = ""; $info_sobre[3] = ""; $info_sobre[4] = ""; $info_sobre[5] = ""; $info_sobre[6] = ""; $info_sobre[7] = "";
@@ -62,6 +64,7 @@ if (isset($_POST['nuevo-registro-btn'])) { // el formulario ha sido enviado
 				 medio_contacto
 				)
 				VALUES ('$nombre','$mail', '$telefono', '$pais', '$ciudad', '$instrumento', '$medio_contacto')";
+
 	$resultado = mysql_query($consulta, $connection);
 	confirm_query($resultado);
 	

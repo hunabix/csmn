@@ -1,9 +1,28 @@
 <?php
 // Aquí irán todas las funciones
+
+//Debug mode
+if (DEBUG) {
+	
+	ini_set('display_errors', true);
+	//error_reporting(E_ALL);
+	error_reporting(E_ALL ^ E_DEPRECATED);
+	
+} else {
+	
+	ini_set('display_errors', false);
+
+}
+
 //Echo test
 function echotest() {
 	echo 'test';
 }
+
+function print_array($array = array()) {
+	echo '<pre style="display:block;">'; print_r($array); echo '</pre>'; // PRINT_R
+}
+
 // Confirma si la consulta se realizó con éxito
 function confirm_query($result_set) {
 	if (!$result_set) {

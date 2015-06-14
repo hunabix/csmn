@@ -3,7 +3,7 @@ require_once("includes/session.php");
 confirm_logged_in(); //revisa si el operador ha ingresado 
 require_once("includes/connection.php"); 
 require_once("includes/functions.php"); 
-
+global $connection;
 // cambia la prioridad del caso
 if (isset($_POST['accion-ind-btn'])) { 
 	// ------------------------------------------------------------------------//

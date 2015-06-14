@@ -4,8 +4,9 @@
 */
 
 // Carga de archivos base
-require 'config.php';
-require 'helpers.php';
+require_once('config.php');
+require_once('includes.php');
+require_once('base_controller.php');
 
 // Llama al controlador correspondiente
 controller($_GET['url']);

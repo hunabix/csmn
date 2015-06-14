@@ -1,5 +1,5 @@
 <?php require_once("includes/header.php"); ?>
-
+<?php global $connection; ?>
 <?php //COMIENZA A PROCESAR EL DOCUMENTO
 
 $nombre = ""; $mail = ""; $telefono = ""; $instrumento = "";

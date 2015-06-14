@@ -1,5 +1,6 @@
 <?php require_once("includes/header.php"); ?>
-<?php 
+<?php
+global $connection;
 // si se ha seleccionado borrar casos de manera colectiva
 if (isset($_POST['btn-casos-seguimiento-col'])) { 
 	$num_casos = $_POST['num_casos'];

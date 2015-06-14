@@ -3,14 +3,7 @@
 * Controlador del Home / Página principal
 */
 
-require_once("includes/session.php"); ?>
-<?php confirm_logged_in(); //revisa si el operador ha ingresado ?>
-<?php require_once("includes/connection.php"); ?>
-<?php require_once("includes/functions.php");
-
-/*require_once("includes/header.php"); ?>
-
-<?php*/ //confirm_logged_in(); //revisa si el operador ha ingresado 
+confirm_logged_in(); //revisa si el operador ha ingresado
 
 
 
@@ -111,15 +104,15 @@ if (isset($_POST['casos_rp'])) { // el formulario ha sido enviado
 }
 $casos_set = obten_casos();
 
-while ($caso = mysql_fetch_array($casos_set)) {
+/*while ($caso = mysql_fetch_array($casos_set)) {
 
 	echo $id_interesado = utf8_encode($caso["ID"]);
 
-}
+}*/
 
-//$casos = mysql_fetch_array($casos_set);
+$casos = mysqli_fetch_array($casos_set);
 
-//echo '<pre style="display:block;">'; print_r($casos); echo '</pre>'; // PRINT_R
+
 	
 //Llamando una vista
 view('home', compact('titulo', 'nombre_vista', 'saludo'));

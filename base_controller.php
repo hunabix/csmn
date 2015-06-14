@@ -1,6 +1,6 @@
 <?php 
 /* 
-* Archivo de funciones de apoyo 	 
+* Constructor de vistas y controladores 	 
 */
 
 //Función para definir los controladores

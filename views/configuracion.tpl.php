@@ -1,6 +1,6 @@
 <?php require_once("includes/header.php"); ?>
 <?php //confirm_logged_in(); //revisa si el operador ha ingresado ?>
-
+<?php global $connection; ?>
 <?php //COMIENZA A PROCESAR EL DOCUMENTO
 
 // ------------------------------------------------------------ ------------//
