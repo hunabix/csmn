@@ -1,17 +1,17 @@
 
 <!-- Prospecto -->
 
-<div id="<?= $i; ?>" class="lead form">
+<div id="<?= $caso['ID']; ?>" class="lead form">
 
     <!-- Checkbox & Nombre -->
-    <div class="lead-name" for="checkbox-<?= $i; ?>">
+    <div class="lead-name" for="checkbox-<?= $caso['ID']; ?>">
         <!-- check -->
         <label class="fancy-check">
-            <input name="checkbox-<?= $i; ?>" id="checkbox-<?= $i; ?>" value="<?= $i; ?>" type="checkbox" class="check" form="mag-form">
+            <input name="checkbox-<?= $caso['ID']; ?>" id="checkbox-<?= $caso['ID']; ?>" value="<?= $caso['ID']; ?>" type="checkbox" class="check" form="mag-form">
             <span class="fa fa-square-o check-icon"></span>
             <!-- Nombre -->
             <span class="name">
-                Alejandro Sobrevilla Viveros <?= $i; ?>
+                <?= $caso['nombre']; ?>
             </span>
         </label>
     </div>

@@ -44,8 +44,8 @@ require_once("part/header.php"); ?>
         </header>
 
         <!-- Lista de prospectos -->
-
-        <?php for ($i = 1; $i <= 20; $i++) { ?>
+		
+        <?php foreach ($casos as $caso) { ?>
 
             <?php require("part/prospecto.php");  ?>
 

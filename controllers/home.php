@@ -102,10 +102,11 @@ if (isset($_POST['casos_rp'])) { // el formulario ha sido enviado
 	
 
 }
+$casos = array();
 $con = db_con();
 $query = $con->prepare('SELECT * FROM interesado_cs WHERE activo = :status ORDER BY recordatorio ASC');
 $query->execute(array('status' => 'Si'));
-$data = $query->fetchAll();
+$casos = $query->fetchAll();
 
 //print_array($data);
 	
