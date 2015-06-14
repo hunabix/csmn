@@ -107,7 +107,7 @@ $query = $con->prepare('SELECT * FROM interesado_cs WHERE activo = :status ORDER
 $query->execute(array('status' => 'Si'));
 $data = $query->fetchAll();
 
-print_array($data);
+//print_array($data);
 	
 //Llamando una vista
 view('home', compact('casos', 'nombre_vista', 'saludo'));
