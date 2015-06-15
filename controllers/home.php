@@ -5,110 +5,38 @@
 
 confirm_logged_in(); //revisa si el operador ha ingresado
 
-
-
-// Si el formulario ha sido enviado usando el datepicker colectivo
-
-if (isset($_POST['reprogramar'])) { 
-
-
-
-	$num_casos = $_POST['num_casos'];
-
-	$casos = array();
-
-	
-
-	for ($i = 1; $i <= $num_casos; $i++) {
-
-		if (isset($_POST['caso' . $i])) { $casos[$i] = $_POST['caso' . $i]; }
-
-	}
-
-
-
-	$reprogramar = $_POST['reprogramar'];
-
-	$ano = substr($reprogramar, 6, 4);
-
-	$dia = substr($reprogramar, 3, 2);
-
-	$mes = substr($reprogramar, 0, 2);
-
-	$recordatorio = $ano . '-' . $mes . '-' . $dia;
-
-
-
-	//se actualizan los campos 
-
-	for ($i = 1; $i <= $num_casos; $i++) { 
-
-		if (isset($casos[$i])) { actualiza_recordatorio_manual($recordatorio, $casos[$i]);			
-
-		} 
-
-	}
-
-}
-
-
-
-// Si el formulario ha sido enviado usando el datepicker individual
-
-if (isset($_POST['casos_rp'])) { // el formulario ha sido enviado
-
-	// obtengo el numero de casos
-
-	$num_casos = $_POST['casos_rp'];
-
-	$casos = array();
-
-	// recorro los casos para saber cual de ellos tiene una fecha a reprogramar 
-
-	for ($i = 1; $i <= $num_casos; $i++) { 
-
-		if ($_POST['reprogramar'. $i] != '') {
-
-			// asigno los valores a procesar del caso que si tuvo una fecha para procesar
-
-			$reprogramar = $_POST['reprogramar'. $i];
-
-			$casos[1] = $_POST['id_rp'. $i];
-
-		}
-
-	} 
-
-	// se ordena la fecha
-
-	$ano = substr($reprogramar, 6, 4);
-
-	$dia = substr($reprogramar, 3, 2);
-
-	$mes = substr($reprogramar, 0, 2);
-
-	$recordatorio = $ano . '-' . $mes . '-' . $dia;	
-
-
-
-	//se actualizan los campos 
-
-	for ($i = 1; $i <= $num_casos; $i++) { 
-
-		if (isset($casos[$i])) { actualiza_recordatorio_manual($recordatorio, $casos[$i]); } 
-
-	} 
-
-	
-
-}
+// Getting leads
 $casos = array();
 $con = db_con();
 $query = $con->prepare('SELECT * FROM interesado_cs WHERE activo = :status ORDER BY recordatorio ASC');
 $query->execute(array('status' => 'Si'));
 $casos = $query->fetchAll();
+$query->closeCursor();
 
-//print_array($data);
+// Adding extra info to leads. Mejora: Guardar el ID de la última interacción en la tabla interesado.
+$query = $con->prepare('SELECT * FROM interaccion_cs WHERE id_interesado = :id_interesado ORDER BY fecha DESC LIMIT 1');
+foreach ($casos as $caso => $value) {
+
+	$query->execute(array('id_interesado' => $value['ID']));
+	$last_interaction = $query->fetch();
+	$query->closeCursor(); // Free memory used in this query
+
+	// Adding las interaction info
+	$value['ultima_interaccion'] =  $last_interaction;
+	$value['fecha_estatus'] =  fecha_hora_en_array($last_interaction['fecha']);;
+
+	// Adding reminder date
+	$value['fecha_recordatorio'] =  fecha_en_array($value['recordatorio']);
+	
+	// Adding suggestion for reminder
+	$value['recordatorio_sugerencia'] =  obten_sugerencia(obten_temporada(), $last_interaction['tipo']);
+	
+	// Saving info
+	$casos[$caso] = $value;
+}
+
+
+//print_array($casos);
 	
 //Llamando una vista
 view('home', compact('casos', 'nombre_vista', 'saludo'));

@@ -30,7 +30,113 @@ function db_con() {
 	return $con;
 }
 
-//OLD FUNCTIOS BELOW
+// Fecha en array. Procesa una fecha en formato año, mes, día. El separador es obligatorio y puede ser cualquier símbolo.
+function fecha_en_array($fecha_para_array) {
+	$fecha_en_array['ano'] = substr($fecha_para_array, -10, 4);
+	$fecha_en_array['mes'] = substr($fecha_para_array, -5, 2);
+	$fecha_en_array['mes_texto'] = mes_en_texto($fecha_en_array['mes']);
+	$fecha_en_array['mes_texto_corto'] = mes_en_texto_corto($fecha_en_array['mes']);
+	$fecha_en_array['dia'] = substr($fecha_para_array, -2, 2);
+	return $fecha_en_array;
+}
+
+// Fecha en array. Procesa una fecha en formato año, mes, día. El separador es obligatorio y puede ser cualquier símbolo.
+function fecha_hora_en_array($fecha_para_array) {
+	$fecha_en_array['ano'] = substr($fecha_para_array, -19, 4);
+	$fecha_en_array['mes'] = substr($fecha_para_array, -14, 2);
+	$fecha_en_array['mes_texto'] = mes_en_texto($fecha_en_array['mes']);
+	$fecha_en_array['mes_texto_corto'] = mes_en_texto_corto($fecha_en_array['mes']);
+	$fecha_en_array['dia'] = substr($fecha_para_array, -11, 2);
+	return $fecha_en_array;
+}
+
+// Mes en texto corto. Convierte un número en formato 00 a el mes correspondiente.
+function mes_en_texto_corto($num_mes) { 
+  switch ($num_mes) {
+    
+	case "00": 	return "- -"; break;
+	case "01": 	return "ene"; break;
+    case "02": 	return "feb"; break;
+	case "03": 	return "mar"; break;
+    case "04": 	return "abr"; break;
+	case "05": 	return "may"; break;
+    case "06": 	return "jun"; break;
+	case "07": 	return "jul"; break;
+    case "08": 	return "ago"; break;
+	case "09": 	return "sep"; break;
+    case "10": 	return "oct"; break;
+	case "11": 	return "nov"; break;
+    case "12": 	return "dic"; break;
+			
+    }
+	
+}
+//Mes en texto. Convierte un número en formato 00 a el mes correspondiente.
+function mes_en_texto($num_mes) { 
+  switch ($num_mes) {
+    
+	case "00": 	return "- -"; break;
+	case "01": 	return "enero"; break;
+    case "02": 	return "febrero"; break;
+	case "03": 	return "marzo"; break;
+    case "04": 	return "abril"; break;
+	case "05": 	return "mayo"; break;
+    case "06": 	return "junio"; break;
+	case "07": 	return "julio"; break;
+    case "08": 	return "agosto"; break;
+	case "09": 	return "septiembre"; break;
+    case "10": 	return "octubre"; break;
+	case "11": 	return "noviembre"; break;
+    case "12": 	return "diciembre"; break;
+			
+    }
+	
+}
+
+// Obtiene las sugerencia que corresponda segun la temporada
+function obten_sugerencia($temporada, $estatus){
+	if ($temporada == 'Temporada A' || $temporada == 'Temporada B' || $temporada == 'Temporada C') {
+		switch ($estatus) {
+			case "Nuevo caso de seguimiento": return "Responder al interesado"; break;
+			case "Nuevo caso de seguimiento INS": return ""; break;
+			case "Se respondió al interesado": return "Enviar correo de información"; break;
+			case "Correo de información enviado": return "Enviar correo de seguimiento"; break;
+			case "Correo de seguimiento enviado": return "Enviar correo de inicio de cursos"; break;
+			case "Correo de inicio de cursos enviado": return "Llamar al interesado"; break;			
+			case "Se llamó al interesado": return "Enviar recordatorio de pago"; break;
+			case "Recordatorio de pago enviado": return "Eviar caso a lista general"; break;
+			case "Pago de Paypal realizado": return "Revisar operación e inscribir alumno"; break;
+			case "Nota personalizada del operador": return ""; break;				
+		}
+	} else {
+		switch ($estatus) {
+			case "Nuevo caso de seguimiento": return "Responder al interesado"; break;
+			case "Nuevo caso de seguimiento INS": return ""; break;
+			case "Se respondió al interesado": return "Enviar correo de seguimiento"; break;
+			case "Correo de información enviado": return "Enviar correo de seguimiento"; break;
+			case "Correo de seguimiento enviado": return "Enviar correo de inicio de cursos"; break;
+			case "Correo de inicio de cursos enviado": return "Llamar al interesado"; break;			
+			case "Se llamó al interesado": return "Enviar recordatorio de pago"; break;
+			case "Recordatorio de pago enviado": return "Eviar caso a lista general"; break;
+			case "Pago de Paypal realizado": return "Revisar operación e inscribir alumno"; break;
+			case "Nota personalizada del operador": return ""; break;					
+		}
+	}
+}
+
+// redirecciona al URL que se le pase por parámetro
+function obten_temporada() {	
+	$con = db_con();
+	$query = $con->prepare('SELECT * FROM configuracion_cs WHERE ID = :id');
+	$query->execute(array('id' => '1'));
+	$data = $query->fetch();
+	//print_array($data);
+	//die;
+	$query->closeCursor();
+	return $data['temporada'];
+}
+
+//OLD FUNCTIONS BELOW
 
 // Confirma si la consulta se realizó con éxito
 function confirm_query($result_set) {
@@ -108,19 +214,6 @@ function obten_operadores() {
 	return $operadores_set;
 }
 
-// redirecciona al URL que se le pase por parámetro
-function obten_temporada() {
-	global $connection;
-	$consulta = " SELECT *
-						FROM configuracion_cs
-						WHERE ID = '1'";						
-	$configuracion_set = mysql_query($consulta, $connection);
-	confirm_query($configuracion_set);
-	$configuracion = mysql_fetch_array($configuracion_set); 
-	$temporada = $configuracion['temporada'];
-	return $temporada;	
-}
-
 function obten_configuracion() {
 	global $connection;
 	$consulta = " SELECT *
@@ -150,37 +243,6 @@ function sumar_dias_a_recordatorio($rp, $fecha_actual, $dias, $id) {
 					 WHERE id = '$id'";
 		$resultado = mysql_query($consulta, $connection);
 		confirm_query($resultado);
-	}
-}
-
-// imprime las sugerencia que corresponda segun la temporada
-function imprime_sugerencia($temporada, $estatus){
-	if ($temporada == 'Temporada A' || $temporada == 'Temporada B' || $temporada == 'Temporada C') {
-		switch ($estatus) {
-			case "Nuevo caso de seguimiento": echo "Responder al interesado"; break;
-			case "Nuevo caso de seguimiento INS": echo ""; break;
-			case "Se respondió al interesado": echo "Enviar correo de información"; break;
-			case "Correo de información enviado": echo "Enviar correo de seguimiento"; break;
-			case "Correo de seguimiento enviado": echo "Enviar correo de inicio de cursos"; break;
-			case "Correo de inicio de cursos enviado": echo "Llamar al interesado"; break;			
-			case "Se llamó al interesado": echo "Enviar recordatorio de pago"; break;
-			case "Recordatorio de pago enviado": echo "Eviar caso a lista general"; break;
-			case "Pago de Paypal realizado": echo "Revisar operación e inscribir alumno"; break;
-			case "Nota personalizada del operador": echo ""; break;				
-		}
-	} else {
-		switch ($estatus) {
-			case "Nuevo caso de seguimiento": echo "Responder al interesado"; break;
-			case "Nuevo caso de seguimiento INS": echo ""; break;
-			case "Se respondió al interesado": echo "Enviar correo de seguimiento"; break;
-			case "Correo de información enviado": echo "Enviar correo de seguimiento"; break;
-			case "Correo de seguimiento enviado": echo "Enviar correo de inicio de cursos"; break;
-			case "Correo de inicio de cursos enviado": echo "Llamar al interesado"; break;			
-			case "Se llamó al interesado": echo "Enviar recordatorio de pago"; break;
-			case "Recordatorio de pago enviado": echo "Eviar caso a lista general"; break;
-			case "Pago de Paypal realizado": echo "Revisar operación e inscribir alumno"; break;
-			case "Nota personalizada del operador": echo ""; break;					
-		}
 	}
 }
 
@@ -273,47 +335,6 @@ function actualiza_recordatorio_manual($recordatorio, $id_interesado) {
 }
 
 
-
-function mes_en_texto($num_mes) { 
-  switch ($num_mes) {
-    
-	case "00": 	return "- -"; break;
-	case "01": 	return "ene"; break;
-    case "02": 	return "feb"; break;
-	case "03": 	return "mar"; break;
-    case "04": 	return "abr"; break;
-	case "05": 	return "may"; break;
-    case "06": 	return "jun"; break;
-	case "07": 	return "jul"; break;
-    case "08": 	return "ago"; break;
-	case "09": 	return "sep"; break;
-    case "10": 	return "oct"; break;
-	case "11": 	return "nov"; break;
-    case "12": 	return "dic"; break;
-			
-    }
-	
-}
-function mes_en_texto_completo($num_mes) { 
-  switch ($num_mes) {
-    
-	case "00": 	return "- -"; break;
-	case "01": 	return "enero"; break;
-    case "02": 	return "febrero"; break;
-	case "03": 	return "marzo"; break;
-    case "04": 	return "abril"; break;
-	case "05": 	return "mayo"; break;
-    case "06": 	return "junio"; break;
-	case "07": 	return "julio"; break;
-    case "08": 	return "agosto"; break;
-	case "09": 	return "septiembre"; break;
-    case "10": 	return "octubre"; break;
-	case "11": 	return "noviembre"; break;
-    case "12": 	return "diciembre"; break;
-			
-    }
-	
-}
 function imprime_paises() {
     echo'<option value="afganistan">Afganistán</option> 
     <option value="akrotiri">Akrotiri</option> 

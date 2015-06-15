@@ -17,13 +17,13 @@
     </div>
     <!-- Estatus actual -->
     <p class="status">
-        <span class="date-status">13 feb</span>
-        Se ha enviado el correo de inicio de cursos
+        <span class="date-status"><?= $caso['fecha_estatus']['dia']; ?> <?= $caso['fecha_estatus']['mes_texto_corto']; ?></span>
+        <?= $caso['ultima_interaccion']['tipo']; ?>
     </p>
     <!-- Recordatorio y sugerencia -->
     <p class="reminder">
-        <span class="date-reminder">18 feb</span>
-        enviar correo de seguimiento
+        <span class="date-reminder"><?= $caso['fecha_recordatorio']['dia']; ?> <?= $caso['fecha_recordatorio']['mes_texto_corto']; ?></span>
+        <?= $caso['recordatorio_sugerencia']; ?>
     </p>
     <!-- Acciones -->
     <aside class="actions">
