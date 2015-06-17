@@ -12,7 +12,11 @@ $('#fecha-reserva').datepicker({
     weekStart:1,
     color: 'red'
 });
-
+// datepicker para el modal de recordatorio
+$('#fecha-recordatorio').datepicker({
+    weekStart:1,
+    color: 'red'
+});
 /* LEADS
 --------------------------------------------- */
 // Muestra los iconos correspondientes al cargar o recargar la página
@@ -87,6 +91,12 @@ $( ".reservar" ).click(function() {
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
 });
+$( ".recordatorio" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    var leadTipoAccion = $(this).attr('tipo-accion');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( leadTipoAccion );
+});
 /* AJAX
 ------------------------------- */
 
@@ -106,6 +116,7 @@ $("#leads-form").on("submit", function(e){
         $('.contenido').css( "display", "block" ); 
         $('#modal-multi').modal('hide');
         $('#modal-reservar').modal('hide');
+        $('#modal-recordatorio').modal('hide');
     })
 });
 

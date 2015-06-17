@@ -17,7 +17,8 @@ require_once("part/header.php"); ?>
 <!-- Titulo -->
 <h2 class="section-title">Casos de seguimiento</h2>
 
-<!-- Casos de seguimiento -->
+<!-- Casos de seguimiento
+================================================== --> 
 <section class="monitoring">
 
     <!-- Formulario de acciones y recordatorios en lote
@@ -39,8 +40,8 @@ require_once("part/header.php"); ?>
             <h4 class="lt-actions">Acciones</h4>
         </header>
 
-        <!-- Lista de prospectos -->
-		
+        <!-- Lista de prospectos
+        ================================================== --> 
         <?php // foreach ($casos as $caso) { ?>
         <?php foreach (array_slice($casos, 0, 2) as $caso) { ?>
     
@@ -48,10 +49,15 @@ require_once("part/header.php"); ?>
 
         <?php } ?>
         
-        <!-- Modales -->
+        <!-- Modales
+        ================================================== --> 
+        <!-- Multipropósito -->
         <?php require("part/modal-multi.php");  ?>
+        <!-- Reservar a futuros ciclos -->
         <?php require("part/modal-reservar.php");  ?>
-
+        <!-- Recordatorios -->
+        <?php require("part/modal-recordatorio.php");  ?>
+        
         <!-- Datos base a enviar -->
         <input type="hidden" name="form-name" value="leads-form">
         <input id="lead-id" type="hidden" name="lead-id" value="">
