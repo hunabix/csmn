@@ -57,6 +57,8 @@ require_once("part/header.php"); ?>
         <?php require("part/modal-reservar.php");  ?>
         <!-- Recordatorios -->
         <?php require("part/modal-recordatorio.php");  ?>
+        <!-- Edición de datos de prospecto -->
+        <?php require("part/modal-editar-prospecto.php");  ?>
         
         <!-- Datos base a enviar -->
         <input type="hidden" name="form-name" value="leads-form">

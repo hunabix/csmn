@@ -1,36 +1,45 @@
 <!-- Modal Reservar para futuros ciclos | individual-->
-<div class="modal fade modal-reservar" id="modal-reservar" tabindex="-1" role="dialog" aria-labelledby="titulo-modal-regular" aria-hidden="true">
+<div class="modal fade modal-prospecto" id="modal-prospecto" tabindex="-1" role="dialog" aria-labelledby="titulo-modal-regular" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Encabezado del modal  -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="titulo-modal-regular">
-                    Reservar para futuros ciclos escolares
+                    Editar información de prospecto
                 </h4>
             </div>
             <!-- Cuerpo del modal  -->
             <div class="modal-body">
-                <!-- Selector de fecha del recordatorio de la reserva-->
-                <div class="input-group fecha-reserva">
-                   <input name="fecha-recordatorio-reserva" type="text" id="fecha-reserva" class="form-control"  placeholder="dd/mm/aaaa" value="" >
-                   <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                <!-- Nombre -->
+                <div class="input-group nombre">
+                    <input name="nombre" type="text" class="form-control"  placeholder="Nombre" value="">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
                 </div>
-                <!--Ciclo al cual reserva -->
-                <div class="input-group ciclo-reserva">
-                    <select name="ciclo-reserva" type="text" id="ciclo-reserva" class="form-control" placeholder="Ciclo">
-                        <option value=""> </option>
-                        <option value="ENERO - MARZO">ENERO - MARZO</option>
-                        <option value="ABRIL - JUNIO">ABRIL - JUNIO</option>
-                        <option value="JULIO - SEPTIEMBRE" selected="">JULIO - SEPTIEMBRE</option>
-                        <option value="OCTUBRE - DICIEMBRE">OCTUBRE - DICIEMBRE</option>
-                    </select> 
-                    <span class="input-group-addon"><i class="fa fa-history"></i></span>
+                <!-- Apellidos -->
+                <div class="input-group apellidos">
+                    <input name="apellidos" type="text" class="form-control"  placeholder="Apellido(s)" value="">
+                    <span class="input-group-addon"><i class="fa"></i></span>
                 </div>
-                <!-- ID del elemento -->
-                <div class="input-group">
-                   <textarea name="comentario" type="text-area" id="comentario" class="form-control"  placeholder="Puedes agregar un comentario aquí"></textarea>
-                   <span class="input-group-addon"><i class="fa fa-file-text"></i></span>
+                <!-- Correo -->
+                <div class="input-group correo">
+                    <input name="correo" type="email" class="form-control"  placeholder="Correo electrónico" value="">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                </div>
+                <!-- Teléfono -->
+                <div class="input-group telefono">
+                    <input name="telefono" type="text" class="form-control"  placeholder="Teléfono" value="">
+                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                </div>
+                <!-- Ciudad -->
+                <div class="input-group ciudad">
+                    <input name="ciudad" type="text" class="form-control"  placeholder="Ciudad" value="">
+                    <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                </div>
+                <!-- Instrumento -->
+                <div class="input-group instrumento">
+                    <input name="instrumento" type="text" class="form-control"  placeholder="Instrumento" value="">
+                    <span class="input-group-addon"><i class="fa fa-music"></i></span>
                 </div>
 
             </div>

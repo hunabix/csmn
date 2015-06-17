@@ -52,7 +52,7 @@ $('input[type=checkbox]').change(function(){
 
 /* Acciones del lead
 ------------------------------- */
-
+// Agregar nota
 $( ".nota" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
@@ -61,6 +61,7 @@ $( ".nota" ).click(function() {
     $( "#tipo-accion" ).val( leadTipoAccion );
     modal.find( "#titulo-modal-regular").html('Agregar nota personalizada');
 });
+// Registrar llamada
 $( ".llamada" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
@@ -69,6 +70,7 @@ $( ".llamada" ).click(function() {
     $( "#tipo-accion" ).val( leadTipoAccion );
     modal.find( "#titulo-modal-regular").html('Registrar llamada');
 });
+// Inscribir a Musinetwork
 $( ".inscripcion" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
@@ -77,6 +79,7 @@ $( ".inscripcion" ).click(function() {
     $( "#tipo-accion" ).val( leadTipoAccion );
     modal.find( "#titulo-modal-regular").html('Inscribir a Musinetwork');
 });
+// Enviar a lista general
 $( ".lista" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
@@ -85,18 +88,36 @@ $( ".lista" ).click(function() {
     $( "#tipo-accion" ).val( leadTipoAccion );
     modal.find( "#titulo-modal-regular").html('Enviar a lista general');
 });
+// Reservar para futuros ciclos
 $( ".reservar" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
 });
+// Agregar recordatorio
 $( ".recordatorio" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
 });
+// Actualizar datos de prospecto
+$( ".editar-prospecto" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    var leadTipoAccion = $(this).attr('tipo-accion');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( leadTipoAccion );
+});
+// Ver historial de interacciones
+$( ".historial" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    var leadTipoAccion = $(this).attr('tipo-accion');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( leadTipoAccion );
+});
+
+
 /* AJAX
 ------------------------------- */
 
@@ -112,11 +133,12 @@ $("#leads-form").on("submit", function(e){
     e.preventDefault();
 
     $.post("views/part/process.php", $("#leads-form").serialize(), function (respuesta) {
+        // Imprimo resultados de prueba
         $('#trace-block .datos').html(respuesta);
         $('.contenido').css( "display", "block" ); 
-        $('#modal-multi').modal('hide');
-        $('#modal-reservar').modal('hide');
-        $('#modal-recordatorio').modal('hide');
+        // Cierro todo slos modales activos
+        $('.modal').modal('hide');
+
     })
 });
 

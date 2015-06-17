@@ -42,7 +42,7 @@
         <!-- Agregar recordatorio -->
         <a href="#" class="action recordatorio" data-toggle="modal" data-target="#modal-recordatorio" tipo-accion="recordatorio"><i class="fa fa-calendar"></i></a>
         <!-- Editar datos del prospecto -->
-        <a href="#" class="action a-user"><i class="fa fa-user"></i></a>
+        <a href="#" class="action editar-prospecto" data-toggle="modal" data-target="#modal-prospecto" tipo-accion="editar-datos"><i class="fa fa-user"></i></a>
         <!-- Consultar historial -->
         <a href="#" class="action"><i class="fa fa-clock-o"></i></a>
         <!-- Eliminar prospecto -->

@@ -30,3 +30,22 @@
 		float: none;
 	}
 }
+.modal-prospecto {
+	
+	.nombre,
+	.correo,
+	.ciudad  {
+		width: 50%;
+		float: left;
+		padding: 0px 1rem 0px 0px;
+		margin-bottom: 1rem;
+	}
+	.apellidos,
+	.telefono,
+	.instrumento {
+		width: 50%;
+		float: left;
+		padding: 0px 0 0 1rem;
+		margin-bottom: 1rem;
+	}
+}
