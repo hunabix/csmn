@@ -32,10 +32,10 @@
                 <ul>
                     <li><a href="<?= cs_url; ?>"><i class="fa fa-home"></i></a></li>
                     <li><a href="<?= cs_url; ?>/nuevo-registro"><i class="fa fa-user-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-search "></i></a></li>
-                    <li><a href="#"><i class="fa fa-bell"></i></a></li>
-                    <li><a href="<?= cs_url; ?>/historial"><i class="fa fa-archive"></i></a></li>
-                    <li><a href="<?= cs_url; ?>/configuracion"><i class="fa fa-cog"></i></a></li>
+                    <!-- <li><a href="#"><i class="fa fa-search "></i></a></li> -->
+                    <!-- <li><a href="#"><i class="fa fa-bell"></i></a></li> -->
+                    <!-- <li><a href="<?= cs_url; ?>/historial"><i class="fa fa-archive"></i></a></li> -->
+                    <li><a href="<?= cs_url; ?>/configuracion/"><i class="fa fa-cog"></i></a></li>
                 </ul>
             </nav>
         </div>

@@ -36,11 +36,11 @@
         <!-- Inscripción a Musinetwork -->
         <a href="#" class="action inscripcion" data-toggle="modal" data-target="#modal-multi" tipo-accion="inscripcion"><i class="fa fa-university"></i></a>
         <!-- Reservar para futuros ciclos -->
-        <a href="#" class="action"><i class="fa fa-recycle"></i></a>
+        <a href="#" class="action reservar" data-toggle="modal" data-target="#modal-reservar" tipo-accion="reservar"> <i class="fa fa-recycle"></i></a>
         <!-- Enviar a lista general -->
         <a href="#" class="action lista" data-toggle="modal" data-target="#modal-multi" tipo-accion="lista"><i class="fa fa-list"></i></a>
         <!-- Agregar recordatorio -->
-        <a href="#" class="action"></i></a>
+        <a href="#" class="action"><i class="fa fa-calendar"></i></a>
         <!-- Editar datos del prospecto -->
         <a href="#" class="action a-user"><i class="fa fa-user"></i></a>
         <!-- Consultar historial -->

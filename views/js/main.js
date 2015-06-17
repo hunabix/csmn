@@ -1,5 +1,5 @@
 
-/* MAG-FORM
+/* DATE PICKERS
 --------------------------------------------- */
 
 // Activo datepicker para el campo en mag-form
@@ -7,7 +7,11 @@ $('#mag-date').datepicker({
     weekStart:1,
     color: 'red'
 });
-
+// Activo datepicker para el campo en mag-form
+$('#fecha-reserva').datepicker({
+    weekStart:1,
+    color: 'red'
+});
 
 /* LEADS
 --------------------------------------------- */
@@ -49,35 +53,40 @@ $( ".nota" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     var modal = $('#modal-multi');
-    modal.find( "#lead-id" ).val( leadId );
-    modal.find( "#tipo-accion" ).val( leadTipoAccion );
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( leadTipoAccion );
     modal.find( "#titulo-modal-regular").html('Agregar nota personalizada');
 });
 $( ".llamada" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     var modal = $('#modal-multi');
-    modal.find( "#lead-id" ).val( leadId );
-    modal.find( "#tipo-accion" ).val( leadTipoAccion );
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( leadTipoAccion );
     modal.find( "#titulo-modal-regular").html('Registrar llamada');
 });
 $( ".inscripcion" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     var modal = $('#modal-multi');
-    modal.find( "#lead-id" ).val( leadId );
-    modal.find( "#tipo-accion" ).val( leadTipoAccion );
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( leadTipoAccion );
     modal.find( "#titulo-modal-regular").html('Inscribir a Musinetwork');
 });
 $( ".lista" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     var modal = $('#modal-multi');
-    modal.find( "#lead-id" ).val( leadId );
-    modal.find( "#tipo-accion" ).val( leadTipoAccion );
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( leadTipoAccion );
     modal.find( "#titulo-modal-regular").html('Enviar a lista general');
 });
-
+$( ".reservar" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    var leadTipoAccion = $(this).attr('tipo-accion');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( leadTipoAccion );
+});
 /* AJAX
 ------------------------------- */
 
@@ -95,7 +104,8 @@ $("#leads-form").on("submit", function(e){
     $.post("views/part/process.php", $("#leads-form").serialize(), function (respuesta) {
         $('#trace-block .datos').html(respuesta);
         $('.contenido').css( "display", "block" ); 
-        $('#modal-multi').modal('toggle');
+        $('#modal-multi').modal('hide');
+        $('#modal-reservar').modal('hide');
     })
 });
 

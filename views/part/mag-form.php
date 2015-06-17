@@ -11,11 +11,15 @@
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-send"></i> Enviar correo</a></li>
             <li role="presentation" class="divider"></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-phone"></i> Registrar llamada</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-file-text"></i> Agregar nota</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-university"></i> Inscribir</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-recycle"></i> Reservar</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-list"></i> Enviar a lista general</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-close"></i> Eliminar</a></li>
         </ul>
     </div>    
     <!-- Selector de fecha : col 2-->

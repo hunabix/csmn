@@ -32,11 +32,18 @@
 		}
 		.action-list {
 			margin-right: 4rem;
-
+	
 			@media (max-width: 900px) {
 				max-width: none;
 				width: 100%;
 			}
+			
+			i {
+				color: $divider-color;
+				font-size: 1.15rem;
+				padding-right: 0.5rem;
+			}
+
 		}
 		.mag-date {	max-width: 160px;	}
 		.mag-reminder {

@@ -19,7 +19,7 @@
     <!-- Scripts personalizados para el proyecto -->
     <script src="views/js/main.js"></script>
 
-
+    
 </body>
 
 </html>
