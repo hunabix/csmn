@@ -1,11 +1,11 @@
 <!-- Modal Reservar para futuros ciclos | individual-->
-<div class="modal fade modal-historial" id="modal-historial" tabindex="-1" role="dialog" aria-labelledby="titulo-modal-regular" aria-hidden="true">
+<div class="modal fade modal-historial" id="modal-historial" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <!-- Encabezado del modal  -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="titulo-modal-regular">
+                <h4 class="modal-title">
                     Historial de interacciones
                 </h4>
             </div>

@@ -66,7 +66,7 @@ $( ".nota" ).click(function() {
     var modal = $('#modal-multi');
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
-    modal.find( "#titulo-modal-regular").html('Agregar nota personalizada');
+    modal.find( "#titulo-modal-multi").html('Agregar nota personalizada');
 });
 // Registrar llamada
 $( ".llamada" ).click(function() {
@@ -75,7 +75,7 @@ $( ".llamada" ).click(function() {
     var modal = $('#modal-multi');
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
-    modal.find( "#titulo-modal-regular").html('Registrar llamada');
+    modal.find( "#titulo-modal-multi").html('Registrar llamada');
 });
 // Inscribir a Musinetwork
 $( ".inscripcion" ).click(function() {
@@ -84,7 +84,7 @@ $( ".inscripcion" ).click(function() {
     var modal = $('#modal-multi');
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
-    modal.find( "#titulo-modal-regular").html('Inscribir a Musinetwork');
+    modal.find( "#titulo-modal-multi").html('Inscribir a Musinetwork');
 });
 // Enviar a lista general
 $( ".lista" ).click(function() {
@@ -93,7 +93,7 @@ $( ".lista" ).click(function() {
     var modal = $('#modal-multi');
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
-    modal.find( "#titulo-modal-regular").html('Enviar a lista general');
+    modal.find( "#titulo-modal-multi").html('Enviar a lista general');
 });
 // Reservar para futuros ciclos
 $( ".reservar" ).click(function() {
@@ -131,6 +131,15 @@ $( ".eliminar" ).click(function() {
     $( "#tipo-accion" ).val( leadTipoAccion );
 });
 
+/* Modales MAG-FORM
+------------------------------- */
+// Registrar llamada
+$( ".llamada-mag" ).click(function() {
+    var leadTipoAccion = $(this).attr('tipo-accion');
+    var modal = $('#modal-multi-mag');
+    $( "#tipo-accion" ).val( leadTipoAccion );
+    modal.find( "#titulo-modal-multi-mag").html('Registrar llamada');
+});
 
 /* AJAX
 ------------------------------- */

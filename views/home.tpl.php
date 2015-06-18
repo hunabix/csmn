@@ -49,7 +49,7 @@ require_once("part/header.php"); ?>
 
         <?php } ?>
         
-        <!-- Modales
+        <!-- Modales para casos individuales
         ================================================== --> 
         <!-- Multipropósito -->
         <?php require("part/modal-multi.php");  ?>
@@ -65,7 +65,7 @@ require_once("part/header.php"); ?>
         <?php require("part/modal-eliminar.php");  ?>
         
         <!-- Datos base a enviar -->
-        <input type="hidden" name="form-name" value="leads-form">
+        <input type="hidden" name="formulario" value="leads-form">
         <input id="lead-id" type="hidden" name="lead-id" value="">
         <input id="tipo-accion" type="hidden" name="tipo-accion" value="">
 

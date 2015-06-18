@@ -1,7 +1,7 @@
 <?php 
-if (isset($_POST['form-name'])) {
+if (isset($_POST['formulario'])) {
 
-	$nombreFormulario = $_POST['form-name'];
+	$nombreFormulario = $_POST['formulario'];
 	
 	echo '<h2>Llego por el formulario '. $nombreFormulario . '</h2>';
 

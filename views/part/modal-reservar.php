@@ -1,11 +1,11 @@
 <!-- Modal Reservar para futuros ciclos | individual-->
-<div class="modal fade modal-reservar" id="modal-reservar" tabindex="-1" role="dialog" aria-labelledby="titulo-modal-regular" aria-hidden="true">
+<div class="modal fade modal-reservar" id="modal-reservar" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Encabezado del modal  -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="titulo-modal-regular">
+                <h4 class="modal-title">
                     Reservar para futuros ciclos escolares
                 </h4>
             </div>
