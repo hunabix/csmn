@@ -123,6 +123,13 @@ $( ".historial" ).click(function() {
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
 });
+// Eliminar prospecto
+$( ".eliminar" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    var leadTipoAccion = $(this).attr('tipo-accion');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( leadTipoAccion );
+});
 
 
 /* AJAX

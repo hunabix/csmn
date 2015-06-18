@@ -7,8 +7,7 @@ if (isset($_POST['form-name'])) {
 
 	// Impresión de parametros para testing
 	var_dump($_POST);
-
-
+	
 } else {
 	echo '<h2>Llego por otro lado</h2>';
 }

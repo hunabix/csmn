@@ -1,6 +1,6 @@
 <!-- Modal Reservar para futuros ciclos | individual-->
 <div class="modal fade modal-historial" id="modal-historial" tabindex="-1" role="dialog" aria-labelledby="titulo-modal-regular" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <!-- Encabezado del modal  -->
             <div class="modal-header">

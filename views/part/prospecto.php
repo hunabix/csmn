@@ -46,7 +46,7 @@
         <!-- Consultar historial -->
         <a href="#" class="action historial" data-toggle="modal" data-target="#modal-historial" tipo-accion="historial"><i class="fa fa-clock-o"></i></a>
         <!-- Eliminar prospecto -->
-        <a href="#" class="action a-close"><i class="fa fa-close"></i></a>
+        <a href="#" class="action eliminar" data-toggle="modal" data-target="#modal-eliminar" tipo-accion="eliminar"><i class="fa fa-close"></i></a>
         <!-- Cambiar prioridad -->
         <a href="#" class="action"><i class="fa fa-circle"></i></a>
     </aside>

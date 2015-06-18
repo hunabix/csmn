@@ -19,10 +19,10 @@
                 <!--Ciclo al cual reserva -->
                 <div class="input-group ciclo-reserva">
                     <select name="ciclo-reserva" type="text" id="ciclo-reserva" class="form-control" placeholder="Ciclo">
-                        <option value=""> </option>
+                        <option value="" selected=""></option>
                         <option value="ENERO - MARZO">ENERO - MARZO</option>
                         <option value="ABRIL - JUNIO">ABRIL - JUNIO</option>
-                        <option value="JULIO - SEPTIEMBRE" selected="">JULIO - SEPTIEMBRE</option>
+                        <option value="JULIO - SEPTIEMBRE">JULIO - SEPTIEMBRE</option>
                         <option value="OCTUBRE - DICIEMBRE">OCTUBRE - DICIEMBRE</option>
                     </select> 
                     <span class="input-group-addon"><i class="fa fa-history"></i></span>

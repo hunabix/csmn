@@ -61,6 +61,8 @@ require_once("part/header.php"); ?>
         <?php require("part/modal-editar-prospecto.php");  ?>
         <!-- Historial de interacciones -->
         <?php require("part/modal-historial.php");  ?>
+        <!-- Borrar prospecto -->
+        <?php require("part/modal-eliminar.php");  ?>
         
         <!-- Datos base a enviar -->
         <input type="hidden" name="form-name" value="leads-form">
