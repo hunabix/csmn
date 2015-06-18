@@ -1,6 +1,4 @@
-
-
-<!-- Modal -->
+<!-- Modal | individual-->
 <div class="modal fade" id="modal-multi" tabindex="-1" role="dialog" aria-labelledby="titulo-modal-regular" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -15,8 +13,6 @@
             <div class="modal-body">
 
                 <!-- ID del elemento -->
-                <input id="lead-id" type="hidden" name="lead-id" value="">
-                <input id="tipo-accion" type="hidden" name="tipo-accion" value="">
                 <div class="input-group">
                    <textarea name="comentario" type="text-area" id="comentario" class="form-control"  placeholder="Puedes agregar un comentario aquí"></textarea>
                    <span class="input-group-addon"><i class="fa fa-file-text"></i></span>
