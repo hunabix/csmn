@@ -3,7 +3,7 @@
 * Controlador que recibe peticiones
 */
 
-confirm_logged_in(); //revisa si el operador ha ingresado
+//confirm_logged_in(); //revisa si el operador ha ingresado
 
 if (isset($_POST['formulario'])) {
 
