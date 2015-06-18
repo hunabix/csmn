@@ -152,18 +152,35 @@ $( document ).ajaxComplete(function() {
 });
 
 
+
 $("#leads-form").on("submit", function(e){
     e.preventDefault();
-
-    $.post("views/part/process.php", $("#leads-form").serialize(), function (respuesta) {
-        // Imprimo resultados de prueba
-        $('#trace-block .datos').html(respuesta);
-        $('.contenido').css( "display", "block" ); 
-        // Cierro todo slos modales activos
-        $('.modal').modal('hide');
-
+    $.ajax({
+        data: $("#leads-form").serialize(),
+        //Cambiar a type: POST si necesario
+        type: "POST",
+        // Formato de datos que se espera en la respuesta
+        // dataType: "json",
+        // URL a la que se enviará la solicitud Ajax
+        url: "controllers/procesar.php",
     })
+     .done(function( data, textStatus, jqXHR ) {
+         if ( console && console.log ) {
+             console.log( "La solicitud se ha completado correctamente." );
+         }
+         $('#trace-block .datos').html(data);
+         $('.contenido').css( "display", "block" ); 
+         // Cierro todo slos modales activos
+         $('.modal').modal('hide');
+     })
+     .fail(function( jqXHR, textStatus, errorThrown ) {
+         if ( console && console.log ) {
+             console.log( "La solicitud a fallado: " +  textStatus);
+         }
+    });
 });
+
+
 
 
 

@@ -1,0 +1,138 @@
+<h1 id="ckeditor-4-changelog">CKEditor 4 Changelog</h1>
+<h2 id="ckeditor-4-1-1">CKEditor 4.1.1</h2>
+<ul>
+<li>Added new translation: Albanian.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10172">#10172</a>: Pressing <em>Delete</em>/<em>Backspace</em> in an empty table cell moves the cursor to the next/previous cell.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10219">#10219</a>: Error thrown when destroying an editor instance in parallel with a mouseup event.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10265">#10265</a>: Wrong loop type in the Filebrowser plugin.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10249">#10249</a>: Wrong undo/redo states at start.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10268">#10268</a>: &quot;Show Blocks&quot; does not recover after switching to source view.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9995">#9995</a>: HTML code in <code>textarea</code> should not be modified by the <code>htmlDataProcessor</code>.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10320">#10320</a>: Justify plugin should add elements to the ACF based on current Enter mode.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10260">#10260</a>: Fixed: Advanced Content Filter blocks <code>tabSpaces</code>. Unified <code>data-cke-*</code> attributes filtering.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10315">#10315</a>: [Webkit] Undo manager should not record snapshots after a filling character was added/removed.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10291">#10291</a>: [Webkit] Space after a filling character should be secured.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10330">#10330</a>: [Webkit] The filling character is not removed on <code>keydown</code> in specific cases.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10285">#10285</a>: Fixed: Styled text pasted from MS Word causes an infinite loop.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10131">#10131</a>: Fixed: <code>undoManager#update</code> does not refresh the command state.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10337">#10337</a>: Fixed: Unable to remove <code>&lt;s&gt;</code> using <code>removeformat</code>.</li>
+</ul>
+<h2 id="ckeditor-4-1">CKEditor 4.1</h2>
+<ul>
+<li><a href="http://dev.ckeditor.com/ticket/10192">#10192</a>: Closing lists with Enter key does not work with Advanced Content Filter in several cases.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10191">#10191</a>: Fixed allowed content rules unification, so the <code>filter.allowedContent</code> property always contains rules in the same format.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10224">#10224</a>: Advanced Content Filter does not remove non-empty <code>&lt;a&gt;</code> elements anymore.</li>
+<li>Minor issues in plugin integration with Advanced Content Filter:<ul>
+<li><a href="http://dev.ckeditor.com/ticket/10166">#10166</a>: Added transformation from the <code>align</code> attribute to <code>float</code> style to preserve backward compatibility after the introduction of Advanced Content Filter.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10195">#10195</a>: Image plugin no longer registers rules for links to Advanced Content Filter.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10213">#10213</a>: Justify plugin is now correctly registering rules to Advanced Content Filter when <code>config.justifyClasses</code> is defined.</li>
+</ul>
+</li>
+</ul>
+<h2 id="ckeditor-4-1-rc">CKEditor 4.1 RC</h2>
+<ul>
+<li><p><a href="http://dev.ckeditor.com/ticket/9829">#9829</a>: Data and features activation based on editor configuration.</p>
+<p>Brand new data filtering system that works in 2 modes:</p>
+<ul>
+<li>based on loaded features (toolbar items, plugins) - the data will be filtered according to what the editor in its
+current configuration can handle,</li>
+<li>based on <code>config.allowedContent</code> rules - the data will be filtered and the editor features (toolbar items, commands,
+keystrokes) will be enabled if they are allowed.</li>
+</ul>
+<p>See the <code>datafiltering.html</code> sample, <a href="http://docs.ckeditor.com/#!/guide/dev_advanced_content_filter">guides</a> and <a href="http://docs.ckeditor.com/#!/api/CKEDITOR.filter"><code>CKEDITOR.filter</code> API documentation</a>.</p>
+</li>
+<li><a href="http://dev.ckeditor.com/ticket/9387">#9387</a>: Reintroduced &quot;Shared Spaces&quot; - the ability to display toolbar and bottom editor space in selected locations and to share them by different editor instances.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9907">#9907</a>: Added the <code>contentPreview</code> event for preview data manipulation.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9713">#9713</a>: Introduced the <code>sourcedialog</code> plugin that brings raw HTML editing for inline editor instances.</li>
+<li>Included in <a href="http://dev.ckeditor.com/ticket/9829">#9829</a>: Introduced new events, <code>toHtml</code> and <code>toDataFormat</code>, allowing for better integration with data processing. See API documentation: <a href="http://docs.ckeditor.com/#!/api/CKEDITOR.editor-event-toHtml"><code>toHtml</code></a>, <a href="http://docs.ckeditor.com/#!/api/CKEDITOR.editor-event-toDataFormat"><code>toDataFormat</code></a>.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9981">#9981</a>: Added ability to filter <code>htmlParser.fragment</code>, <code>htmlParser.element</code> etc. by many <code>htmlParser.filter</code>s before writing structure to an HTML string.</li>
+<li>Included in <a href="http://dev.ckeditor.com/ticket/10103">#10103</a>:<ul>
+<li>Introduced the <code>editor.status</code> property to make it easier to check the current status of the editor. See <a href="http://docs.ckeditor.com/#!/api/CKEDITOR.editor-property-status">API documentation</a>.</li>
+<li>Default <code>command</code> state is now <code>CKEDITOR.TRISTATE_DISABLE</code>. It will be activated on <code>editor.instanceReady</code> or immediately after being added if the editor is already initialized.</li>
+</ul>
+</li>
+<li><a href="http://dev.ckeditor.com/ticket/9796">#9796</a>: Introduced <code>&lt;s&gt;</code> as a default tag for strikethrough, which replaces obsolete <code>&lt;strike&gt;</code> in HTML5.</li>
+</ul>
+<h2 id="ckeditor-4-0-3">CKEditor 4.0.3</h2>
+<ul>
+<li><a href="http://dev.ckeditor.com/ticket/10196">#10196</a>: Fixed context menus not opening with keyboard shortcuts when Autogrow is enabled.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10212">#10212</a>: [IE7-10] Undo command throws errors after multiple switches between Source and WYSIWYG view.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10219">#10219</a>: [Inline editor] Error thrown after calling editor.destroy().</li>
+</ul>
+<h2 id="ckeditor-4-0-2">CKEditor 4.0.2</h2>
+<ul>
+<li><a href="http://dev.ckeditor.com/ticket/9779">#9779</a>: Fixed overriding <code>CKEDITOR.getUrl</code> with <code>CKEDITOR_GETURL</code>.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9772">#9772</a>: Custom buttons in dialog window footer have different look and size (Moono, Kama).</li>
+<li><a href="http://dev.ckeditor.com/ticket/9029">#9029</a>: Custom styles added with <code>styleSet.add()</code> are displayed in wrong order.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9887">#9887</a>: Disable magicline when <code>editor.readOnly</code> is set.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9882">#9882</a>: Fixed empty document title on <code>getData()</code> if set via the Document Properties dialog window.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9773">#9773</a>: Fixed rendering problems with selection fields in the Kama skin.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9851">#9851</a>: The <code>selectionChange</code> event is not fired when mouse selection ended outside editable.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9903">#9903</a>: [Inline editor] Bad positioning of floating space with page horizontal scroll.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9872">#9872</a>: <code>editor.checkDirty()</code> returns <code>true</code> when called onload. Removed the obsolete <code>editor.mayBeDirty</code> flag.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9893">#9893</a>: Fixed broken toolbar when editing mixed direction content in Quirks mode.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9845">#9845</a>: Fixed TAB navigation in the Link dialog window when the Anchor option is used and no anchors are available.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9883">#9883</a>: Maximizing was making the entire page editable with divarea-based editors.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9940">#9940</a>: [Firefox] Navigating back to a page with the editor was making the entire page editable.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9966">#9966</a>: Fixed: Unable to type square brackets with French keyboard layout. Changed magicline keystrokes.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9507">#9507</a>: [Firefox] Selection is moved before editable position when the editor is focused for the first time.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9947">#9947</a>: [Webkit] Editor overflows parent container in some edge cases.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10105">#10105</a>: Fixed: Broken sourcearea view when an RTL language is set.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10123">#10123</a>: [Webkit] Fixed: Several dialog windows have broken layout since the latest Webkit release.</li>
+<li><a href="http://dev.ckeditor.com/ticket/10152">#10152</a>: Fixed: Invalid ARIA property used on menu items.</li>
+</ul>
+<h2 id="ckeditor-4-0-1-1">CKEditor 4.0.1.1</h2>
+<ul>
+<li>Security update: Added protection against XSS attack and possible path disclosure in PHP sample.</li>
+</ul>
+<h2 id="ckeditor-4-0-1">CKEditor 4.0.1</h2>
+<p>Fixed issues:</p>
+<ul>
+<li><a href="http://dev.ckeditor.com/ticket/9655">#9655</a>: Support for IE Quirks Mode in new Moono skin.</li>
+<li>Accessibility issues (mainly on inline editor): <a href="http://dev.ckeditor.com/ticket/9364">#9364</a>, <a href="http://dev.ckeditor.com/ticket/9368">#9368</a>, <a href="http://dev.ckeditor.com/ticket/9369">#9369</a>, <a href="http://dev.ckeditor.com/ticket/9370">#9370</a>, <a href="http://dev.ckeditor.com/ticket/9541">#9541</a>, <a href="http://dev.ckeditor.com/ticket/9543">#9543</a>, <a href="http://dev.ckeditor.com/ticket/9841">#9841</a>, <a href="http://dev.ckeditor.com/ticket/9844">#9844</a>.</li>
+<li>Magic-line:<ul>
+<li><a href="http://dev.ckeditor.com/ticket/9481">#9481</a>: Added accessibility support for Magic-line.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9509">#9509</a>: Added Magic-line support for forms.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9573">#9573</a>: Magic-line doesn&#39;t disappear on <code>mouseout</code> in the specific case.</li>
+</ul>
+</li>
+<li><a href="http://dev.ckeditor.com/ticket/9754">#9754</a>: [Webkit] Cut &amp; paste simple unformatted text generates inline wrapper in Webkits.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9456">#9456</a>: [Chrome] Properly paste bullet list style from MS-Word.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9699">#9699</a>, <a href="http://dev.ckeditor.com/ticket/9758">#9758</a>: Improved selection locking when selecting by dragging.</li>
+<li>Context menu:<ul>
+<li><a href="http://dev.ckeditor.com/ticket/9712">#9712</a>: Context menu open destroys editor focus.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9366">#9366</a>: Context menu should be displayed over floating toolbar.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9706">#9706</a>: Context menu generates JS error in inline mode when editor attached to header element.</li>
+</ul>
+</li>
+<li><a href="http://dev.ckeditor.com/ticket/9800">#9800</a>: Hide float panel when resizing window.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9721">#9721</a>: Padding in content of div based editor puts editing area under bottom UI space.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9528">#9528</a>: Host page&#39;s <code>box-sizing</code> style shouldn&#39;t influence editor UI elements.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9503">#9503</a>: Forms plugin adds context menu listeners only on supported input types. Added support for <code>tel, email, search</code> and <code>url</code> input types.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9769">#9769</a>: Improved floating toolbar positioning in narrow window.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9875">#9875</a>: Table dialog doesn&#39;t populate width correctly.</li>
+<li><a href="http://dev.ckeditor.com/ticket/8675">#8675</a>: Deleting cells in nested table removes outer table cell.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9815">#9815</a>: Can&#39;t edit dialog fields on editor initialized in jQuery UI modal dialog.</li>
+<li><a href="http://dev.ckeditor.com/ticket/8888">#8888</a>: CKEditor dialogs do not show completely in small window.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9360">#9360</a>: [Inline editor] Blocks shown for a div stay permanently even after user exists editing the div.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9531">#9531</a>: [Firefox &amp; Inline editor] Toolbar is lost when closing format combo by clicking on its button.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9553">#9553</a>: Table width incorrectly set when <code>border-width</code> style is specified.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9594">#9594</a>: Cannot tab past CKEditor when it is in read only mode.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9658">#9658</a>: [IE9] Justify not working on selected image.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9686">#9686</a>: Added missing contents styles for <code>&lt;pre&gt;</code>.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9709">#9709</a>: PasteFromWord should not depend on configuration from other styles.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9726">#9726</a>: Removed color dialog dependency from table tools.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9765">#9765</a>: Toolbar Collapse command documented incorrectly on Accessibility Instructions dialog.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9771">#9771</a>: [Webkit &amp; Opera] Fixed scrolling issues when pasting.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9787">#9787</a>: [IE9] onChange isn&#39;t fired for checkboxes in dialogs.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9842">#9842</a>: [Firefox 17] When we open toolbar menu for the first time &amp; press down arrow key, focus goes to next toolbar button instead of menu options.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9847">#9847</a>: Elements path shouldn&#39;t be initialized on inline editor.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9853">#9853</a>: <code>Editor#addRemoveFormatFilter</code> is exposed before it really works.</li>
+<li><a href="http://dev.ckeditor.com/ticket/8893">#8893</a>: Value of <code>pasteFromWordCleanupFile</code> config is now taken from instance configuration.</li>
+<li><a href="http://dev.ckeditor.com/ticket/9693">#9693</a>: Removed &quot;live preview&quot; checkbox from UI color picker.</li>
+</ul>
+<h2 id="ckeditor-4-0">CKEditor 4.0</h2>
+<p>The first stable release of the new CKEditor 4 code line.</p>
+<p>The CKEditor JavaScript API has been kept compatible with CKEditor 4, whenever
+possible. The list of relevant changes can be found in the <a href="http://docs.ckeditor.com/#!/guide/dev_api_changes" title="API Changes">API Changes page of
+the CKEditor 4 documentation</a>.</p>
