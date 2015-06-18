@@ -9,7 +9,7 @@ if (isset($_POST['formulario'])) {
 
 	$nombreFormulario = $_POST['formulario'];
 	
-	echo '<h2>Llego por el formulario '. $nombreFormulario . '</h2>';
+	//echo '<h2>Llego por el formulario '. $nombreFormulario . '</h2>';
 
 	// Impresión de parametros para testing
 	echo json_encode($_POST);
