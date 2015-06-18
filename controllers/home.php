@@ -13,12 +13,40 @@ $query->execute(array('status' => 'Si'));
 $casos = $query->fetchAll();
 $query->closeCursor();
 
-// Adding extra info to leads. Mejora: Guardar el ID de la última interacción en la tabla interesado.
-$query = $con->prepare('SELECT * FROM interaccion_cs WHERE id_interesado = :id_interesado ORDER BY fecha DESC LIMIT 1');
+// Adding extra info to leads. Mejora: Delete flagging script and create inner join query.
+$query = $con->prepare('SELECT * FROM interaccion_cs WHERE id_interesado = :id_interesado AND ultima = :ultima');
 foreach ($casos as $caso => $value) {
 
-	$query->execute(array('id_interesado' => $value['ID']));
+	//Get last interaction by user id marked as ultima 
+	$query->execute(array(
+				'id_interesado' => $value['ID'],
+				'ultima' => TRUE,
+			));
 	$last_interaction = $query->fetch();
+
+	//Get last interaction by user id ordering by date and gating last
+	if (!$last_interaction) {
+		$query = $con->prepare('SELECT * FROM interaccion_cs WHERE id_interesado = :id_interesado ORDER BY fecha DESC LIMIT 1');
+		$query->execute(array(
+			'id_interesado' => $value['ID'],
+		));
+		$last_interaction = $query->fetch();
+		//echo $last_interaction['ID'];
+		
+		//Flag last interaction
+		$query = $con->prepare('UPDATE interaccion_cs SET ultima = :ultima WHERE ID = :ID');
+		$query->execute(array(
+			'ultima' => TRUE,
+			'ID' => $last_interaction['ID'],
+		));
+		
+		//Reset query for next interaction
+		$query = $con->prepare('SELECT * FROM interaccion_cs WHERE id_interesado = :id_interesado AND ultima = :ultima');
+		echo 'No hubo <br />';
+		echo  $value['ID'];
+	}
+
+	//print_array($last_interaction);
 	$query->closeCursor(); // Free memory used in this query
 
 	// Adding las interaction info
