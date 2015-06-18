@@ -3,7 +3,11 @@
 * Controlador que recibe peticiones
 */
 
-//confirm_logged_in(); //revisa si el operador ha ingresado
+// Carga de archivos base
+require_once('../config.php');
+require_once('../includes.php');
+
+confirm_logged_in(); //revisa si el operador ha ingresado
 
 if (isset($_POST['formulario'])) {
 
@@ -12,6 +16,7 @@ if (isset($_POST['formulario'])) {
 	//echo '<h2>Llego por el formulario '. $nombreFormulario . '</h2>';
 
 	// Impresión de parametros para testing
+	//echo print_array($_POST);
 	echo json_encode($_POST);
 	
 }
