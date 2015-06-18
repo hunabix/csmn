@@ -42,8 +42,6 @@ foreach ($casos as $caso => $value) {
 		
 		//Reset query for next interaction
 		$query = $con->prepare('SELECT * FROM interaccion_cs WHERE id_interesado = :id_interesado AND ultima = :ultima');
-		//echo 'No hubo <br />';
-		//echo  $value['ID'];
 	}
 
 	//print_array($last_interaction);
