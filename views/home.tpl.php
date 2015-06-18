@@ -59,6 +59,8 @@ require_once("part/header.php"); ?>
         <?php require("part/modal-recordatorio.php");  ?>
         <!-- Edición de datos de prospecto -->
         <?php require("part/modal-editar-prospecto.php");  ?>
+        <!-- Historial de interacciones -->
+        <?php require("part/modal-historial.php");  ?>
         
         <!-- Datos base a enviar -->
         <input type="hidden" name="form-name" value="leads-form">
@@ -72,8 +74,6 @@ require_once("part/header.php"); ?>
 <div class="u-loading">
     <img src="img/loader.gif" alt="Cargando...">
 </div>
-
-<?php var_dump($_GET); ?>
 
 <?php
 require_once("part/footer.php"); ?>

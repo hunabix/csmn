@@ -1,4 +1,11 @@
 
+$("#acordeon-historial").children().click(function (e) {
+    if ($(e.currentTarget).siblings().children(".collapsing").length > 0 ) {
+        return false;
+    }
+})
+
+
 /* DATE PICKERS
 --------------------------------------------- */
 
