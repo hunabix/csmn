@@ -40,13 +40,13 @@
         <!-- Enviar a lista general -->
         <a href="#" class="action lista" data-toggle="modal" data-target="#modal-multi" tipo-accion="lista"><i class="fa fa-list"></i></a>
         <!-- Agregar recordatorio -->
-        <a href="#" class="action"><i class="fa fa-calendar"></i></a>
+        <a href="#" class="action recordatorio" data-toggle="modal" data-target="#modal-recordatorio" tipo-accion="recordatorio"><i class="fa fa-calendar"></i></a>
         <!-- Editar datos del prospecto -->
-        <a href="#" class="action a-user"><i class="fa fa-user"></i></a>
+        <a href="#" class="action editar-prospecto" data-toggle="modal" data-target="#modal-prospecto" tipo-accion="editar-datos"><i class="fa fa-user"></i></a>
         <!-- Consultar historial -->
-        <a href="#" class="action"><i class="fa fa-clock-o"></i></a>
+        <a href="#" class="action historial" data-toggle="modal" data-target="#modal-historial" tipo-accion="historial"><i class="fa fa-clock-o"></i></a>
         <!-- Eliminar prospecto -->
-        <a href="#" class="action a-close"><i class="fa fa-close"></i></a>
+        <a href="#" class="action eliminar" data-toggle="modal" data-target="#modal-eliminar" tipo-accion="eliminar"><i class="fa fa-close"></i></a>
         <!-- Cambiar prioridad -->
         <a href="#" class="action"><i class="fa fa-circle"></i></a>
     </aside>

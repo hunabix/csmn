@@ -1,28 +1,28 @@
 <!-- Modal Reservar para futuros ciclos | individual-->
-<div class="modal fade modal-reservar" id="modal-reservar" tabindex="-1" role="dialog" aria-labelledby="titulo-modal-regular" aria-hidden="true">
+<div class="modal fade modal-reservar" id="modal-reservar" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Encabezado del modal  -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="titulo-modal-regular">
+                <h4 class="modal-title">
                     Reservar para futuros ciclos escolares
                 </h4>
             </div>
             <!-- Cuerpo del modal  -->
             <div class="modal-body">
-                <!-- Selector de fecha : col 2-->
+                <!-- Selector de fecha del recordatorio de la reserva-->
                 <div class="input-group fecha-reserva">
-                   <input name="recordatorio-reserva" type="text" id="fecha-reserva" class="form-control"  placeholder="dd/mm/aaaa" value="" required>
+                   <input name="fecha-recordatorio-reserva" type="text" id="fecha-reserva" class="form-control"  placeholder="dd/mm/aaaa" value="" >
                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                 </div>
-                <!-- Recordatorio o sugerencia : col 3-->
+                <!--Ciclo al cual reserva -->
                 <div class="input-group ciclo-reserva">
-                    <select name="ciclo-reserva" type="text" id="ciclo-reserva" class="form-control" placeholder="Ciclo" required>
-                        <option value=""> </option>
+                    <select name="ciclo-reserva" type="text" id="ciclo-reserva" class="form-control" placeholder="Ciclo">
+                        <option value="" selected=""></option>
                         <option value="ENERO - MARZO">ENERO - MARZO</option>
                         <option value="ABRIL - JUNIO">ABRIL - JUNIO</option>
-                        <option value="JULIO - SEPTIEMBRE" selected="">JULIO - SEPTIEMBRE</option>
+                        <option value="JULIO - SEPTIEMBRE">JULIO - SEPTIEMBRE</option>
                         <option value="OCTUBRE - DICIEMBRE">OCTUBRE - DICIEMBRE</option>
                     </select> 
                     <span class="input-group-addon"><i class="fa fa-history"></i></span>

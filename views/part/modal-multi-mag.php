@@ -1,11 +1,11 @@
 <!-- Modal | individual-->
-<div class="modal fade" id="modal-multi" tabindex="-1" role="dialog" aria-labelledby="titulo-modal-regular" aria-hidden="true">
+<div class="modal fade" id="modal-multi-mag" tabindex="-1" role="dialog" aria-labelledby="titulo-modal-regular" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Encabezado del modal  -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="titulo-modal-multi">
+                <h4 class="modal-title" id="titulo-modal-multi-mag">
                     <!-- Aquí se imprime el título -->
                 </h4>
             </div>
@@ -14,7 +14,7 @@
 
                 <!-- ID del elemento -->
                 <div class="input-group">
-                   <textarea name="comentario" type="text-area" id="comentario" class="form-control"  placeholder="Puedes agregar un comentario aquí"></textarea>
+                   <textarea name="comentario" type="text-area" class="form-control"  placeholder="Puedes agregar un comentario aquí"></textarea>
                    <span class="input-group-addon"><i class="fa fa-file-text"></i></span>
                 </div>
 

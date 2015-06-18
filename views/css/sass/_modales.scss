@@ -1,7 +1,7 @@
 /*---------------------------------------------------*/
 /*-------------------[MODALES]-----------------------*/
 /*---------------------------------------------------*/
-
+// Reservar para futuros ciclos
 .modal-reservar {
 	
 	.fecha-reserva {
@@ -15,5 +15,46 @@
 		float: left;
 		padding: 0px 0 0px 1rem;
 		margin-bottom: 1rem;
+	}
+}
+// Crear recordatorio
+.modal-recordatorio {
+	
+	.fecha-recordatorio {
+		width: 50%;
+		float: left;
+		padding: 0px 1rem 0px 0px;
+		margin-bottom: 1rem;
+	}
+	.recordatorio {
+		width: 100%;
+		float: none;
+	}
+}
+// Edición de datos del prospecto
+.modal-prospecto {
+	
+	.nombre,
+	.correo,
+	.ciudad  {
+		width: 50%;
+		float: left;
+		padding: 0px 1rem 0px 0px;
+		margin-bottom: 1rem;
+	}
+	.apellidos,
+	.telefono,
+	.instrumento {
+		width: 50%;
+		float: left;
+		padding: 0px 0 0 1rem;
+		margin-bottom: 1rem;
+	}
+}
+// Historial de interacciones
+.modal-historial {
+	.modal-lg {
+		max-width: 900px;
+		width: 900px;
 	}
 }

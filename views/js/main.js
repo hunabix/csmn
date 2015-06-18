@@ -1,4 +1,11 @@
 
+$("#acordeon-historial").children().click(function (e) {
+    if ($(e.currentTarget).siblings().children(".collapsing").length > 0 ) {
+        return false;
+    }
+})
+
+
 /* DATE PICKERS
 --------------------------------------------- */
 
@@ -12,7 +19,11 @@ $('#fecha-reserva').datepicker({
     weekStart:1,
     color: 'red'
 });
-
+// datepicker para el modal de recordatorio
+$('#fecha-recordatorio').datepicker({
+    weekStart:1,
+    color: 'red'
+});
 /* LEADS
 --------------------------------------------- */
 // Muestra los iconos correspondientes al cargar o recargar la página
@@ -48,45 +59,88 @@ $('input[type=checkbox]').change(function(){
 
 /* Acciones del lead
 ------------------------------- */
-
+// Agregar nota
 $( ".nota" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     var modal = $('#modal-multi');
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
-    modal.find( "#titulo-modal-regular").html('Agregar nota personalizada');
+    modal.find( "#titulo-modal-multi").html('Agregar nota personalizada');
 });
+// Registrar llamada
 $( ".llamada" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     var modal = $('#modal-multi');
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
-    modal.find( "#titulo-modal-regular").html('Registrar llamada');
+    modal.find( "#titulo-modal-multi").html('Registrar llamada');
 });
+// Inscribir a Musinetwork
 $( ".inscripcion" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     var modal = $('#modal-multi');
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
-    modal.find( "#titulo-modal-regular").html('Inscribir a Musinetwork');
+    modal.find( "#titulo-modal-multi").html('Inscribir a Musinetwork');
 });
+// Enviar a lista general
 $( ".lista" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     var modal = $('#modal-multi');
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
-    modal.find( "#titulo-modal-regular").html('Enviar a lista general');
+    modal.find( "#titulo-modal-multi").html('Enviar a lista general');
 });
+// Reservar para futuros ciclos
 $( ".reservar" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
 });
+// Agregar recordatorio
+$( ".recordatorio" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    var leadTipoAccion = $(this).attr('tipo-accion');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( leadTipoAccion );
+});
+// Actualizar datos de prospecto
+$( ".editar-prospecto" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    var leadTipoAccion = $(this).attr('tipo-accion');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( leadTipoAccion );
+});
+// Ver historial de interacciones
+$( ".historial" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    var leadTipoAccion = $(this).attr('tipo-accion');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( leadTipoAccion );
+});
+// Eliminar prospecto
+$( ".eliminar" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    var leadTipoAccion = $(this).attr('tipo-accion');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( leadTipoAccion );
+});
+
+/* Modales MAG-FORM
+------------------------------- */
+// Registrar llamada
+$( ".llamada-mag" ).click(function() {
+    var leadTipoAccion = $(this).attr('tipo-accion');
+    var modal = $('#modal-multi-mag');
+    $( "#tipo-accion" ).val( leadTipoAccion );
+    modal.find( "#titulo-modal-multi-mag").html('Registrar llamada');
+});
+
 /* AJAX
 ------------------------------- */
 
@@ -102,10 +156,12 @@ $("#leads-form").on("submit", function(e){
     e.preventDefault();
 
     $.post("views/part/process.php", $("#leads-form").serialize(), function (respuesta) {
+        // Imprimo resultados de prueba
         $('#trace-block .datos').html(respuesta);
         $('.contenido').css( "display", "block" ); 
-        $('#modal-multi').modal('hide');
-        $('#modal-reservar').modal('hide');
+        // Cierro todo slos modales activos
+        $('.modal').modal('hide');
+
     })
 });
 
