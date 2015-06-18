@@ -23,7 +23,7 @@
         <div class="header-content">
             <!-- Logo -->
             <figure class="logo animated flipInY">
-                <img src="views/img/logo.png" alt="Musinetwork School of Music">
+                <a href="<?= cs_url; ?>"><img src="views/img/logo.png" alt="Musinetwork School of Music"></a>
             </figure>
             <!-- Título -->
             <h1 class="main-title">Centro de Seguimiento</h1>
