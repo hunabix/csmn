@@ -177,6 +177,9 @@ $("#leads-form").on("submit", function(e){
          if ( console && console.log ) {
              console.log( "La solicitud a fallado: " +  textStatus);
          }
+         $('#trace-block .datos').html("La solicitud a fallado: " +  textStatus);
+         $('.contenido').css( "display", "block" ); 
+         $('.modal').modal('hide');
     });
 });
 
