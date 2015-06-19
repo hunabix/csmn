@@ -10,7 +10,7 @@ class connection {
 	public $con 		= '';
 	
     //Called automatically upon initiation
-    function __construct() {
+    public function __construct() {
 
         try {
             
@@ -38,6 +38,11 @@ class connection {
 		}
 		
 	}
+	
+	//Returns last inserted id
+    public function lastInsertId(){
+        return $this->con->lastInsertId();
+    }
 
     //Called automatically when there are no further references to object
     function __destruct() {

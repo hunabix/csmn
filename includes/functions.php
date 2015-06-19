@@ -150,7 +150,48 @@ function obten_temporada() {
 	return $data['temporada'];
 }
 
-//OLD FUNCTIONS BELOW
+// Get last interaction
+function get_last_interaction($lead_id) {
+	$con = db_con();
+	
+	$query = $con->prepare('SELECT * FROM interaccion_cs WHERE id_interesado = :id_interesado AND ultima = :ultima');
+		$query->execute(array(
+					'id_interesado' => $lead_id,
+					'ultima' => TRUE,
+				));
+	$last_interaction = $query->fetch();
+	
+	$query->closeCursor();
+	
+	return $last_interaction;
+}
+
+// Get last interaction
+function update_last_interaction($last_interaction_id, $lastId) {
+
+	$con = db_con();
+
+	//Unflag old last interaction
+	$query = $con->prepare('UPDATE interaccion_cs SET ultima = :ultima WHERE ID = :ID');
+	$query->execute(array(
+		'ultima' => FALSE,
+		'ID' => $last_interaction_id,
+	));
+	
+	//Flag last interaction
+	$query = $con->prepare('UPDATE interaccion_cs SET ultima = :ultima WHERE ID = :ID');
+	$query->execute(array(
+		'ultima' => TRUE,
+		'ID' => $lastId,
+	));
+	
+	$query->closeCursor();
+}
+
+
+
+
+//*******************OLD FUNCTIONS BELOW*******************************
 
 // Confirma si la consulta se realizó con éxito
 function confirm_query($result_set) {
