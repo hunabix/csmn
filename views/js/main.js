@@ -59,6 +59,14 @@ $('input[type=checkbox]').change(function(){
 
 /* Acciones del lead
 ------------------------------- */
+// Componer mensaje
+$( ".mensaje" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    var leadTipoAccion = $(this).attr('tipo-accion');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( leadTipoAccion );
+    $( "#leads-form" ).submit();
+});
 // Agregar nota
 $( ".nota" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
