@@ -32,3 +32,10 @@ function view($template, $vars = array())
 	extract($vars);
 	require 'views/' . $template . '.tpl.php';
 }
+
+//Función para procesar modales
+function load_modal($template, $vars = array())
+{
+	extract($vars);
+	require 'controllers/modal-' . $template . '.php';
+}

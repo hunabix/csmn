@@ -6,19 +6,18 @@
 // Carga de archivos base
 require_once('../config.php');
 require_once('../includes.php');
+require_once('../base_controller.php');
 
 confirm_logged_in(); //revisa si el operador ha ingresado
 
-if (isset($_POST['formulario'])) {
+$data = readRawPost($_POST);
 
-	$nombreFormulario = $_POST['formulario'];
-	
-	//echo '<h2>Llego por el formulario '. $nombreFormulario . '</h2>';
+if (!isset($data['formulario']))
+	die;
 
-	// Impresión de parametros para testing
-	//echo print_array($_POST);
-	echo json_encode($_POST);
-	
-}
-//view('home', compact('casos', 'nombre_vista', 'saludo'));
+//Proces leads form
+if ($data['formulario'] == 'leads-form') {
 
+	load_modal($data['tipo-accion'], compact('data'));
+
+} //Leads form

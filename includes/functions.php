@@ -30,6 +30,20 @@ function db_con() {
 	return $con;
 }
 
+// READ RAW POST
+function readRawPost($vars = array()) {
+	// Reading POSTed data directly from $_POST causes serialization issues with array data in the POST.
+	// Instead, read raw POST data from the input stream. 
+	$raw_post_data = file_get_contents('php://input');
+	$raw_post_array = explode('&', $raw_post_data);
+	foreach ($raw_post_array as $keyval) {
+		$keyval = explode ('=', $keyval);
+		if (count($keyval) == 2)
+			$vars[$keyval[0]] = urldecode($keyval[1]);
+	}
+	return $vars;
+}
+
 // Fecha en array. Procesa una fecha en formato año, mes, día. El separador es obligatorio y puede ser cualquier símbolo.
 function fecha_en_array($fecha_para_array) {
 	$fecha_en_array['ano'] = substr($fecha_para_array, -10, 4);
