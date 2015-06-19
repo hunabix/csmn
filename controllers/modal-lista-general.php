@@ -27,6 +27,8 @@ if ($query->execute(array(
 	
 	//Unflag old last interaction and falg new last interaction
 	update_last_interaction($last_interaction['ID'],$lastId);
+	
+	remove_from_main_list($data['lead-id']);
 
 	//Returning lead ID
 	$return['lead-id'] = $data['lead-id'];

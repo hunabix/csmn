@@ -188,6 +188,20 @@ function update_last_interaction($last_interaction_id, $lastId) {
 	$query->closeCursor();
 }
 
+// Remove from main list
+function remove_from_main_list($lead_id) {
+
+	$con = db_con();
+
+	//Unflag old last interaction
+	$query = $con->prepare('UPDATE interesado_cs SET activo = :activo WHERE ID = :ID');
+	$query->execute(array(
+		'activo' => 'No',
+		'ID' => $lead_id,
+	));
+	
+	$query->closeCursor();
+}
 
 
 
