@@ -17,8 +17,8 @@
                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                 </div>
                 <!-- Recordatorio -->
-                <div class="input-group recordatorio">
-                    <input name="recordatorio" type="text" id="recordatorio" class="form-control"  placeholder="Recordatorio" value="">
+                <div class="input-group texto-recordatorio">
+                    <input name="recordatoriox" type="text" class="form-control"  placeholder="Recordatorio" value="">
                     <span class="input-group-addon"><i class="fa fa-file-o"></i></span>
                 </div>
             </div>

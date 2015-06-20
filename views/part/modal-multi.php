@@ -14,7 +14,7 @@
 
                 <!-- ID del elemento -->
                 <div class="input-group">
-                   <textarea name="comentario" type="text-area" class="form-control"  placeholder="Puedes agregar un comentario aquí"></textarea>
+                   <textarea name="comentario" id="comentario" type="text-area" class="form-control"  placeholder="Puedes agregar un comentario aquí">hola</textarea>
                    <span class="input-group-addon"><i class="fa fa-file-text"></i></span>
                 </div>
 
