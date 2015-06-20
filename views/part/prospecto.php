@@ -23,7 +23,7 @@
     <!-- Recordatorio y sugerencia -->
     <p class="reminder">
         <span class="date-reminder"><?= $caso['fecha_recordatorio']['dia']; ?> <?= $caso['fecha_recordatorio']['mes_texto_corto']; ?></span>
-        <?= $caso['recordatorio_sugerencia']; ?>
+        <?= $caso['recordatorio_texto']; ?>
     </p>
     <!-- Acciones -->
     <aside class="actions">
