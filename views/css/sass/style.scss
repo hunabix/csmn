@@ -28,3 +28,15 @@ Version: 2.0
 .contenido {
 	display: none;
 }
+
+
+.login-form {
+	max-width: 320px;
+	display: block; 
+	margin: 10vh auto;
+
+	.usuario, .clave {
+		padding-bottom: 2rem;
+	}
+
+}
