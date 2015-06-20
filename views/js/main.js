@@ -12,17 +12,21 @@ $("#acordeon-historial").children().click(function (e) {
 // Activo datepicker para el campo en mag-form
 $('#mag-date').datepicker({
     weekStart:1,
+    format: 'yyyy/mm/dd',
     color: 'red'
 });
 // Activo datepicker para el campo en mag-form
 $('#fecha-reserva').datepicker({
     weekStart:1,
+    format: 'yyyy/mm/dd',
     color: 'red'
 });
 // datepicker para el modal de recordatorio
 $('#fecha-recordatorio').datepicker({
     weekStart:1,
+    format: 'yyyy/mm/dd',
     color: 'red'
+
 });
 /* LEADS
 --------------------------------------------- */
@@ -203,7 +207,13 @@ $("#leads-form").on("submit", function(e){
         }
         $('#trace-block .datos').html(data);
         $('.contenido').css( "display", "block" ); 
-        // Cierro todo slos modales activos
+
+        /* Resultados de acciones
+        ------------------------------- */
+
+
+
+        // Cierro todos los modales activos
         $('.modal').modal('hide');
         // muestro el mensaje de éxito
         $('#alerta-exito').addClass('muestra');
