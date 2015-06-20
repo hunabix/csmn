@@ -3,7 +3,10 @@
 * Controlador del Login
 */
 
-		
+//echo $data['tipo-accion'];
+
+//echo print_array($_POST);
+
 //COMIENZA A PROCESAR EL DOCUMENTO
 if (isset($_POST['ingreso'])) { // el formulario ha sido enviado
 
@@ -28,11 +31,10 @@ if (isset($_POST['ingreso'])) { // el formulario ha sido enviado
 		$_SESSION['user_id'] = $operador['ID'];
 		$_SESSION['username'] = $operador['usuario'];
 		$_SESSION['nombre'] = $operador['nombre']; 
-		//redirijo por javascript a index ?>				
-		<script type="text/javascript">			
-			window.location="<?php echo cs_url; ?>/home";			
-		</script>
-	<?php }
+		//redirijo por javascript a index
+		header('Location: ' . cs_url);
+		exit;
+	}
 	else {
 		//$mensaje = "Nombre de usuario o contraseña incorrecto";
 		header('Location: ' . cs_url . '/login');
@@ -40,8 +42,8 @@ if (isset($_POST['ingreso'])) { // el formulario ha sido enviado
 	}
 	
 } else { // el formulario no ha sido enviado
-		header('Location: ' . cs_url . '/login');
-		exit;
+		//header('Location: ' . cs_url . '/login');
+		//exit;
 }
 			
  	
