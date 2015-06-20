@@ -64,6 +64,27 @@ function fecha_en_array($fecha_para_array) {
 	}
 }
 
+// Fecha de inscripcion
+function fecha_inscripcion($inicio_ins) {
+	$inicio_ins = explode("-",$inicio_ins);
+	$y = $inicio_ins[0];
+	$m = $inicio_ins[1];
+	$d = $inicio_ins[2];
+	$m = genMonth_Text($m);
+	return $inicio_ins = $d . ' de ' . $m . ' del ' . $y;
+}
+
+// Fecha de inicio de cursos
+function fecha_inicio_cursos($inicio_cur) {
+	$inicio_cur = explode("-",$inicio_cur);
+	$y = $inicio_cur[0];
+	$m = $inicio_cur[1];
+	$d = $inicio_cur[2];
+	$m = genMonth_Text($m);
+	$inicio_cur = $d . ' de ' . $m . ' del ' . $y;
+}
+
+
 // Mes en texto corto. Convierte un número en formato 00 a el mes correspondiente.
 function mes_en_texto_corto($num_mes) { 
   switch ($num_mes) {
@@ -105,6 +126,25 @@ function mes_en_texto($num_mes) {
 			
     }
 	
+}
+
+// Función que convierte meses de número a texto
+function genMonth_Text($m) {
+	switch ($m) {
+		case 01: $month_text = "Enero"; break;
+		case 02: $month_text = "Febrero"; break;
+		case 03: $month_text = "Marzo"; break;
+		case 04: $month_text = "Abril"; break;
+		case 05: $month_text = "Mayo"; break;
+		case 06: $month_text = "Junio"; break;
+		case 07: $month_text = "Julio"; break;
+		case 08: $month_text = "Agosto"; break;
+		case 09: $month_text = "Septiembre"; break;
+		case 10: $month_text = "Octubre"; break;
+		case 11: $month_text = "Noviembre"; break;
+		case 12: $month_text = "Diciembre"; break;
+	}
+	return ($month_text);
 }
 
 // Obtiene las sugerencia que corresponda segun la temporada
