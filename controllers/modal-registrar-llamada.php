@@ -33,7 +33,9 @@ if ($query->execute(array(
 	//Returning lead ID
 	$return['lead_id'] = $data['lead-id'];
 	$return['tipo_accion'] = $data['tipo-accion'];
-	$return['mensaje'] = 'Se agregó una llamada a ' . $lead_info['nombre'] . ' ' . $lead_info['apellidos'];
+	$return['mensaje'] = 'Se agregó una llamada a';
+	$return['nombre'] = $lead_info['nombre'];
+	$return['apellidos'] = $lead_info['apellidos'];
 	echo json_encode($return, JSON_UNESCAPED_UNICODE);
 
 }

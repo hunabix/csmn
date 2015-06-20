@@ -44,7 +44,9 @@ if ($query->execute(array(
 	//Returning lead ID
 	$return['lead_id'] = $data['lead-id'];
 	$return['tipo_accion'] = $data['tipo-accion'];
-	$return['mensaje'] = 'Se agregó un recordatorio a ' . $lead_info['nombre'] . ' ' . $lead_info['apellidos'];
+	$return['mensaje'] = 'Se agregó un recordatorio a';
+	$return['nombre'] = $lead_info['nombre'];
+	$return['apellidos'] = $lead_info['apellidos'];
 	$return['recordatorio'] = $data['recordatorio'];
 	$return['fecha_recordatorio'] = $fecha['dia'] . ' ' . $fecha['mes_texto_corto'];
 	//echo print_array($return);
