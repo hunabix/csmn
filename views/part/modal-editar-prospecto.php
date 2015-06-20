@@ -13,32 +13,37 @@
             <div class="modal-body">
                 <!-- Nombre -->
                 <div class="input-group nombre">
-                    <input name="nombre" type="text" class="form-control"  placeholder="Nombre" value="">
+                    <input name="nombre" type="text" id="nombre-prospecto" class="form-control"  placeholder="Nombre" value="">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
                 </div>
                 <!-- Apellidos -->
                 <div class="input-group apellidos">
-                    <input name="apellidos" type="text" class="form-control"  placeholder="Apellido(s)" value="">
+                    <input name="apellidos" type="text" id="apellidos-prospecto" class="form-control"  placeholder="Apellido(s)" value="">
                     <span class="input-group-addon"><i class="fa"></i></span>
                 </div>
                 <!-- Correo -->
                 <div class="input-group correo">
-                    <input name="correo" type="email" class="form-control"  placeholder="Correo electrónico" value="">
+                    <input name="correo" type="email" id="correo-prospecto"class="form-control"  placeholder="Correo electrónico" value="">
                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                 </div>
                 <!-- Teléfono -->
                 <div class="input-group telefono">
-                    <input name="telefono" type="text" class="form-control"  placeholder="Teléfono" value="">
+                    <input name="telefono" type="text" id="telefono-prospecto"class="form-control"  placeholder="Teléfono" value="">
                     <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                </div>
+                <!-- País -->
+                <div class="input-group ciudad">
+                    <input name="pais" type="text" id="pais-prospecto" class="form-control"  placeholder="País" value="">
+                    <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
                 </div>
                 <!-- Ciudad -->
                 <div class="input-group ciudad">
-                    <input name="ciudad" type="text" class="form-control"  placeholder="Ciudad" value="">
+                    <input name="ciudad" type="text" id="ciudad-prospecto" class="form-control"  placeholder="Ciudad" value="">
                     <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
                 </div>
                 <!-- Instrumento -->
                 <div class="input-group instrumento">
-                    <input name="instrumento" type="text" class="form-control"  placeholder="Instrumento" value="">
+                    <input name="instrumento" type="text" id="instrumento-prospecto" class="form-control"  placeholder="Instrumento" value="">
                     <span class="input-group-addon"><i class="fa fa-music"></i></span>
                 </div>
 
