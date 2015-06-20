@@ -3,8 +3,12 @@
  * Plantilla [login]
  **/
 require_once("part/header.php"); ?>
-	
+		
+		<!-- Titulo -->
+		<h2 class="section-title">Ingreso al Centro de Seguimiento Musinetwork</h2>
+
 		<form id="login-form" name="login-form" class="login-form form" action="<?= cs_url; ?>/login" method="post">
+
 			<!-- Nombre -->
 			<div class="input-group usuario">
 			    <input name="usuario" type="text" class="form-control"  placeholder="Usuario" value="" required>
@@ -19,6 +23,5 @@ require_once("part/header.php"); ?>
 			    <button type="submit" name="ingreso" value="login" class="btn btn-primary btn-fill">Ingresar</button>
 			</div>
 		</form>
-
 <?php
 require_once("part/footer.php"); ?>

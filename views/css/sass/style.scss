@@ -29,11 +29,20 @@ Version: 2.0
 	display: none;
 }
 
+// Componer mensaje
+.mensaje-form {
+	max-width: 1300px;
+	display: block; 
+	margin: 3rem auto;
 
+	
+}
+
+//  Login form
 .login-form {
 	max-width: 320px;
 	display: block; 
-	margin: 10vh auto;
+	margin: 3rem auto;
 
 	.usuario, .clave {
 		padding-bottom: 2rem;

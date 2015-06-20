@@ -196,6 +196,9 @@ $( document ).ajaxComplete(function() {
 });
 
 $("#leads-form").on("submit", function(e){
+
+    
+
     e.preventDefault();
     $.ajax({
         data: $("#leads-form").serialize(),
