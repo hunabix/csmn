@@ -129,13 +129,10 @@ $( ".editar-prospecto" ).click(function() {
     $( "#tipo-accion" ).val( 'solicitar-datos' );
     $( "#leads-form" ).submit();
 });
-// Actualizar datos de prospecto
-$( ".editar-prospecto" ).click(function() {
-    var leadId = $(this).closest('.lead').attr('id');
-    var leadTipoAccion = $(this).attr('tipo-accion');
-    $( "#lead-id" ).val( leadId );
-    $( "#tipo-accion" ).val( leadTipoAccion );
-});
+// // Actualizar datos de prospecto
+// $( ".editar-prospecto" ).click(function() {
+
+// });
 // Ver historial de interacciones
 $( ".historial" ).click(function() {
     var leadId = $(this).closest( '.lead' ).attr( 'id' );
@@ -254,13 +251,23 @@ $("#leads-form").on("submit", function(e){
             // prospecto.find('text-reminder').html( 'ke ase' );
 
             // Solución temporal
-            document.location.reload(); 
+            // document.location.reload(); 
             $( '#alerta-exito' ).html( data.mensaje );
         }
         // Solicitar datos de prospecto
         if ( data.tipo_accion == "solicitar-datos")
         {
-            
+            // Remplaza los datos con los obtenidos en el json
+            $( "#nombre-prospecto" ).val( data.lead_info.nombre );
+            $( "#apellidos-prospecto" ).val( data.lead_info.apellidos );
+            $( "#correo-prospecto" ).val( data.lead_info.email );
+            $( "#telefono-prospecto" ).val( data.lead_info.telefono );
+            $( "#pais-prospecto" ).val( data.lead_info.pais );
+            $( "#ciudad-prospecto" ).val( data.lead_info.ciudad );
+            $( "#instrumento-prospecto" ).val( data.lead_info.instrumento );
+            // Actualiza los datos para reenviar la petición de modificación
+            $( "#lead-id" ).val( data.lead_id );
+            $( "#tipo-accion" ).val( 'editar-datos' );
         }
         // Editar datos de prospecto
         if ( data.tipo_accion == "editar-datos")
@@ -286,18 +293,19 @@ $("#leads-form").on("submit", function(e){
         }
 
         // Cierro todos los modales activos
-        if ( data.tipo_accion != "ver-historial")
+        if ( data.tipo_accion != "ver-historial" )
         {
-            $('.modal').modal('hide');
-            // muestro el mensaje de éxito
-            $('#alerta-exito').addClass('muestra');
-            // Retiro el mensaje de éxito
-            setTimeout(function () { 
-                $('#alerta-exito').removeClass('muestra');
-            }, 1200);
+            if ( data.tipo_accion != "solicitar-datos" ) 
+            {
+              $('.modal').modal('hide');
+              // muestro el mensaje de éxito
+              $('#alerta-exito').addClass('muestra');
+              // Retiro el mensaje de éxito
+              setTimeout(function () { 
+                  $('#alerta-exito').removeClass('muestra');
+              }, 1200);  
+            }
         }
-        
-
      })
     .fail(function( jqXHR, textStatus, errorThrown ) {
          if ( console && console.log ) {
