@@ -12,7 +12,7 @@
             <!-- Cuerpo del modal  -->
             <div class="modal-body">
                 <div class="alert alert-danger" role="alert">
-                  ¿Estas seguro de que deseas eliminar a <strong>fulanito</strong>?
+                  ¿Estas seguro de que deseas eliminar a <strong id="nombre-a-eliminar"></strong>?
                 </div>
             </div>
             <!-- Pié del modal  -->

@@ -130,17 +130,20 @@ $( ".editar-prospecto" ).click(function() {
 });
 // Ver historial de interacciones
 $( ".historial" ).click(function() {
-    var leadId = $(this).closest('.lead').attr('id');
+    var leadId = $(this).closest( '.lead' ).attr( 'id' );
     var leadTipoAccion = $(this).attr('tipo-accion');
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
 });
 // Eliminar prospecto
 $( ".eliminar" ).click(function() {
-    var leadId = $(this).closest('.lead').attr('id');
-    var leadTipoAccion = $(this).attr('tipo-accion');
+    var leadId = $(this).closest( '.lead' ).attr( 'id' );
+    var leadTipoAccion = $(this).attr( 'tipo-accion' );
+    var nombreQueSeElimina = $(this).closest('.name').text();
+    console.log(nombreQueSeElimina );
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
+    $( "#nombre-a-eliminar").html( );
 });
 // Cambiar prioridad
 // verde
