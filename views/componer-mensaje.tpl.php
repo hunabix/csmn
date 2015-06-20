@@ -6,7 +6,7 @@ require_once("part/header.php"); ?>
 		
 		<!-- Muestreo de variables [PRUEBAS]
 		================================================== --> 
-		<p class="datos"><?php var_dump($data) ?></p>
+		<!-- <p class="datos"><?php var_dump($data) ?></p> -->
 		<!-- Muestreo de variables [PRUEBAS]
 		================================================== --> 
 
