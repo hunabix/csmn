@@ -138,7 +138,32 @@ $( ".eliminar" ).click(function() {
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
 });
-
+// Cambiar prioridad
+// verde
+$( ".prioridad-verde" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( "cambiar-prioridad" );
+    $( "#prioridad" ).val( 'verde' );
+    $( "#leads-form" ).submit();
+});
+// roja
+$( ".prioridad-roja" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( "cambiar-prioridad" );
+    $( "#prioridad" ).val( 'roja' );
+    $( "#leads-form" ).submit();
+});
+// azul
+$( ".prioridad-azul" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    var leadTipoAccion = $(this).attr('tipo-accion');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( "cambiar-prioridad" );
+    $( "#prioridad" ).val( 'azul' );
+    $( "#leads-form" ).submit();
+});
 /* Modales MAG-FORM
 ------------------------------- */
 // Registrar llamada

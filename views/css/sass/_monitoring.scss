@@ -185,6 +185,7 @@
 			}
 			.actions {
 				@include inline-box;
+				overflow: visible;
 				padding: .75rem .5rem .25rem;
 				width: 33%;
 				
@@ -212,6 +213,26 @@
 					}
 				}
 
+				.contenedor-prioridad {
+					display: inline-block;
+					cursor: pointer;
+					
+					.contenido-prioridad {
+						width: 50px;
+						min-width: 50px;
+						left: -10px;
+						
+						.btn-prioridad {
+							padding: 0px 0.35rem;
+							text-align: center;
+							font-size: 21px;
+							display: block;
+						}
+						.prioridad-azul {	color: $divider-color; }
+						.prioridad-verde { color: $green; }
+						.prioridad-roja { color: $red; }
+					}
+				}
 			}
 		}
 	}
