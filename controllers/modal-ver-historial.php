@@ -20,28 +20,27 @@ if ($query->execute(array(
 	
 	foreach ($historial as $key => $value) {
 		
-		//print_array($value);
-		
 		$human_date = fecha_en_array($value['fecha']);
 		// Adding last interaction info
-		$value['alerta']		= $value['alerta'];
-		$value['fecha']			= $human_date['dia'] . ' de ' . $human_date['mes_texto'] . ' de ' . $human_date['ano'];
-		$value['hora']			= $human_date['hora'];
-		$value['mensaje_int']	= $value['mensaje_int'];
-		$value['mensaje_op']	= $value['mensaje_op'];
-		$value['observaciones']	= $value['observaciones'];
-		$value['tipo']			= $value['tipo'];
+		$nvalue['alerta']		= $value['alerta'];
+		$nvalue['fecha']			= $human_date['dia'] . ' de ' . $human_date['mes_texto'] . ' de ' . $human_date['ano'];
+		$nvalue['hora']			= $human_date['hora'];
+		$nvalue['mensaje_int']	= $value['mensaje_int'];
+		$nvalue['mensaje_op']	= $value['mensaje_op'];
+		$nvalue['observaciones']	= $value['observaciones'];
+		$nvalue['tipo']			= $value['tipo'];
 		
 		// Saving info
-		$result[$key] = $value;
-		//print_array($casos);
+		$result[$key] = $nvalue;
+		//print_array($result);
 	}
 	
 	
 	//Returning lead ID
 	$return['lead-id']		= $data['lead-id'];
 	$return['tipo-accion']	= $data['tipo-accion'];
-	//$return['historial']	= $result;
+	$return['historial']	= $result;
+	//print_array($return);
 	echo json_encode($result, JSON_UNESCAPED_UNICODE);		
 		
 }
