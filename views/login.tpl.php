@@ -4,7 +4,7 @@
  **/
 require_once("part/header.php"); ?>
 	
-		<form id="login-form" name="login-form" class="login-form form" action="<?= cs_url; ?>/login.php" method="post">
+		<form id="login-form" name="login-form" class="login-form form" action="<?= cs_url; ?>/login" method="post">
 			<!-- Nombre -->
 			<div class="input-group usuario">
 			    <input name="usuario" type="text" class="form-control"  placeholder="Usuario" value="" required>
