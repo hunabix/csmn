@@ -29,8 +29,9 @@ if ($query->execute(array(
 	update_last_interaction($last_interaction['ID'],$lastId);
 
 	//Returning lead ID
-	$return['lead-id'] = $data['lead-id'];
-	$return['tipo-accion'] = $data['tipo-accion'];
+	$return['lead_id'] = $data['lead-id'];
+	$return['tipo_accion'] = $data['tipo-accion'];
+	$return['mensaje'] = 'Se agregó una llamada a (nombre)';
 	echo json_encode($return);
 
 }
