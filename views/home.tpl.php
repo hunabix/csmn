@@ -43,7 +43,8 @@ require_once("part/header.php"); ?>
         <!-- Lista de prospectos
         ================================================== --> 
         <?php // foreach ($casos as $caso) { ?>
-        <?php foreach (array_slice($casos, 0, 10) as $caso) { ?>
+        <?php //foreach (array_slice($casos, 0, 10) as $caso) { ?>
+        <?php foreach ($casos as $caso) { ?>
     
             <?php require("part/prospecto.php");  ?>
 
