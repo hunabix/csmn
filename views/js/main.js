@@ -198,13 +198,20 @@ $("#leads-form").on("submit", function(e){
         url: "controllers/procesar.php",
     })
      .done(function( data, textStatus, jqXHR ) {
-         if ( console && console.log ) {
-             console.log( "La solicitud se ha completado correctamente." );
-         }
-         $('#trace-block .datos').html(data);
-         $('.contenido').css( "display", "block" ); 
-         // Cierro todo slos modales activos
-         $('.modal').modal('hide');
+        if ( console && console.log ) {
+            console.log( "La solicitud se ha completado correctamente." );
+        }
+        $('#trace-block .datos').html(data);
+        $('.contenido').css( "display", "block" ); 
+        // Cierro todo slos modales activos
+        $('.modal').modal('hide');
+        // muestro el mensaje de éxito
+        $('#alerta-exito').addClass('muestra');
+        // Retiro el mensaje de éxito
+        setTimeout(function () { 
+            $('#alerta-exito').removeClass('muestra');
+        }, 500);
+
      })
      .fail(function( jqXHR, textStatus, errorThrown ) {
          if ( console && console.log ) {

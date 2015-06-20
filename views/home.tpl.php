@@ -79,5 +79,8 @@ require_once("part/header.php"); ?>
     <img src="img/loader.gif" alt="Cargando...">
 </div>
 
+<!-- Alertas del sistema -->
+<div class="alert alert-success alerta" id="alerta-exito" role="alert">Hola</div>
+
 <?php
 require_once("part/footer.php"); ?>
