@@ -47,18 +47,16 @@ foreach ($casos as $caso => $value) {
 	//print_array($last_interaction);
 	$query->closeCursor(); // Free memory used in this query
 
-	// Adding las interaction info
+	// Adding last interaction info
 	$value['ultima_interaccion'] =  $last_interaction;
-	$value['fecha_estatus'] =  fecha_hora_en_array($last_interaction['fecha']);;
+	$value['fecha_estatus'] =  fecha_en_array($last_interaction['fecha']);;
 
 	// Adding reminder date
 	$value['fecha_recordatorio'] =  fecha_en_array($value['recordatorio']);
 	
-	// Adding suggestion for reminder
-	$value['recordatorio_sugerencia'] =  obten_sugerencia(obten_temporada(), $last_interaction['tipo']);
-	
 	// Saving info
 	$casos[$caso] = $value;
+	//print_array($casos);
 }
 
 

@@ -46,22 +46,21 @@ function readRawPost($vars = array()) {
 
 // Fecha en array. Procesa una fecha en formato año, mes, día. El separador es obligatorio y puede ser cualquier símbolo.
 function fecha_en_array($fecha_para_array) {
-	$fecha_en_array['ano'] = substr($fecha_para_array, -10, 4);
-	$fecha_en_array['mes'] = substr($fecha_para_array, -5, 2);
-	$fecha_en_array['mes_texto'] = mes_en_texto($fecha_en_array['mes']);
-	$fecha_en_array['mes_texto_corto'] = mes_en_texto_corto($fecha_en_array['mes']);
-	$fecha_en_array['dia'] = substr($fecha_para_array, -2, 2);
-	return $fecha_en_array;
-}
-
-// Fecha en array. Procesa una fecha en formato año, mes, día. El separador es obligatorio y puede ser cualquier símbolo.
-function fecha_hora_en_array($fecha_para_array) {
-	$fecha_en_array['ano'] = substr($fecha_para_array, -19, 4);
-	$fecha_en_array['mes'] = substr($fecha_para_array, -14, 2);
-	$fecha_en_array['mes_texto'] = mes_en_texto($fecha_en_array['mes']);
-	$fecha_en_array['mes_texto_corto'] = mes_en_texto_corto($fecha_en_array['mes']);
-	$fecha_en_array['dia'] = substr($fecha_para_array, -11, 2);
-	return $fecha_en_array;
+	if (strlen($fecha_para_array) == 10) {
+		$fecha_en_array['ano'] = substr($fecha_para_array, -10, 4);
+		$fecha_en_array['mes'] = substr($fecha_para_array, -5, 2);
+		$fecha_en_array['mes_texto'] = mes_en_texto($fecha_en_array['mes']);
+		$fecha_en_array['mes_texto_corto'] = mes_en_texto_corto($fecha_en_array['mes']);
+		$fecha_en_array['dia'] = substr($fecha_para_array, -2, 2);
+		return $fecha_en_array;
+	} elseif (strlen($fecha_para_array) == 19) {
+		$fecha_en_array['ano'] = substr($fecha_para_array, -19, 4);
+		$fecha_en_array['mes'] = substr($fecha_para_array, -14, 2);
+		$fecha_en_array['mes_texto'] = mes_en_texto($fecha_en_array['mes']);
+		$fecha_en_array['mes_texto_corto'] = mes_en_texto_corto($fecha_en_array['mes']);
+		$fecha_en_array['dia'] = substr($fecha_para_array, -11, 2);
+		return $fecha_en_array;
+	}
 }
 
 // Mes en texto corto. Convierte un número en formato 00 a el mes correspondiente.
