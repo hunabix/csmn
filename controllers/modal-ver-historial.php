@@ -37,8 +37,8 @@ if ($query->execute(array(
 	
 	
 	//Returning lead ID
-	$return['lead-id']		= $data['lead_id'];
-	$return['tipo-accion']	= $data['tipo_accion'];
+	$return['lead_id']		= $data['lead_id'];
+	$return['tipo_accion']	= $data['tipo_accion'];
 	$return['historial']	= $result;
 	//print_array($return);
 	echo json_encode($return, JSON_UNESCAPED_UNICODE);		
