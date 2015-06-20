@@ -294,20 +294,6 @@ function obten_casos() {
 }
 
 
-// obtiene la lista de registros de usuarios
-function obten_caso_x_id($id_interesado) {
-	global $connection;
-	$consulta = " SELECT *
-						FROM interesado_cs
-						WHERE ID = '$id_interesado'
-						ORDER BY recordatorio ASC";
-						
-	$usuarios_set = mysql_query($consulta, $connection);
-	confirm_query($usuarios_set);
-	return $usuarios_set;
-}
-
-
 
 // obtiene la lista de registros de usuarios
 function obten_utima_interaccion($id_interesado) {

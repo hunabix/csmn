@@ -7,8 +7,6 @@ confirm_logged_in(); //revisa si el operador ha ingresado
 
 $data = readRawPost($_POST);
 
-//print_array($data);
-
 $lead_info = get_lead_info_by_id($data['lead-id']);
 
 /*$con = db_con();
@@ -257,14 +255,7 @@ if (isset($data['nuevo-mensaje'])) {
 
 <?php } else if (isset($data['componer-mensaje'])) {  
 
-	// se reciben parametros de index.php
-
-		$casos_set = obten_caso_x_id($data['lead-id']);
-		$caso = mysql_fetch_array($casos_set);
-		$email = utf8_encode($caso['email']);
-		$nombre = utf8_encode($caso['nombre']);	
-		$id_interesado = $caso['ID'];
-
+	// Se preparan datos para la vista
 	
 	//Se asigna el contenido de las variables que imprimen el contenido HTML de las plantillas de correo para el operador.
 	$infomacionb = htmlentities(utf8_decode('<!-- Correo de información enviado -->
@@ -321,6 +312,12 @@ if (isset($data['nuevo-mensaje'])) {
 
 }
 
+$data['email'] = $lead_info['email'];
+$data['nombre'] = $lead_info['nombre'];
+$data['apellidos'] = $lead_info['apellidos'];	
+$data['lead-id'] = $lead_info['ID'];
+		
+print_array($data);
 //Llamando una vista
 view('componer-mensaje', compact('data'));
 
