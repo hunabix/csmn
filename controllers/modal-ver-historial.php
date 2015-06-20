@@ -23,11 +23,11 @@ if ($query->execute(array(
 		$human_date = fecha_en_array($value['fecha']);
 		// Adding last interaction info
 		$nvalue['alerta']		= $value['alerta'];
-		$nvalue['fecha']			= $human_date['dia'] . ' de ' . $human_date['mes_texto'] . ' de ' . $human_date['ano'];
+		$nvalue['fecha']		= $human_date['dia'] . ' de ' . $human_date['mes_texto'] . ' de ' . $human_date['ano'];
 		$nvalue['hora']			= $human_date['hora'];
 		$nvalue['mensaje_int']	= $value['mensaje_int'];
 		$nvalue['mensaje_op']	= $value['mensaje_op'];
-		$nvalue['observaciones']	= $value['observaciones'];
+		$nvalue['observaciones'] = $value['observaciones'];
 		$nvalue['tipo']			= $value['tipo'];
 		
 		// Saving info
@@ -41,6 +41,6 @@ if ($query->execute(array(
 	$return['tipo-accion']	= $data['tipo-accion'];
 	$return['historial']	= $result;
 	//print_array($return);
-	echo json_encode($result, JSON_UNESCAPED_UNICODE);		
+	echo json_encode($return, JSON_UNESCAPED_UNICODE);		
 		
 }
