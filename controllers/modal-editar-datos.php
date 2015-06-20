@@ -9,13 +9,13 @@
 
 //Flag last interaction
 $con = db_con();
-$query = $con->prepare('UPDATE interesado_cs SET nombre = :nombre, apellidos = :apellidos, email = :email, telefono = :telefono, ciudad = :ciudad, instrumento = :instrumento WHERE ID = :ID');
+$query = $con->prepare('UPDATE interesado_cs SET nombre = :nombre, apellidos = :apellidos, email = :email, telefono = :telefono, pais = :pais, ciudad = :ciudad, instrumento = :instrumento WHERE ID = :ID');
 if ($query->execute(array(
 	'nombre' => $data['nombre'],
 	'apellidos' => $data['apellidos'],	
 	'email' => $data['correo'],
 	'telefono' => $data['telefono'],
-	//'pais' => $data['pais'],
+	'pais' => $data['pais'],
 	'ciudad' => $data['ciudad'],
 	'instrumento' => $data['instrumento'],
 	'ID' => $data['lead-id'],
