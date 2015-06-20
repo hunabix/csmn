@@ -317,7 +317,7 @@ $data['nombre'] = $lead_info['nombre'];
 $data['apellidos'] = $lead_info['apellidos'];	
 $data['lead-id'] = $lead_info['ID'];
 		
-print_array($data);
+//print_array($data);
 //Llamando una vista
 view('componer-mensaje', compact('data'));
 
