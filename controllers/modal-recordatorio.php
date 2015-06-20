@@ -3,9 +3,9 @@
 * Controlador del modal Recordatorio
 */
 
-echo $data['tipo-accion'];
+//echo $data['tipo-accion'];
 
-echo print_array($data);
+//echo print_array($data);
 
 // Get last interaction
 $last_interaction = get_last_interaction($data['lead-id']);
@@ -38,10 +38,14 @@ if ($query->execute(array(
 		'ID' => $data['lead-id'],
 	));
 
+	$fecha = fecha_en_array($data['fecha-recordatorio']);
 	//Returning lead ID
 	$return['lead_id'] = $data['lead-id'];
 	$return['tipo_accion'] = $data['tipo-accion'];
-	$return['mensaje'] = utf8_encode('Se agregó un recordatorio a (nombre)');
+	$return['mensaje'] = 'Se agregó un recordatorio a (nombre)';
+	$return['recordatorio'] = $data['recordatorio'];
+	$return['fecha_recordatorio'] = $fecha['dia'] . ' ' . $fecha['mes_texto_corto'];
+	//echo print_array($return);
 	echo json_encode($return, JSON_UNESCAPED_UNICODE);
 
 }
