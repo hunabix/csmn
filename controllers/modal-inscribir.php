@@ -31,8 +31,9 @@ if ($query->execute(array(
 	remove_from_main_list($data['lead-id']);
 
 	//Returning lead ID
-	$return['lead-id'] = $data['lead-id'];
-	$return['tipo-accion'] = $data['tipo-accion'];
+	$return['lead_id'] = $data['lead-id'];
+	$return['tipo_accion'] = $data['tipo-accion'];
+	$return['mensaje'] = 'Se inscribió (nombre)';
 	echo json_encode($return);
 
 }
