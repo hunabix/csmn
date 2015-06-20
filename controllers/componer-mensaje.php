@@ -4,5 +4,5 @@
 */
 		
 //Llamando una vista
-view('componer-mensaje');
+view('componer-mensaje', compact('data'));
 

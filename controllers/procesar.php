@@ -18,14 +18,7 @@ $data = readRawPost($_POST);
 if (!isset($data['formulario']))
 	die;
 
-// Proces leads form
-if ($data['accion']) {
-
-	load_action($data['accion'], compact('data'));
-	exit();
-}
-
-// Proces leads form
+// Procces leads form
 if ($data['formulario'] == 'leads-form') {
 
 	load_modal($data['tipo-accion'], compact('data'));
