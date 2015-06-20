@@ -66,9 +66,8 @@ $('input[type=checkbox]').change(function(){
 // Componer mensaje
 $( ".mensaje" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
-    var leadTipoAccion = $(this).attr('tipo-accion');
     $( "#lead-id" ).val( leadId );
-    $( "#tipo-accion" ).val( leadTipoAccion );
+    $( "#tipo-accion" ).val( 'componer-mensaje' );
     $( "#leads-form" ).submit();
 });
 // Agregar nota
@@ -197,7 +196,16 @@ $( document ).ajaxComplete(function() {
 
 $("#leads-form").on("submit", function(e){
 
-    
+    // Accion por defecto
+    var action = "controllers/procesar.php";
+
+    // Si el tipo de acción es componer mensaje
+    tipoAccion = $( "#tipo-accion" ).val();
+    if ( tipoAccion == 'componer-mensaje' )
+    {   
+       // obtengo el id de un atributo personalizado del campo escondido #nombre-formulario
+       action =  $( "#nombre-formulario" ).attr('accion-componer-mensaje');
+    }
 
     e.preventDefault();
     $.ajax({
@@ -207,7 +215,8 @@ $("#leads-form").on("submit", function(e){
         // Formato de datos que se espera en la respuesta
         dataType: "json",
         // URL a la que se enviará la solicitud Ajax
-        url: "controllers/procesar.php",
+        // url: "controllers/procesar.php",
+        url: action,
     })
     .done(function( data, textStatus, jqXHR ) {
         if ( console && console.log ) {

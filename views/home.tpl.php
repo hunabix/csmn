@@ -26,7 +26,7 @@ require_once("part/header.php"); ?>
     <?php require_once("part/mag-form.php");  ?>
 
     <!-- Lista de prospectos -->
-    <form id="leads-form" name="leads-form" class="leads form" action="views/part/process.php">
+    <form id="leads-form" name="leads-form" class="leads form" >
         <!-- Encabezado -->
         <header class="titles">
             <h4 class="lt-name">
@@ -67,7 +67,7 @@ require_once("part/header.php"); ?>
 
         
         <!-- Datos base a enviar -->
-        <input type="hidden" name="formulario" value="leads-form">
+        <input type="hidden" id="nombre-formulario" name="formulario" value="leads-form" accion-componer-mensaje="<?= cs_url; ?>/componer-mensaje">
         <input id="lead-id" type="hidden" name="lead-id" value="">
         <input id="tipo-accion" type="hidden" name="tipo-accion" value="">
         <input id="prioridad" type="hidden" name="prioridad" value="">
