@@ -59,6 +59,7 @@ function fecha_en_array($fecha_para_array) {
 		$fecha_en_array['mes_texto'] = mes_en_texto($fecha_en_array['mes']);
 		$fecha_en_array['mes_texto_corto'] = mes_en_texto_corto($fecha_en_array['mes']);
 		$fecha_en_array['dia'] = substr($fecha_para_array, -11, 2);
+		$fecha_en_array['hora'] = substr($fecha_para_array, -8, 8);
 		return $fecha_en_array;
 	}
 }

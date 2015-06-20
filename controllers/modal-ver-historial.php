@@ -20,11 +20,12 @@ if ($query->execute(array(
 	$historial;
 	
 	foreach ($historial as $key => $value) {
-	
+		
+		$human_date = fecha_en_array($value['recordatorio']);
 		// Adding last interaction info
 		$value['alerta']		= $value['alerta'];
-		$value['fecha']			= fecha_en_array($value['recordatorio']);
-		$value['hora']			= fecha_en_array($value['recordatorio']);
+		$value['fecha']			= $human_date['dia'] . ' de ' . $human_date['mes_texto'] . ' de ' . $human_date['ano'];
+		$value['hora']			= $human_date['hora'];
 		$value['mensaje_int']	= $value['mensaje_int'];
 		$value['mensaje_op']	= $value['mensaje_op'];
 		$value['observaciones']	= $value['observaciones'];
