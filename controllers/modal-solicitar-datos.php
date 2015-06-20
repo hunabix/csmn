@@ -20,7 +20,7 @@ if ($query->execute(array('ID' => $data['lead-id']))) {
 	$return['tipo_accion'] = $data['tipo-accion'];
 	$return['lead_info'] = $lead_info;
 	
-	echo print_array($return);
+	//echo print_array($return);
 	echo json_encode($return, JSON_UNESCAPED_UNICODE);
 	
 }
