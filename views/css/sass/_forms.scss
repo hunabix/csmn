@@ -102,7 +102,35 @@
 		opacity: 1;
 	}
 	
-	// CHECKBOX 
+	// RADIO BUTTON 
+	.fancy-radio {
+		padding-right: 2rem;
+		.radio {
+			z-index: 9;
+			position: relative;
+			opacity: 0;
+		}
+		// El icono que sustituye la apariencia del radio
+		.radio-icon {
+			position: relative;
+			z-index: 0;
+			font-size: 1.15rem;
+			color: $divider-color;
+		}
+		.name {
+			position: relative;
+		}
+		&:hover {
+			color: $accent-color;
+			.radio-icon { color: $accent-color; }
+		}
+		.fa-check-square-o,  
+		.fa-check-square-o + .name {
+			color: $primary-color;
+		}
+
+	}
+		// CHECKBOX 
 	.fancy-check {
 
 		.check {

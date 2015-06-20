@@ -3,6 +3,12 @@
  * Plantilla [login]
  **/
 require_once("part/header.php"); ?>
+		
+		<!-- Muestreo de variables [PRUEBAS]
+		================================================== --> 
+		<p class="datos"><?php var_dump($data) ?></p>
+		<!-- Muestreo de variables [PRUEBAS]
+		================================================== --> 
 
 		<!-- Titulo -->
 		<h2 class="section-title">Componer mensaje</h2>
@@ -11,55 +17,118 @@ require_once("part/header.php"); ?>
 		<form id="mensaje-form" name="mensaje-form" class="mensaje-form form" method="post" action="<?= cs_url; ?>/componer-mensaje" >
 			
 			<!-- Lista de destinatarios -->
-			<div id="destinatarios" class="destinatarios">
+			<aside id="destinatarios" class="destinatarios">
 				<ul>
 					
-					<li class="destinatario"><strong>Juan Perez</strong> juan@perez.com</li>
+					<li class="destinatario"><strong><?= $data['nombre'] ?> <?= $data['apellidos'] ?></strong>  <?= $data['email'] ?> </li>
 					<!-- Valores que se envían en campos escondidos -->
-					<input type="hidden" name="id_interesado<?php echo '10'; ?>" value="10"/>
-					<input type="hidden" name="nombre<?php echo 'Juan Perez'; ?>" value="Juan Perez"/>
-					<input type="hidden" name="email<?php echo 'juan@perez.com'; ?>" value="juan@perez.com"/>
+					<input type="hidden" name="id_interesado-<?= $data['lead-id'] ?>" value="<?= $data['lead-id'] ?>"/>
+					<input type="hidden" name="nombre-<?= $data['lead-id'] ?>" value="<?= $data['nombre'] ?>"/>
+					<input type="hidden" name="email-<?= $data['lead-id'] ?>" value="<?= $data['email'] ?>"/>
 			
 				</ul>
-			</div>
+			</aside>
 
-			<!-- Mensaje -->
-			<div id="mensaje" class="contenedor full">
-				<h3 class="titulo">Configuración del mensaje</h3>
+			<!-- Tipo de mensaje -->				
+			<section class="tipo-mensaje">
+					
+				<h4 class="titulo">Tipo de correo electrónico a redactar</h4>
 				
-				<h2 class="titulo">Tipo de correo electrónico a redactar</h2>	
-					<div id="tipo-mensaje" class="group">
+				<!-- Respuesta personalizada -->
+			    <label class="fancy-radio">
+			        <input name="tipo" value="Se respondió al interesado" type="radio" class="radio">
+			        <span class="fa fa-circle-o  radio-icon"></span>
+			        <span class="name">
+			        	Respuesta personalizada
+		            </span>
+			    </label>
+			    <!-- Información -->
+			    <label class="fancy-radio">
+			        <input name="tipo" value="Correo de información enviado" type="radio" class="radio">
+			        <span class="fa fa-circle-o radio-icon"></span>
+			        <span class="name">
+			        	Información
+		            </span>
+			    </label>
+			    <!-- Seguimiento -->
+			    <label class="fancy-radio">
+			        <input name="tipo" value="Correo de seguimiento enviado" type="radio" class="radio">
+			        <span class="fa fa-circle-o  radio-icon"></span>
+			        <span class="name">
+			        	Seguimiento
+		            </span>
+			    </label>
+			    <!-- Inicio de cursos -->
+			    <label class="fancy-radio">
+			        <input name="tipo" value="Correo de inicio de cursos enviado" type="radio" class="radio">
+			        <span class="fa fa-circle-o radio-icon"></span>
+			        <span class="name">
+			        	Inicio de cursos
+		            </span>
+			    </label>
+			    <!-- Recordatorio de pago -->
+			    <label class="fancy-radio">
+			        <input name="tipo" value="Recordatorio de pago enviado" type="radio" class="radio">
+			        <span class="fa fa-circle-o  radio-icon"></span>
+			        <span class="name">
+			        	Recordatorio de pago
+		            </span>
+			    </label>
+			    <!-- Completar inscripción -->
+			    <label class="fancy-radio">
+			        <input name="tipo" value="Recordatorio de pago enviado" type="radio" class="radio">
+			        <span class="fa fa-circle-o radio-icon"></span>
+			        <span class="name">
+			        	Completar inscripción
+		            </span>
+			    </label>
+			</section>
+			
+			<!-- Redactar mensaje -->
+			<h4 class="titulo">Mensaje personalizado al interesado</h4>	
+			<section class="redactar-mensaje">
 
-					</div>
-
-				<h2 class="titulo">Mensaje personalizado al interesado</h2>	
-				
 				<!-- Asunto -->
 				<div class="input-group mensaje-asunto">
-				    <input name="usuario" type="text" class="form-control"  placeholder="Usuario" value="" required>
-				    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+				    <input name="asunto" type="text" class="form-control"  placeholder="Asunto" value="" required>
+				    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 				</div>
 				<!-- Mensaje personalizado -->
 				<div class="input-group mensaje-contenido">
-				    <input name="usuario" type="text" class="form-control"  placeholder="Usuario" value="" required>
-				    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+				    <textarea name="mensaje_op" class="form-control"  placeholder="Mensaje" value="" required></textarea>
+				    <span class="input-group-addon"><i class="fa fa-file"></i></span>
 				</div>
 
+			</section>
 
-				<!-- Firmas -->
-		        <h2 class="titulo">Firma del mensaje</h2>	
-		        <div id="firma-mensaje" class="mensaje-firma">
-					<label><input name="firma" value="Equipo Musinetwork" type="radio" checked>
-					Equipo Musinetwork</label> 
-					
-				</div>
+			<!-- Firmas -->
+			<h4 class="titulo">Firma del mensaje</h4>	
+			<section class="firmas-mensaje">
+				<!-- Musinetwork -->
+				<label class="fancy-radio">
+				    <input name="firma" value="Equipo Musinetwork" type="radio" class="radio" >
+				    <span class="fa fa-circle-o  radio-icon"></span>
+				    <span class="name">
+				      	Equipo Musinetwork
+			        </span>
+				</label>
+				<!-- Marichú García Salazar -->
+				<label class="fancy-radio">
+				    <input name="firma" value="Marichú García Salazar" type="radio" class="radio" >
+				    <span class="fa fa-circle-o  radio-icon"></span>
+				    <span class="name">
+				      	Marichú García Salazar
+			        </span>
+				</label>
+			</section>
 				
-				<h2 class="titulo"><strong>Comentarios adicionales</strong></h2>
-				<div id="mensaje-int">
-					<textarea name="comentarios"></textarea>
-				</div>	
-
+			<!-- Mensaje personalizado -->
+			<h4 class="titulo">Comentarios adicionales</h4>
+			<div class="input-group comentarios-adicionales">
+				<textarea name="comentarios" class="form-control"  placeholder="Mensaje" value=""></textarea>
+				<span class="input-group-addon"><i class="fa fa-file"></i></span>
 			</div>
+
 
 			<!-- Botón enviar mensaje -->
 			<div class="login-btn">  

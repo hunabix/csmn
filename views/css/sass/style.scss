@@ -34,8 +34,42 @@ Version: 2.0
 	max-width: 1300px;
 	display: block; 
 	margin: 3rem auto;
-
 	
+	.destinatarios {
+		border: #eee 1px solid;
+		@include rounded(.5rem);
+		padding: 1rem 1.5rem;
+		background: #f6f6f6;
+		margin-bottom: 2rem;
+
+		ul {
+			@include ul-base;
+
+		}		
+	}
+	.tipo-mensaje {
+		margin-bottom: 2rem;
+	}
+
+	.redactar-mensaje {
+		padding-top: 1rem;
+		margin: 0 auto 2rem;
+
+		.mensaje-asunto {
+			margin-bottom: 1rem;
+		}
+		.mensaje-contenido textarea {
+			height: 200px;
+		}
+
+	}
+	.firmas-mensaje {
+		margin: 0 auto 2rem;
+	}
+	.comentarios-adicionales {
+		padding-top: 1rem;
+		margin: 0 auto 2rem;
+	}
 }
 
 //  Login form

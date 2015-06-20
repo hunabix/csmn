@@ -59,7 +59,13 @@ $('input[type=checkbox]').change(function(){
     $("input:not(:checked) + .check-icon").addClass('fa-square-o');
     $("input:not(:checked) + .check-icon").removeClass('fa-check-square-o');
 });
-
+// Script que cambia el icono de los radio seleccionados o deseleccionados
+$('input[type=radio]').change(function(){
+    $("input:checked + .radio-icon").addClass('fa-dot-circle-o');
+    $("input:checked + .radio-icon").removeClass('fa-circle-o ');
+    $("input:not(:checked) + .radio-icon").addClass('fa-circle-o ');
+    $("input:not(:checked) + .radio-icon").removeClass('fa-dot-circle-o');
+});
 
 /* Acciones del lead
 ------------------------------- */
