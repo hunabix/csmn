@@ -67,11 +67,19 @@ require_once("part/header.php"); ?>
 
         
         <!-- Datos base a enviar -->
-        <input type="hidden" id="nombre-formulario" name="formulario" value="leads-form" accion-componer-mensaje="<?= cs_url; ?>/componer-mensaje">
+        <input type="hidden" name="formulario" value="leads-form">
         <input id="lead-id" type="hidden" name="lead-id" value="">
         <input id="tipo-accion" type="hidden" name="tipo-accion" value="">
         <input id="prioridad" type="hidden" name="prioridad" value="">
 
+    </form>
+    
+    <!-- Formulario solo para componer mensaje -->
+    <form id="em-form" name="em-form" action="<?= cs_url; ?>/componer-mensaje" method="post">
+        <!-- Datos base a enviar -->
+        <input type="hidden" name="formulario" value="em-form">
+        <input id="lead-id-em" type="hidden" name="lead-id" value="">
+        <input id="tipo-accion-em" type="hidden" name="tipo-accion" value="componer-mensaje">
     </form>
 
 </section>
