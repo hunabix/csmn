@@ -63,11 +63,13 @@ require_once("part/header.php"); ?>
         <?php require("part/modal-historial.php");  ?>
         <!-- Borrar prospecto -->
         <?php require("part/modal-eliminar.php");  ?>
+
         
         <!-- Datos base a enviar -->
         <input type="hidden" name="formulario" value="leads-form">
         <input id="lead-id" type="hidden" name="lead-id" value="">
         <input id="tipo-accion" type="hidden" name="tipo-accion" value="">
+        <input id="prioridad" type="hidden" name="prioridad" value="">
 
     </form>
 
@@ -76,6 +78,9 @@ require_once("part/header.php"); ?>
 <div class="u-loading">
     <img src="img/loader.gif" alt="Cargando...">
 </div>
+
+<!-- Alertas del sistema -->
+<div class="alert alert-success alerta" id="alerta-exito" role="alert">Hola</div>
 
 <?php
 require_once("part/footer.php"); ?>

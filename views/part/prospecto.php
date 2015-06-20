@@ -48,7 +48,16 @@
         <!-- Eliminar prospecto -->
         <a href="#" class="action eliminar" data-toggle="modal" data-target="#modal-eliminar" tipo-accion="eliminar"><i class="fa fa-close"></i></a>
         <!-- Cambiar prioridad -->
-        <a href="#" class="action prioridad" tipo-accion="cambiar-prioridad"><i class="fa fa-circle"></i></a>
+        <div class="dropdown contenedor-prioridad">
+            <a class="action prioridad dropdown-toggle" type="button"  id="prioridad-dropdown<?= $caso['ID']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
+                <i class="fa fa-circle"></i>            
+            </a>
+            <div class="dropdown-menu contenido-prioridad" aria-labelledby="prioridad-dropdown<?= $caso['ID']; ?>">
+                <a href="#" class="btn-prioridad prioridad-verde"><i class="fa fa-circle" tipo-accion="cambiar-prioridad"></i> </a>
+                <a href="#" class="btn-prioridad prioridad-roja"><i class="fa fa-circle" tipo-accion="cambiar-prioridad"></i> </a>
+                <a href="#" class="btn-prioridad prioridad-azul"><i class="fa fa-circle" tipo-accion="cambiar-prioridad"></i> </a>
+            </div>
+        </div>
     </aside>
 </div>
 

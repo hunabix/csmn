@@ -12,17 +12,21 @@ $("#acordeon-historial").children().click(function (e) {
 // Activo datepicker para el campo en mag-form
 $('#mag-date').datepicker({
     weekStart:1,
+    format: 'yyyy/mm/dd',
     color: 'red'
 });
 // Activo datepicker para el campo en mag-form
 $('#fecha-reserva').datepicker({
     weekStart:1,
+    format: 'yyyy/mm/dd',
     color: 'red'
 });
 // datepicker para el modal de recordatorio
 $('#fecha-recordatorio').datepicker({
     weekStart:1,
+    format: 'yyyy/mm/dd',
     color: 'red'
+
 });
 /* LEADS
 --------------------------------------------- */
@@ -138,7 +142,32 @@ $( ".eliminar" ).click(function() {
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
 });
-
+// Cambiar prioridad
+// verde
+$( ".prioridad-verde" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( "cambiar-prioridad" );
+    $( "#prioridad" ).val( 'verde' );
+    $( "#leads-form" ).submit();
+});
+// roja
+$( ".prioridad-roja" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( "cambiar-prioridad" );
+    $( "#prioridad" ).val( 'roja' );
+    $( "#leads-form" ).submit();
+});
+// azul
+$( ".prioridad-azul" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    var leadTipoAccion = $(this).attr('tipo-accion');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( "cambiar-prioridad" );
+    $( "#prioridad" ).val( 'azul' );
+    $( "#leads-form" ).submit();
+});
 /* Modales MAG-FORM
 ------------------------------- */
 // Registrar llamada
@@ -173,13 +202,26 @@ $("#leads-form").on("submit", function(e){
         url: "controllers/procesar.php",
     })
      .done(function( data, textStatus, jqXHR ) {
-         if ( console && console.log ) {
-             console.log( "La solicitud se ha completado correctamente." );
-         }
-         $('#trace-block .datos').html(data);
-         $('.contenido').css( "display", "block" ); 
-         // Cierro todo slos modales activos
-         $('.modal').modal('hide');
+        if ( console && console.log ) {
+            console.log( "La solicitud se ha completado correctamente." );
+        }
+        $('#trace-block .datos').html(data);
+        $('.contenido').css( "display", "block" ); 
+
+        /* Resultados de acciones
+        ------------------------------- */
+
+
+
+        // Cierro todos los modales activos
+        $('.modal').modal('hide');
+        // muestro el mensaje de éxito
+        $('#alerta-exito').addClass('muestra');
+        // Retiro el mensaje de éxito
+        setTimeout(function () { 
+            $('#alerta-exito').removeClass('muestra');
+        }, 500);
+
      })
      .fail(function( jqXHR, textStatus, errorThrown ) {
          if ( console && console.log ) {

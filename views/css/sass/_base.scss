@@ -26,6 +26,23 @@ h1, h2, h3, h4, h5, h6 {
 	z-index: 1080;
 }
 
+.alerta {
+	position: absolute;
+	margin-top: 160px;
+	right: 5rem;
+	max-width: 40%;
+	top: 0;
+	opacity: 0;
+	@include anim(.3s);
+	
+	&.muestra {
+		opacity: 1;
+		@include anim(.3s);
+	}
+}
+
+
+
 // Contenido principal 
 .main {
 	font-family: $main-font;
