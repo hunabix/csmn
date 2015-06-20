@@ -13,7 +13,7 @@ confirm_logged_in(); //revisa si el operador ha ingresado
 $data = readRawPost($_POST);
 
 // Prints post content
-echo print_array($data);
+//echo print_array($data);
 
 if (!isset($data['formulario']))
 	die;

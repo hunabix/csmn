@@ -202,6 +202,16 @@ function remove_from_main_list($lead_id) {
 	$query->closeCursor();
 }
 
+function utf8_converter($array)
+{
+    array_walk_recursive($array, function(&$item, $key){
+        if(!mb_detect_encoding($item, 'utf-8', true)){
+                $item = utf8_decode($item);
+        }
+    });
+ 
+    return $array;
+}
 
 
 //*******************OLD FUNCTIONS BELOW*******************************

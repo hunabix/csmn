@@ -41,7 +41,7 @@ if ($query->execute(array(
 	//Returning lead ID
 	$return['lead_id'] = $data['lead-id'];
 	$return['tipo_accion'] = $data['tipo-accion'];
-	$return['mensaje'] = 'Se agregó un recordatorio a (nombre)';
+	$return['mensaje'] = utf8_encode('Se agregó un recordatorio a (nombre)');
 	echo json_encode($return);
 
 }
