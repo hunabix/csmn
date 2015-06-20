@@ -126,6 +126,15 @@
 			&:hover {
 				background: #FAFAFA;
 			}
+
+			// Prioridades
+			&.verde {
+				background-color: #C0E5C2;
+			}
+			&.roja {
+				background-color: #FFCECC;
+			}
+
 			p {
 				@media (max-width: 1000px) { margin: 0; }
 			}

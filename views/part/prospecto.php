@@ -1,7 +1,7 @@
 
 <!-- Prospecto -->
 
-<div id="<?= $caso['ID']; ?>" class="lead form">
+<div id="<?= $caso['ID']; ?>" class="lead form <?= $caso['prioridad']; ?>">
 
     <!-- Checkbox & Nombre -->
     <div class="lead-name" for="checkbox-<?= $caso['ID']; ?>">
@@ -11,7 +11,7 @@
             <span class="fa fa-square-o check-icon"></span>
             <!-- Nombre -->
             <span id="nombre-prospecto<?= $caso['ID']; ?>" class="name">
-                <?= $caso['nombre']; ?>
+                <?= $caso['nombre']; ?> - <?= $caso['prioridad']; ?>
             </span>
         </label>
     </div>

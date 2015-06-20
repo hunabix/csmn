@@ -126,7 +126,8 @@ $( ".editar-prospecto" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     $( "#lead-id" ).val( leadId );
-    $( "#tipo-accion" ).val( leadTipoAccion );
+    $( "#tipo-accion" ).val( 'solicitar-datos' );
+    $( "#leads-form" ).submit();
 });
 // Actualizar datos de prospecto
 $( ".editar-prospecto" ).click(function() {
@@ -259,7 +260,7 @@ $("#leads-form").on("submit", function(e){
         // Solicitar datos de prospecto
         if ( data.tipo_accion == "solicitar-datos")
         {
-            $( '#alerta-exito' ).html( data.mensaje );
+            
         }
         // Editar datos de prospecto
         if ( data.tipo_accion == "editar-datos")
@@ -269,7 +270,7 @@ $("#leads-form").on("submit", function(e){
         // Ver historial
         if ( data.tipo_accion == "ver-historial")
         {
-            $( '#alerta-exito' ).html( data.mensaje );
+
         }
         // Eliminar
         if ( data.tipo_accion == "eliminar")
@@ -280,17 +281,22 @@ $("#leads-form").on("submit", function(e){
         // Cambiar prioridad
         if ( data.tipo_accion == "cambiar-prioridad")
         {
+            document.location.reload(); 
             $( '#alerta-exito' ).html( data.mensaje );
         }
 
         // Cierro todos los modales activos
-        $('.modal').modal('hide');
-        // muestro el mensaje de éxito
-        $('#alerta-exito').addClass('muestra');
-        // Retiro el mensaje de éxito
-        setTimeout(function () { 
-            $('#alerta-exito').removeClass('muestra');
-        }, 1200);
+        if ( data.tipo_accion != "ver-historial")
+        {
+            $('.modal').modal('hide');
+            // muestro el mensaje de éxito
+            $('#alerta-exito').addClass('muestra');
+            // Retiro el mensaje de éxito
+            setTimeout(function () { 
+                $('#alerta-exito').removeClass('muestra');
+            }, 1200);
+        }
+        
 
      })
     .fail(function( jqXHR, textStatus, errorThrown ) {
