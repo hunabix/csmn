@@ -3,9 +3,9 @@
 * Controlador del modal Recordatorio
 */
 
-//echo $data['tipo-accion'];
+echo $data['tipo-accion'];
 
-//echo print_array($data);
+echo print_array($data);
 
 // Get last interaction
 $last_interaction = get_last_interaction($data['lead-id']);
