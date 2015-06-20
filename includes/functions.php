@@ -214,6 +214,21 @@ function utf8_converter($array)
     return $array;
 }
 
+// Get lead info by id
+function get_lead_info_by_id($id) {
+	
+	$con = db_con();
+	$query = $con->prepare('SELECT * FROM interesado_cs WHERE ID = :ID');
+	if ($query->execute(array('ID' => $id))) {
+		
+		$lead_info = $query->fetch();
+		$query->closeCursor();
+		
+		//echo print_array($return);
+		return $lead_info;
+		
+	}
+}
 
 //*******************OLD FUNCTIONS BELOW*******************************
 
