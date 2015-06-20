@@ -17,4 +17,4 @@ $query->closeCursor();
 //Returning lead ID
 $return['lead-id'] = $data['lead-id'];
 $return['tipo-accion'] = $data['tipo-accion'];
-echo json_encode($historial);
+echo json_encode($historial, JSON_UNESCAPED_UNICODE);

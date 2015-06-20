@@ -32,7 +32,7 @@ if ($query->execute(array(
 	$return['lead_id'] = $data['lead-id'];
 	$return['tipo_accion'] = $data['tipo-accion'];
 	$return['mensaje'] = 'Se agregó una llamada a (nombre)';
-	echo json_encode($return);
+	echo json_encode($return, JSON_UNESCAPED_UNICODE);
 
 }
 $query->closeCursor();

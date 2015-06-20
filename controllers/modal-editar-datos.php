@@ -23,4 +23,4 @@ $query->execute(array(
 //Returning lead ID
 $return['lead-id'] = $data['lead-id'];
 $return['tipo-accion'] = $data['tipo-accion'];
-echo json_encode($lead_info);
+echo json_encode($lead_info, JSON_UNESCAPED_UNICODE);
