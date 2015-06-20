@@ -10,7 +10,7 @@
             <input name="checkbox-<?= $caso['ID']; ?>" id="checkbox-<?= $caso['ID']; ?>" value="<?= $caso['ID']; ?>" type="checkbox" class="check" form="mag-form">
             <span class="fa fa-square-o check-icon"></span>
             <!-- Nombre -->
-            <span class="name">
+            <span id="nombre-prospecto<?= $caso['ID']; ?>" class="name">
                 <?= $caso['nombre']; ?>
             </span>
         </label>
@@ -23,7 +23,8 @@
     <!-- Recordatorio y sugerencia -->
     <p class="reminder">
         <span class="date-reminder"><?= $caso['fecha_recordatorio']['dia']; ?> <?= $caso['fecha_recordatorio']['mes_texto_corto']; ?></span>
-        <?= $caso['recordatorio_texto']; ?>
+        <span class="text-reminder"><?= $caso['recordatorio_texto']; ?></span>
+        
     </p>
     <!-- Acciones -->
     <aside class="actions">

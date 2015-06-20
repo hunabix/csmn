@@ -13,19 +13,19 @@ $("#acordeon-historial").children().click(function (e) {
 $('#mag-date').datepicker({
     weekStart:1,
     format: 'yyyy/mm/dd',
-    color: 'red'
+    color: 'green'
 });
 // Activo datepicker para el campo en mag-form
 $('#fecha-reserva').datepicker({
     weekStart:1,
     format: 'yyyy/mm/dd',
-    color: 'red'
+    color: 'green'
 });
 // datepicker para el modal de recordatorio
 $('#fecha-recordatorio').datepicker({
     weekStart:1,
     format: 'yyyy/mm/dd',
-    color: 'red'
+    color: 'green'
 
 });
 /* LEADS
@@ -121,6 +121,13 @@ $( ".recordatorio" ).click(function() {
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
 });
+// Solicitar datos de prospecto
+$( ".editar-prospecto" ).click(function() {
+    var leadId = $(this).closest('.lead').attr('id');
+    var leadTipoAccion = $(this).attr('tipo-accion');
+    $( "#lead-id" ).val( leadId );
+    $( "#tipo-accion" ).val( leadTipoAccion );
+});
 // Actualizar datos de prospecto
 $( ".editar-prospecto" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
@@ -131,19 +138,18 @@ $( ".editar-prospecto" ).click(function() {
 // Ver historial de interacciones
 $( ".historial" ).click(function() {
     var leadId = $(this).closest( '.lead' ).attr( 'id' );
-    var leadTipoAccion = $(this).attr('tipo-accion');
     $( "#lead-id" ).val( leadId );
-    $( "#tipo-accion" ).val( leadTipoAccion );
+    $( "#tipo-accion" ).val( 'ver-historial' );
+    $( "#leads-form" ).submit();
 });
 // Eliminar prospecto
 $( ".eliminar" ).click(function() {
     var leadId = $(this).closest( '.lead' ).attr( 'id' );
     var leadTipoAccion = $(this).attr( 'tipo-accion' );
-    var nombreQueSeElimina = $(this).closest('.name').text();
-    console.log(nombreQueSeElimina );
+    var nombreQueSeElimina = $("#nombre-prospecto" + leadId).text();
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
-    $( "#nombre-a-eliminar").html( );
+    $( "#nombre-a-eliminar").html( nombreQueSeElimina );
 });
 // Cambiar prioridad
 // verde
@@ -191,8 +197,6 @@ $( document ).ajaxComplete(function() {
     $( ".loading" ).css( "display", "none" );                   
 });
 
-
-
 $("#leads-form").on("submit", function(e){
     e.preventDefault();
     $.ajax({
@@ -200,21 +204,84 @@ $("#leads-form").on("submit", function(e){
         //Cambiar a type: POST si necesario
         type: "POST",
         // Formato de datos que se espera en la respuesta
-        // dataType: "json",
+        dataType: "json",
         // URL a la que se enviará la solicitud Ajax
         url: "controllers/procesar.php",
     })
-     .done(function( data, textStatus, jqXHR ) {
+    .done(function( data, textStatus, jqXHR ) {
         if ( console && console.log ) {
             console.log( "La solicitud se ha completado correctamente." );
+            console.log( data );
         }
-        $('#trace-block .datos').html(data);
-        $('.contenido').css( "display", "block" ); 
 
         /* Resultados de acciones
         ------------------------------- */
+        // Registrar llamada
+        if ( data.tipo_accion == "registrar-llamada")
+        {
+            $( '#alerta-exito' ).html( data.mensaje );
+        }
+        // Agregar nota
+        if ( data.tipo_accion == "agregar-nota")
+        {
+            $( '#alerta-exito' ).html( data.mensaje );
+        }
+        // Inscribir
+        if ( data.tipo_accion == "inscribir")
+        {
+            $( '#' + data.lead_id).remove();
+            $( '#alerta-exito' ).html( data.mensaje );
+        }
+        // Reservar a futuros ciclos
+        if ( data.tipo_accion == "reservar")
+        {
+            $( '#' + data.lead_id).remove();
+            $( '#alerta-exito' ).html( data.mensaje );
+        }
+        // Enviar a lista general
+        if ( data.tipo_accion == "lista-general")
+        {
+            $( '#' + data.lead_id).remove();
+            $( '#alerta-exito' ).html( data.mensaje );
+        }
+        // Recordatorio
+        if ( data.tipo_accion == "recordatorio")
+        {
+            /* Lo ideal sería acomodar al prospecto en el lugar del DOM que corresponda*/
+            // prospecto = $( '#' + data.lead_id);
+            // prospecto.find('date-reminder').html( 'hola' );
+            // prospecto.find('text-reminder').html( 'ke ase' );
 
-
+            // Solución temporal
+            document.location.reload(); 
+            $( '#alerta-exito' ).html( data.mensaje );
+        }
+        // Solicitar datos de prospecto
+        if ( data.tipo_accion == "solicitar-datos")
+        {
+            $( '#alerta-exito' ).html( data.mensaje );
+        }
+        // Editar datos de prospecto
+        if ( data.tipo_accion == "editar-datos")
+        {
+            $( '#alerta-exito' ).html( data.mensaje );
+        }
+        // Ver historial
+        if ( data.tipo_accion == "ver-historial")
+        {
+            $( '#alerta-exito' ).html( data.mensaje );
+        }
+        // Eliminar
+        if ( data.tipo_accion == "eliminar")
+        {
+            $( '#' + data.lead_id).remove();
+            $( '#alerta-exito' ).html( data.mensaje );
+        }
+        // Cambiar prioridad
+        if ( data.tipo_accion == "cambiar-prioridad")
+        {
+            $( '#alerta-exito' ).html( data.mensaje );
+        }
 
         // Cierro todos los modales activos
         $('.modal').modal('hide');
@@ -223,10 +290,10 @@ $("#leads-form").on("submit", function(e){
         // Retiro el mensaje de éxito
         setTimeout(function () { 
             $('#alerta-exito').removeClass('muestra');
-        }, 500);
+        }, 1200);
 
      })
-     .fail(function( jqXHR, textStatus, errorThrown ) {
+    .fail(function( jqXHR, textStatus, errorThrown ) {
          if ( console && console.log ) {
              console.log( "La solicitud a fallado: " +  textStatus);
          }
