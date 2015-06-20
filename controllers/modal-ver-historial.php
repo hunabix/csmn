@@ -17,11 +17,12 @@ if ($query->execute(array(
 	$historial = $query->fetchAll();
 	$query->closeCursor();
 	
-	$historial;
 	
 	foreach ($historial as $key => $value) {
 		
-		$human_date = fecha_en_array($value['recordatorio']);
+		//print_array($value);
+		
+		$human_date = fecha_en_array($value['fecha']);
 		// Adding last interaction info
 		$value['alerta']		= $value['alerta'];
 		$value['fecha']			= $human_date['dia'] . ' de ' . $human_date['mes_texto'] . ' de ' . $human_date['ano'];
@@ -40,7 +41,7 @@ if ($query->execute(array(
 	//Returning lead ID
 	$return['lead-id']		= $data['lead-id'];
 	$return['tipo-accion']	= $data['tipo-accion'];
-	$return['historial']	= $result;
+	//$return['historial']	= $result;
 	echo json_encode($result, JSON_UNESCAPED_UNICODE);		
 		
 }
