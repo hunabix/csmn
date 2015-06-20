@@ -18,7 +18,7 @@
                 </div>
                 <!-- Recordatorio -->
                 <div class="input-group texto-recordatorio">
-                    <input name="recordatoriox" type="text" class="form-control"  placeholder="Recordatorio" value="">
+                    <input name="recordatorio" type="text" class="form-control"  placeholder="Recordatorio" value="">
                     <span class="input-group-addon"><i class="fa fa-file-o"></i></span>
                 </div>
             </div>
