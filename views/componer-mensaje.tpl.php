@@ -93,11 +93,39 @@ require_once("part/header.php"); ?>
 				    <input name="asunto" type="text" class="form-control"  placeholder="Asunto" value="" required>
 				    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 				</div>
-				<!-- Mensaje personalizado -->
-				<div class="input-group mensaje-contenido">
-				    <textarea name="mensaje_op" class="form-control"  placeholder="Mensaje" value="" required></textarea>
-				    <span class="input-group-addon"><i class="fa fa-file"></i></span>
-				</div>
+
+				<!-- SECCIÓN DEL WYSIWYG -->
+				<div id="mensaje-op">
+					<!-- Se manda a llamar la API de KCeditor -->
+					<script src="lib/ckeditor/ckeditor.js"></script>
+					<!-- Se coloca un <textarea> cualquiera y se le asigna un identificador en el nombre -->
+					<textarea name="mensaje_op"></textarea>
+				
+						<!-- Se coloca el textarea por una instancia de KCeditor colocando el identificador en la llamada al API -->
+				        <script>CKEDITOR.replace( 'mensaje_op', {
+							toolbar : [
+								{ name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source', '-', 'Preview', '-', 'Templates' ] },
+								{ name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+							{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
+								'/',
+								{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
+								{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl' ] },
+								{ name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+								{ name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar' ] },
+								'/',
+								{ name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+								{ name: 'colors', items: [ 'TextColor' ] },
+								{ name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
+								{ name: 'others', items: [ '-' ] },
+								{ name: 'about', items: [ 'About' ] },
+							],
+							templates_files : [ 'lib/ckeditor/plugins/templates/templates/cs-mail-templates.php' ]
+							} );
+						</script>
+				</div><!-- #mensaje-op -->
+
+
+				
 
 			</section>
 
