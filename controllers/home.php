@@ -9,6 +9,7 @@ confirm_logged_in(); //revisa si el operador ha ingresado
 $casos = array();
 $con = db_con();
 $query = $con->prepare('SELECT * FROM interesado_cs WHERE activo = :status ORDER BY recordatorio ASC LIMIT 30');
+//$query = $con->prepare('SELECT * FROM interesado_cs WHERE activo = :status ORDER BY FIELD(name = B, 'A', 'D', 'E', 'C')');
 $query->execute(array('status' => 'Si'));
 $casos = $query->fetchAll();
 $query->closeCursor();

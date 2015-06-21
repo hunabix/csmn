@@ -31,7 +31,8 @@ if ($query->execute(array(
 		$nvalue['tipo']			= $value['tipo'];
 		
 		// Saving info
-		$result[$key] = $nvalue;
+		$result['interaccion_'.$key] = $nvalue;
+		//unset($result[$key]);
 		//print_array($result);
 	}
 	
