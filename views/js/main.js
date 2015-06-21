@@ -284,7 +284,57 @@ $("#leads-form").on("submit", function(e){
         // Ver historial
         if ( data.tipo_accion == "ver-historial")
         {
+            
+            // console.log( data.historial.interaccion_0.tipo );
+            // console.log( data.historial['interaccion_0'].tipo );
+           
 
+            var historial = '';
+            // for ( i = 0; i < data.historial.length; i++ ) { 
+            i = 0;    
+
+            for ( interaccion in data.historial ) { 
+                var inte = 'interaccion_' + i;
+                i++;  
+                // console.log(interaccion);            
+                historial =  historial + '<div class="panel panel-default panel-historial">';
+                    historial = historial +'<div class="panel-heading" role="tab" id="heading-' + i +'">';
+                        historial = historial + '<a role="button" data-toggle="collapse" href="#collapse-' + i +'" aria-expanded="false" aria-controls="collapse-' + i +'" class="bar-title">';
+                            historial = historial + '<h4 class="panel-title">';
+                                historial = historial + '<span>' + data.historial[inte].fecha + '</span>';
+                                historial = historial + data.historial[inte].tipo;
+                            historial = historial + '</h4>';
+                        historial = historial + '</a>';
+                    historial = historial + '</div>';
+                    historial = historial + '<div id="collapse-' + i +'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-1">';
+                        historial = historial + '<div class="panel-body">';
+                            if ( data.historial[inte].mensaje_int != '' ) 
+                            {
+                                historial = historial + '<h4>Mensaje del interesado</h4>';
+                                historial = historial + '<p>' + data.historial[inte].mensaje_int + '</p>';
+                            } 
+                            if ( data.historial[inte].mensaje_op != '' ) 
+                            {
+                                historial = historial + '<h4>Mensaje del operador</h4>';
+                                historial = historial + '<p>' + data.historial[inte].mensaje_op + '</p>';
+                            } 
+                            if ( data.historial[inte].observaciones != '' ) 
+                            {
+                                historial = historial + '<h4>Observaciones</h4>';
+                                historial = historial + '<p>' + data.historial[inte].observaciones + '</p>';
+                            } 
+                            if ( data.historial[inte].alerta != '' ) 
+                            {
+                                historial = historial + '<h5>Alerta</h5>';
+                                historial = historial + '<p>' + data.historial[inte].alerta + '</p>';
+                            }                         
+                        historial = historial + '</div>';
+                    historial = historial + '</div>';           
+                historial = historial.concat( '</div>' );
+            }
+
+
+            $( "#acordeon-historial" ).html(historial);
         }
         // Eliminar
         if ( data.tipo_accion == "eliminar")
