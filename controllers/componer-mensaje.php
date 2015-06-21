@@ -36,7 +36,7 @@ $inicio_ins = fecha_inscripcion($inicio_ins);
 // Formateamos decha de inicio de cursos
 $inicio_cur = fecha_inicio_cursos($inicio_cur);
 
-print_array($data);
+//print_array($data);
 
 // Process new message if it's send
 if (isset($data['nuevo-mensaje'])) {
