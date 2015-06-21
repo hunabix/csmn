@@ -8,7 +8,7 @@ confirm_logged_in(); //revisa si el operador ha ingresado
 // Getting leads
 $casos = array();
 $con = db_con();
-$query = $con->prepare("SELECT * FROM interesado_cs WHERE activo = :status ORDER BY FIELD (prioridad, 'rojo', 'azul', 'verde'), recordatorio ASC LIMIT 30");
+$query = $con->prepare("SELECT * FROM interesado_cs WHERE activo = :status ORDER BY FIELD (prioridad, 'rojo', 'verde', 'azul'), recordatorio ASC LIMIT 100");
 $query->execute(array('status' => 'Si'));
 $casos = $query->fetchAll();
 $query->closeCursor();
