@@ -278,6 +278,7 @@ $("#leads-form").on("submit", function(e){
         // Editar datos de prospecto
         if ( data.tipo_accion == "editar-datos")
         {
+            $( "#nombre-prospecto" + data.lead_id).html( data.nombre + " " + data.apellidos );            
             $( '#alerta-exito' ).html( data.mensaje );
         }
         // Ver historial
@@ -297,7 +298,7 @@ $("#leads-form").on("submit", function(e){
             document.location.reload(); 
             $( '#alerta-exito' ).html( data.mensaje );
         }
-
+        //  CIERRE DE LAS ACCIONES
         // Cierro todos los modales activos
         if ( data.tipo_accion != "ver-historial" )
         {
