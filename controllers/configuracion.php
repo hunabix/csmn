@@ -7,6 +7,8 @@ confirm_logged_in(); //revisa si el operador ha ingresado
 
 $data = readRawPost(array_values($_POST));
 
+$data['form_procesado'] = 'no';
+
 global $connection;
 
 //COMIENZA A PROCESAR EL DOCUMENTO
@@ -62,7 +64,7 @@ if (isset($data['configuracion-btn'])) { // el formulario ha sido enviado
 	$resultado = mysql_query($consulta, $connection);
 	confirm_query($resultado);
 	
-	$form_procesado = 'si';
+	$data['form_procesado'] = $form_procesado = 'si';
 
 } //TERMINA COMPROBACION DE ENVIO DEL FORMULARIO
 
@@ -74,96 +76,45 @@ if (isset($data['configuracion-btn'])) { // el formulario ha sido enviado
 
 
 // ---------  Se obtiene la última info guardada en la tabla --------------//
-$configuracion = obten_configuracion();
+$data['configuracion'] = $configuracion = obten_configuracion();
 	
 	
 switch ($configuracion['temporada'] ) {
 	case $configuracion['temporada'] == 'Temporada A';
-	$tmpa = 'selected';
+	$data['tmpa'] = $tmpa = 'selected';
 	break;
 	case $configuracion['temporada'] == 'Temporada B';
-	$tmpb = 'selected';
+	$data['tmpb'] = $tmpb = 'selected';
 	break;
 	case $configuracion['temporada'] == 'Temporada C';
-	$tmpc = 'selected';
+	$data['tmpc'] = $tmpc = 'selected';
 	break;
 	case $configuracion['temporada'] == 'Temporada D';
-	$tmpd = 'selected';
+	$data['tmpd'] = $tmpd = 'selected';
 	break;
 	case $configuracion['temporada'] == 'Temporada E';
-	$tmpe = 'selected';
+	$data['tmpe'] = $tmpe = 'selected';
 	break;
 	case $configuracion['temporada'] == 'Temporada F';
-	$tmpf = 'selected';
+	$data['tmpf'] = $tmpf = 'selected';
 	break;
 }
 switch ($configuracion['ciclo_esc'] ) {
 	case $configuracion['ciclo_esc'] == 'ENERO - MARZO';
-	$cl1 = 'selected';
+	$data['cl1'] = $cl1 = 'selected';
 	break;
 	case $configuracion['ciclo_esc'] == 'ABRIL - JUNIO';
-	$cl2 = 'selected';
+	$data['cl2'] = $cl2 = 'selected';
 	break;
 	case $configuracion['ciclo_esc'] == 'JULIO - SEPTIEMBRE';
-	$cl3 = 'selected';
+	$data['cl3'] = $cl3 = 'selected';
 	break;
 	case $configuracion['ciclo_esc'] == 'OCTUBRE - DICIEMBRE';
-	$cl4 = 'selected';
+	$data['cl4'] = $cl4 = 'selected';
 	break;
 }
 
-
-
-?>
-
-<div id="content">
-	<h1 class="titulo">Configuración</h1>  
-	<?php if ($form_procesado == 'si' ) {
-		echo '<h1 class="aviso">Se ha guardado y enviado la información con éxito</h1>';
-	}?>
-	<div id="configuracion" class="contenedor">
-		<form method="post" action="">
-			<label style="margin-right:41px;" for="temporada"><strong>Elige la temporada:</strong></label>
-            <select name="temporada">
-				<option value="Temporada A" <?php echo $tmpa ;?>>Temporada A</option>
-				<option value="Temporada B" <?php echo $tmpb ;?>>Temporada B</option>
-				<option value="Temporada C" <?php echo $tmpc ;?>>Temporada C</option>
-				<option value="Temporada D" <?php echo $tmpd ;?>>Temporada D</option>
-				<option value="Temporada E" <?php echo $tmpe ;?>>Temporada E</option>
-				<option value="Temporada F" <?php echo $tmpf ;?>>Temporada F</option>
-			</select>
-            <br /><br />
-            <label style="margin-right:11px;" for="inicio-ins"><strong>Inicio de inscripciones:</strong></label>
-            <input name="inicio-ins" value="<?php echo $configuracion['inicio_ins'] ;?>" type="text" id="datepickerins">
-            <br /><br />
-            <label style="margin-right:61px;" for="inicio-cur"><strong>Inicio de cursos:</strong></label>
-            <input name="inicio-cur" value="<?php echo $configuracion['inicio_cur'] ;?>" type="text" id="datepickercur">    
-            <br /><br />
-            <label style="margin-right:84px;" for="ciclo-esc"><strong>Ciclo escolar:</strong></label>
-            <select name="ciclo-esc">
-				<option value="ENERO - MARZO" <?php echo $cl1 ;?>>ENERO - MARZO</option>
-				<option value="ABRIL - JUNIO" <?php echo $cl2 ;?>>ABRIL - JUNIO</option>
-				<option value="JULIO - SEPTIEMBRE" <?php echo $cl3 ;?>>JULIO - SEPTIEMBRE</option>
-				<option value="OCTUBRE - DICIEMBRE" <?php echo $cl4 ;?>>OCTUBRE - DICIEMBRE</option>
-			</select>
-            <br /><br />
-			<input name="configuracion-btn" type="submit" id="submit" value="Actualizar temporada" class="btn"/>
-		</form>
-		<script>
-		$(function() {
-			$( "#datepickercur, #datepickerins" ).datepicker({ dateFormat: "yy-mm-dd", minDate: 0, maxDate: "+12M +10D" });
-		});
-		function doSomething(form) {
-			form.action = form.inp.value;
-			return true;
-		}
-		</script>
-	</div><!-- fin #casos -->
-
-</div><!-- fin #content-->  
-<?php
-
-
+//print_array($data);
 
 //Llamando una vista
 view('configuracion', compact('data'));
