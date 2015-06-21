@@ -1,6 +1,6 @@
 <?php
 /*
-* Controlador del Componer mensaje / Página principal
+* Controlador de Componer mensaje
 */
 
 confirm_logged_in(); //revisa si el operador ha ingresado
@@ -12,6 +12,9 @@ if (isset($data['tipo-accion']))
 
 if (isset($data['nuevo-mensaje']))
 	$data['ids'] = $data[0];
+
+if (!$data['ids'])
+	header('Location: ' . cs_url);
 
 if (!is_array($data['ids'])) {
 	$new = $data['ids'];
