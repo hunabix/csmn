@@ -11,7 +11,7 @@
             <span class="fa fa-square-o check-icon"></span>
             <!-- Nombre -->
             <span id="nombre-prospecto<?= $caso['ID']; ?>" class="name">
-                <?= $caso['nombre']; ?>
+                <?= $caso['nombre']; ?> <?= $caso['apellidos']; ?>
             </span>
         </label>
     </div>

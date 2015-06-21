@@ -32,7 +32,7 @@
                     <span class="input-group-addon"><i class="fa fa-phone"></i></span>
                 </div>
                 <!-- País -->
-                <div class="input-group ciudad">
+                <div class="input-group pais">
                     <input name="pais" type="text" id="pais-prospecto" class="form-control"  placeholder="País" value="">
                     <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
                 </div>

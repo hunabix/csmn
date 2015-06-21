@@ -105,6 +105,7 @@
 	// RADIO BUTTON 
 	.fancy-radio {
 		padding-right: 2rem;
+		
 		.radio {
 			z-index: 9;
 			position: relative;
@@ -128,7 +129,6 @@
 		.fa-check-square-o + .name {
 			color: $primary-color;
 		}
-
 	}
 		// CHECKBOX 
 	.fancy-check {

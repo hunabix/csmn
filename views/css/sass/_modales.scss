@@ -36,7 +36,8 @@
 	
 	.nombre,
 	.correo,
-	.ciudad  {
+	.pais, 
+	.instrumento  {
 		width: 50%;
 		float: left;
 		padding: 0px 1rem 0px 0px;
@@ -44,7 +45,7 @@
 	}
 	.apellidos,
 	.telefono,
-	.instrumento {
+	.ciudad {
 		width: 50%;
 		float: left;
 		padding: 0px 0 0 1rem;
