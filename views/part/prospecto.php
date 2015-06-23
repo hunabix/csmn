@@ -35,7 +35,7 @@
         <!-- Agregar nota personalizada -->
         <a href="#" class="action nota" data-toggle="modal" data-target="#modal-multi" tipo-accion="agregar-nota"><i class="fa fa-pencil"></i></a>
         <!-- Agregar recordatorio -->
-        <a href="#" class="action recordatorio" data-toggle="modal" data-target="#modal-recordatorio" tipo-accion="recordatorio"><i class="fa fa-calendar"></i></a>
+        <a href="#" class="action recordatorio" data-toggle="modal" data-target="#modal-recordatorio" tipo-accion="recordatorio"><i class="fa fa-clock-o"></i></a>
         <!-- Cambiar prioridad -->
         <div class="dropdown contenedor-prioridad">
             <a class="action prioridad dropdown-toggle" type="button"  id="prioridad-dropdown<?= $caso['ID']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
@@ -56,7 +56,7 @@
         <!-- Inscripción a Musinetwork -->
         <a href="#" class="action inscripcion" data-toggle="modal" data-target="#modal-multi" tipo-accion="inscribir"><i class="fa fa-check"></i></a>
         <!-- Consultar historial -->
-        <a href="#" class="action historial" data-toggle="modal" data-target="#modal-historial" tipo-accion="ver-historial"><i class="fa fa-clock-o"></i></a>
+        <a href="#" class="action historial" data-toggle="modal" data-target="#modal-historial" tipo-accion="ver-historial"><i class="fa fa-history"></i></a>
         <!-- Eliminar prospecto -->
         <a href="#" class="action eliminar" data-toggle="modal" data-target="#modal-eliminar" tipo-accion="eliminar"><i class="fa fa-close"></i></a>
     </aside>
