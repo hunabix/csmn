@@ -35,7 +35,7 @@
                     <!-- <li><a href="#"><i class="fa fa-search "></i></a></li> -->
                     <!-- <li><a href="#"><i class="fa fa-bell"></i></a></li> -->
                     <!-- <li><a href="<?= cs_url; ?>/historial"><i class="fa fa-archive"></i></a></li> -->
-                    <li><a href="<?= cs_url; ?>/configuracion/"><i class="fa fa-cog"></i></a></li>
+                    <li><a href="<?= cs_url; ?>/configuracion"><i class="fa fa-cog"></i></a></li>
                 </ul>
             </nav>
         </div>

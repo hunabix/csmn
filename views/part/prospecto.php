@@ -33,21 +33,9 @@
         <!-- Realizar llamada -->
         <a href="#"  class="action llamada" data-toggle="modal" data-target="#modal-multi" tipo-accion="registrar-llamada"><i class="fa fa-phone"></i></a>
         <!-- Agregar nota personalizada -->
-        <a href="#" class="action nota" data-toggle="modal" data-target="#modal-multi" tipo-accion="agregar-nota"><i class="fa fa-file-text"></i></a>
-        <!-- Inscripción a Musinetwork -->
-        <a href="#" class="action inscripcion" data-toggle="modal" data-target="#modal-multi" tipo-accion="inscribir"><i class="fa fa-university"></i></a>
-        <!-- Reservar para futuros ciclos -->
-        <a href="#" class="action reservar" data-toggle="modal" data-target="#modal-reservar" tipo-accion="reservar"> <i class="fa fa-recycle"></i></a>
-        <!-- Enviar a lista general -->
-        <a href="#" class="action lista" data-toggle="modal" data-target="#modal-multi" tipo-accion="lista-general"><i class="fa fa-list"></i></a>
+        <a href="#" class="action nota" data-toggle="modal" data-target="#modal-multi" tipo-accion="agregar-nota"><i class="fa fa-pencil"></i></a>
         <!-- Agregar recordatorio -->
         <a href="#" class="action recordatorio" data-toggle="modal" data-target="#modal-recordatorio" tipo-accion="recordatorio"><i class="fa fa-calendar"></i></a>
-        <!-- Editar datos del prospecto -->
-        <a href="#" class="action editar-prospecto" data-toggle="modal" data-target="#modal-prospecto" tipo-accion="editar-datos"><i class="fa fa-user"></i></a>
-        <!-- Consultar historial -->
-        <a href="#" class="action historial" data-toggle="modal" data-target="#modal-historial" tipo-accion="ver-historial"><i class="fa fa-clock-o"></i></a>
-        <!-- Eliminar prospecto -->
-        <a href="#" class="action eliminar" data-toggle="modal" data-target="#modal-eliminar" tipo-accion="eliminar"><i class="fa fa-close"></i></a>
         <!-- Cambiar prioridad -->
         <div class="dropdown contenedor-prioridad">
             <a class="action prioridad dropdown-toggle" type="button"  id="prioridad-dropdown<?= $caso['ID']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
@@ -59,6 +47,18 @@
                 <a href="#" class="btn-prioridad prioridad-azul"><i class="fa fa-circle" tipo-accion="cambiar-prioridad"></i> </a>
             </div>
         </div>
+        <!-- Enviar a lista general -->
+        <a href="#" class="action lista" data-toggle="modal" data-target="#modal-multi" tipo-accion="lista-general"><i class="fa fa-sort-amount-asc"></i></a>
+        <!-- Reservar para futuros ciclos -->
+        <a href="#" class="action reservar" data-toggle="modal" data-target="#modal-reservar" tipo-accion="reservar"> <i class="fa fa-external-link"></i></a>
+        <!-- Editar datos del prospecto -->
+        <a href="#" class="action editar-prospecto" data-toggle="modal" data-target="#modal-prospecto" tipo-accion="editar-datos"><i class="fa fa-user"></i></a>
+        <!-- Inscripción a Musinetwork -->
+        <a href="#" class="action inscripcion" data-toggle="modal" data-target="#modal-multi" tipo-accion="inscribir"><i class="fa fa-check"></i></a>
+        <!-- Consultar historial -->
+        <a href="#" class="action historial" data-toggle="modal" data-target="#modal-historial" tipo-accion="ver-historial"><i class="fa fa-clock-o"></i></a>
+        <!-- Eliminar prospecto -->
+        <a href="#" class="action eliminar" data-toggle="modal" data-target="#modal-eliminar" tipo-accion="eliminar"><i class="fa fa-close"></i></a>
     </aside>
 </div>
 

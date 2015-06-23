@@ -153,7 +153,7 @@ require_once("part/header.php"); ?>
 			<!-- Mensaje personalizado -->
 			<h4 class="titulo">Comentarios adicionales</h4>
 			<div class="input-group comentarios-adicionales">
-				<textarea name="comentarios" class="form-control"  placeholder="Mensaje" value=""></textarea>
+				<textarea name="comentarios" class="form-control"  placeholder="Agregar un comentario a ésta interacción" value=""></textarea>
 				<span class="input-group-addon"><i class="fa fa-file"></i></span>
 			</div>
 
