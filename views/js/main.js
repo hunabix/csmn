@@ -28,6 +28,28 @@ $('#fecha-recordatorio').datepicker({
     color: 'green'
 
 });
+// CONFIGURACIÓN
+// datepicker para el modal de recordatorio
+$('#inicio-ins').datepicker({
+    weekStart:1,
+    format: 'yyyy/mm/dd',
+    color: 'green'
+
+});
+// datepicker para el modal de recordatorio
+$('#inicio-cur').datepicker({
+    weekStart:1,
+    format: 'yyyy/mm/dd',
+    color: 'green'
+
+});
+// datepicker para el modal de recordatorio
+$('#fin-cur').datepicker({
+    weekStart:1,
+    format: 'yyyy/mm/dd',
+    color: 'green'
+
+});
 /* LEADS
 --------------------------------------------- */
 // Muestra los iconos correspondientes al cargar o recargar la página

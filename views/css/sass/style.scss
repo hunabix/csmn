@@ -30,6 +30,22 @@ Version: 2.0
 }
 
 
+// Configuración
+.configuracion-form {
+
+	.campos-fechas {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		
+		.field {
+			margin-bottom: 1.5rem;
+			width: 25%;
+			padding: 0 2.5%;
+		}
+	}
+}
+
 // nuevo-registro-form
 
 .nuevo-registro-form {
