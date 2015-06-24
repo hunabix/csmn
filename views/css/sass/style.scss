@@ -29,11 +29,60 @@ Version: 2.0
 	display: none;
 }
 
-// Componer mensaje
-.mensaje-form {
-	max-width: 1300px;
-	display: block; 
-	margin: 3rem auto;
+
+// nuevo-registro-form
+
+.nuevo-registro-form {
+	
+	.datos-generales {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+
+		.field {
+			margin-bottom: 1.5rem;
+			width: 25%;
+			padding: 0 2.5%;
+			
+		}
+	}
+	
+	.info-adicional {
+		
+		.sub-titulo { margin: 1.5rem 0 }
+
+		.caja-opciones {
+			background: #eee;
+			padding: 1rem;
+			@include rounded(4px);
+			margin: .5rem 0;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
+
+			.fancy-check {
+				width: 33%;
+			}
+		}
+
+		.info-sobre {
+			padding: 1rem 0;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
+
+			.fancy-check {
+				width: 33%;
+				margin-bottom: .5rem;
+			}
+		}
+	}
+
+} 
+
+// mensaje
+.enviar-mensaje {
+
 	
 	.destinatarios {
 		border: #eee 1px solid;

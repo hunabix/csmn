@@ -14,7 +14,7 @@ require_once("part/header.php"); ?>
 		<h2 class="section-title">Componer mensaje</h2>
 		
 		<!-- Formulario componer mensaje -->
-		<form id="mensaje-form" name="mensaje-form" class="mensaje-form form" method="post" action="<?= cs_url; ?>/componer-mensaje" >
+		<form id="mensaje-form" name="mensaje-form" class="mensaje-form form enviar-mensaje contenedor" method="post" action="<?= cs_url; ?>/componer-mensaje" >
 			
 			<!-- Lista de destinatarios -->
 			<aside id="destinatarios" class="destinatarios">
@@ -99,33 +99,8 @@ require_once("part/header.php"); ?>
 					<!-- Se manda a llamar la API de KCeditor -->
 					<script src="lib/ckeditor/ckeditor.js"></script>
 					<!-- Se coloca un <textarea> cualquiera y se le asigna un identificador en el nombre -->
-					<textarea name="mensaje_op"></textarea>
-				
-						<!-- Se coloca el textarea por una instancia de KCeditor colocando el identificador en la llamada al API -->
-				        <script>CKEDITOR.replace( 'mensaje_op', {
-							toolbar : [
-								{ name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source', '-', 'Preview', '-', 'Templates' ] },
-								{ name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
-							{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
-								'/',
-								{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
-								{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl' ] },
-								{ name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
-								{ name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar' ] },
-								'/',
-								{ name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
-								{ name: 'colors', items: [ 'TextColor' ] },
-								{ name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
-								{ name: 'others', items: [ '-' ] },
-								{ name: 'about', items: [ 'About' ] },
-							],
-							templates_files : [ 'lib/ckeditor/plugins/templates/templates/cs-mail-templates.php' ]
-							} );
-						</script>
-				</div><!-- #mensaje-op -->
-
-
-				
+					<textarea name="mensaje_op"></textarea>						
+				</div>
 
 			</section>
 
@@ -159,8 +134,10 @@ require_once("part/header.php"); ?>
 
 
 			<!-- Botón enviar mensaje -->
-			<div class="login-btn">  
-			    <button type="submit" name="nuevo-mensaje" value="Finalizar" class="btn btn-primary btn-fill">Enviar mensaje por correo</button>
+			<div class="finalizar-btn">  
+			    <button type="submit" name="nuevo-mensaje" value="Finalizar" class="btn btn-primary btn-fill">
+			    	<i class="fa fa-check"></i> OK
+			    </button>
 			</div>
 
 		</form>

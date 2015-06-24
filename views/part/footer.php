@@ -7,7 +7,7 @@
 	</footer>
     
     <!-- Llamo a jQuery directo del CDN de Google -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
     <!-- Si es el fin del mundo y Google falla, uso la versión local -->
     <script>window.jQuery || document.write('<script src="views/js/support/jquery-2.1.4.min.js">\x3C/script>')</script>
     <!-- Scripts de JS de Boostrap -->
