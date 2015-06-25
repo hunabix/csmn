@@ -1,56 +1,56 @@
 
-$("#acordeon-historial").children().click(function (e) {
-    if ($(e.currentTarget).siblings().children(".collapsing").length > 0 ) {
-        return false;
-    }
-})
-
-
 /* DATE PICKERS
 --------------------------------------------- */
-
-// Activo datepicker para el campo en mag-form
+// mag-date en mag-form
 $('#mag-date').datepicker({
     weekStart:1,
     format: 'yyyy/mm/dd',
     color: 'green'
 });
-// Activo datepicker para el campo en mag-form
+// fecha-reserva en lead-form modal-reservar
 $('#fecha-reserva').datepicker({
     weekStart:1,
     format: 'yyyy/mm/dd',
     color: 'green'
 });
-// datepicker para el modal de recordatorio
+// fecha-recordatorio en lead form modal-recordatorio
 $('#fecha-recordatorio').datepicker({
     weekStart:1,
     format: 'yyyy/mm/dd',
     color: 'green'
-
 });
-// CONFIGURACIÓN
-// datepicker para el modal de recordatorio
+// inicio-ins en sección configuración 
 $('#inicio-ins').datepicker({
     weekStart:1,
     format: 'yyyy/mm/dd',
     color: 'green'
 
 });
-// datepicker para el modal de recordatorio
+// inicio-cur en sección configuración 
 $('#inicio-cur').datepicker({
     weekStart:1,
     format: 'yyyy/mm/dd',
     color: 'green'
 
 });
-// datepicker para el modal de recordatorio
+// fin-cur en sección configuración 
 $('#fin-cur').datepicker({
     weekStart:1,
     format: 'yyyy/mm/dd',
     color: 'green'
 
 });
-/* LEADS
+
+/* Acordeón
+--------------------------------------------- */
+// Historial
+$("#acordeon-historial").children().click(function (e) {
+    if ($(e.currentTarget).siblings().children(".collapsing").length > 0 ) {
+        return false;
+    }
+})
+
+/* CHECKS Y RADIO BUTTONS
 --------------------------------------------- */
 // Muestra los iconos correspondientes al cargar o recargar la página
 $("input:checked + .check-icon").addClass('fa-check-square-o');
@@ -71,9 +71,6 @@ $( "#uncheck-all" ).click(function( event ) {
     $("input:not(:checked) + .check-icon").removeClass('fa-check-square-o');
 });
 
-
-/* GENERAL
-------------------------------- */
 // Script que cambia el icono de los checkbox seleccionados o deseleccionados
 $('input[type=checkbox]').change(function(){
     $("input:checked + .check-icon").addClass('fa-check-square-o');
@@ -88,8 +85,16 @@ $('input[type=radio]').change(function(){
     $("input:not(:checked) + .radio-icon").addClass('fa-circle-o ');
     $("input:not(:checked) + .radio-icon").removeClass('fa-dot-circle-o');
 });
+/* Acciones en MAG-FORM
+------------------------------- */
+// agregar nota
+$( "#nota-mag" ).click(function() {
+    $( "#tipo-accion-mag" ).val( "agregar-nota" );
+    $( "#titulo-modal-multi-mag").html('Agregar nota personalizada');
+});
 
-/* Acciones del lead
+
+/* Acciones de LEADS-FORM
 ------------------------------- */
 // Componer mensaje
 $( ".mensaje" ).click(function() {
@@ -103,7 +108,7 @@ $( ".nota" ).click(function() {
     var leadTipoAccion = $(this).attr('tipo-accion');
     var modal = $('#modal-multi');
     $( "#lead-id" ).val( leadId );
-    $( "#tipo-accion" ).val( leadTipoAccion );
+    $( "#tipo-accion" ).val( "agregar-nota" );
     modal.find( "#titulo-modal-multi").html('Agregar nota personalizada');
 });
 // Registrar llamada
@@ -155,10 +160,6 @@ $( ".editar-prospecto" ).click(function() {
     $( "#tipo-accion" ).val( 'solicitar-datos' );
     $( "#leads-form" ).submit();
 });
-// // Actualizar datos de prospecto
-// $( ".editar-prospecto" ).click(function() {
-
-// });
 // Ver historial de interacciones
 $( ".historial" ).click(function() {
     var leadId = $(this).closest( '.lead' ).attr( 'id' );
@@ -201,17 +202,9 @@ $( ".prioridad-azul" ).click(function() {
     $( "#prioridad" ).val( 'azul' );
     $( "#leads-form" ).submit();
 });
-/* Modales MAG-FORM
-------------------------------- */
-// Registrar llamada
-$( ".llamada-mag" ).click(function() {
-    var leadTipoAccion = $(this).attr('tipo-accion');
-    var modal = $('#modal-multi-mag');
-    $( "#tipo-accion" ).val( leadTipoAccion );
-    modal.find( "#titulo-modal-multi-mag").html('Registrar llamada');
-});
 
-/* AJAX
+
+/* AJAX de MAG-FORM
 ------------------------------- */
 
 $( document ).ajaxStart(function() {
@@ -222,7 +215,6 @@ $( document ).ajaxComplete(function() {
 });
 
 $("#leads-form").on("submit", function(e){
-
     e.preventDefault();
     $.ajax({
         data: $("#leads-form").serialize(),
@@ -239,7 +231,6 @@ $("#leads-form").on("submit", function(e){
             console.log( "La solicitud se ha completado correctamente." );
             console.log( data );
         }
-
         /* Resultados de acciones
         ------------------------------- */
         // Registrar llamada
@@ -306,15 +297,11 @@ $("#leads-form").on("submit", function(e){
         // Ver historial
         if ( data.tipo_accion == "ver-historial")
         {
-            
             // console.log( data.historial.interaccion_0.tipo );
             // console.log( data.historial['interaccion_0'].tipo );
-           
-
             var historial = '';
             // for ( i = 0; i < data.historial.length; i++ ) { 
             i = 0;    
-
             for ( interaccion in data.historial ) { 
                 var inte = 'interaccion_' + i;
                 i++;  
@@ -354,8 +341,6 @@ $("#leads-form").on("submit", function(e){
                     historial = historial + '</div>';           
                 historial = historial.concat( '</div>' );
             }
-
-
             $( "#acordeon-historial" ).html(historial);
         }
         // Eliminar
@@ -396,12 +381,7 @@ $("#leads-form").on("submit", function(e){
     });
 });
 
-
-
-
-
-
-// Editor 
+// CKEDITOR
 CKEDITOR.replace( 'mensaje_op', {
     toolbar : [
         { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source', '-', 'Preview', '-', 'Templates' ] },

@@ -33,7 +33,7 @@
         <!-- Realizar llamada -->
         <a href="#"  class="action llamada" data-toggle="modal" data-target="#modal-multi" tipo-accion="registrar-llamada"><i class="fa fa-phone"></i></a>
         <!-- Agregar nota personalizada -->
-        <a href="#" class="action nota" data-toggle="modal" data-target="#modal-multi" tipo-accion="agregar-nota"><i class="fa fa-pencil"></i></a>
+        <a href="#" class="action nota" data-toggle="modal" data-target="#modal-multi"><i class="fa fa-pencil"></i></a>
         <!-- Agregar recordatorio -->
         <a href="#" class="action recordatorio" data-toggle="modal" data-target="#modal-recordatorio" tipo-accion="recordatorio"><i class="fa fa-clock-o"></i></a>
         <!-- Cambiar prioridad -->

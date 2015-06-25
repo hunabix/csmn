@@ -9,12 +9,10 @@
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
             <!-- Enviar correo -->
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-send"></i> Enviar correo</a></li>
+            <li role="presentation"><a id="mensaje-mag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-send"></i> Enviar correo</a></li>
             <!-- Registrar llamada -->
             <li role="presentation" class="divider"></li>
-
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="llamada-mag" data-toggle="modal" data-target="#modal-multi-mag" tipo-accion="llamada"><i class="fa fa-phone"></i> Registrar llamada</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-file-text"></i> Agregar nota</a></li>
+            <li role="presentation"><a id="nota-mag" data-toggle="modal" data-target="#modal-multi-mag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-pencil"></i> Agregar nota</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-university"></i> Inscribir</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-recycle"></i> Reservar</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-list"></i> Enviar a lista general</a></li>
@@ -37,7 +35,7 @@
         <button type="submit" name="mag-reminder-btn" class="btn btn-primary btn-fill">Programar</button>
     </div>
     
-    <!-- Modales para casos individuales
+    <!-- Modales para mag-form
     ================================================== --> 
     <!-- Multipropósito -->
     <?php require("modal-multi-mag.php");  ?> 
@@ -57,6 +55,6 @@
     <!-- Nombre del formulario -->
     <input type="hidden" name="formulario" value="mag-form">
     <!-- Tipo de acción -->
-    <input id="tipo-accion-mag" type="hidden" name="tipo-accion" value="">
-
+    <input id="tipo-accion-mag" type="hidden" name="tipo-accion-mag" value="">
+    <input id="prioridad-mag" type="hidden" name="prioridad-mag" value="">
 </form>
