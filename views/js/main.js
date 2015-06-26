@@ -203,10 +203,8 @@ $( ".prioridad-azul" ).click(function() {
     $( "#leads-form" ).submit();
 });
 
-
-/* AJAX de MAG-FORM
+/* AJAX 
 ------------------------------- */
-
 $( document ).ajaxStart(function() {
     $( ".loading" ).css( "display", "block" );              
 });
@@ -214,6 +212,36 @@ $( document ).ajaxComplete(function() {
     $( ".loading" ).css( "display", "none" );                   
 });
 
+/* AJAX de MAG-FORM
+------------------------------- */
+$("#mag-form").on("submit", function(e){
+    e.preventDefault();
+    $.ajax({
+        data: $("#mag-form").serialize(),
+        //Cambiar a type: POST si necesario
+        type: "POST",
+        // Formato de datos que se espera en la respuesta
+        dataType: "json",
+        // URL a la que se enviará la solicitud Ajax
+        url: "part/process.php",
+    })
+    .done(function( data, textStatus, jqXHR ) {
+        console.log( "La solicitud se ha completado correctamente." );
+        console.log( data );
+        $( "#trace-block" ).css( "display", "block" );
+        $( ".datos" ).html( data );
+    })
+    .fail(function( jqXHR, textStatus, errorThrown ) {
+         if ( console && console.log ) {
+             console.log( "La solicitud a fallado: " +  textStatus);
+         }
+         $('#trace-block .datos').html("La solicitud a fallado: " +  textStatus);
+         $('.contenido').css( "display", "block" ); 
+         $('.modal').modal('hide');
+    });
+});
+/* AJAX de LEAD-FORM
+------------------------------- */
 $("#leads-form").on("submit", function(e){
     e.preventDefault();
     $.ajax({
@@ -223,7 +251,6 @@ $("#leads-form").on("submit", function(e){
         // Formato de datos que se espera en la respuesta
         dataType: "json",
         // URL a la que se enviará la solicitud Ajax
-        // url: "controllers/procesar.php",
         url: "controllers/procesar.php",
     })
     .done(function( data, textStatus, jqXHR ) {
