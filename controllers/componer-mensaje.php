@@ -5,7 +5,15 @@
 
 confirm_logged_in(); //revisa si el operador ha ingresado
 
+//Get post data
 $data = readRawPost(array_values($_POST));
+
+//print_array($data);
+
+// Get last interaction
+$last_interaction = get_last_interaction($data['lead-id']);
+//print_array($last_interaction);
+$lead_info = get_lead_info_by_id($data['lead-id']);
 
 if (isset($data['tipo-accion']))
 	$data['ids'] = $data['lead-id'];
