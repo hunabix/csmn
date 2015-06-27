@@ -13,26 +13,25 @@
             <!-- Registrar llamada -->
             <li role="presentation" class="divider"></li>
             <li role="presentation"><a id="nota-mag" data-toggle="modal" data-target="#modal-multi-mag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-pencil"></i> Agregar nota</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-university"></i> Inscribir</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-recycle"></i> Reservar</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-list"></i> Enviar a lista general</a></li>
+            <li role="presentation"><a id="lista-mag" data-toggle="modal" data-target="#modal-multi-mag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-sort-amount-asc"></i> Lista general</a></li>
+            <li role="presentation"><a id="reservar-mag" data-toggle="modal" data-target="#modal-reservar-mag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-recycle"></i> Reservar</a></li>
             <li role="presentation" class="divider"></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-close"></i> Eliminar</a></li>
+            <li role="presentation"><a id="eliminar-mag" data-toggle="modal" data-target="#modal-eliminar-mag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-close"></i> Eliminar</a></li>
         </ul>
     </div>    
     <!-- Selector de fecha : col 2-->
     <div class="input-group mag-date ">
-       <input name="fecha-recordatorio" type="text" id="mag-date" class="form-control"  placeholder="dd/mm/aaaa" value="">
+       <input name="fecha-recordatorio-mag" type="text" id="mag-date" class="form-control"  placeholder="dd/mm/aaaa" value="">
        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
     </div>
     <!-- Recordatorio o sugerencia : col 3-->
     <div class="input-group mag-reminder">
-        <input name="recordatorio" type="text" id="mag-reminder" class="form-control" placeholder="Recordatorio" />
+        <input name="recordatorio-mag" type="text" id="mag-reminder" class="form-control" placeholder="Recordatorio" />
         <span class="input-group-addon"><i class="fa fa-file-o"></i></span>
     </div>
         <!-- Botón aplicar recordatorio col: 4 -->  
     <div class="mag-reminder-btn">         
-        <button type="submit" name="mag-reminder-btn" class="btn btn-primary btn-fill">Programar</button>
+        <button id="mag-reminder-btn" name="mag-reminder-btn" class="btn btn-primary btn-fill">Programar</button>
     </div>
     
     <!-- Modales para mag-form
@@ -40,15 +39,9 @@
     <!-- Multipropósito -->
     <?php require("modal-multi-mag.php");  ?> 
     <!-- Reservar a futuros ciclos -->
-    <?php // require("modal-reservar-mag.php");  ?>
-    <!-- Recordatorios -->
-    <?php // require("modal-recordatorio-mag.php");  ?>
-    <!-- Edición de datos de prospecto -->
-    <?php // require("modal-editar-prospecto-mag.php");  ?>
-    <!-- Historial de interacciones -->
-    <?php // require("modal-historial-mag.php");  ?>
-    <!-- Borrar prospecto -->
-    <?php // require("modal-eliminar-mag.php");  ?>
+    <?php require("modal-reservar-mag.php");  ?>
+    <!-- Eliminar -->
+    <?php require("modal-eliminar-mag.php");  ?>
     
     <!-- Modales para casos individuales
     ================================================== -->

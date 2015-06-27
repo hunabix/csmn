@@ -35,7 +35,7 @@
         <!-- Agregar nota personalizada -->
         <a href="#" class="action nota" data-toggle="modal" data-target="#modal-multi"><i class="fa fa-pencil"></i></a>
         <!-- Agregar recordatorio -->
-        <a href="#" class="action recordatorio" data-toggle="modal" data-target="#modal-recordatorio" tipo-accion="recordatorio"><i class="fa fa-clock-o"></i></a>
+        <a href="#" class="action recordatorio" data-toggle="modal" data-target="#modal-recordatorio"><i class="fa fa-clock-o"></i></a>
         <!-- Cambiar prioridad -->
         <div class="dropdown contenedor-prioridad">
             <a class="action prioridad dropdown-toggle" type="button"  id="prioridad-dropdown<?= $caso['ID']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
@@ -48,9 +48,9 @@
             </div>
         </div>
         <!-- Enviar a lista general -->
-        <a href="#" class="action lista" data-toggle="modal" data-target="#modal-multi" tipo-accion="lista-general"><i class="fa fa-sort-amount-asc"></i></a>
+        <a href="#" class="action lista" data-toggle="modal" data-target="#modal-multi"><i class="fa fa-sort-amount-asc"></i></a>
         <!-- Reservar para futuros ciclos -->
-        <a href="#" class="action reservar" data-toggle="modal" data-target="#modal-reservar" tipo-accion="reservar"> <i class="fa fa-external-link"></i></a>
+        <a href="#" class="action reservar" data-toggle="modal" data-target="#modal-reservar"> <i class="fa fa-external-link"></i></a>
         <!-- Editar datos del prospecto -->
         <a href="#" class="action editar-prospecto" data-toggle="modal" data-target="#modal-prospecto" tipo-accion="editar-datos"><i class="fa fa-user"></i></a>
         <!-- Inscripción a Musinetwork -->

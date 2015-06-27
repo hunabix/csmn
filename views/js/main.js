@@ -85,12 +85,105 @@ $('input[type=radio]').change(function(){
     $("input:not(:checked) + .radio-icon").addClass('fa-circle-o ');
     $("input:not(:checked) + .radio-icon").removeClass('fa-dot-circle-o');
 });
+
+
+
+
+/* AJAX 
+------------------------------- */
+$( document ).ajaxStart(function() {
+    $( ".loading" ).css( "display", "block" );              
+});
+$( document ).ajaxComplete(function() {
+    $( ".loading" ).css( "display", "none" );                   
+});
+
 /* Acciones en MAG-FORM
 ------------------------------- */
 // agregar nota
 $( "#nota-mag" ).click(function() {
     $( "#tipo-accion-mag" ).val( "agregar-nota" );
     $( "#titulo-modal-multi-mag").html('Agregar nota personalizada');
+});
+// Agregar recordatorio
+$( "#mag-reminder-btn").click(function( e ) {
+    e.preventDefault();
+    $( "#tipo-accion-mag" ).val( "recordatorio" );
+    $( "#mag-form" ).submit();
+});
+// Enviar a lista general
+$( "#lista-mag").click(function() {
+    $( "#tipo-accion-mag" ).val( "lista-general" );
+    $( "#titulo-modal-multi-mag").html('Enviar a lista general');
+});
+// Enviar a lista general
+$( "#reservar-mag").click(function() {
+    $( "#tipo-accion-mag" ).val( "reservar" );
+});
+// Eliminar
+$( "#eliminar-mag").click(function() {
+    $( "#tipo-accion-mag" ).val( "eliminar" );
+});
+
+/* AJAX de MAG-FORM
+------------------------------- */
+$("#mag-form").on("submit", function(e){
+    e.preventDefault();
+    $.ajax({
+        data: $("#mag-form").serialize(),
+        //Cambiar a type: POST si necesario
+        type: "POST",
+        // Formato de datos que se espera en la respuesta
+        dataType: "json",
+        // URL a la que se enviará la solicitud Ajax
+        // url: "views/part/process.php", 
+        url: "controllers/procesar.php",
+    })
+    .done(function( data, textStatus, jqXHR ) {
+        console.log( "La solicitud se ha completado correctamente." );
+        console.log( data );
+        /* Resultados de acciones
+        ------------------------------- */
+        // Agregar nota
+        if ( data.tipo_accion == "agregar-nota")
+        {
+            $( '#alerta-exito' ).html( data.mensaje );
+            document.location.reload(); 
+        }
+        if ( data.tipo_accion == "recordatorio")
+        {
+            $( '#alerta-exito' ).html( data.mensaje );
+            document.location.reload(); 
+        }
+        if ( data.tipo_accion == "reservar")
+        {
+            $( '#alerta-exito' ).html( data.mensaje );
+            document.location.reload(); 
+        }
+        if ( data.tipo_accion == "eliminar")
+        {
+            $( '#alerta-exito' ).html( data.mensaje );
+            // document.location.reload(); 
+        }
+
+        //  CIERRE DE LAS ACCIONES
+        // Cierro todos los modales activos
+        $('.modal').modal('hide');
+        // muestro el mensaje de éxito
+        $('#alerta-exito').addClass('muestra');
+        // Retiro el mensaje de éxito
+        setTimeout(function () { 
+            $('#alerta-exito').removeClass('muestra');
+        }, 1200);  
+    })
+    .fail(function( jqXHR, textStatus, errorThrown ) {
+         if ( console && console.log ) {
+             console.log( "La solicitud a fallado: " +  textStatus);
+         }
+         $('#trace-block .datos').html("La solicitud a fallado: " +  textStatus);
+         $('.contenido').css( "display", "block" ); 
+         $('.modal').modal('hide');
+    });
 });
 
 
@@ -135,7 +228,7 @@ $( ".lista" ).click(function() {
     var leadTipoAccion = $(this).attr('tipo-accion');
     var modal = $('#modal-multi');
     $( "#lead-id" ).val( leadId );
-    $( "#tipo-accion" ).val( leadTipoAccion );
+    $( "#tipo-accion" ).val( "lista-general" );
     modal.find( "#titulo-modal-multi").html('Enviar a lista general');
 });
 // Reservar para futuros ciclos
@@ -143,14 +236,14 @@ $( ".reservar" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     $( "#lead-id" ).val( leadId );
-    $( "#tipo-accion" ).val( leadTipoAccion );
+    $( "#tipo-accion" ).val( "reservar" );
 });
 // Agregar recordatorio
 $( ".recordatorio" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     $( "#lead-id" ).val( leadId );
-    $( "#tipo-accion" ).val( leadTipoAccion );
+    $( "#tipo-accion" ).val( "recordatorio" );
 });
 // Solicitar datos de prospecto
 $( ".editar-prospecto" ).click(function() {
@@ -201,44 +294,6 @@ $( ".prioridad-azul" ).click(function() {
     $( "#tipo-accion" ).val( "cambiar-prioridad" );
     $( "#prioridad" ).val( 'azul' );
     $( "#leads-form" ).submit();
-});
-
-/* AJAX 
-------------------------------- */
-$( document ).ajaxStart(function() {
-    $( ".loading" ).css( "display", "block" );              
-});
-$( document ).ajaxComplete(function() {
-    $( ".loading" ).css( "display", "none" );                   
-});
-
-/* AJAX de MAG-FORM
-------------------------------- */
-$("#mag-form").on("submit", function(e){
-    e.preventDefault();
-    $.ajax({
-        data: $("#mag-form").serialize(),
-        //Cambiar a type: POST si necesario
-        type: "POST",
-        // Formato de datos que se espera en la respuesta
-        dataType: "json",
-        // URL a la que se enviará la solicitud Ajax
-        url: "part/process.php",
-    })
-    .done(function( data, textStatus, jqXHR ) {
-        console.log( "La solicitud se ha completado correctamente." );
-        console.log( data );
-        $( "#trace-block" ).css( "display", "block" );
-        $( ".datos" ).html( data );
-    })
-    .fail(function( jqXHR, textStatus, errorThrown ) {
-         if ( console && console.log ) {
-             console.log( "La solicitud a fallado: " +  textStatus);
-         }
-         $('#trace-block .datos').html("La solicitud a fallado: " +  textStatus);
-         $('.contenido').css( "display", "block" ); 
-         $('.modal').modal('hide');
-    });
 });
 /* AJAX de LEAD-FORM
 ------------------------------- */
@@ -297,7 +352,6 @@ $("#leads-form").on("submit", function(e){
             // prospecto.find('text-reminder').html( 'ke ase' );
 
             // Solución temporal
-            // document.location.reload(); 
             $( '#alerta-exito' ).html( data.mensaje );
         }
         // Solicitar datos de prospecto
@@ -409,22 +463,26 @@ $("#leads-form").on("submit", function(e){
 });
 
 // CKEDITOR
-CKEDITOR.replace( 'mensaje_op', {
-    toolbar : [
-        { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source', '-', 'Preview', '-', 'Templates' ] },
-        { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
-        { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
-        '/',
-        { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
-        { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl' ] },
-        { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
-        { name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar' ] },
-        '/',
-        { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
-        { name: 'colors', items: [ 'TextColor' ] },
-        { name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
-        { name: 'others', items: [ '-' ] },
-        { name: 'about', items: [ 'About' ] },
-        ],
-    templates_files : [ 'lib/ckeditor/plugins/templates/templates/cs-mail-templates.php' ]
-} );
+
+if(!($('#mensaje_op').length == 0)) {
+    CKEDITOR.replace( 'mensaje_op', {
+        toolbar : [
+            { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source', '-', 'Preview', '-', 'Templates' ] },
+            { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+            { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
+            '/',
+            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
+            { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl' ] },
+            { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+            { name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar' ] },
+            '/',
+            { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+            { name: 'colors', items: [ 'TextColor' ] },
+            { name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
+            { name: 'others', items: [ '-' ] },
+            { name: 'about', items: [ 'About' ] },
+            ],
+        templates_files : [ 'lib/ckeditor/plugins/templates/templates/cs-mail-templates.php' ]
+    } );
+}
+

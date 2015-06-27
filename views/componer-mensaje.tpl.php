@@ -99,7 +99,7 @@ require_once("part/header.php"); ?>
 					<!-- Se manda a llamar la API de KCeditor -->
 					<script src="lib/ckeditor/ckeditor.js"></script>
 					<!-- Se coloca un <textarea> cualquiera y se le asigna un identificador en el nombre -->
-					<textarea name="mensaje_op"></textarea>						
+					<textarea id="mensaje_op"  name="mensaje_op"></textarea>						
 				</div>
 
 			</section>
