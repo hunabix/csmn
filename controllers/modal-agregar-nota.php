@@ -17,10 +17,12 @@ $lead = array();
 $con = db_con();
 $query = $con->prepare('INSERT INTO interaccion_cs (tipo, id_interesado, fecha, observaciones) VALUES (:tipo, :id_interesado, :fecha, :observaciones)');
 
+$new_status_date = date("Y-m-d H:i:s");
+
 if ($query->execute(array(
 			'tipo' => 'Nota personalizada del operador',
 			'id_interesado' => $data['lead-id'],
-			'fecha' => date("Y-m-d H:i:s"),
+			'fecha' => $new_status_date,
 			'observaciones' => $data['comentario'],
 		))) {
 			
@@ -30,10 +32,18 @@ if ($query->execute(array(
 	//Unflag old last interaction and falg new last interaction
 	update_last_interaction($last_interaction['ID'],$lastId);
 
+	//Retrieving fecha_status
+	$status_date = fecha_en_array($new_status_date);
+
 	//Returning lead ID
 	$return['lead_id'] = $data['lead-id'];
 	$return['tipo_accion'] = $data['tipo-accion'];
 	$return['mensaje'] = 'Se agregó una nota a ' . $lead_info['nombre'] . ' ' . $lead_info['apellidos'];
+	$return['estatus'] = 'Nota personalizada del operador';
+	$return['fecha_estatus'] =  $status_date['dia'] . ' ' .$status_date['mes_texto_corto'];
+	$return['nombre'] = $lead_info['nombre'];
+	$return['apellidos'] = $lead_info['apellidos'];
+
 	echo json_encode($return, JSON_UNESCAPED_UNICODE);
 
 }
