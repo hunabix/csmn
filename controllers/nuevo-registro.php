@@ -6,11 +6,12 @@
 confirm_logged_in(); //revisa si el operador ha ingresado
 
 $data = readRawPost(array_values($_POST));
+//print_array($data);
 
 global $connection;
 //COMIENZA A PROCESAR EL DOCUMENTO
 
-$nombre = ""; $mail = ""; $telefono = ""; $instrumento = "";
+$nombre = ""; $apellidos = ""; $mail = ""; $telefono = ""; $instrumento = "";
 $pais = ""; $ciudad = ""; $medio_contacto = ""; 
 $info_sobre[1] = ""; $info_sobre[2] = ""; $info_sobre[3] = ""; $info_sobre[4] = ""; $info_sobre[5] = ""; $info_sobre[6] = ""; $info_sobre[7] = "";
 $info_cursos[1] = ""; $info_cursos[2] = "";  $info_cursos[3] = "";  $info_cursos[4] = "";  $info_cursos[5] = "";  $info_cursos[6] = "";
@@ -18,13 +19,14 @@ $info_cert[1] = ""; $info_cert[2] = ""; $info_cert[3] = ""; $info_cert[4] = ""; 
 $mensaje_int =""; $mensaje_op=""; $asunto="Equipo Musinetwork"; $responder_ahora='no'; $firma='';
 $inicio_ins = ''; $inicio_cur = '';	$ciclo_esc = ''; $tipo_respuesta = '';
 
-if (isset($data['nuevo-registro-btn'])) { // el formulario ha sido enviado
+if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 
 	// ------------------------------------------------------------ ------------//
 	// ---------  SI ESTA CORRECTO TODO, SE PROCESA LA INFORMACIÓN  ------------//
 	// -------------------------------------------------------------------------//
 	if(isset($data['nombre'])){ $nombre = utf8_decode($data['nombre']); }
-	if(isset($data['mail'])){ $mail = $data['mail']; }
+	if(isset($data['apellidos'])){ $apellidos = utf8_decode($data['apellidos']); }
+	if(isset($data['correo'])){ $mail = $data['correo']; }
 	if(isset($data['telefono'])){ $telefono = $data['telefono']; }
 	if(isset($data['instrumento'])){ $instrumento = utf8_decode($data['instrumento']); }
 	if(isset($data['pais'])){ $pais = utf8_decode($data['pais']); }
@@ -62,6 +64,7 @@ if (isset($data['nuevo-registro-btn'])) { // el formulario ha sido enviado
 	$consulta = "INSERT 
 				 INTO interesado_cs (
 				 nombre,
+				 apellidos,
 				 email,
 				 telefono,
 				 pais,
@@ -69,7 +72,7 @@ if (isset($data['nuevo-registro-btn'])) { // el formulario ha sido enviado
 				 instrumento,
 				 medio_contacto
 				)
-				VALUES ('$nombre','$mail', '$telefono', '$pais', '$ciudad', '$instrumento', '$medio_contacto')";
+				VALUES ('$nombre','$apellidos','$mail', '$telefono', '$pais', '$ciudad', '$instrumento', '$medio_contacto')";
 	$resultado = mysql_query($consulta, $connection);
 	confirm_query($resultado);
 	
@@ -181,25 +184,6 @@ if (isset($data['nuevo-registro-btn'])) { // el formulario ha sido enviado
 		$inicio_cur = $configuracion['inicio_cur'];
 		$ciclo_esc = $configuracion['ciclo_esc'];
 		
-		// Función que convierte meses de número a texto
-		function genMonth_Text($m) {
-			switch ($m) {
-				case 01: $month_text = "Enero"; break;
-				case 02: $month_text = "Febrero"; break;
-				case 03: $month_text = "Marzo"; break;
-				case 04: $month_text = "Abril"; break;
-				case 05: $month_text = "Mayo"; break;
-				case 06: $month_text = "Junio"; break;
-				case 07: $month_text = "Julio"; break;
-				case 08: $month_text = "Agosto"; break;
-				case 09: $month_text = "Septiembre"; break;
-				case 10: $month_text = "Octubre"; break;
-				case 11: $month_text = "Noviembre"; break;
-				case 12: $month_text = "Diciembre"; break;
-			}
-			return ($month_text);
-		}
-		
 		// Formateamos fecha d einscripción
 		$inicio_ins = explode("-",$inicio_ins);
 		$y = $inicio_ins[0];
@@ -288,30 +272,6 @@ if (isset($data['nuevo-registro-btn'])) { // el formulario ha sido enviado
 			// -----------------------------------------------------------------//
 			// ---------  SE PREPARA Y ENVÍA EL EMAIL AL ALUMNO  --------------//
 			// ----------------------------------------------------------------//
-
-			//headers must be an array
-			
-			$from = "Musinetwork School of Music <informacion@musinetwork.com>";
-			//$to = $mail; //DEV descomentar
-			$to = 'soporte@inovanto.com'; //DEV comentar
-			$subject = base64_encode( $asuntop ) ;
-			$headers = array (
-				'From' => $from,
-				'To' => $to,
-				'Subject' => "=?UTF-8?B?" . $subject . "?=",
-				'MIME-Version' => '1.0',
-				'Content-Type' => 'text/html; charset=utf-8',
-				'Content-Transfer-Encoding' => '8bit',
-				//'Reply-To' => 'reply@address.com' 
-			);
-			
-			//$to = $mail;
-			//$subject = $asuntop;
-			
-			//$headers = "From: Musinetwork School of Music <informacion@musinetwork.com>\r\n";
-			//$headers = "From: informacion@musinetwork.com\r\n";
-			//$headers .= "MIME-Version: 1.0\r\n";
-			//$headers .= "Content-Type: text/html; charset=utf-8\r\n";
 			 
 			$message = '<html>';
 			  
@@ -362,29 +322,41 @@ if (isset($data['nuevo-registro-btn'])) { // el formulario ha sido enviado
 			$message .= '</table><!-- Cierra tabla contenedor -->';
 			$message .= '</td></tr></table><!-- Cierra tabla principal -->';
 			$message .= '</body></html>';
-			 
-			require_once "../smtp-mailer/Mail.php"; // calls pear mail packages
+
+			//Calling library and setting up credentials for Amazon SES
+			require_once "lib/PHPMailer/PHPMailerAutoload.php";
 			$host = "ssl://email-smtp.us-east-1.amazonaws.com";
 			$port = "465";
 			$username = "AKIAIXA2XV6TZOOCK5KQ";
 			$password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
-			
-			$smtp = Mail::factory('smtp', //prepares smtp vars
-			array ('host' => $host,
-			 'port' => $port,
-			 'auth' => true,
-			 'username' => $username,
-			 'password' => $password));
-			
-			//$mail = $smtp->send($to, $headers, $message); //DEV
-			
-			if (PEAR::isError($mail)) {
-			echo("<p>" . $mail->getMessage() . "</p>");
+			//$to = $mail; DEV
+			$to = 'hibamiru@gmail.com';
+			//$to = 'hibamiru@gmail.com'; //mnmail
+			$subject = utf8_encode($asuntop);
+
+			//Preparing mail
+			$mail = new PHPMailer();
+			$mail->CharSet = 'UTF-8';
+			$mail->isSMTP();
+			$mail->isHTML(true);
+			$mail->SMTPDebug = 0;
+			$mail->Debugoutput = 'html';
+			$mail->Host = "ssl://email-smtp.us-east-1.amazonaws.com";
+			$mail->Port = 465;
+			$mail->SMTPAuth = true;
+			$mail->Username = "AKIAIXA2XV6TZOOCK5KQ";
+			$mail->Password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
+			$mail->addAddress($to, '');
+			$mail->Subject = $subject;
+			$mail->Body = $message;
+			$mail->setFrom('informacion@musinetwork.com', 'Musinetwork School of Music');
+
+			//Send the message and check for errors
+			if (!$mail->send()) {
+				//echo "Mailer Error: " . $mail->ErrorInfo;
 			} else {
-			//echo("<p>Message successfully sent!</p>");
+				//echo "Message sent!";
 			}
-			
-			//mail($to, $subject, $message, $headers);
 
 	}
 	header('Location: ' . cs_url);

@@ -225,7 +225,8 @@ if (isset($data['nuevo-mensaje'])) {
 				$message .= '</td></tr></table><!-- Cierra tabla principal -->';
 				$message .= '</body></html>';
 		
-				require_once "lib/PHPMailer/PHPMailerAutoload.php"; // PHPMailer
+				//Calling library and setting up credentials for Amazon SES
+				require_once "lib/PHPMailer/PHPMailerAutoload.php";
 				$host = "ssl://email-smtp.us-east-1.amazonaws.com";
 				$port = "465";
 				$username = "AKIAIXA2XV6TZOOCK5KQ";
@@ -235,7 +236,7 @@ if (isset($data['nuevo-mensaje'])) {
 				//$to = 'hibamiru@gmail.com'; //mnmail
 				$subject = utf8_encode($asuntop);
 			
-				//Refactoring mail php
+				//Preparing mail
 				$mail = new PHPMailer();
 				$mail->CharSet = 'UTF-8';
 				$mail->isSMTP();
@@ -250,12 +251,9 @@ if (isset($data['nuevo-mensaje'])) {
 				$mail->addAddress($to, '');
 				$mail->Subject = $subject;
 				$mail->Body = $message;
-				$mail->setFrom('informacion@musinetwork.com', 'Musinetwork School of Music');
+				$mail->setFrom('informacion@musinetwork.com', 'Musinetwork School of Music');		
 				
-				//$mail = $smtp->send($to, $headers, $message);
-		
-				
-				//send the message, check for errors
+				//Send the message and check for errors
 				if (!$mail->send()) {
 					//echo "Mailer Error: " . $mail->ErrorInfo;
 				} else {
@@ -265,8 +263,6 @@ if (isset($data['nuevo-mensaje'])) {
 					//die;
 					//echo "Message sent!";
 				}
-				
-				//mail($to, $subject, $message, $headers);
 			
 			
 		//fin del EX for
