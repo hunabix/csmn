@@ -6,6 +6,7 @@
 confirm_logged_in(); //revisa si el operador ha ingresado
 
 $data = readRawPost(array_values($_POST));
+//print_array($data);
 
 $data['form_procesado'] = 'no';
 
@@ -77,6 +78,10 @@ if (isset($data['configuracion-btn'])) { // el formulario ha sido enviado
 
 // ---------  Se obtiene la última info guardada en la tabla --------------//
 $data['configuracion'] = $configuracion = obten_configuracion();
+
+// Processing dates
+$data['configuracion']['inicio_ins'] = $data['configuracion']['inicio_ins'];
+$data['configuracion']['inicio_cur'] = $data['configuracion']['inicio_cur'];
 	
 	
 switch ($configuracion['temporada'] ) {
@@ -114,7 +119,7 @@ switch ($configuracion['ciclo_esc'] ) {
 	break;
 }
 
-//print_array($data);
+print_array($data);
 
 //Llamando una vista
 view('configuracion', compact('data'));

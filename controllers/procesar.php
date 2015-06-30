@@ -19,7 +19,7 @@ if (!isset($data['formulario']))
 	die;
 
 // Procces leads form
-if ($data['formulario'] == 'leads-form') {
+if ($data['formulario'] == 'leads-form' OR $data['formulario'] == 'mag-form') {
 
 	load_modal($data['tipo-accion'], compact('data'));
 	exit();
