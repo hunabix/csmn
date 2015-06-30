@@ -49,7 +49,7 @@ foreach ($casos as $caso => $value) {
 
 	// Adding last interaction info
 	$value['ultima_interaccion'] =  $last_interaction;
-	$value['fecha_estatus'] =  fecha_en_array($last_interaction['fecha']);;
+	$value['fecha_estatus'] =  fecha_en_array($last_interaction['fecha']);
 
 	// Adding reminder date
 	$value['fecha_recordatorio'] =  fecha_en_array($value['recordatorio']);
