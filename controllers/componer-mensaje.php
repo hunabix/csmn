@@ -10,11 +10,6 @@ $data = readRawPost(array_values($_POST));
 
 //print_array($data);
 
-// Get last interaction
-$last_interaction = get_last_interaction($data['lead-id']);
-//print_array($last_interaction);
-$lead_info = get_lead_info_by_id($data['lead-id']);
-
 if (isset($data['tipo-accion']))
 	$data['ids'] = $data['lead-id'];
 
@@ -51,6 +46,10 @@ $inicio_cur = fecha_inicio_cursos($inicio_cur);
 
 // Process new message if it's send
 if (isset($data['nuevo-mensaje'])) {
+	
+	//Extract ids to be processed
+	$ids = extract_ids($data);
+	//print_array($ids);
 
 	//Mensajes generales	
 	if(isset($data['tipo'])){  $tipo = utf8_decode($data['tipo']); }
@@ -62,11 +61,15 @@ if (isset($data['nuevo-mensaje'])) {
 	//Enable old connection
 	global $connection;
 
-	foreach ($data['ids'] as $lead) {
+	foreach ($ids as $lead) {
+		
+		// Get last interaction
+		$last_interaction = get_last_interaction($lead);
+		//print_array($last_interaction);
 		
 		// Get lead info
 		$lead_info = get_lead_info_by_id($lead);
-		print_array($lead_info);
+		//print_array($lead_info);
 	
 				
 		// ------------------------------------------------------------ ------------//
@@ -86,6 +89,7 @@ if (isset($data['nuevo-mensaje'])) {
 					)
 					VALUES ('$tipo','$lead', '$fecha', '$mensaje_op', '', '$comentarios')";
 		$resultado = mysql_query($consulta, $connection);
+		$lastId = mysql_insert_id();
 		confirm_query($resultado);
 		
 		$configuracion = obten_configuracion();
@@ -227,7 +231,8 @@ if (isset($data['nuevo-mensaje'])) {
 				$username = "AKIAIXA2XV6TZOOCK5KQ";
 				$password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
 				//$to = $email[$i]; DEV
-				$to = 'hibamiru@gmail.com';	
+				$to = 'hibamiru@gmail.com';
+				//$to = 'hibamiru@gmail.com'; //mnmail
 				$subject = utf8_encode($asuntop);
 			
 				//Refactoring mail php
@@ -254,6 +259,10 @@ if (isset($data['nuevo-mensaje'])) {
 				if (!$mail->send()) {
 					//echo "Mailer Error: " . $mail->ErrorInfo;
 				} else {
+					update_last_interaction($last_interaction['ID'],$lastId);
+					//echo 'OI'.$last_interaction['ID'];
+					//echo 'NI'.$lastId;
+					//die;
 					//echo "Message sent!";
 				}
 				

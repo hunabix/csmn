@@ -270,6 +270,18 @@ function get_lead_info_by_id($id) {
 	}
 }
 
+// Extract ids from arrays
+function extract_ids($arr_main_array) {
+	$arr_result = array();
+	foreach($arr_main_array as $key => $value){
+		$exp_key = explode('-', $key);
+		if($exp_key[0] == 'id_interesado'){
+			 $arr_result[] = $value;
+		}
+	}
+	return ($arr_result);
+}
+
 //*******************OLD FUNCTIONS BELOW*******************************
 
 // Confirma si la consulta se realizó con éxito
