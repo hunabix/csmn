@@ -8,7 +8,9 @@
 //echo print_array($data);
 
 // Get last interaction
-$last_interaction = get_last_interaction($data['lead-id']);
+if ($data['formulario'] == 'leads-form') {
+	$last_interaction = get_last_interaction($data['lead-id']);
+}
 
 $lead_info = get_lead_info_by_id($data['lead-id']);
 

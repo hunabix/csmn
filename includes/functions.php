@@ -270,8 +270,8 @@ function get_lead_info_by_id($id) {
 	}
 }
 
-// Extract ids from arrays
-function extract_ids($arr_main_array) {
+// Extract ids from interesado arrays
+function extract_interesado_ids($arr_main_array) {
 	$arr_result = array();
 	foreach($arr_main_array as $key => $value){
 		$exp_key = explode('-', $key);

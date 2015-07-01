@@ -48,7 +48,7 @@ $inicio_cur = fecha_inicio_cursos($inicio_cur);
 if (isset($data['nuevo-mensaje'])) {
 	
 	//Extract ids to be processed
-	$ids = extract_ids($data);
+	$ids = extract_interesado_ids($data);
 	//print_array($ids);
 
 	//Mensajes generales	
