@@ -332,7 +332,7 @@ if (isset($data['tipo-accion'])) {
 }
 
 $data['leads_info'] = $leads_info;	
-print_array($data);
+//print_array($data);
 //Llamando una vista
 view('componer-mensaje', compact('data'));
 
