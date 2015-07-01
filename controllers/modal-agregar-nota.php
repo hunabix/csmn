@@ -78,5 +78,4 @@ if ($data['formulario'] == 'mag-form') {
 
 }
 
-
 $query->closeCursor();

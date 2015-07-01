@@ -44,6 +44,15 @@ function readRawPost($vars = array()) {
 	return $vars;
 }
 
+// Custom date format
+function custom_date_format($date, $iseparator = '-', $oseparator = '/', $oorder) {
+	$pdate = explode($iseparator,$date);
+	$result[0] = $pdate[$oorder[0]];
+	$result[1] = $pdate[$oorder[1]];
+	$result[2] = $pdate[$oorder[2]];
+	return $result[0] . $oseparator . $result[1] . $oseparator . $result[2];
+}
+
 // Fecha en array. Procesa una fecha en formato año, mes, día. El separador es obligatorio y puede ser cualquier símbolo.
 function fecha_en_array($fecha_para_array) {
 	if (strlen($fecha_para_array) == 10) {
