@@ -107,9 +107,9 @@ $( document ).ajaxComplete(function() {
 /* Acciones en MAG-FORM
 ------------------------------- */
 // agregar nota
-$( "#nota-mag" ).click(function() {
-    $( "#tipo-accion-mag" ).val( "agregar-nota" );
-    $( "#titulo-modal-multi-mag").html('Agregar nota personalizada');
+$( "#mensaje-mag" ).click(function() {
+    $( ".leadcheck" ).attr( "form" , "em-mag-form" );
+    $( "#em-mag-form" ).submit();
 });
 // Agregar recordatorio
 $( "#mag-reminder-btn").click(function( e ) {
