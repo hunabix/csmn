@@ -282,6 +282,18 @@ function extract_interesado_ids($arr_main_array) {
 	return ($arr_result);
 }
 
+// Extract ids from checkbox arrays
+function extract_checkbox_ids($arr_main_array) {
+	$arr_result = array();
+	foreach($arr_main_array as $key => $value){
+		$exp_key = explode('-', $key);
+		if($exp_key[0] == 'checkbox'){
+			 $arr_result[] = $value;
+		}
+	}
+	return ($arr_result);
+}
+
 //*******************OLD FUNCTIONS BELOW*******************************
 
 // Confirma si la consulta se realizó con éxito
