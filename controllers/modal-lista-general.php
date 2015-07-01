@@ -35,7 +35,7 @@ foreach ($lead_ids as $lead_id) {
 	
 	$new_status_date = date("Y-m-d H:i:s");
 
-	// Register interaction	
+	// Register interaction
 	if ($query->execute(array(
 				'tipo' => 'Se ha agregado a la lista general',
 				'id_interesado' => $lead_id,
@@ -61,6 +61,7 @@ foreach ($lead_ids as $lead_id) {
 			$return['nombre'] = $lead_info['nombre'];
 			$return['apellidos'] = $lead_info['apellidos'];
 			echo json_encode($return, JSON_UNESCAPED_UNICODE);
+
 		}
 	
 	}
