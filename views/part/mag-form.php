@@ -48,6 +48,6 @@
     <!-- Nombre del formulario -->
     <input type="hidden" name="formulario" value="mag-form">
     <!-- Tipo de acción -->
-    <input id="tipo-accion" type="hidden" name="tipo-accion-mag" value="">
-    <input id="prioridad" type="hidden" name="prioridad-mag" value="">
+    <input id="tipo-accion-mag" type="hidden" name="tipo-accion" value="">
+    <input id="prioridad-mag" type="hidden" name="prioridad" value="">
 </form>
