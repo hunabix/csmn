@@ -148,7 +148,7 @@ $("#mag-form").on("submit", function(e){
         if ( data.tipo_accion == "agregar-nota")
         {
             $( '#alerta-exito' ).html( data.mensaje );
-            // document.location.reload(); 
+            document.location.reload(); 
         }
         if ( data.tipo_accion == "recordatorio")
         {
