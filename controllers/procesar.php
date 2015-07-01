@@ -12,6 +12,8 @@ confirm_logged_in(); //revisa si el operador ha ingresado
 
 $data = readRawPost($_POST);
 
+file_put_contents("post.log",print_r($_POST,true));
+
 // Prints post content
 //echo print_array($data);
 
