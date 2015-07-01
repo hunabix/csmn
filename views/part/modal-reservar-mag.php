@@ -13,7 +13,7 @@
             <div class="modal-body">
                 <!-- Selector de fecha del recordatorio de la reserva-->
                 <div class="input-group fecha-reserva">
-                   <input name="fecha-recordatorio-reserva" type="text" id="fecha-reserva" class="form-control"  placeholder="dd/mm/aaaa" value="" >
+                   <input name="fecha-recordatorio-reserva" type="text" id="fecha-reserva-mag" class="form-control"  placeholder="dd/mm/aaaa" value="" >
                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                 </div>
                 <!--Ciclo al cual reserva -->

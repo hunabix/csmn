@@ -7,6 +7,12 @@ $('#mag-date').datepicker({
     format: 'yyyy/mm/dd',
     color: 'green'
 });
+// fecha-reserva en mag-form modal-reservar
+$('#fecha-reserva-mag').datepicker({
+    weekStart:1,
+    format: 'yyyy/mm/dd',
+    color: 'green'
+});
 // fecha-reserva en lead-form modal-reservar
 $('#fecha-reserva').datepicker({
     weekStart:1,
@@ -101,9 +107,9 @@ $( document ).ajaxComplete(function() {
 /* Acciones en MAG-FORM
 ------------------------------- */
 // agregar nota
-$( "#nota-mag" ).click(function() {
-    $( "#tipo-accion-mag" ).val( "agregar-nota" );
-    $( "#titulo-modal-multi-mag").html('Agregar nota personalizada');
+$( "#mensaje-mag" ).click(function() {
+    $( ".leadcheck" ).attr( "form" , "em-mag-form" );
+    $( "#em-mag-form" ).submit();
 });
 // Agregar recordatorio
 $( "#mag-reminder-btn").click(function( e ) {
@@ -145,27 +151,9 @@ $("#mag-form").on("submit", function(e){
         /* Resultados de acciones
         ------------------------------- */
         // Agregar nota
-        if ( data.tipo_accion == "agregar-nota")
-        {
-            $( '#alerta-exito' ).html( data.mensaje );
-            // document.location.reload(); 
-        }
-        if ( data.tipo_accion == "recordatorio")
-        {
-            $( '#alerta-exito' ).html( data.mensaje );
-            document.location.reload(); 
-        }
-        if ( data.tipo_accion == "reservar")
-        {
-            $( '#alerta-exito' ).html( data.mensaje );
-            document.location.reload(); 
-        }
-        if ( data.tipo_accion == "eliminar")
-        {
-            $( '#alerta-exito' ).html( data.mensaje );
-            // document.location.reload(); 
-        }
-
+        $( '#alerta-exito' ).html( data.mensaje );
+        document.location.reload(); 
+        
         //  CIERRE DE LAS ACCIONES
         // Cierro todos los modales activos
         $('.modal').modal('hide');
