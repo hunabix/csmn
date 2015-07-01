@@ -306,11 +306,13 @@ $("#leads-form").on("submit", function(e){
         // Registrar llamada
         if ( data.tipo_accion == "registrar-llamada")
         {
+            $( '#status-' + data.lead_id).html( '<span class="date-status">' + data.fecha_estatus + '</span> ' + data.estatus );
             $( '#alerta-exito' ).html( data.mensaje );
         }
         // Agregar nota
         if ( data.tipo_accion == "agregar-nota")
         {
+            $( '#status-' + data.lead_id).html( '<span class="date-status">' + data.fecha_estatus + '</span> ' + data.estatus );
             $( '#alerta-exito' ).html( data.mensaje );
         }
         // Inscribir

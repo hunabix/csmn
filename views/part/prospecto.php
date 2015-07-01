@@ -16,7 +16,7 @@
         </label>
     </div>
     <!-- Estatus actual -->
-    <p class="status">
+    <p id="status-<?= $caso['ID']; ?>" class="status">
         <span class="date-status"><?= $caso['fecha_estatus']['dia']; ?> <?= $caso['fecha_estatus']['mes_texto_corto']; ?></span>
         <?= $caso['ultima_interaccion']['tipo']; ?>
     </p>
