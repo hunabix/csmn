@@ -83,7 +83,7 @@ require_once("part/header.php"); ?>
         <input id="tipo-accion-em" type="hidden" name="tipo-accion" value="componer-mensaje">
     </form>
     <!-- Formulario solo para componer mensaje multiples -->
-    <form id="em-mag-form" name="em-mag-form" action="<?= cs_url; ?>/d" method="post">
+    <form id="em-mag-form" name="em-mag-form" action="<?= cs_url; ?>/componer-mensaje" method="post">
         <!-- Datos base a enviar -->
         <input type="hidden" name="formulario" value="em-mag-form">
         <input id="tipo-accion-em-mag" type="hidden" name="tipo-accion" value="componer-mensaje">
