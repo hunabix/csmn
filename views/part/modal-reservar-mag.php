@@ -13,12 +13,12 @@
             <div class="modal-body">
                 <!-- Selector de fecha del recordatorio de la reserva-->
                 <div class="input-group fecha-reserva">
-                   <input name="fecha-recordatorio-reserva-mag" type="text" id="fecha-reserva" class="form-control"  placeholder="dd/mm/aaaa" value="" >
+                   <input name="fecha-recordatorio-reserva" type="text" id="fecha-reserva" class="form-control"  placeholder="dd/mm/aaaa" value="" >
                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                 </div>
                 <!--Ciclo al cual reserva -->
                 <div class="input-group ciclo-reserva">
-                    <select name="ciclo-reserva-mag" type="text" id="ciclo-reserva" class="form-control" placeholder="Ciclo">
+                    <select name="ciclo-reserva" type="text" id="ciclo-reserva" class="form-control" placeholder="Ciclo">
                         <option value="" selected=""></option>
                         <option value="ENERO - MARZO">ENERO - MARZO</option>
                         <option value="ABRIL - JUNIO">ABRIL - JUNIO</option>
@@ -29,7 +29,7 @@
                 </div>
                 <!-- ID del elemento -->
                 <div class="input-group">
-                   <textarea name="comentario-reserva-mag" type="text-area" id="comentario" class="form-control"  placeholder="Puedes agregar un comentario aquí"></textarea>
+                   <textarea name="comentario-reserva" type="text-area" id="comentario" class="form-control"  placeholder="Puedes agregar un comentario aquí"></textarea>
                    <span class="input-group-addon"><i class="fa fa-file-text"></i></span>
                 </div>
 

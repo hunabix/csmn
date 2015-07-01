@@ -10,6 +10,7 @@ require_once("part/header.php"); ?>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
     <p class="datos">&nbsp;</p>
 </div>
+
 <!-- Muestreo de variables [PRUEBAS]
 ================================================== --> 
 

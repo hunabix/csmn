@@ -21,12 +21,12 @@
     </div>    
     <!-- Selector de fecha : col 2-->
     <div class="input-group mag-date ">
-       <input name="fecha-recordatorio-mag" type="text" id="mag-date" class="form-control"  placeholder="dd/mm/aaaa" value="">
+       <input name="fecha-recordatorio" type="text" id="mag-date" class="form-control"  placeholder="dd/mm/aaaa" value="">
        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
     </div>
     <!-- Recordatorio o sugerencia : col 3-->
     <div class="input-group mag-reminder">
-        <input name="recordatorio-mag" type="text" id="mag-reminder" class="form-control" placeholder="Recordatorio" />
+        <input name="recordatorio" type="text" id="mag-reminder" class="form-control" placeholder="Recordatorio" />
         <span class="input-group-addon"><i class="fa fa-file-o"></i></span>
     </div>
         <!-- Botón aplicar recordatorio col: 4 -->  
@@ -48,6 +48,6 @@
     <!-- Nombre del formulario -->
     <input type="hidden" name="formulario" value="mag-form">
     <!-- Tipo de acción -->
-    <input id="tipo-accion-mag" type="hidden" name="tipo-accion-mag" value="">
-    <input id="prioridad-mag" type="hidden" name="prioridad-mag" value="">
+    <input id="tipo-accion" type="hidden" name="tipo-accion-mag" value="">
+    <input id="prioridad" type="hidden" name="prioridad-mag" value="">
 </form>
