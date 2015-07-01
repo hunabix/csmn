@@ -119,7 +119,7 @@ switch ($configuracion['ciclo_esc'] ) {
 	break;
 }
 
-print_array($data);
+//print_array($data);
 
 //Llamando una vista
 view('configuracion', compact('data'));
