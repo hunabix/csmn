@@ -4,48 +4,50 @@
 // mag-date en mag-form
 $('#mag-date').datepicker({
     weekStart:1,
-    format: 'yyyy/mm/dd',
+    format: 'dd/mm/yyyy',
     color: 'green'
 });
 // fecha-reserva en mag-form modal-reservar
 $('#fecha-reserva-mag').datepicker({
     weekStart:1,
-    format: 'yyyy/mm/dd',
+    format: 'dd/mm/yyyy',
     color: 'green'
 });
 // fecha-reserva en lead-form modal-reservar
 $('#fecha-reserva').datepicker({
     weekStart:1,
-    format: 'yyyy/mm/dd',
+    format: 'dd/mm/yyyy',
     color: 'green'
 });
 // fecha-recordatorio en lead form modal-recordatorio
 $('#fecha-recordatorio').datepicker({
     weekStart:1,
-    format: 'yyyy/mm/dd',
+    format: 'dd/mm/yyyy',
     color: 'green'
 });
 // inicio-ins en sección configuración 
 $('#inicio-ins').datepicker({
     weekStart:1,
-    format: 'yyyy/mm/dd',
+    format: 'dd/mm/yyyy',
     color: 'green'
 
 });
 // inicio-cur en sección configuración 
 $('#inicio-cur').datepicker({
     weekStart:1,
-    format: 'yyyy/mm/dd',
+    format: 'dd/mm/yyyy',
     color: 'green'
 
 });
 // fin-cur en sección configuración 
 $('#fin-cur').datepicker({
     weekStart:1,
-    format: 'yyyy/mm/dd',
+    format: 'dd/mm/yyyy',
     color: 'green'
 
 });
+
+
 
 /* Acordeón
 --------------------------------------------- */
@@ -476,3 +478,16 @@ if(!($('#mensaje_op').length == 0)) {
     } );
 }
 
+
+/* CONFIGURACION
+--------------------------------------------- */
+// select en ciclo escolar, elijo la opción que corresponda a la configuración en BD
+if(!($('#ciclo-esc-conf').length == 0)) {
+    cicloEscolarConf = $( "#ciclo-esc-conf" ).attr( "seleccionado" );
+    $('#ciclo-esc-conf option').each(function() {
+        if($(this).val() == cicloEscolarConf) {
+            $(this).attr('selected', 'selected');
+        }
+    });
+    
+}

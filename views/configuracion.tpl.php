@@ -3,16 +3,13 @@
  * Plantilla [login]
  **/
 require_once("part/header.php"); ?>
-
-
-		
+	
 		<!-- Titulo -->
 		<h2 class="section-title">Configuración</h2>
 
 		<!-- Muestreo de variables [PRUEBAS]
 		================================================== --> 
-		<?php //var_dump($data);  ?>
-
+		<?php// var_dump($data['configuracion']);  ?>
 		<!-- Muestreo de variables [PRUEBAS]
 		================================================== --> 
 		
@@ -28,8 +25,15 @@ require_once("part/header.php"); ?>
 					<div class="field">
 						<label for="inicio-ins">Inicio de inscripciones</label>
 						<div class="input-group">
-						   <input name="inicio-ins" type="text" id="inicio-ins" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_ins']; ?>">
+						   <input name="inicio-ins" type="text" id="inicio-ins" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_ins'] ?>">
 						   <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+						</div>
+					</div>
+					<div class="field">
+						<label for="ciclo-esc">Cierre de inscripciones</label>
+						<div class="input-group">
+							<input name="fin-cur" type="text" id="fin-cur" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['fin_ins']; ?>">
+							<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 						</div>
 					</div>
 					<div class="field">
@@ -38,22 +42,15 @@ require_once("part/header.php"); ?>
 							<input name="inicio-cur" type="text" id="inicio-cur" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_cur']; ?>">
 						    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 						</div>
-					</div>
-					<div class="field">
-						<label for="ciclo-esc">Fin de cursos</label>
-						<div class="input-group">
-							<input name="fin-cur" type="text" id="fin-cur" class="form-control"  placeholder="dd/mm/aaaa" value="">
-							<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-						</div>
-					</div>
+					</div>					
 					<div class="field">
 						<label for="ciclo-esc">Ciclo Escolar</label>
 						<div class="input-group">
-							<select name="ciclo-esc" class="form-control"  placeholder="dd/mm/aaaa">
-								<option value="ENERO - MARZO">ENERO - MARZO</option>
-								<option value="ABRIL - JUNIO">ABRIL - JUNIO</option>
-								<option value="JULIO - SEPTIEMBRE">JULIO - SEPTIEMBRE</option>
-								<option value="OCTUBRE - DICIEMBRE">OCTUBRE - DICIEMBRE</option>
+							<select id="ciclo-esc-conf" name="ciclo-esc" class="form-control"  placeholder="dd/mm/aaaa" seleccionado="<?= $data['configuracion']['ciclo_esc']; ?>">
+								<option id="ciclo-conf-op1" value="ENERO - MARZO">ENERO - MARZO</option>
+								<option id="ciclo-conf-op2" value="ABRIL - JUNIO">ABRIL - JUNIO</option>
+								<option id="ciclo-conf-op3" value="JULIO - SEPTIEMBRE">JULIO - SEPTIEMBRE</option>
+								<option id="ciclo-conf-op4" value="OCTUBRE - DICIEMBRE">OCTUBRE - DICIEMBRE</option>
 							</select>
 						    <span class="input-group-addon"><i class="fa fa-history"></i></span>
 						</div>
