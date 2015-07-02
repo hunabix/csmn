@@ -6,7 +6,7 @@ require_once("part/header.php"); ?>
 		
 		<!-- Muestreo de variables [PRUEBAS]
 		================================================== --> 
-		<!-- <p class="datos"><?php var_dump($data) ?></p> -->
+		<!-- <p class="datos"><?php var_dump($data['leads_info']) ?></p>  -->
 		<!-- Muestreo de variables [PRUEBAS]
 		================================================== --> 
 
@@ -19,13 +19,14 @@ require_once("part/header.php"); ?>
 			<!-- Lista de destinatarios -->
 			<aside id="destinatarios" class="destinatarios">
 				<ul>
-					
-					<li class="destinatario"><strong><?= $data['nombre'] ?> <?= $data['apellidos'] ?></strong>  <?= $data['email'] ?> </li>
-					<!-- Valores que se envían en campos escondidos -->
-					<input type="hidden" name="id_interesado-<?= $data['lead-id'] ?>" value="<?= $data['lead-id'] ?>"/>
-					<input type="hidden" name="nombre-<?= $data['lead-id'] ?>" value="<?= $data['nombre'] ?>"/>
-					<input type="hidden" name="email-<?= $data['lead-id'] ?>" value="<?= $data['email'] ?>"/>
-			
+					<?php foreach ($data['leads_info'] as $leads) { ?>
+						<li class="destinatario"><i class="fa fa-check"></i> <strong><?= $leads['nombre'] ?></strong>  <?= $leads['email'] ?></li>		
+						<!-- Valores que se envían en campos escondidos -->
+						<input type="hidden" name="id_interesado-<?= $leads['ID'] ?>" value="<?= $leads['ID'] ?>"/>
+						<input type="hidden" name="nombre-<?= $leads['ID'] ?>" value="<?= $leads['nombre'] ?>"/>
+						<input type="hidden" name="email-<?= $leads['ID'] ?>" value="<?= $leads['email'] ?>"/>
+
+					<?php } ?>			
 				</ul>
 			</aside>
 
