@@ -23,7 +23,7 @@ if ($data['formulario'] == 'mag-form') {
 $lead = array();
 $con = db_con();
 
-//file_put_contents("tracker.log",print_r($lead_ids,true));
+file_put_contents("tracker.log",print_r($lead_ids,true));
 
 foreach ($lead_ids as $lead_id) {
 	
@@ -36,7 +36,7 @@ $query = $con->prepare('INSERT INTO interaccion_cs (tipo, id_interesado, fecha, 
 	
 	$date = date("Y-m-d H:i:s");
 	
-	// Register recordatorio
+	// Register interaction
 	if ($query->execute(array(
 				'tipo' => 'Se agregó un recordatorio',
 				'id_interesado' => $lead_id,
@@ -53,7 +53,7 @@ $query = $con->prepare('INSERT INTO interaccion_cs (tipo, id_interesado, fecha, 
 		// Update recordatorio_texto in interesado_cs
 		$query = $con->prepare('UPDATE interesado_cs SET recordatorio = :recordatorio, recordatorio_texto = :recordatorio_texto WHERE ID = :ID');
 		$query->execute(array(
-			'recordatorio' => $data['fecha-recordatorio'],
+			'recordatorio' => custom_date_format($data['fecha-recordatorio'], '/', '-', array(2, 1, 0)),
 			'recordatorio_texto' => $data['recordatorio'],
 			'ID' => $lead_id,
 		));

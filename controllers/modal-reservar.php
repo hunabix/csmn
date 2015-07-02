@@ -37,12 +37,12 @@ foreach ($lead_ids as $lead_id) {
 	
 	// Register interaction
 	if ($query->execute(array(
-				'tipo' => 'Se ha inscrito en Musinetwork',
+				'tipo' => 'Se reservó para un futuro ciclo',
 				'id_interesado' => $lead_id,
 				'fecha' => $new_status_date,
 				'mensaje_op' => $data['comentario-reserva'],
 				'observaciones' => $data['ciclo-reserva'],
-				'alerta' => $data['fecha-recordatorio-reserva'],
+				'alerta' => custom_date_format($data['fecha-recordatorio-reserva'], '/', '-', array(2, 1, 0)),
 			))) {
 	
 		//Get last inserted ID
