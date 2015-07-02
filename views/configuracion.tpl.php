@@ -32,7 +32,7 @@ require_once("part/header.php"); ?>
 					<div class="field">
 						<label for="ciclo-esc">Cierre de inscripciones</label>
 						<div class="input-group">
-							<input name="fin-cur" type="text" id="fin-cur" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['fin_ins']; ?>">
+							<input name="cierre_ins" type="text" id="cierre_ins" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['cierre_ins']; ?>">
 							<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 						</div>
 					</div>

@@ -39,8 +39,8 @@ $('#inicio-cur').datepicker({
     color: 'green'
 
 });
-// fin-cur en sección configuración 
-$('#fin-cur').datepicker({
+// cierre_ins en sección configuración 
+$('#cierre_ins').datepicker({
     weekStart:1,
     format: 'dd/mm/yyyy',
     color: 'green'
@@ -108,10 +108,15 @@ $( document ).ajaxComplete(function() {
 
 /* Acciones en MAG-FORM
 ------------------------------- */
-// agregar nota
+// Enviar mensaje
 $( "#mensaje-mag" ).click(function() {
     $( ".leadcheck" ).attr( "form" , "em-mag-form" );
     $( "#em-mag-form" ).submit();
+});
+// Agregar nota
+$( "#nota-mag").click(function() {
+    $( "#tipo-accion-mag" ).val( "agregar-nota" );
+    $( "#titulo-modal-multi-mag").html('Agregar nota personalizada');
 });
 // Agregar recordatorio
 $( "#mag-reminder-btn").click(function( e ) {
@@ -124,7 +129,7 @@ $( "#lista-mag").click(function() {
     $( "#tipo-accion-mag" ).val( "lista-general" );
     $( "#titulo-modal-multi-mag").html('Enviar a lista general');
 });
-// Enviar a lista general
+// Reservar
 $( "#reservar-mag").click(function() {
     $( "#tipo-accion-mag" ).val( "reservar" );
 });
