@@ -106,9 +106,22 @@ Version: 2.0
 		padding: 1rem 1.5rem;
 		background: #f6f6f6;
 		margin-bottom: 2rem;
-
+		
+		
 		ul {
 			@include ul-base;
+
+			.destinatario {
+				display: inline-block;
+				padding: 0 2rem;
+				width: 47%;
+				margin: 0 1% .25rem;
+
+				i {
+					padding-right: .25rem;
+					color: $divider-color;
+				}
+			}
 
 		}		
 	}
