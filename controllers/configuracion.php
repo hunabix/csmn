@@ -17,7 +17,7 @@ global $connection;
 // ------------------------------------------------------------ ------------//
 // ---------  SE INICIALIZAN LAS VARIABLES  --------------------------------//
 // -------------------------------------------------------------------------//
-$temporada = ""; $inicio_ins = ""; $fin_ins = ""; $inicio_cur = ""; $ciclo_esc = ""; $form_procesado = ""; 
+$temporada = ""; $inicio_ins = ""; $cierre_ins = ""; $inicio_cur = ""; $ciclo_esc = ""; $form_procesado = ""; 
 $tmpa = ""; $tmpb = ""; $tmpc = ""; $tmpd = ""; $tmpe = ""; $tmpf = ""; 
 $cl1 = ""; $cl2 = ""; $cl3 = ""; $cl4 = "";
 
@@ -26,7 +26,7 @@ $cl1 = ""; $cl2 = ""; $cl3 = ""; $cl4 = "";
 // -------------------------------------------------------------------------//
 if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 	if(isset($data['inicio-ins'])){ $inicio_ins = custom_date_format($data['inicio-ins'], '/', '-', array(0, 1, 2)); }
-	if(isset($data['fin-ins'])){ $fin_ins = custom_date_format($data['fin-ins'], '/', '-', array(0, 1, 2)); }
+	if(isset($data['cierre-ins'])){ $cierre_ins = custom_date_format($data['cierre-ins'], '/', '-', array(0, 1, 2)); }
 	if(isset($data['inicio-cur'])){ $inicio_cur = custom_date_format($data['inicio-cur'], '/', '-', array(0, 1, 2)); }
 	if(isset($data['ciclo-esc'])){ $ciclo_esc = $data['ciclo-esc']; }
 	if(isset($data['temporada'])){ $temporada = $data['temporada']; }	
@@ -60,7 +60,7 @@ if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 	$consulta = "UPDATE configuracion_cs
 				SET	temporada='$temporada',
 				 inicio_ins='$inicio_ins',
-				 fin_ins='$fin_ins',
+				 cierre_ins='$cierre_ins',
 				 inicio_cur='$inicio_cur',
 				 ciclo_esc='$ciclo_esc'
 				 WHERE id = 1";
@@ -85,7 +85,7 @@ $data['configuracion'] = $configuracion = obten_configuracion();
 //echo $data['configuracion']['inicio_ins'];
 //echo '<br />';
 $data['configuracion']['inicio_ins'] = custom_date_format($data['configuracion']['inicio_ins'], '-', '/', array(0, 1, 2));
-$data['configuracion']['fin_ins'] = custom_date_format($data['configuracion']['fin_ins'], '-', '/', array(0, 1, 2));
+$data['configuracion']['cierre_ins'] = custom_date_format($data['configuracion']['cierre_ins'], '-', '/', array(0, 1, 2));
 //echo $data['configuracion']['inicio_ins'];
 $data['configuracion']['inicio_cur'] = custom_date_format($data['configuracion']['inicio_cur'], '-', '/', array(0, 1, 2));
 	
