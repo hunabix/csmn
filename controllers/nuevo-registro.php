@@ -331,6 +331,7 @@ if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 			$password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
 			//$to = $mail; DEV
 			$to = 'hibamiru@gmail.com';
+			//$to = 'musinetwork@gmail.com';
 			//$to = 'hibamiru@gmail.com'; //mnmail
 			$subject = utf8_encode($asuntop);
 

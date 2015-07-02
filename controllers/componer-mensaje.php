@@ -228,7 +228,7 @@ if (isset($data['nuevo-mensaje'])) {
 					$password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
 					//$to = $email[$i]; DEV
 					$to = 'hibamiru@gmail.com';
-					//$to = 'hibamiru@gmail.com'; //mnmail
+					//$to = 'musinetwork@gmail.com';
 					$subject = utf8_encode($asuntop);
 				
 					//Preparing mail
