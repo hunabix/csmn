@@ -8,7 +8,7 @@ confirm_logged_in(); //revisa si el operador ha ingresado
 $data = readRawPost(array_values($_POST));
 //print_array($data);
 
-$data['form_procesado'] = 'no';
+//$data['form_procesado'] = 'no';
 
 global $connection;
 
@@ -25,12 +25,12 @@ $cl1 = ""; $cl2 = ""; $cl3 = ""; $cl4 = "";
 // ---------  SE COMPRUEBA SI SE ENVIÓ EL FORMULARIO -----------------------//
 // -------------------------------------------------------------------------//
 if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
-	if(isset($data['inicio-ins'])){ $inicio_ins = custom_date_format($data['inicio-ins'], '/', '-', array(0, 1, 2)); }
-	if(isset($data['cierre-ins'])){ $cierre_ins = custom_date_format($data['cierre-ins'], '/', '-', array(0, 1, 2)); }
-	if(isset($data['inicio-cur'])){ $inicio_cur = custom_date_format($data['inicio-cur'], '/', '-', array(0, 1, 2)); }
+	if(isset($data['inicio-ins'])){ $inicio_ins = custom_date_format($data['inicio-ins'], '/', '-', array(2, 1, 0)); }
+	if(isset($data['cierre_ins'])){ $cierre_ins = custom_date_format($data['cierre_ins'], '/', '-', array(2, 1, 0)); }
+	if(isset($data['inicio-cur'])){ $inicio_cur = custom_date_format($data['inicio-cur'], '/', '-', array(2, 1, 0)); }
 	if(isset($data['ciclo-esc'])){ $ciclo_esc = $data['ciclo-esc']; }
 	if(isset($data['temporada'])){ $temporada = $data['temporada']; }	
-	
+
 	// ----------------------------------------------------------------------------//
 	// ------  Actualiza recordatorios si el operador actualiza la temporada ------//
 	// ----------------------------------------------------------------------------//
@@ -56,7 +56,6 @@ if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 	// -------------------------------------------------------------------------//
 
 	// ---------  Se guardan en BD los datos generales del caso en interesado_cs --------------//
-
 	$consulta = "UPDATE configuracion_cs
 				SET	temporada='$temporada',
 				 inicio_ins='$inicio_ins',
@@ -84,10 +83,10 @@ $data['configuracion'] = $configuracion = obten_configuracion();
 // Processing dates
 //echo $data['configuracion']['inicio_ins'];
 //echo '<br />';
-$data['configuracion']['inicio_ins'] = custom_date_format($data['configuracion']['inicio_ins'], '-', '/', array(0, 1, 2));
-$data['configuracion']['cierre_ins'] = custom_date_format($data['configuracion']['cierre_ins'], '-', '/', array(0, 1, 2));
+$data['configuracion']['inicio_ins'] = custom_date_format($data['configuracion']['inicio_ins'], '-', '/', array(2, 1, 0));
+$data['configuracion']['cierre_ins'] = custom_date_format($data['configuracion']['cierre_ins'], '-', '/', array(2, 1, 0));
 //echo $data['configuracion']['inicio_ins'];
-$data['configuracion']['inicio_cur'] = custom_date_format($data['configuracion']['inicio_cur'], '-', '/', array(0, 1, 2));
+$data['configuracion']['inicio_cur'] = custom_date_format($data['configuracion']['inicio_cur'], '-', '/', array(2, 1, 0));
 	
 	
 switch ($configuracion['temporada'] ) {
