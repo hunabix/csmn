@@ -120,6 +120,7 @@ $( "#mensaje-mag" ).click(function() {
 // Agregar nota
 $( "#nota-mag").click(function() {
     $( "#tipo-accion-mag" ).val( "agregar-nota" );
+    $( "#es-llamada-mag" ).css( "display", "block" );
     $( "#titulo-modal-multi-mag").html('Agregar nota personalizada');
 });
 // Agregar recordatorio
@@ -132,6 +133,7 @@ $( "#mag-reminder-btn").click(function( e ) {
 $( "#lista-mag").click(function() {
     $( "#tipo-accion-mag" ).val( "lista-general" );
     $( "#titulo-modal-multi-mag").html('Enviar a lista general');
+    $( "#es-llamada-mag" ).css( "display", "none" );
 });
 // Reservar
 $( "#reservar-mag").click(function() {
@@ -199,6 +201,8 @@ $( ".nota" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     var modal = $('#modal-multi');
+    $( "#comentario-multi" ).val( '' );
+    $( "#es-llamada" ).css( "display", "block" );
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( "agregar-nota" );
     modal.find( "#titulo-modal-multi").html('Agregar nota personalizada');
@@ -217,6 +221,8 @@ $( ".inscripcion" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     var modal = $('#modal-multi');
+    $( "#comentario-multi" ).val( '' );
+    $( "#es-llamada" ).css( "display", "none" );
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( leadTipoAccion );
     modal.find( "#titulo-modal-multi").html('Inscribir a Musinetwork');
@@ -226,6 +232,8 @@ $( ".lista" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
     var modal = $('#modal-multi');
+    $( "#comentario-multi" ).val( '' );
+    $( "#es-llamada" ).css( "display", "none" );
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( "lista-general" );
     modal.find( "#titulo-modal-multi").html('Enviar a lista general');
@@ -234,6 +242,7 @@ $( ".lista" ).click(function() {
 $( ".reservar" ).click(function() {
     var leadId = $(this).closest('.lead').attr('id');
     var leadTipoAccion = $(this).attr('tipo-accion');
+    $( "#comentario-reservar" ).val( '' );
     $( "#lead-id" ).val( leadId );
     $( "#tipo-accion" ).val( "reservar" );
 });
@@ -353,6 +362,7 @@ $("#leads-form").on("submit", function(e){
             // prospecto.find('text-reminder').html( 'ke ase' );
 
             // Solución temporal
+            document.location.reload(); 
             $( '#alerta-exito' ).html( data.mensaje );
         }
         // Solicitar datos de prospecto
