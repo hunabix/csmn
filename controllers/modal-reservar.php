@@ -42,7 +42,7 @@ foreach ($lead_ids as $lead_id) {
 				'fecha' => $new_status_date,
 				'mensaje_op' => $data['comentario-reserva'],
 				'observaciones' => $data['ciclo-reserva'],
-				'alerta' => custom_date_format($data['fecha-recordatorio-reserva'], '/', '-', array(2, 1, 0)),
+				'alerta' => fecha_reserva($data['ciclo-reserva']),
 			))) {
 	
 		//Get last inserted ID

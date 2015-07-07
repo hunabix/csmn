@@ -302,6 +302,41 @@ function extract_checkbox_ids($arr_main_array) {
 	}
 	return ($arr_result);
 }
+function fecha_reserva ($ciclo_reserva) {
+	
+	//Query reserva date
+	switch ($ciclo_reserva) {
+		case "ENERO - MARZO":
+			$inicio_cur='inicio_cur_ene_mar';
+			break;
+		case "ABRIL - JUNIO":
+			$inicio_cur='inicio_cur_abr_jun';
+			break;
+		case "JULIO - SEPTIEMBRE":
+			$inicio_cur='inicio_cur_jul_sep';
+			break;
+		case "OCTUBRE - DICIEMBRE":
+			$inicio_cur='inicio_cur_oct_dic';
+			break;
+	}
+	
+	//Calculate reminder date
+	$inicio_cursos = obten_inicio_cursos($inicio_cur);
+	$reminder = strtotime($inicio_cursos . ' -50 days');
+	return $reminder;
+}
+
+// redirecciona al URL que se le pase por parámetro
+function obten_inicio_cursos($inicio_curso) {	
+	$con = db_con();
+	$query = $con->prepare('SELECT * FROM configuracion_cs WHERE ID = :id');
+	$query->execute(array('id' => '1'));
+	$data = $query->fetch();
+	//print_array($data);
+	//die;
+	$query->closeCursor();
+	return $data[$inicio_curso];
+}
 
 //*******************OLD FUNCTIONS BELOW*******************************
 

@@ -21,6 +21,18 @@ $temporada = ""; $inicio_ins = ""; $cierre_ins = ""; $inicio_cur = ""; $ciclo_es
 $tmpa = ""; $tmpb = ""; $tmpc = ""; $tmpd = ""; $tmpe = ""; $tmpf = ""; 
 $cl1 = ""; $cl2 = ""; $cl3 = ""; $cl4 = "";
 
+$inicio_ins_ene_mar = '';
+$inicio_cur_ene_mar = '';
+
+$inicio_ins_abr_jun = '';
+$inicio_cur_abr_jun = '';
+
+$inicio_ins_jul_sep = '';
+$inicio_cur_jul_sep = '';
+
+$inicio_ins_oct_dic = '';
+$inicio_cur_oct_dic = '';
+
 // -------------------------------------------------------------------------//
 // ---------  SE COMPRUEBA SI SE ENVIÓ EL FORMULARIO -----------------------//
 // -------------------------------------------------------------------------//
@@ -29,7 +41,19 @@ if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 	if(isset($data['cierre_ins'])){ $cierre_ins = custom_date_format($data['cierre_ins'], '/', '-', array(2, 1, 0)); }
 	if(isset($data['inicio-cur'])){ $inicio_cur = custom_date_format($data['inicio-cur'], '/', '-', array(2, 1, 0)); }
 	if(isset($data['ciclo-esc'])){ $ciclo_esc = $data['ciclo-esc']; }
-	if(isset($data['temporada'])){ $temporada = $data['temporada']; }	
+	if(isset($data['temporada'])){ $temporada = $data['temporada']; }
+	
+	if(isset($data['inicio_ins_ene_mar'])){ $inicio_ins_ene_mar = custom_date_format($data['inicio_ins_ene_mar'], '/', '-', array(2, 1, 0)); }
+	if(isset($data['inicio_cur_ene_mar'])){ $inicio_cur_ene_mar = custom_date_format($data['inicio_cur_ene_mar'], '/', '-', array(2, 1, 0)); }
+	
+	if(isset($data['inicio_ins_abr_jun'])){ $inicio_ins_abr_jun = custom_date_format($data['inicio_ins_abr_jun'], '/', '-', array(2, 1, 0)); }
+	if(isset($data['inicio_cur_abr_jun'])){ $inicio_cur_abr_jun = custom_date_format($data['inicio_cur_abr_jun'], '/', '-', array(2, 1, 0)); }
+	
+	if(isset($data['inicio_ins_jul_sep'])){ $inicio_ins_jul_sep = custom_date_format($data['inicio_ins_jul_sep'], '/', '-', array(2, 1, 0)); }
+	if(isset($data['inicio_cur_jul_sep'])){ $inicio_cur_jul_sep = custom_date_format($data['inicio_cur_jul_sep'], '/', '-', array(2, 1, 0)); }
+	
+	if(isset($data['inicio_ins_oct_dic'])){ $inicio_ins_oct_dic = custom_date_format($data['inicio_ins_oct_dic'], '/', '-', array(2, 1, 0)); }
+	if(isset($data['inicio_cur_oct_dic'])){ $inicio_cur_oct_dic = custom_date_format($data['inicio_cur_oct_dic'], '/', '-', array(2, 1, 0)); }
 
 	// ----------------------------------------------------------------------------//
 	// ------  Actualiza recordatorios si el operador actualiza la temporada ------//
@@ -62,6 +86,19 @@ if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 				 cierre_ins='$cierre_ins',
 				 inicio_cur='$inicio_cur',
 				 ciclo_esc='$ciclo_esc'
+
+				 inicio_ins_ene_mar='$inicio_ins_ene_mar'
+				 inicio_cur_ene_mar='$inicio_cur_ene_mar'
+				 
+				 inicio_ins_abr_jun='$inicio_ins_abr_jun'
+				 inicio_cur_abr_jun='$inicio_cur_abr_jun'
+				 
+				 inicio_ins_jul_sep='$inicio_ins_jul_sep'
+				 inicio_cur_jul_sep='$inicio_cur_jul_sep'
+				 
+				 ciclo_inicio_ins_oct_dicesc='$inicio_ins_oct_dic'
+				 inicio_cur_oct_dic='$inicio_cur_oct_dic'
+
 				 WHERE id = 1";
 	$resultado = mysql_query($consulta, $connection);
 	confirm_query($resultado);
@@ -87,6 +124,18 @@ $data['configuracion']['inicio_ins'] = custom_date_format($data['configuracion']
 $data['configuracion']['cierre_ins'] = custom_date_format($data['configuracion']['cierre_ins'], '-', '/', array(2, 1, 0));
 //echo $data['configuracion']['inicio_ins'];
 $data['configuracion']['inicio_cur'] = custom_date_format($data['configuracion']['inicio_cur'], '-', '/', array(2, 1, 0));
+
+$data['configuracion']['inicio_ins_ene_mar'] = custom_date_format($data['configuracion']['inicio_ins_ene_mar'], '-', '/', array(2, 1, 0));
+$data['configuracion']['inicio_cur_ene_mar'] = custom_date_format($data['configuracion']['inicio_cur_ene_mar'], '-', '/', array(2, 1, 0));
+
+$data['configuracion']['inicio_ins_abr_jun'] = custom_date_format($data['configuracion']['inicio_ins_abr_jun'], '-', '/', array(2, 1, 0));
+$data['configuracion']['inicio_cur_abr_jun'] = custom_date_format($data['configuracion']['inicio_cur_abr_jun'], '-', '/', array(2, 1, 0));
+
+$data['configuracion']['inicio_ins_jul_sep'] = custom_date_format($data['configuracion']['inicio_ins_jul_sep'], '-', '/', array(2, 1, 0));
+$data['configuracion']['inicio_cur_jul_sep'] = custom_date_format($data['configuracion']['inicio_cur_jul_sep'], '-', '/', array(2, 1, 0));
+
+$data['configuracion']['inicio_ins_oct_dic'] = custom_date_format($data['configuracion']['inicio_ins_oct_dic'], '-', '/', array(2, 1, 0));
+$data['configuracion']['inicio_cur_oct_dic'] = custom_date_format($data['configuracion']['inicio_cur_oct_dic'], '-', '/', array(2, 1, 0));
 	
 	
 switch ($configuracion['temporada'] ) {
