@@ -46,8 +46,12 @@ $('#cierre_ins').datepicker({
     color: 'green'
 
 });
-
-
+/* Tootltips
+--------------------------------------------- */
+// Se inicializa la función
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 
 /* Acordeón
 --------------------------------------------- */

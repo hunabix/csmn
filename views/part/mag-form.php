@@ -9,14 +9,14 @@
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
             <!-- Enviar correo -->
-            <li role="presentation"><a id="mensaje-mag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-send"></i> Enviar correo</a></li>
+            <li role="presentation"><a id="mensaje-mag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-send"></i> Enviar mensaje</a></li>
             <!-- Registrar llamada -->
             <li role="presentation" class="divider"></li>
-            <li role="presentation"><a id="nota-mag" data-toggle="modal" data-target="#modal-multi-mag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-pencil"></i> Agregar nota</a></li>
+            <li role="presentation"><a id="nota-mag" data-toggle="modal" data-target="#modal-multi-mag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-pencil"></i> Nota</a></li>
             <li role="presentation"><a id="lista-mag" data-toggle="modal" data-target="#modal-multi-mag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-sort-amount-asc"></i> Lista general</a></li>
-            <li role="presentation"><a id="reservar-mag" data-toggle="modal" data-target="#modal-reservar-mag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-recycle"></i> Reservar</a></li>
+            <li role="presentation"><a id="reservar-mag" data-toggle="modal" data-target="#modal-reservar-mag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-external-link"></i> Próximo ciclo</a></li>
             <li role="presentation" class="divider"></li>
-            <li role="presentation"><a id="eliminar-mag" data-toggle="modal" data-target="#modal-eliminar-mag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-close"></i> Eliminar</a></li>
+            <li role="presentation"><a id="eliminar-mag" data-toggle="modal" data-target="#modal-eliminar-mag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-close"></i> Borrar</a></li>
         </ul>
     </div>    
     <!-- Selector de fecha : col 2-->

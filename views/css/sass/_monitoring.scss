@@ -204,7 +204,6 @@
 
 				.action {
 					color: #888;
-					padding: 0 .35rem;
 					@include rounded(.5rem);
 					text-align: center;
 					font-size: 21px;
@@ -220,6 +219,11 @@
 					&:hover.a-close {
 						background: #FF3B30;
 					}
+					
+					.fa {
+						padding: 0 .35rem;
+					}
+
 				}
 
 				.contenedor-prioridad {

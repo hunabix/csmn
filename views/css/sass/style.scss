@@ -29,6 +29,14 @@ Version: 2.0
 	display: none;
 }
 
+// Tooltip color bg
+.tooltip-inner  {
+	background-color: $primary-color-dark;
+}
+
+.tooltip-arrow {
+	border-top-color: $primary-color-dark !important;
+}
 
 // Configuración
 .configuracion-form {
