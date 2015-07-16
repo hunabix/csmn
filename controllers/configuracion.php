@@ -3,10 +3,11 @@
 * Controlador de Configuración
 */
 
-confirm_logged_in(); //revisa si el operador ha ingresado
+$user = confirm_logged_in(); //revisa si el operador ha ingresado
 file_put_contents("post.log",print_r($_POST,true));
 $data = readRawPost(array_values($_POST));
-//print_array($data);
+
+print_array($user);
 
 //$data['form_procesado'] = 'no';
 
@@ -157,4 +158,4 @@ switch ($configuracion['ciclo_esc'] ) {
 //print_array($data);
 
 //Llamando una vista
-view('configuracion', compact('data'));
+view('configuracion', compact('data', 'user'));

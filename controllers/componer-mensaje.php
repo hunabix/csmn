@@ -3,7 +3,7 @@
 * Controlador de Componer mensaje
 */
 
-confirm_logged_in(); //revisa si el operador ha ingresado
+$user = confirm_logged_in(); //revisa si el operador ha ingresado
 
 //Get post data
 $data = readRawPost(array_values($_POST));
@@ -334,7 +334,7 @@ if (isset($data['tipo-accion'])) {
 $data['leads_info'] = $leads_info;	
 //print_array($data);
 //Llamando una vista
-view('componer-mensaje', compact('data'));
+view('componer-mensaje', compact('data', 'user'));
 
 
 

@@ -3,7 +3,7 @@
 * Controlador de Nuevo registro
 */
 
-confirm_logged_in(); //revisa si el operador ha ingresado
+$user = confirm_logged_in(); //revisa si el operador ha ingresado
 
 $data = readRawPost(array_values($_POST));
 //print_array($data);
@@ -425,5 +425,5 @@ $recordatoriodepagosb = htmlentities(utf8_decode('<!-- Recordatorio de pago envi
 
 		
 //Llamando una vista
-view('nuevo-registro');
+view('nuevo-registro', compact('user'));
 

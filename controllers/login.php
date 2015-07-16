@@ -30,7 +30,10 @@ if (isset($_POST['ingreso'])) { // el formulario ha sido enviado
 		$operador = mysql_fetch_array($operador_set);
 		$_SESSION['user_id'] = $operador['ID'];
 		$_SESSION['username'] = $operador['usuario'];
-		$_SESSION['nombre'] = $operador['nombre']; 
+		$_SESSION['nombre'] = $operador['nombre'];
+		$_SESSION['tipo'] = $operador['tipo']; 
+		$_SESSION['email'] = $operador['email']; 
+		$_SESSION['imagen'] = $operador['imagen']; 
 		//redirijo por javascript a index
 		header('Location: ' . cs_url);
 		exit;

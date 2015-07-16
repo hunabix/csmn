@@ -3,7 +3,8 @@
 * Controlador del Home / Página principal
 */
 
-confirm_logged_in(); //revisa si el operador ha ingresado
+$user = confirm_logged_in(); //revisa si el operador ha ingresado
+//print_array($user);
 
 // Getting leads
 $casos = array();
@@ -63,5 +64,5 @@ foreach ($casos as $caso => $value) {
 //print_array($casos);
 	
 //Llamando una vista
-view('home', compact('casos', 'nombre_vista', 'saludo'));
+view('home', compact('casos', 'nombre_vista', 'saludo', 'user'));
 
