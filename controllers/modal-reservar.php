@@ -22,7 +22,7 @@ if ($data['formulario'] == 'mag-form') {
 // Prepare connection
 $lead = array();
 $con = db_con();
-$query = $con->prepare('INSERT INTO interaccion_cs (tipo, id_interesado, fecha, mensaje_op, observaciones, alerta) VALUES (:tipo, :id_interesado, :fecha, :mensaje_op, :observaciones, :alerta)');
+$query = $con->prepare('INSERT INTO interaccion_cs (tipo, id_interesado, fecha, mensaje_op, observaciones) VALUES (:tipo, :id_interesado, :fecha, :mensaje_op, :observaciones)');
 
 //file_put_contents("tracker.log",print_r($lead_ids,true));
 
@@ -42,7 +42,6 @@ foreach ($lead_ids as $lead_id) {
 				'fecha' => $new_status_date,
 				'mensaje_op' => $data['comentario-reserva'],
 				'observaciones' => $data['ciclo-reserva'],
-				'alerta' => fecha_reserva($data['ciclo-reserva']),
 			))) {
 	
 		//Get last inserted ID
