@@ -39,19 +39,39 @@ Version: 2.0
 }
 
 // Configuración
-.configuracion-form {
 
-	.campos-fechas {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: flex-start;
-		
-		.field {
-			margin-bottom: 1.5rem;
-			width: 25%;
-			padding: 0 2.5%;
-		}
+
+
+.fechas-form {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	padding-top: 3rem !important;
+	
+	.ciclos-titulos {
+		width: 100%;
+		margin: 0 2.5% 1rem;
+		padding: .25rem;
+		font-weight: lighter;
+		border-bottom: dotted $divider-color 1px;
 	}
+	.field {
+		margin-bottom: 2rem;
+		width: 25%;
+		padding: 0 2.5%;
+	}
+	.finalizar-btn {
+		width: 80%;
+		margin: 2rem 10%;
+	}
+}
+.usuarios-form {
+	padding-top: 3rem !important;
+
+}
+.plantillas-form {
+	padding-top: 3rem !important;
+
 }
 
 // nuevo-registro-form
