@@ -51,6 +51,29 @@ foreach ($lead_ids as $lead_id) {
 	
 		//Retrieving fecha_status
 		$status_date = fecha_en_array($new_status_date);
+		
+		//Verify llamada checkbox		
+		if (isset($data['llamada'])) {
+		
+			if ($query->execute(array(
+						'tipo' => 'Se llamó al interesado',
+						'id_interesado' => $data['lead-id'],
+						'fecha' => $new_status_date,
+						'observaciones' => $data['comentario'],
+					))) {
+						
+				//Get last inserted ID
+				$lastId = $con->lastInsertId();
+				
+				//Unflag old last interaction and falg new last interaction
+				update_last_interaction($last_interaction['ID'],$lastId);
+			
+				//Retrieving fecha_status
+				$status_date = fecha_en_array($new_status_date);
+			
+			}
+		
+		}
 	
 		//Returning info for ajax request
 		if ($data['formulario'] == 'leads-form') {
