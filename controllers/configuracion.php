@@ -4,7 +4,7 @@
 */
 
 confirm_logged_in(); //revisa si el operador ha ingresado
-
+file_put_contents("post.log",print_r($_POST,true));
 $data = readRawPost(array_values($_POST));
 //print_array($data);
 
@@ -55,25 +55,6 @@ if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 	if(isset($data['inicio_ins_oct_dic'])){ $inicio_ins_oct_dic = custom_date_format($data['inicio_ins_oct_dic'], '/', '-', array(2, 1, 0)); }
 	if(isset($data['inicio_cur_oct_dic'])){ $inicio_cur_oct_dic = custom_date_format($data['inicio_cur_oct_dic'], '/', '-', array(2, 1, 0)); }
 
-	// ----------------------------------------------------------------------------//
-	// ------  Actualiza recordatorios si el operador actualiza la temporada ------//
-	// ----------------------------------------------------------------------------//
-	$configuracion = obten_configuracion();
-	if ($configuracion['temporada'] != $temporada ) {
-		// obtengo los casos de seguimiento actuales y entro a un loop
-		$casos_set = obten_casos();
-		while ($caso = mysql_fetch_array($casos_set)) {
-			// Obtengo los datos que decesito de cada caso
-			$id_interesado = $caso["ID"];
-			$rec_pers =$caso['rec_pers'];
-			$interacciones = obten_utima_interaccion($id_interesado);
-			$estatus = mysql_fetch_array($interacciones); 
-			$tipo = utf8_encode($estatus['tipo']);
-			$fecha = $estatus['fecha'];			
-			// actualiza los recordatorios de los distintos casos de acuerdo a la nueva temporada
-			actualiza_recordatorio($temporada, $tipo, $fecha, $id_interesado, $rec_pers);
-		}
-	}
 	
 	// ------------------------------------------------------------ ------------//
 	// ---------  ALMACENO INFORMACIÓN EN BD -----------------------------------//
