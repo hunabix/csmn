@@ -1,0 +1,197 @@
+/*---------------------------------------------------*/
+/*----------------[CONFIGURACION]--------------------*/
+/*---------------------------------------------------*/
+.configuracion {
+	
+	.conf-tabs {
+		background: $primary-color;
+		@include rounded( .5rem .5rem 0 0 );
+		
+		a {
+			color: $primary-color-text;
+			font-size: 1.5rem;
+			// background: $primary-color-dark;
+			border: none;
+
+			&:hover {
+				background: $accent-color;
+				border-bottom: 1px solid $accent-color;
+			}
+		}
+	}
+
+	.fechas-form {
+
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		padding-top: 3rem !important;
+		
+		.ciclos-titulos {
+			width: 100%;
+			margin: 0 2.5% 1rem;
+			padding: .25rem;
+			font-weight: lighter;
+			border-bottom: dotted $divider-color 1px;
+		}
+		.field {
+			margin-bottom: 2rem;
+			width: 25%;
+			padding: 0 2.5%;
+		}
+		.finalizar-btn {
+			width: 80%;
+			margin: 2rem 10%;
+		}
+	}
+	.usuarios-form {
+		padding: 3rem;
+		
+		.users {
+			padding: 2rem 0 0;
+
+
+			// Titulos
+			.titles {
+				border-bottom: 1px solid $divider-color;
+
+				h4 {
+					padding: .5rem .5rem .5rem 0;
+					margin: 0;
+					@include inline-box;
+					font-size: 1rem;
+				}
+				.lt-user {
+					width: 21%;
+					padding-left: 4rem;
+
+					@media (max-width: 1350px) { width: 20%; }
+					@media (max-width: 1300px) { width: 25%; }
+					@media (max-width: 800px) { width: 100%; }
+				}
+				.lt-name {
+					width: 22%;
+
+					@media (max-width: 1350px) { width: 22%; }
+					@media (max-width: 1300px) { width: 36%; }
+					@media (max-width: 800px) { display: none; }
+				}
+				.lt-email {
+					width: 22%;
+
+					@media (max-width: 1350px) { width: 22%; }
+					@media (max-width: 1300px) { width: 36%; }
+					@media (max-width: 800px) { display: none; }
+				}
+			}
+			.user {
+				width: 100%;
+				border-bottom: $divider-color 1px dotted;
+				padding: .5rem 0;
+				display: inline-block;
+				font-size: 1.2rem;
+
+				&:hover {
+					background: #FAFAFA;
+				}				
+				
+				.username {
+					@include inline-box;
+					line-height: 3rem;
+					width: 20%;
+					margin: 0;
+					position: relative;
+					font-weight: 600;
+
+					.userimg {
+						background: $divider-color;
+						@include rounded(50%);
+						width: 3rem;
+						height: 3rem;
+						line-height: 3rem;
+						text-align: center;
+						color: #fff;
+						font-size: 2rem; 
+						margin-right: .75rem;
+					}
+				}
+				.nombre {
+					@include inline-box;
+					padding: 0 .5rem;
+					line-height: 3rem;
+					width: 22%;
+					margin: 0;
+					position: relative;
+				}
+				.correo {
+					@include inline-box;
+					padding: 0 .5rem;
+					line-height: 3rem;
+					width: 22%;
+					margin: 0;
+					position: relative;
+				}
+				.actions {
+					@include inline-box;
+					overflow: visible;
+					padding: 0 .5rem;
+					line-height: 3rem;
+					width: 33%;
+					
+					@media (max-width: 1350px) { width: 33%; }
+					@media (max-width: 1300px) { width: 420px; float: right; }
+					@media (max-width: 800px) { float: left; max-width: 500px; }
+
+					.action {
+						color: #888;
+						@include rounded(.5rem);
+						text-align: center;
+						font-size: 21px;
+
+						&:hover {
+							color: $primary-color-text;
+							background: $accent-color;
+							text-decoration: none;
+						}
+						&:hover.a-user {
+							background: #FF9500;
+						}
+						&:hover.a-close {
+							background: #FF3B30;
+						}
+						
+						.fa {
+							padding: 0 .35rem;
+						}
+
+					}
+				}
+			}
+		}
+		.modal-usuario {
+			
+			.modal-body {
+			    display: inline-block;
+
+				.usuario,
+				.correo  {
+					width: 50%;
+					float: left;
+					padding: 0px 1rem 0px 0px;
+					margin-bottom: 1rem;
+				}
+				.nombre,
+				.clave {
+					width: 50%;
+					float: left;
+					padding: 0px 0 0 1rem;
+					margin-bottom: 1rem;
+				}
+			}
+		}
+	}
+	.plantillas-form {
+		padding-top: 3rem !important;
+
+	}
+}

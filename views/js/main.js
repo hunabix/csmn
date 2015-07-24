@@ -174,6 +174,29 @@ $( document ).ajaxComplete(function() {
     $( ".loading" ).css( "display", "none" );                   
 });
 
+
+/* Acciones en CONFIGURACIÓN
+------------------------------- */
+// Nuevo usuario
+$( "#nuevo-usuario").click(function() {
+    $( "#usuario-tipo-accion" ).val( "agregar-nota" );
+    $( "#titulo-modal-usuario").html('Agregar nuevo usuario');
+
+});
+
+// Solicitar datos de prospecto
+$( ".editar-usuario" ).click(function() {
+    var userId = $(this).closest('.user').attr('id');
+    $( "#usuario-tipo-accion" ).val( "solicitar-datos" );
+    $( "#titulo-modal-usuario").html('Editar datos de usuario');
+        $( "#usuario" ).val( '' );
+    $( "#usuario" ).val( '' );
+    $( "#usuario" ).val( '' );
+    $( "#usuario" ).val( '' );
+    $( "#lead-id" ).val( leadId );
+    $( "#usuarios-form" ).submit();
+});
+
 /* Acciones en MAG-FORM
 ------------------------------- */
 // Enviar mensaje

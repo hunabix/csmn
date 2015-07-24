@@ -15,11 +15,11 @@ require_once("part/header.php"); ?>
 	<!-- Muestreo de variables [PRUEBAS]
 	================================================== --> 
 
-	<section class="panel contenedor">
+	<section class="panel contenedor configuracion">
 	    
 	    <!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
-		    <li role="presentation" class="active class="panel-titulo"">
+		<ul class="nav nav-tabs conf-tabs" role="tablist">
+		    <li role="presentation" class="active" panel-titulo"">
 		    	<a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-calendar"></i> Fechas</a>
 		    </li>
 		    <li role="presentation">
@@ -54,6 +54,9 @@ require_once("part/header.php"); ?>
 			</div>
 		</div>
 	</section>
+
+	<!-- Scripts personalizados para ésta sección -->
+	<script src="views/js/configuracion.js"></script>
 
 <?php
 require_once("part/footer.php"); ?>

@@ -90,7 +90,7 @@ require_once("part/header.php"); ?>
 </section>
 
 <div class="u-loading">
-    <img src="img/loader.gif" alt="Cargando...">
+    <img src="imagenes/loader.gif" alt="Cargando...">
 </div>
 
 <!-- Alertas del sistema -->
