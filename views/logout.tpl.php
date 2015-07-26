@@ -17,7 +17,7 @@
 	session_destroy(); ?>
 	
 	<script type="text/javascript">	
-	//setTimeout(redirige(), '',50000);	
+	//setTimeout(redirige(), '',000005);	
 		window.location="index.php";			
 	</script>
 	

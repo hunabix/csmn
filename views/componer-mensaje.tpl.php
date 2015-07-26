@@ -116,12 +116,12 @@ require_once("part/header.php"); ?>
 				      	Equipo Musinetwork
 			        </span>
 				</label>
-				<!-- Marichú García Salazar -->
+				<!-- Usuario en turno -->
 				<label class="fancy-radio">
-				    <input name="firma" value="Marichú García Salazar" type="radio" class="radio" >
+				    <input name="firma" value="<?= $user['user_id']; ?>" type="radio" class="radio" > 
 				    <span class="fa fa-circle-o  radio-icon"></span>
 				    <span class="name">
-				      	Marichú García Salazar
+				      	<?= $user['nombre']; ?>
 			        </span>
 				</label>
 			</section>

@@ -157,3 +157,15 @@ Version: 2.0
 	}
 
 }
+//  Logout
+.sing-out-btn {
+	color: #FFF;
+	font-family: "Open Sans",sans-serif;
+	margin: 1rem 10% 0 0;
+	float: right;
+
+	&:hover {
+		background: $primary-color-dark;
+	}
+}
+
