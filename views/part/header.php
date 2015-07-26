@@ -28,8 +28,6 @@
             <!-- Título -->
             <h1 class="main-title">Centro de Seguimiento</h1>
             <!-- Main Nav -->
-            <?php var_dump($user); ?>
-
             <nav id="main-nav" class="main-nav">
                 <ul>
                     <li><a href="<?= cs_url; ?>"><i class="fa fa-home"></i></a></li>
