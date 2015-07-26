@@ -1,14 +1,13 @@
+<?php //var_dump($user) // Imprimo array de datos del usuario logeado ?>
+
 <!-- Formulario de usuarios -->
 <form id="usuarios-form" name="usuarios-form" class="usuarios-form form panel-contenido" method="post" action="<?= cs_url; ?>/configuracion" >
-
-    
 	<!-- Nuevo usuario; button modal -->
 	<button type="button" id="nuevo-usuario" class="btn btn-primary btn-fill btn-lg" data-toggle="modal" data-target="#modal-usuario">
     	<i class="fa fa-user-plus"></i> Nuevo usuario
 	</button>
-	
 
-	<!-- Prospecto -->
+	<!-- Usuarios -->
 	<section class="users">
 		<!-- Encabezado -->
 		<header class="titles">
@@ -16,7 +15,6 @@
 		    <h4 class="lt-name">Nombre</h4>
 		    <h4 class="lt-email">Correo</h4>
 		</header>
-
 
 		<div id="1" class="user">		       
 		    <!-- Usuario -->
@@ -42,7 +40,7 @@
 		</div>
 		
 
-		<!-- FIN USUARIO PRUEBAS -->
+		<!-- INICIO USUARIO PRUEBAS -->
 		<div id="2" class="user">		       
 		    <!-- Usuario -->
 		    <span class="username">
@@ -60,9 +58,9 @@
 			<!-- Acciones -->
 			<aside class="actions">
 			    <!-- Editar usuario -->
-			    <a href="#" class="action nota" data-toggle="modal" data-target="#modal-usuario"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Editar usuario"></i></a>        
+			    <a href="#" class="action editar-usuario" data-toggle="modal" data-target="#modal-usuario"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Editar usuario"></i></a>        
 			    <!-- Eliminar usuario -->
-			    <a href="#" class="action eliminar" data-toggle="modal" data-target="#modal-usuario-eliminar" tipo-accion="eliminar"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Eliminar usuario"></i></a>
+			    <a href="#" class="action eliminar-usuario" data-toggle="modal" data-target="#modal-usuario-eliminar" tipo-accion="eliminar"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Eliminar usuario"></i></a>
 			</aside>
 		</div>
 
@@ -83,9 +81,9 @@
 			<!-- Acciones -->
 			<aside class="actions">
 			    <!-- Editar usuario -->
-			    <a href="#" class="action nota" data-toggle="modal" data-target="#modal-usuario"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Editar usuario"></i></a>        
+			    <a href="#" class="action editar-usuario" data-toggle="modal" data-target="#modal-usuario"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Editar usuario"></i></a>        
 			    <!-- Eliminar usuario -->
-			    <a href="#" class="action eliminar" data-toggle="modal" data-target="#modal-usuario-eliminar" tipo-accion="eliminar"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Eliminar usuario"></i></a>
+			    <a href="#" class="action eliminar-usuario" data-toggle="modal" data-target="#modal-usuario-eliminar" tipo-accion="eliminar"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Eliminar usuario"></i></a>
 			</aside>
 		</div>
 		<!-- FIN USUARIO PRUEBAS -->
@@ -103,7 +101,7 @@
 			    <div class="modal-body">
 			    	<!-- Usuario -->
 			    	<div class="input-group usuario">
-			    	    <input name="usuario" type="text" id="usuario" class="form-control" placeholder="Usuario" value="" required>
+			    	    <input name="username" type="text" id="usuario-username" class="form-control" placeholder="Usuario" value="" required>
 			    	    <span class="input-group-addon"><i class="fa fa-user"></i></span>
 			    	</div>
 			    	<!-- Nombre -->
@@ -113,18 +111,28 @@
 			    	</div>
 			    	<!-- Correo -->
 			    	<div class="input-group correo">
-			    	    <input name="correo" type="email" id="usuario-correo"class="form-control" placeholder="Correo electrónico" value="" required>
+			    	    <input name="email" type="email" id="usuario-correo"class="form-control" placeholder="Correo electrónico" value="" required>
 			    	    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 			    	</div>
-			    	<!-- Correo -->
+			    	<!-- Contraseña -->
 			    	<div class="input-group clave">
 			    	    <input name="clave" type="text" id="usuario-clave"class="form-control" placeholder="Contraseña" value="" required>
 			    	    <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
 			    	</div>
+					<!-- Tipo de usuario -->
+					<div class="input-group tipo">
+					    <select id="usuario-tipo" name="tipo" class="form-control"  placeholder="Tipo de usuario">
+					        <option value="operador">Operador</option>
+					        <option value="administrador">Admnistrador</option>
+					    </select>
+					    <span class="input-group-addon"><i class="fa fa-user-secret"></i></span>
+					</div>
+
+
 			    </div>
 			    <div class="modal-footer">
 			     	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			        <button  type="submit" class="btn btn-primary">Agregar nuevo usuario</button>
+			        <button  id="modal-usuario-submit" type="submit" class="btn btn-primary"> ... </button>
 			    </div>
 		    </div>
 		</div>

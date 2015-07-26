@@ -139,7 +139,7 @@
 					width: 33%;
 					
 					@media (max-width: 1350px) { width: 33%; }
-					@media (max-width: 1300px) { width: 420px; float: right; }
+					@media (max-width: 1300px) { max-width: 420px; float: right; }
 					@media (max-width: 800px) { float: left; max-width: 500px; }
 
 					.action {
@@ -174,7 +174,8 @@
 			    display: inline-block;
 
 				.usuario,
-				.correo  {
+				.correo, 
+				.tipo  {
 					width: 50%;
 					float: left;
 					padding: 0px 1rem 0px 0px;

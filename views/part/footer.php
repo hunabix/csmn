@@ -17,7 +17,7 @@
     <!-- Script para multiple selección de checkboxes con shift -->
     <script src="views/js/support//jquery.tshift.min.js"></script>
     <!-- Scripts personalizados para el proyecto -->
-    <script src="views/js/main.js"></script>
+    <script src="views/js/app.js"></script>
    
     
     
