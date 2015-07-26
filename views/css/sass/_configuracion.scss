@@ -77,6 +77,13 @@
 					@media (max-width: 800px) { display: none; }
 				}
 				.lt-email {
+					width: 20%;
+
+					@media (max-width: 1350px) { width: 22%; }
+					@media (max-width: 1300px) { width: 36%; }
+					@media (max-width: 800px) { display: none; }
+				}
+				.lt-tipo {
 					width: 22%;
 
 					@media (max-width: 1350px) { width: 22%; }
@@ -89,7 +96,7 @@
 				border-bottom: $divider-color 1px dotted;
 				padding: .5rem 0;
 				display: inline-block;
-				font-size: 1.2rem;
+				font-size: 1.1rem;
 
 				&:hover {
 					background: #FAFAFA;
@@ -127,7 +134,15 @@
 					@include inline-box;
 					padding: 0 .5rem;
 					line-height: 3rem;
-					width: 22%;
+					width: 20%;
+					margin: 0;
+					position: relative;
+				}
+				.tipo {
+					@include inline-box;
+					padding: 0 .5rem;
+					line-height: 3rem;
+					width: 15%;
 					margin: 0;
 					position: relative;
 				}
@@ -136,7 +151,7 @@
 					overflow: visible;
 					padding: 0 .5rem;
 					line-height: 3rem;
-					width: 33%;
+					width: 18%;
 					
 					@media (max-width: 1350px) { width: 33%; }
 					@media (max-width: 1300px) { max-width: 420px; float: right; }

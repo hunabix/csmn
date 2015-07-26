@@ -8,19 +8,20 @@
 	</button>
 
 	<!-- Usuarios -->
-	<section class="users">
+	<section id="user-list" class="users">
 		<!-- Encabezado -->
 		<header class="titles">
 		    <h4 class="lt-user">Usuario</h4>
 		    <h4 class="lt-name">Nombre</h4>
 		    <h4 class="lt-email">Correo</h4>
+		    <h4 class="lt-tipo">Tipo de usuario</h4>
 		</header>
 
 		<div id="1" class="user">		       
 		    <!-- Usuario -->
 		    <span class="username">
 		      	<i class="fa fa-user userimg"></i> 
-		        Usuario
+		        <span class="usernamedata">Usuario</span>
 		    </span>
 		    <!-- Nombre -->
 		    <span class="nombre">
@@ -29,6 +30,10 @@
 		    <!-- Correo -->
 		    <span class="correo">
 		        correo@sominio.com
+		    </span>
+		    <!-- Tipo -->
+		    <span class="tipo">
+		        Operador
 		    </span>
 			<!-- Acciones -->
 			<aside class="actions">
@@ -45,7 +50,7 @@
 		    <!-- Usuario -->
 		    <span class="username">
 		      	<i class="fa fa-user userimg"></i> 
-		        Usuario
+		        <span class="usernamedata">Usuario</span>
 		    </span>
 		    <!-- Nombre -->
 		    <span class="nombre">
@@ -54,6 +59,10 @@
 		    <!-- Correo -->
 		    <span class="correo">
 		        correo@sominio.com
+		    </span>
+		    <!-- Tipo -->
+		    <span class="tipo">
+		        Administrador
 		    </span>
 			<!-- Acciones -->
 			<aside class="actions">
@@ -68,7 +77,7 @@
 		    <!-- Usuario -->
 		    <span class="username">
 		      	<i class="fa fa-user userimg"></i> 
-		        Usuario
+		        <span class="usernamedata">Usuario</span>
 		    </span>
 		    <!-- Nombre -->
 		    <span class="nombre">
@@ -77,6 +86,10 @@
 		    <!-- Correo -->
 		    <span class="correo">
 		        correo@sominio.com
+		    </span>
+		    <!-- Tipo -->
+		    <span class="tipo">
+		        Operador
 		    </span>
 			<!-- Acciones -->
 			<aside class="actions">
@@ -111,7 +124,7 @@
 			    	</div>
 			    	<!-- Correo -->
 			    	<div class="input-group correo">
-			    	    <input name="email" type="email" id="usuario-correo"class="form-control" placeholder="Correo electrónico" value="" required>
+			    	    <input name="email" type="email" id="usuario-email"class="form-control" placeholder="Correo electrónico" value="" required>
 			    	    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 			    	</div>
 			    	<!-- Contraseña -->
