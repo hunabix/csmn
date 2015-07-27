@@ -3,7 +3,7 @@
 * Controlador del modal Solicitar datos
 */
 
-file_put_contents("post.log",print_r($_POST,true));
+// file_put_contents("post.log",print_r($_POST,true));
 
 //echo $data['tipo-accion'];
 
@@ -25,7 +25,8 @@ if ($query->execute(array('ID' => $data['usuario-id']))) {
 	$return['nombre']		= $usuario_info['nombre'];
 	$return['tipo']			= $usuario_info['tipo'];
 	$return['email']		= $usuario_info['email'];
-	file_put_contents("tracker.log",print_r($usuario_info,true));
+	
+	//file_put_contents("tracker.log",print_r($usuario_info,true));
 	
 	//echo print_array($return);
 	echo json_encode($return, JSON_UNESCAPED_UNICODE);
