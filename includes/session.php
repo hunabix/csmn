@@ -11,9 +11,6 @@ function confirm_logged_in() {
 		header("Location: ".cs_url."/login");
 		exit;
 	} else {
-		
-
-
 
 		$user_id = $_SESSION['user_id'];
 
@@ -45,14 +42,6 @@ function confirm_logged_in() {
 			header('Location: ' . cs_url . '/login');
 			exit;
 		}
-
-
-
-
-
-
-
-
 		
 		return $_SESSION;
 	}
