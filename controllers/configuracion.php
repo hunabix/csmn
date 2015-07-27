@@ -41,7 +41,7 @@ $inicio_cur_oct_dic = '';
 // -------------------------------------------------------------------------//
 // ---------  SE COMPRUEBA SI SE ENVIÓ EL FORMULARIO -----------------------//
 // -------------------------------------------------------------------------//
-if (isset($data['inicio-ins-ciclo1'])) { // el formulario ha sido enviado
+if (isset($data['formulario'])) { // el formulario ha sido enviado
 	if(isset($data['ciclo-esc'])){ $ciclo_esc = $data['ciclo-esc']; }
 	/*if(isset($data['temporada'])){ $temporada = $data['temporada']; }*/
 	//echo 'bu!';
