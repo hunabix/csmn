@@ -1,11 +1,9 @@
 /*----------------------------------------------------------*/
 /*-------------------[NOTIFICACIONES]-----------------------*/
 /*----------------------------------------------------------*/
-
-.Notificaciones {
-	background: #eee;
-	display: inline-block;
-	vertical-align: top;
-	width: 18%;
-	padding: 2rem .5rem;
+.Herramientas {
+  background: #333;
+  display: inline-block;
+  vertical-align: top;
+  width: 1%;
 }

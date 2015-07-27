@@ -46,8 +46,14 @@
         </div>
     </header>   
     
-    <!-- Notificaciones
-    ================================================== --> 
-    <?php //require_once("notificaciones.php");  ?>
-
     <main class="main">
+        
+        <!-- Herramientas
+        ================================================== --> 
+        <?php require_once("herramientas.php");  ?>
+        
+        <!-- Contenido principal
+        ================================================== --> 
+        <section class="main-content">
+            
+        

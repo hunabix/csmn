@@ -1,6 +1,12 @@
 
-
+        </section><!-- main-content -->
+        
+        <!-- Notificaciones
+        ================================================== --> 
+        <?php require_once("notificaciones.php");  ?>
 	</main>
+    
+   
 
 	<footer id="footer" class="footer">
 

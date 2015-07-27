@@ -1,0 +1,35 @@
+/*----------------------------------------------------------*/
+/*-------------------[NOTIFICACIONES]-----------------------*/
+/*----------------------------------------------------------*/
+
+.Herramientas {
+	background: #333;
+	display: inline-block;
+	vertical-align: top;
+	width: 2.4rem;
+		
+	h3 {
+		text-align: center;
+
+		a {
+			color: $primary-color-text;
+		}
+	}
+
+	ul {
+		@include ul-base;
+		font-size: 1.5rem;
+		text-align: center;
+		padding-top: 76vh;
+		position: fixed;
+		width: 2rem;
+
+		li {
+			padding: .25rem 0;
+		}
+		
+		a {
+			color: $primary-color-text;
+		}
+	}
+}

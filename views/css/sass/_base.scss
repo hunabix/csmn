@@ -75,10 +75,15 @@ h1, h2, h3, h4, h5, h6 {
 .main {
 	font-family: $main-font;
 	vertical-align: text-bottom;
-	display: inline-block;
+	display: flex; /* or inline-flex */
 	background-color: #fff;
 	width: 100%;
-	padding: 2rem 0;
+	
+	.main-content {
+		width: 80%;
+		padding: 2rem 0;
+
+	}
 
 	.section-title {
 		font-size: 1.6rem;
