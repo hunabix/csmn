@@ -109,6 +109,8 @@
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
         </div>
     </div> 
+    
+    <input type="hidden" name="formulario" value="fechas-form">
 
     <!-- Botón enviar mensaje -->
     <div class="finalizar-btn">  
