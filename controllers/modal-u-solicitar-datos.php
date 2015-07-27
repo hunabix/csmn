@@ -15,13 +15,17 @@ $query = $con->prepare('SELECT * FROM operador_mn WHERE ID = :ID');
 if ($query->execute(array('ID' => $data['usuario-id']))) {
 	
 	$usuario_info = $query->fetch();
-	file_put_contents("tracker.log",print_r($usuario_info,true));
 	$query->closeCursor();
 	
 	//Returning usuario ID
-	$return['usuario_id'] = $data['usuario-id'];
-	$return['tipo_accion'] = $data['tipo-accion'];
-	$return['usuario_info'] = $usuario_info;
+	$return['usuario_id']	= $data['usuario-id'];
+	$return['tipo_accion']	= $data['tipo-accion'];
+	$return['username']		= $usuario_info['usuario'];
+	$return['clave']		= $usuario_info['clave'];
+	$return['nombre']		= $usuario_info['nombre'];
+	$return['tipo']			= $usuario_info['tipo'];
+	$return['email']		= $usuario_info['email'];
+	file_put_contents("tracker.log",print_r($usuario_info,true));
 	
 	//echo print_array($return);
 	echo json_encode($return, JSON_UNESCAPED_UNICODE);
