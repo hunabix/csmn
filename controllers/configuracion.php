@@ -157,5 +157,18 @@ switch ($configuracion['ciclo_esc']) {
 
 // print_array($data);
 
+// Request all users data
+
+$users = array();
+$con = db_con();
+$query = $con->prepare("SELECT * FROM operador_mn");
+$query->execute();
+$users = $query->fetchAll();
+$query->closeCursor();
+
+recursive_unset_array($users, 'clave');
+
+print_array($users);
+
 //Llamando una vista
-view('configuracion', compact('data', 'user'));
+view('configuracion', compact('data', 'user', 'users'));

@@ -338,6 +338,16 @@ function obten_inicio_cursos($inicio_curso) {
 	return $data[$inicio_curso];
 }
 
+// Removes array key recursively
+function recursive_unset_array(&$array, $unwanted_key) {
+    unset($array[$unwanted_key]);
+    foreach ($array as &$value) {
+        if (is_array($value)) {
+            recursive_unset_array($value, $unwanted_key);
+        }
+    }
+}
+
 //*******************OLD FUNCTIONS BELOW*******************************
 
 // Confirma si la consulta se realizó con éxito
