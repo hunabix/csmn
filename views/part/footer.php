@@ -3,9 +3,13 @@
 	</main>
 
 	<footer id="footer" class="footer">
-        <div class="form">
-            <a href="<?= cs_url; ?>/logout" class="btn btn-primary btn-fill sing-out-btn"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
-        </div>
+
+        <!-- Si el usuario está logeado se muestra el botón de log out -->
+        <?php if (isset($user)) : ?>    
+            <div class="form">
+                <a href="<?= cs_url; ?>/logout" class="btn btn-primary btn-fill sing-out-btn"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
+            </div>
+        <?php endif; ?>
 	</footer>
     
     <!-- Llamo a jQuery directo del CDN de Google -->

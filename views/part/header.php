@@ -14,7 +14,6 @@
 
     <!-- Favicon
     ================================================== -->  
-     
 </head>
     
 <body>
@@ -27,20 +26,28 @@
             </figure>
             <!-- Título -->
             <h1 class="main-title">Centro de Seguimiento</h1>
-            <!-- Main Nav -->
-            <nav id="main-nav" class="main-nav">
-                <ul>
-                    <li><a href="<?= cs_url; ?>"><i class="fa fa-home"></i></a></li>
-                    <li><a href="<?= cs_url; ?>/nuevo-registro"><i class="fa fa-user-plus"></i></a></li>
-                    <!-- <li><a href="#"><i class="fa fa-search "></i></a></li> -->
-                    <!-- <li><a href="#"><i class="fa fa-bell"></i></a></li> -->
-                    <!-- <li><a href="#"><i class="fa fa-archive"></i></a></li> -->
-                    <?php if ($user['tipo'] == 'administrador') :?>
-                        <li><a href="<?= cs_url; ?>/configuracion"><i class="fa fa-cog"></i></a></li>
-                    <?php endif; ?>
-                </ul>
-            </nav>
+
+            <!-- Si el usuario está logeado se muestra el menú de navegación -->
+            <?php if (isset($user)) : ?>            
+                <!-- Main Nav -->
+                <nav id="main-nav" class="main-nav">
+                    <ul>
+                        <li><a href="<?= cs_url; ?>"><i class="fa fa-home"></i></a></li>
+                        <li><a href="<?= cs_url; ?>/nuevo-registro"><i class="fa fa-user-plus"></i></a></li>
+                        <!-- <li><a href="#"><i class="fa fa-search "></i></a></li> -->
+                        <li><a href="#"><i class="fa fa-bell"></i></a></li>
+                        <!-- <li><a href="#"><i class="fa fa-archive"></i></a></li> -->
+                        <?php if ($user['tipo'] == 'administrador') :?>
+                            <li><a href="<?= cs_url; ?>/configuracion"><i class="fa fa-cog"></i></a></li>
+                        <?php endif; ?>
+                    </ul>
+                </nav>
+            <?php endif; ?>
         </div>
     </header>   
+    
+    <!-- Notificaciones
+    ================================================== --> 
+    <?php //require_once("notificaciones.php");  ?>
 
     <main class="main">

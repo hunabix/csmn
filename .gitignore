@@ -3,3 +3,4 @@ config.php
 prepros.cfg
 controllers/post.log
 controllers/tracker.log
+post.log
