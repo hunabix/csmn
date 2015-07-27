@@ -168,7 +168,7 @@ $query->closeCursor();
 
 recursive_unset_array($users, 'clave');
 
-print_array($users);
+// print_array($users);
 
 //Llamando una vista
 view('configuracion', compact('data', 'user', 'users'));
