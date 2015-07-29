@@ -170,5 +170,10 @@ recursive_unset_array($users, 'clave');
 
 // print_array($users);
 
+//Get all notificacions
+$notifications = filter_notifications_by_date(get_active_notifications());
+//print_array($notifications);
+
+
 //Llamando una vista
-view('configuracion', compact('data', 'user', 'users'));
+view('configuracion', compact('data', 'user', 'users', 'notifications'));

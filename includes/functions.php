@@ -348,6 +348,102 @@ function recursive_unset_array(&$array, $unwanted_key) {
     }
 }
 
+//Get all notifications
+function get_active_notifications() {
+
+	$notifications = array();
+	$con = db_con();
+	$query = $con->prepare("SELECT * FROM notificaciones WHERE (estado = 'activo') OR (estado = 'vencido') ORDER BY FIELD (tipo, 'recordatorio', 'llamada'), fecha_notificacion ASC LIMIT 1000");
+	$query->execute(array());
+	//$notifications = $query->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_COLUMN|PDO::FETCH_GROUP,4);
+	$data = $query->fetchAll(PDO::FETCH_ASSOC);
+	$query->closeCursor();
+
+	return $data;
+
+}
+
+function filter_notifications_by_status( $data = array(), $status = '' ) {
+
+	$result = array();
+
+	foreach ($data as $key => $value) {
+
+		if ($value['estado'] == $status) {
+
+			$result[$key] = $value;
+
+		}		
+
+	}
+
+	return $result;
+
+}
+
+function filter_notifications_by_date( $data = array() ) {
+
+	date_default_timezone_set('America/Mexico_City');
+
+	$result = array(
+				'vencidas' 		=> array(),
+				'hoy' 			=> array(),
+				'proximamente' 	=> array(),
+				'mas_adelante' 	=> array(),
+			);
+
+	$today			= date('Y-m-d');
+	$proximamente	= date('Y-m-d', mktime(0, 0, 0, date("m")  , date("d")+3, date("Y")) );
+	$mas_adelante	= date('Y-m-d', mktime(0, 0, 0, date("m")  , date("d")+4, date("Y")) );
+	$vcount = 0;
+	$hcount = 0;
+	$pcount = 0;
+	$mcount = 0;
+	
+	foreach ($data as $key => $value) {
+
+		if ($value['fecha_notificacion'] < $today)
+
+		{
+
+			$result['vencidas']['n_'.$vcount] = $value;
+			$vcount++;
+
+		}
+		
+		else if ($value['fecha_notificacion'] == $today)
+		
+		{
+
+			$result['hoy']['n_'.$hcount] = $value;
+			$hcount++;
+
+		}
+
+		else if ( ($value['fecha_notificacion'] > $today) AND ($value['fecha_notificacion'] <= $proximamente) )
+
+		{
+
+			$result['proximamente']['n_'.$pcount] = $value;
+			$pcount++;
+
+		}
+
+		else if ( $value['fecha_notificacion'] >= $mas_adelante )
+
+		{
+
+			$result['mas_adelante']['n_'.$mcount] = $value;
+			$mcount++;
+
+		}
+
+	}
+
+	return $result;
+
+}
+
 //*******************OLD FUNCTIONS BELOW*******************************
 
 // Confirma si la consulta se realizó con éxito

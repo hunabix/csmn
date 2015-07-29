@@ -3,7 +3,7 @@
 * Controlador del modal Eliminar
 */
 
-file_put_contents("post.log",print_r($_POST,true));
+//file_put_contents("post.log",print_r($_POST,true));
 
 //echo $data['tipo-accion'];
 
@@ -26,13 +26,11 @@ if ( $query->execute(array('id' => $data['usuario-id'])) ) {
 		$return['tipo'] = $data['tipo'];
 		$return['email'] = $data['email'];;
 
-		file_put_contents("tracker.log",print_r($return,true));
+		//file_put_contents("tracker.log",print_r($return,true));
 
 		echo json_encode($return, JSON_UNESCAPED_UNICODE);
 
 }
-
-
 
 if ($data['formulario'] == 'mag-form') {
 

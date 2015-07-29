@@ -423,7 +423,9 @@ $recordatoriodepagosb = htmlentities(utf8_decode('<!-- Recordatorio de pago envi
 
 }
 
+$notifications = filter_notifications_by_date(get_active_notifications());
+// print_array($notifications);
 		
 //Llamando una vista
-view('nuevo-registro', compact('user'));
+view('nuevo-registro', compact('user', 'notifications'));
 
