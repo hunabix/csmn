@@ -50,8 +50,9 @@
         
         <!-- Herramientas
         ================================================== --> 
-        <?php require_once("herramientas.php");  ?>
-        
+        <?php if (isset($user)) : ?>
+            <?php require_once("herramientas.php");  ?>
+        <?php endif; ?>
         <!-- Contenido principal
         ================================================== --> 
         <section class="main-content">

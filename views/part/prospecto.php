@@ -1,6 +1,5 @@
 
 <!-- Prospecto -->
-
 <div id="<?= $caso['ID']; ?>" class="lead form <?= $caso['prioridad']; ?>">
 
     <!-- Checkbox & Nombre -->
