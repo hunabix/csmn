@@ -3,7 +3,9 @@
         
         <!-- Notificaciones
         ================================================== --> 
-        <?php require_once("notificaciones.php");  ?>
+        <?php if (isset($user)) : ?>
+            <?php require_once("notificaciones.php");  ?>
+        <?php endif; ?>
 	</main>
     
    

@@ -3,7 +3,7 @@
 /*----------------------------------------------------------*/
 
 .Herramientas {
-	background: #333;
+	background: $primaru-color-darker;
 	display: inline-block;
 	vertical-align: top;
 	width: 2.4rem;
@@ -20,7 +20,7 @@
 		@include ul-base;
 		font-size: 1.5rem;
 		text-align: center;
-		padding-top: 76vh;
+		bottom: 5rem;
 		position: fixed;
 		width: 2rem;
 

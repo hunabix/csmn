@@ -1,4 +1,5 @@
 <?php //var_dump($user) // Imprimo array de datos del usuario logeado ?>
+<?php //var_dump($users) // Imprimo array de usuarios existentes ?>
 
 <!-- Formulario de usuarios -->
 <form id="usuarios-form" name="usuarios-form" class="usuarios-form form panel-contenido" method="post" action="<?= cs_url; ?>/configuracion" >
@@ -8,6 +9,8 @@
 	</button>
 
 	<!-- Usuarios -->
+
+	<?php  ?>
 	<section id="user-list" class="users">
 		<!-- Encabezado -->
 		<header class="titles">
@@ -16,90 +19,39 @@
 		    <h4 class="lt-email">Correo</h4>
 		    <h4 class="lt-tipo">Tipo de usuario</h4>
 		</header>
-
-		<div id="1" class="user">		       
-		    <!-- Usuario -->
-		    <span class="username">
-		      	<i class="fa fa-user userimg"></i> 
-		        <span class="usernamedata">Usuario</span>
-		    </span>
-		    <!-- Nombre -->
-		    <span class="nombre">
-		        Nombre del operador
-		    </span>
-		    <!-- Correo -->
-		    <span class="correo">
-		        correo@sominio.com
-		    </span>
-		    <!-- Tipo -->
-		    <span class="tipo">
-		        Operador
-		    </span>
-			<!-- Acciones -->
-			<aside class="actions">
-			    <!-- Editar usuario -->
-			    <a href="#" class="action editar-usuario" data-toggle="modal" data-target="#modal-usuario"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Editar usuario"></i></a>        
-			    <!-- Eliminar usuario -->
-			    <a href="#" class="action eliminar-usuario" data-toggle="modal" data-target="#modal-usuario-eliminar" tipo-accion="eliminar"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Eliminar usuario"></i></a>
-			</aside>
-		</div>
 		
+		<?php foreach ($users as $usuario) { ?>
+				    
+			<div id="<?= $usuario['ID']; ?>" class="user">		       
+			    <!-- Usuario -->
+			    <span class="username">
+			      	<i class="fa fa-user userimg"></i> 
+			        <span class="usernamedata"><?= $usuario['usuario']; ?></span>
+			    </span>
+			    <!-- Nombre -->
+			    <span class="nombre">
+			        <?= $usuario['nombre']; ?>
+			    </span>
+			    <!-- Correo -->
+			    <span class="correo">
+			        <?= $usuario['email']; ?>
+			    </span>
+			    <!-- Tipo -->
+			    <span class="tipo">
+			        <?= $usuario['tipo']; ?>
+			    </span>
+				<!-- Acciones -->
+				<aside class="actions">
+				    <!-- Editar usuario -->
+				    <a href="#" class="action editar-usuario" data-toggle="modal" data-target="#modal-usuario"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Editar usuario"></i></a>        
+				    <!-- Eliminar usuario -->
+				    <a href="#" class="action eliminar-usuario" data-toggle="modal" data-target="#modal-usuario-eliminar" tipo-accion="eliminar"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Eliminar usuario"></i></a>
+				</aside>
+			</div>
+		<?php } ?>
 
-		<!-- INICIO USUARIO PRUEBAS -->
-		<div id="2" class="user">		       
-		    <!-- Usuario -->
-		    <span class="username">
-		      	<i class="fa fa-user userimg"></i> 
-		        <span class="usernamedata">Usuario</span>
-		    </span>
-		    <!-- Nombre -->
-		    <span class="nombre">
-		        Nombre del operador
-		    </span>
-		    <!-- Correo -->
-		    <span class="correo">
-		        correo@sominio.com
-		    </span>
-		    <!-- Tipo -->
-		    <span class="tipo">
-		        Administrador
-		    </span>
-			<!-- Acciones -->
-			<aside class="actions">
-			    <!-- Editar usuario -->
-			    <a href="#" class="action editar-usuario" data-toggle="modal" data-target="#modal-usuario"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Editar usuario"></i></a>        
-			    <!-- Eliminar usuario -->
-			    <a href="#" class="action eliminar-usuario" data-toggle="modal" data-target="#modal-usuario-eliminar" tipo-accion="eliminar"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Eliminar usuario"></i></a>
-			</aside>
-		</div>
-
-		<div id="3" class="user">		       
-		    <!-- Usuario -->
-		    <span class="username">
-		      	<i class="fa fa-user userimg"></i> 
-		        <span class="usernamedata">Usuario</span>
-		    </span>
-		    <!-- Nombre -->
-		    <span class="nombre">
-		        Nombre del operador
-		    </span>
-		    <!-- Correo -->
-		    <span class="correo">
-		        correo@sominio.com
-		    </span>
-		    <!-- Tipo -->
-		    <span class="tipo">
-		        Operador
-		    </span>
-			<!-- Acciones -->
-			<aside class="actions">
-			    <!-- Editar usuario -->
-			    <a href="#" class="action editar-usuario" data-toggle="modal" data-target="#modal-usuario"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Editar usuario"></i></a>        
-			    <!-- Eliminar usuario -->
-			    <a href="#" class="action eliminar-usuario" data-toggle="modal" data-target="#modal-usuario-eliminar" tipo-accion="eliminar"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Eliminar usuario"></i></a>
-			</aside>
-		</div>
-		<!-- FIN USUARIO PRUEBAS -->
+		
+		
 	</section>
 	
 
