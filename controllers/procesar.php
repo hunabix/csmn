@@ -34,7 +34,7 @@ if ($data['formulario'] == 'usuarios-form') {
 	exit();
 } //Leads form
 
-// Procces leads form
+// Procces notificaciones form
 if ($data['formulario'] == 'notificaciones-form') {
 
 	load_modal('n-'.$data['tipo-accion'], compact('data'));
