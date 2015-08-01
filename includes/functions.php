@@ -444,6 +444,122 @@ function filter_notifications_by_date( $data = array() ) {
 
 }
 
+function filter_notifications_by_date_and_status( $data = array() ) {
+
+	date_default_timezone_set('America/Mexico_City');
+
+	$result = array(
+				'vencidas' 		=> array(
+										'recordatorio' 	=> array(),
+										'llamada' 		=> array()
+									),
+				'hoy' 			=> array(
+										'recordatorio' 	=> array(),
+										'llamada' 		=> array()
+									),
+				'proximamente' 	=> array(
+										'recordatorio' 	=> array(),
+										'llamada' 		=> array()
+									),
+				'mas_adelante' 	=> array(
+										'recordatorio' 	=> array(),
+										'llamada' 		=> array()
+									),
+			);
+
+	$today			= date('Y-m-d');
+	$proximamente	= date('Y-m-d', mktime(0, 0, 0, date("m")  , date("d")+3, date("Y")) );
+	$mas_adelante	= date('Y-m-d', mktime(0, 0, 0, date("m")  , date("d")+4, date("Y")) );
+	$vrcount = 0;
+	$hrcount = 0;
+	$prcount = 0;
+	$mrcount = 0;
+
+	$vlcount = 0;
+	$hlcount = 0;
+	$plcount = 0;
+	$mlcount = 0;
+	
+	foreach ($data as $key => $value) {
+
+		if ($value['fecha_notificacion'] < $today)
+
+		{
+
+			if ($value['tipo'] == 'recordatorio') {
+
+				$result['vencidas']['recordatorio'][$vrcount] = $value;
+				$vrcount++;
+
+			} elseif ($value['tipo'] == 'llamada') {
+
+				$result['vencidas']['llamada'][$vlcount] = $value;
+				$vlcount++;
+
+			}
+
+		}
+		
+		else if ($value['fecha_notificacion'] == $today)
+		
+		{
+
+			if ($value['tipo'] == 'recordatorio') {
+
+				$result['hoy']['recordatorio'][$hrcount] = $value;
+				$hrcount++;
+
+			} elseif ($value['tipo'] == 'llamada') {
+
+				$result['hoy']['llamada'][$hlcount] = $value;
+				$hlcount++;
+
+			}
+
+		}
+
+		else if ( ($value['fecha_notificacion'] > $today) AND ($value['fecha_notificacion'] <= $proximamente) )
+
+		{
+
+			if ($value['tipo'] == 'recordatorio') {
+
+				$result['proximamente']['recordatorio'][$prcount] = $value;
+				$prcount++;
+
+			} elseif ($value['tipo'] == 'llamada') {
+
+				$result['proximamente']['llamada'][$plcount] = $value;
+				$plcount++;
+
+			}
+
+		}
+
+		else if ( $value['fecha_notificacion'] >= $mas_adelante )
+
+		{
+
+			if ($value['tipo'] == 'recordatorio') {
+
+				$result['mas_adelante']['recordatorio'][$mrcount] = $value;
+				$mrcount++;
+
+			} elseif ($value['tipo'] == 'llamada') {
+
+				$result['mas_adelante']['llamada'][$mlcount] = $value;
+				$mlcount++;
+
+			}
+
+		}
+
+	}
+
+	return $result;
+
+}
+
 //*******************OLD FUNCTIONS BELOW*******************************
 
 // Confirma si la consulta se realizó con éxito

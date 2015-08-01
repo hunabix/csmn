@@ -62,7 +62,7 @@ foreach ($casos as $caso => $value) {
 
 
 //print_array($casos);
-$notifications = filter_notifications_by_date(get_active_notifications());
+$notifications = filter_notifications_by_date_and_status(get_active_notifications());
 //print_array($notifications);
 
 //Llamando una vista
