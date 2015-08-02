@@ -17,6 +17,7 @@
 </head>
     
 <body>
+    
     <!-- HEADER -->
     <header id="header" class="header">
         <div class="header-content">
@@ -32,11 +33,19 @@
                 <!-- Main Nav -->
                 <nav id="main-nav" class="main-nav">
                     <ul>
+                        <!-- Home -->
                         <li><a href="<?= cs_url; ?>"><i class="fa fa-home"></i></a></li>
+                        <!-- Nuevo registro -->
                         <li><a href="<?= cs_url; ?>/nuevo-registro"><i class="fa fa-user-plus"></i></a></li>
+                        <!-- Buscar -->
                         <!-- <li><a href="#"><i class="fa fa-search "></i></a></li> -->
-                        <li><a href="#"><i class="fa fa-bell"></i></a></li>
+                        <!-- Crear notificación -->
+                        <li>
+                            <a href="#" id="notificacion-nueva" data-toggle="modal" data-target="#modal-notificacion"><i class="fa fa-bell"></i></a>
+                        </li>
+                        <!-- Consultas -->
                         <!-- <li><a href="#"><i class="fa fa-archive"></i></a></li> -->
+                        <!-- Configuración -->
                         <?php if ($user['tipo'] == 'administrador') :?>
                             <li><a href="<?= cs_url; ?>/configuracion"><i class="fa fa-cog"></i></a></li>
                         <?php endif; ?>
@@ -57,4 +66,5 @@
         ================================================== --> 
         <section class="main-content">
             
-        
+            <?php // var_dump($user); ?>
+            <?php //var_dump($notifications['vencidas']['llamada']); ?>

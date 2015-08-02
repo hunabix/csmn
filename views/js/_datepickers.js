@@ -109,3 +109,11 @@ $('#cierre-ins-ciclo4').datepicker({
     format: 'dd/mm/yyyy',
     color: 'green'
 });
+// Notificacion
+$('#notificacion-fecha').datepicker({
+    weekStart:1,
+    format: 'dd/mm/yyyy',
+    color: 'green'
+});
+
+

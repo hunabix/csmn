@@ -4,8 +4,189 @@
 
 .Notificaciones {
 	background: #eee;
-	display: inline-block;
-	vertical-align: top;
-	width: 18%;
-	padding: 2rem .5rem;
+	width: 22%;
+	@include anim();
+	margin-top: -68px;
+
+	.Notificaciones-wrapper {
+		position: fixed;
+		
+		.Notificaciones-header {
+			background: $primary-color-dark;
+			color: $primary-color-text;
+			padding: 20px .5rem 1rem;
+			display: flex;
+			justify-content: space-between;
+
+			.Notificaciones-toggleBtn {
+				width: 2rem;
+				height: 2rem;
+				font-size: 1.8rem;
+				padding: 0;
+				line-height: 2rem;
+				@include anim();
+
+				i { @include anim(); }
+			}
+			.Notificaciones-title {
+				height: 2rem;
+				line-height: 2rem;
+				padding: 0;
+				margin: 0;
+				display: visible;
+			}
+			.Notificaciones-downloadBtn {
+				width: 3rem;
+				height: 2rem;
+				font-size: 1.5rem;
+				padding: 0;
+				line-height: 2rem;
+			}
+		}
+
+		.Notificaciones-body {
+			@include anim();
+			opacity: 1;
+			
+			
+			.Notificaciones-panel {
+				border-radius: 0;
+			
+				.Notificaciones-panelHeading {
+					border-radius: 0;
+					
+					&:hover {
+						background: $accent-color;
+						color: $primary-color-text;
+					}
+					h4 {
+						font-size: 1.25rem;
+						font-weight: 400;
+
+						a { text-decoration: none; }
+					}
+				}
+				.Notificaciones-panelHeading.is-outdate {
+					a {
+						i { color: $red; font-size: 1.5rem; }
+					}
+				}
+				.Notificaciones-panelBody {
+					
+					.Notificaciones-panelTituloTipo {
+						font-size: 1.175rem;
+						margin: 0 0 .5rem;
+						padding: 1rem 0 .75rem;
+						border-bottom: dotted 1px #ccc;
+					}
+
+					.Notificaciones-notificacion {
+						display: flex;
+						font-size: 1rem;
+						font-weight: 400;
+						margin: 0 0 .5rem;
+						padding: .5rem 0 0;
+						border-bottom: dotted 1px #eee;
+						
+						.Notificaciones-notificacionTitulo {
+							width: 90%;
+							padding-right: .5rem;
+							text-decoration: none;
+							color: #444;
+							cursor: pointer;
+
+							&:hover {
+								font-weight: 800;
+							}
+						}
+						.Notificaciones-notificacionDescripcion {
+							width: 1.5rem;
+							color: $divider-color;						
+						}
+						.Notificaciones-notificacionFecha {
+							width: 3rem;
+							font-size: .75rem;
+							font-weight: 600;
+							color: #555;
+						}
+
+					}
+				}
+			}
+		}
+
+		.Notificaciones-form {
+			
+			.Notificaciones-formTipo {
+				width: 46%;
+				float: left;
+				margin: 0 4% 1rem 0;
+			}
+			.Notificaciones-formFecha {
+				width: 46%;
+				float: right;
+				margin: 0 0 1rem 4%;
+			}
+			.Notificaciones-formTitulo {
+				margin-bottom: 1rem;
+			}
+			.Notificaciones-formDescripcion {
+			}
+			.Notificaciones-formAcciones {
+				margin-left: 1rem;
+
+				.Notificaciones-formEliminar {
+					background: #fff;
+					border-color: $red;
+					color: $red;
+					&:hover {
+						background: $red;
+						color: #fff;
+						border-color: #AA130B;
+					}
+				}
+				.Notificaciones-formModificar {
+					background: #fff;
+					border-color: $orange;
+					color: $orange;
+					&:hover {
+						background: $orange;
+						color: #fff;
+						border-color: #CC7700;
+					}
+				}
+				.Notificaciones-formCompletar,
+				.Notificaciones-formCrear {
+					background: #fff;
+					border-color: $green;
+					color: $green;
+					&:hover {
+						background: $green;
+						color: #fff;
+						border-color: #1E6321;
+					}
+				}
+
+			}
+
+		}
+	}
+}
+
+.Notificaciones.is-hidden {
+	width: 3rem;
+		.Notificaciones-toggleBtn {
+			i {
+				transform: rotate(180deg);	
+			}
+		}
+		.Notificaciones-title,
+		.Notificaciones-downloadBtn {
+			display: none;
+		}
+		.Notificaciones-body {
+			opacity: 0;
+			transform: scale(0);
+
+		}
 }

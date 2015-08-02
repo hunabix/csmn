@@ -2,6 +2,7 @@
 //@prepros-prepend _magform.js
 //@prepros-prepend _leadform.js
 //@prepros-prepend _configuracion.js
+//@prepros-prepend _notificaciones.js
 
 /* Tootltips
 --------------------------------------------- */

@@ -9,6 +9,7 @@
 	background: $primary-color;
 	position: relative;
 	border-top: $primary-color-dark .2rem solid;
+	// z-index: 9999;
 	
 	@media (max-width: 1300px) {
 		padding: 0 1.5rem;
