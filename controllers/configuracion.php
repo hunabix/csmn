@@ -4,7 +4,7 @@
 */
 
 $user = confirm_logged_in(); //revisa si el operador ha ingresado
-file_put_contents("post.log",print_r($_POST,true));
+//file_put_contents("post.log",print_r($_POST,true));
 $data = readRawPost(array_values($_POST));
 
 // print_array($data);

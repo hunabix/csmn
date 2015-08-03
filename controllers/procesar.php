@@ -3,6 +3,7 @@
 * Controlador que recibe peticiones
 */
 
+//file_put_contents("post.log",print_r($_POST,true));
 // Carga de archivos base
 require_once('../config.php');
 require_once('../includes.php');
@@ -35,7 +36,7 @@ if ($data['formulario'] == 'usuarios-form') {
 } //Leads form
 
 // Procces notificaciones form
-if ($data['formulario'] == 'notificaciones-form') {
+if ($data['formulario'] == 'notificacion-form') {
 
 	load_modal('n-'.$data['tipo-accion'], compact('data'));
 	exit();
