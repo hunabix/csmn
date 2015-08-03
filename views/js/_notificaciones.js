@@ -91,7 +91,8 @@ $("#notificaciones-form").on("submit", function(e){
         dataType: "json",
         // URL a la que se enviará la solicitud Ajax
         //url: "views/part/process.php", 
-        url: "controllers/procesar.php",
+        // url: "controllers/procesar.php",
+        url: "http://localhost/dev.musinetwork.com/controllers/procesar.php",
     })
     .done(function( data, textStatus, jqXHR ) {
         console.log( "La solicitud se ha completado correctamente." );
