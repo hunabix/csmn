@@ -9,9 +9,9 @@
 			<!-- Título -->
 			<h3 class="Notificaciones-title">Notificaciones</h3>
 			<!-- Descargar notificaciones -->
-			<button class="Notificaciones-downloadBtn btn btn-primary btn-fill">
+			<!-- <button class="Notificaciones-downloadBtn btn btn-primary btn-fill">
 				<i class="fa fa-cloud-download"></i>
-			</button>
+			</button> -->
 		</header>
 		
 		<!-- Notificaciones contenido -->

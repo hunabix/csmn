@@ -75,7 +75,7 @@ $( "#modal-notificacion-editar").click(function(e) {
 // Completar notificacion
 $( "#modal-notificacion-completar").click(function(e) {
     e.preventDefault();
-    $( "#notificacion-tipo-accion" ).val( "completar-notificacion" );
+    $( "#notificacion-tipo-accion" ).val( "completar_notificacion" );
     $( "#notificaciones-form" ).submit();
 });
 
@@ -102,33 +102,35 @@ $("#notificaciones-form").on("submit", function(e){
         // Editar notificacion
         if ( data.tipo_accion == "editar_notificacion")
         {
-            $( '#alerta-exito' ).html( data.mensaje );
-            //notificacion = $('#' + data.usuario_id);
-            //notificacion.find( ".usernamedata" ).html( data.username );
-            //notificacion.find( ".nombre" ).html( data.nombre );
-            //notificacion.find( ".correo" ).html( data.email );
-            //notificacion.find( ".tipo" ).html( data.tipo );
-            //$('.modal').modal('hide');
+            document.location.reload();
+            // $( '#alerta-exito' ).html( data.mensaje );
+            // notificacion = $('#' + data.ID);
+            // notificacion.find( ".Notificaciones-notificacionTitulo" ).html( data.titulo );
+            // notificacion.find( ".Notificaciones-notificacionDescripcion" ).attr( "title", "Beijing Brush Seller" );
+            // notificacion.find( ".correo" ).html( data.email );
+            // notificacion.find( ".tipo" ).html( data.tipo );
+            $('.modal').modal('hide');
         }
         // Eliminar notificacion
         if ( data.tipo_accion == "eliminar_notificacion")
         {
-            //$( '#alerta-exito' ).html( data.mensaje );
-            //notificacion = $('#' + data.usuario_id);
-            //notificacion.remove( '' );
-            //$('.modal').modal('hide');
+            $( '#alerta-exito' ).html( data.mensaje );
+            notificacion = $('#' + data.ID);
+            notificacion.remove( );
+            $('.modal').modal('hide');
         }
         // Completar notificacion
-        if ( data.tipo_accion == "eliminar_notificacion")
+        if ( data.tipo_accion == "completar_notificacion")
         {
-            //$( '#alerta-exito' ).html( data.mensaje );
-            //notificacion = $('#' + data.usuario_id);
-            //notificacion.remove( '' );
-            //$('.modal').modal('hide');
+            $( '#alerta-exito' ).html( data.mensaje );
+            notificacion = $('#' + data.ID);
+            notificacion.remove( '' );
+            $('.modal').modal('hide');
         }
         // Crear notificacion
         if ( data.tipo_accion == "crear_notificacion")
         {
+            document.location.reload();
             //$( '#alerta-exito' ).html( data.mensaje );
             //var notificacion = '';           
             //notificacion =  notificacion + '<div id=" ' +  data.usuario_id + '" class="user">';              
@@ -139,7 +141,7 @@ $("#notificaciones-form").on("submit", function(e){
 
         //  CIERRE DE LAS ACCIONES
         // Cierro todos los modales activos
-        if ( data.tipo_accion != "solicitar-datos" ) 
+        if ( data.tipo-accion != "solicitar-datos" ) 
         {
             $('.modal').modal('hide');
             // muestro el mensaje de éxito

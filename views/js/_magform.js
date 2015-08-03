@@ -47,7 +47,7 @@ $("#mag-form").on("submit", function(e){
         // Formato de datos que se espera en la respuesta
         dataType: "json",
         // URL a la que se enviará la solicitud Ajax
-        // url: "views/part/process.php", 
+        //url: "views/part/process.php", 
         url: "controllers/procesar.php",
     })
     .done(function( data, textStatus, jqXHR ) {

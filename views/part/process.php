@@ -16,16 +16,28 @@ if (isset($_POST['formulario'])) {
 
 	/* CONFIGURACIÓN pruebas de envío
 	---------------------------------------------------------------------------------- */
+	// $regresa['formulario'] = $_POST['formulario'];
+	// $regresa['mensaje'] = '¡todo chido!';
+	// $regresa['usuario_id'] = $_POST['usuario-id'];
+	// $regresa['tipo_accion'] = $_POST['tipo-accion'];
+	// $regresa['username'] = $_POST['username'];
+	// $regresa['nombre'] = $_POST['nombre'];
+	// $regresa['email'] = $_POST['email'];
+	// $regresa['clave'] = $_POST['clave'];
+	// $regresa['tipo'] = $_POST['tipo'];
+
+	/* NOTIFICACIONES pruebas de envío
+	---------------------------------------------------------------------------------- */
 	$regresa['formulario'] = $_POST['formulario'];
 	$regresa['mensaje'] = '¡todo chido!';
-	$regresa['usuario_id'] = $_POST['usuario-id'];
-	$regresa['tipo_accion'] = $_POST['tipo-accion'];
-	$regresa['username'] = $_POST['username'];
-	$regresa['nombre'] = $_POST['nombre'];
-	$regresa['email'] = $_POST['email'];
-	$regresa['clave'] = $_POST['clave'];
 	$regresa['tipo'] = $_POST['tipo'];
-	
+	$regresa['fecha_notificacion'] = $_POST['fecha_notificacion'];
+	$regresa['titulo'] = $_POST['titulo'];
+	$regresa['descripcion'] = $_POST['descripcion'];
+	$regresa['ID'] = $_POST['ID'];
+	$regresa['id_usuario'] = $_POST['id_usuario'];
+	$regresa['estado'] = $_POST['estado'];
+	$regresa['tipo_accion'] = $_POST['tipo-accion'];
 
 	// Impresión de parametros para testing
 	echo json_encode($regresa, JSON_UNESCAPED_UNICODE);
