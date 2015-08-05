@@ -11,13 +11,14 @@ file_put_contents("post.log",print_r($_POST,true));
 
 //Flag last interaction
 $con = db_con();
+$fecha_notificacion = custom_date_format($data['fecha_notificacion'], '/', '-', array(2, 1, 0));
 $query = $con->prepare('UPDATE notificaciones SET id_usuario = :id_usuario, titulo = :titulo, descripcion = :descripcion, tipo = :tipo, fecha_notificacion = :fecha_notificacion WHERE ID = :ID');
 if ($query->execute(array(
 	'id_usuario' => $data['id_usuario'],
 	'titulo' => $data['titulo'],	
 	'descripcion' => $data['descripcion'],
 	'tipo' => $data['tipo'],
-	'fecha_notificacion' => $data['fecha_notificacion'],
+	'fecha_notificacion' => $fecha_notificacion,
 	'ID' => $data['ID'],
 ))) {
 	
@@ -28,7 +29,7 @@ if ($query->execute(array(
 	$return['titulo'] = $data['titulo'];
 	$return['descripcion'] = $data['descripcion'];
 	$return['tipo'] = $data['tipo'];
-	$return['fecha_notificacion'] = $data['fecha_notificacion'];
+	$return['fecha_notificacion'] = $fecha_notificacion;
 	$return['estado'] = $data['estado'];
 	$return['ID'] = $data['ID'];
 

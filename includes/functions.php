@@ -489,13 +489,19 @@ function filter_notifications_by_date_and_status( $data = array() ) {
 			if ($value['tipo'] == 'recordatorio') {
 
 				$result['vencidas']['recordatorio'][$vrcount] = $value;
-				$result['vencidas']['recordatorio'][$vrcount]['fecha_notificacion'] = fecha_en_array($value['fecha_notificacion']);
+				$fecha_procesada = $result['vencidas']['recordatorio'][$vrcount]['fecha_procesada'] = fecha_en_array($value['fecha_notificacion']);
+				$result['vencidas']['recordatorio'][$vrcount]['fecha_corta'] = $fecha_procesada['dia'] . ' ' . $fecha_procesada['mes_texto_corto'];
+
+				$result['vencidas']['recordatorio'][$vrcount]['fecha_notificacion'] = custom_date_format($result['vencidas']['recordatorio'][$vrcount]['fecha_notificacion'], '-', '/', array(2,1,0));
 				$vrcount++;
 
 			} elseif ($value['tipo'] == 'llamada') {
 
 				$result['vencidas']['llamada'][$vlcount] = $value;
-				$result['vencidas']['llamada'][$vlcount]['fecha_notificacion'] = fecha_en_array($value['fecha_notificacion']);
+				$fecha_procesada = $result['vencidas']['llamada'][$vlcount]['fecha_procesada'] = fecha_en_array($value['fecha_notificacion']);
+				$result['vencidas']['llamada'][$vlcount]['fecha_corta'] = $fecha_procesada['dia'] . ' ' . $fecha_procesada['mes_texto_corto'];
+
+				$result['vencidas']['llamada'][$vlcount]['fecha_notificacion'] = custom_date_format($result['vencidas']['llamada'][$vlcount]['fecha_notificacion'], '-', '/', array(2,1,0));
 				$vlcount++;
 
 			}
@@ -509,13 +515,19 @@ function filter_notifications_by_date_and_status( $data = array() ) {
 			if ($value['tipo'] == 'recordatorio') {
 
 				$result['hoy']['recordatorio'][$hrcount] = $value;
-				$result['hoy']['recordatorio'][$hrcount]['fecha_notificacion'] = fecha_en_array($value['fecha_notificacion']);
+				$fecha_procesada = $result['hoy']['recordatorio'][$hrcount]['fecha_procesada'] = fecha_en_array($value['fecha_notificacion']);
+				$result['hoy']['recordatorio'][$hrcount]['fecha_corta'] = $fecha_procesada['dia'] . ' ' . $fecha_procesada['mes_texto_corto'];
+
+				$result['hoy']['recordatorio'][$hrcount]['fecha_notificacion'] = custom_date_format($result['hoy']['recordatorio'][$hrcount]['fecha_notificacion'], '-', '/', array(2,1,0));
 				$hrcount++;
 
 			} elseif ($value['tipo'] == 'llamada') {
 
 				$result['hoy']['llamada'][$hlcount] = $value;
-				$result['hoy']['llamada'][$hlcount]['fecha_notificacion'] = fecha_en_array($value['fecha_notificacion']);
+				$fecha_procesada = $result['hoy']['llamada'][$hlcount]['fecha_procesada'] = fecha_en_array($value['fecha_notificacion']);
+				$result['hoy']['llamada'][$hlcount]['fecha_corta'] = $fecha_procesada['dia'] . ' ' . $fecha_procesada['mes_texto_corto'];
+
+				$result['hoy']['llamada'][$hlcount]['fecha_notificacion'] = custom_date_format($result['hoy']['llamada'][$hlcount]['fecha_notificacion'], '-', '/', array(2,1,0));
 				$hlcount++;
 
 			}
@@ -529,13 +541,19 @@ function filter_notifications_by_date_and_status( $data = array() ) {
 			if ($value['tipo'] == 'recordatorio') {
 
 				$result['proximamente']['recordatorio'][$prcount] = $value;
-				$result['proximamente']['recordatorio'][$prcount]['fecha_notificacion'] = fecha_en_array($value['fecha_notificacion']);
+				$fecha_procesada = $result['proximamente']['recordatorio'][$prcount]['fecha_procesada'] = fecha_en_array($value['fecha_notificacion']);
+				$result['proximamente']['recordatorio'][$prcount]['fecha_corta'] = $fecha_procesada['dia'] . ' ' . $fecha_procesada['mes_texto_corto'];
+
+				$result['proximamente']['recordatorio'][$prcount]['fecha_notificacion'] = custom_date_format($result['proximamente']['recordatorio'][$prcount]['fecha_notificacion'], '-', '/', array(2,1,0));
 				$prcount++;
 
 			} elseif ($value['tipo'] == 'llamada') {
 
 				$result['proximamente']['llamada'][$plcount] = $value;
-				$result['proximamente']['llamada'][$plcount]['fecha_notificacion'] = fecha_en_array($value['fecha_notificacion']);
+				$fecha_procesada = $result['proximamente']['llamada'][$plcount]['fecha_procesada'] = fecha_en_array($value['fecha_notificacion']);
+				$result['proximamente']['llamada'][$plcount]['fecha_corta'] = $fecha_procesada['dia'] . ' ' . $fecha_procesada['mes_texto_corto'];
+
+				$result['proximamente']['llamada'][$plcount]['fecha_notificacion'] = custom_date_format($result['proximamente']['llamada'][$plcount]['fecha_notificacion'], '-', '/', array(2,1,0));
 				$plcount++;
 
 			}
@@ -549,13 +567,19 @@ function filter_notifications_by_date_and_status( $data = array() ) {
 			if ($value['tipo'] == 'recordatorio') {
 
 				$result['mas_adelante']['recordatorio'][$mrcount] = $value;
-				$result['mas_adelante']['recordatorio'][$mrcount]['fecha_notificacion'] = fecha_en_array($value['fecha_notificacion']);
+				$fecha_procesada = $result['mas_adelante']['recordatorio'][$mrcount]['fecha_procesada'] = fecha_en_array($value['fecha_notificacion']);
+				$result['mas_adelante']['recordatorio'][$mrcount]['fecha_corta'] = $fecha_procesada['dia'] . ' ' . $fecha_procesada['mes_texto_corto'];
+
+				$result['mas_adelante']['recordatorio'][$mrcount]['fecha_notificacion'] = custom_date_format($result['mas_adelante']['recordatorio'][$mrcount]['fecha_notificacion'], '-', '/', array(2,1,0));
 				$mrcount++;
 
 			} elseif ($value['tipo'] == 'llamada') {
 
 				$result['mas_adelante']['llamada'][$mlcount] = $value;
-				$result['mas_adelante']['llamada'][$mlcount]['fecha_notificacion'] = fecha_en_array($value['fecha_notificacion']);
+				$fecha_procesada = $result['mas_adelante']['llamada'][$mlcount]['fecha_procesada'] = fecha_en_array($value['fecha_notificacion']);
+				$result['mas_adelante']['llamada'][$mlcount]['fecha_corta'] = $fecha_procesada['dia'] . ' ' . $fecha_procesada['mes_texto_corto'];
+
+				$result['mas_adelante']['llamada'][$mlcount]['fecha_notificacion'] = custom_date_format($result['mas_adelante']['llamada'][$mlcount]['fecha_notificacion'], '-', '/', array(2,1,0));
 				$mlcount++;
 
 			}
