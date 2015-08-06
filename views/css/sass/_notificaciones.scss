@@ -4,13 +4,14 @@
 
 .Notificaciones {
 	background: #eee;
-	width: 22%;
+	width: 18%;
 	@include anim();
 	margin-top: -68px;
 
 	.Notificaciones-wrapper {
 		position: fixed;
-		
+		width: 18%;
+
 		.Notificaciones-header {
 			background: $primary-color-dark;
 			color: $primary-color-text;
@@ -34,6 +35,7 @@
 				margin: 0;
 				display: visible;
 				padding: 0 1rem;
+				flex-grow: 1; 
 			}
 			.Notificaciones-downloadBtn {
 				width: 3rem;

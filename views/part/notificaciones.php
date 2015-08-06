@@ -114,7 +114,7 @@
 					        <!-- Notificaciones -->
 							<?php foreach ( $notifications['proximamente']['llamada'] as $notificacion ) { ?>
 								<?php if( $notificacion['tipo'] == 'llamada' ) : ?>
-									<?php require("notificaciones-item.php"); ?></div>
+									<?php require("notificaciones-item.php"); ?>
 							    <?php endif; ?>
 							<?php } ?>
 

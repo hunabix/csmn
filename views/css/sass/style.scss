@@ -47,7 +47,8 @@ Version: 2.0
 // nuevo-registro-form
 
 .nuevo-registro-form {
-	
+	margin: 0 2rem;
+
 	.datos-generales {
 		display: flex;
 		flex-wrap: wrap;
@@ -96,7 +97,7 @@ Version: 2.0
 
 // mensaje
 .enviar-mensaje {
-
+	margin: 0 2rem;
 	
 	.destinatarios {
 		border: #eee 1px solid;

@@ -78,10 +78,11 @@ h1, h2, h3, h4, h5, h6 {
 	display: flex; /* or inline-flex */
 	background-color: #fff;
 	width: 100%;
-	
+
 	.main-content {
 		padding: 2rem 0;
 		@include anim();
+		flex-grow: 1; 
 	}
 
 	.section-title {
