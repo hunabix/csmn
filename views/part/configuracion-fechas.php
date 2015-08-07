@@ -19,21 +19,21 @@
     <div class="field">
         <label for="inicio-ins-ciclo1">Inicio de inscripciones</label>
         <div class="input-group">
-           <input name="inicio-ins-ciclo1" type="text" id="inicio-ins-ciclo1" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_ins'] ?>">
+           <input name="inicio-ins-ciclo1" type="text" id="inicio-ins-ciclo1" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_ins_ene_mar'] ?>">
            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
         </div>
     </div>
     <div class="field">
         <label for="ciclo-esc-ciclo1">Cierre de inscripciones</label>
         <div class="input-group">
-            <input name="cierre_ins-ciclo1" type="text" id="cierre-ins-ciclo1" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['cierre_ins']; ?>">
+            <input name="cierre_ins-ciclo1" type="text" id="cierre-ins-ciclo1" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['cierre_ins_ene_mar']; ?>">
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
         </div>
     </div>
     <div class="field">
         <label for="inicio-cur-ciclo1">Inicio de cursos</label>
         <div class="input-group">
-            <input name="inicio-cur-ciclo1" type="text" id="inicio-cur-ciclo1" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_cur']; ?>">
+            <input name="inicio-cur-ciclo1" type="text" id="inicio-cur-ciclo1" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_cur_ene_mar']; ?>">
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
         </div>
     </div>
@@ -43,21 +43,21 @@
     <div class="field">
         <label for="inicio-ins-ciclo2">Inicio de inscripciones</label>
         <div class="input-group">
-           <input name="inicio-ins-ciclo2" type="text" id="inicio-ins-ciclo2" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_ins'] ?>">
+           <input name="inicio-ins-ciclo2" type="text" id="inicio-ins-ciclo2" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_ins_abr_jun'] ?>">
            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
         </div>
     </div>
     <div class="field">
         <label for="ciclo-esc-ciclo2">Cierre de inscripciones</label>
         <div class="input-group">
-            <input name="cierre_ins-ciclo2" type="text" id="cierre-ins-ciclo2" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['cierre_ins']; ?>">
+            <input name="cierre_ins-ciclo2" type="text" id="cierre-ins-ciclo2" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['cierre_ins_abr_jun']; ?>">
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
         </div>
     </div>
     <div class="field">
         <label for="inicio-cur-ciclo2">Inicio de cursos</label>
         <div class="input-group">
-            <input name="inicio-cur-ciclo2" type="text" id="inicio-cur-ciclo2" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_cur']; ?>">
+            <input name="inicio-cur-ciclo2" type="text" id="inicio-cur-ciclo2" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_cur_abr_jun']; ?>">
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
         </div>
     </div> 
@@ -67,21 +67,21 @@
     <div class="field">
         <label for="inicio-ins-ciclo3">Inicio de inscripciones</label>
         <div class="input-group">
-           <input name="inicio-ins-ciclo3" type="text" id="inicio-ins-ciclo3" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_ins'] ?>">
+           <input name="inicio-ins-ciclo3" type="text" id="inicio-ins-ciclo3" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_ins_jul_sep'] ?>">
            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
         </div>
     </div>
     <div class="field">
         <label for="ciclo-esc-ciclo1">Cierre de inscripciones</label>
         <div class="input-group">
-            <input name="cierre_ins-ciclo3" type="text" id="cierre-ins-ciclo3" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['cierre_ins']; ?>">
+            <input name="cierre_ins-ciclo3" type="text" id="cierre-ins-ciclo3" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['cierre_ins_jul_sep']; ?>">
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
         </div>
     </div>
     <div class="field">
         <label for="inicio-cur-ciclo1">Inicio de cursos</label>
         <div class="input-group">
-            <input name="inicio-cur-ciclo3" type="text" id="inicio-cur-ciclo3" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_cur']; ?>">
+            <input name="inicio-cur-ciclo3" type="text" id="inicio-cur-ciclo3" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_cur_jul_sep']; ?>">
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
         </div>
     </div>                      
@@ -91,21 +91,21 @@
     <div class="field">
         <label for="inicio-ins-ciclo4">Inicio de inscripciones</label>
         <div class="input-group">
-           <input name="inicio-ins-ciclo4" type="text" id="inicio-ins-ciclo4" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_ins'] ?>">
+           <input name="inicio-ins-ciclo4" type="text" id="inicio-ins-ciclo4" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_ins_oct_dic'] ?>">
            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
         </div>
     </div>
     <div class="field">
         <label for="ciclo-esc-ciclo4">Cierre de inscripciones</label>
         <div class="input-group">
-            <input name="cierre_ins-ciclo4" type="text" id="cierre-ins-ciclo4" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['cierre_ins']; ?>">
+            <input name="cierre_ins-ciclo4" type="text" id="cierre-ins-ciclo4" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['cierre_ins_oct_dic']; ?>">
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
         </div>
     </div>
     <div class="field">
         <label for="inicio-cur-ciclo4">Inicio de cursos</label>
         <div class="input-group">
-            <input name="inicio-cur-ciclo4" type="text" id="inicio-cur-ciclo4" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_cur']; ?>">
+            <input name="inicio-cur-ciclo4" type="text" id="inicio-cur-ciclo4" class="form-control"  placeholder="dd/mm/aaaa" value="<?= $data['configuracion']['inicio_cur_oct_dic']; ?>">
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
         </div>
     </div> 

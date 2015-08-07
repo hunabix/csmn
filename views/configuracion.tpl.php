@@ -11,7 +11,8 @@ require_once("part/header.php"); ?>
 
 	<!-- Muestreo de variables [PRUEBAS]
 	================================================== --> 
-	<?php // var_dump($data['configuracion']);  ?>
+	<?php //var_dump($data['configuracion']);  ?>
+
 	<!-- Muestreo de variables [PRUEBAS]
 	================================================== --> 
 
