@@ -96,7 +96,9 @@ if (isset($data['formulario'])) { // el formulario ha sido enviado
 
 
 // ---------  Se obtiene la última info guardada en la tabla --------------//
-$data['configuracion'] = $configuracion = obten_configuracion();
+$data['configuracion'] = $configuracion = get_configuracion();
+
+// print_array($data['configuracion']);
 
 // Processing dates
 //echo $data['configuracion']['inicio_ins'];
@@ -107,15 +109,19 @@ $data['configuracion']['cierre_ins'] = custom_date_format($data['configuracion']
 $data['configuracion']['inicio_cur'] = custom_date_format($data['configuracion']['inicio_cur'], '-', '/', array(2, 1, 0));
 
 $data['configuracion']['inicio_ins_ene_mar'] = custom_date_format($data['configuracion']['inicio_ins_ene_mar'], '-', '/', array(2, 1, 0));
+$data['configuracion']['cierre_ins_ene_mar'] = custom_date_format($data['configuracion']['cierre_ins_ene_mar'], '-', '/', array(2, 1, 0));
 $data['configuracion']['inicio_cur_ene_mar'] = custom_date_format($data['configuracion']['inicio_cur_ene_mar'], '-', '/', array(2, 1, 0));
 
 $data['configuracion']['inicio_ins_abr_jun'] = custom_date_format($data['configuracion']['inicio_ins_abr_jun'], '-', '/', array(2, 1, 0));
+$data['configuracion']['cierre_ins_abr_jun'] = custom_date_format($data['configuracion']['cierre_ins_abr_jun'], '-', '/', array(2, 1, 0));
 $data['configuracion']['inicio_cur_abr_jun'] = custom_date_format($data['configuracion']['inicio_cur_abr_jun'], '-', '/', array(2, 1, 0));
 
 $data['configuracion']['inicio_ins_jul_sep'] = custom_date_format($data['configuracion']['inicio_ins_jul_sep'], '-', '/', array(2, 1, 0));
+$data['configuracion']['cierre_ins_jul_sep'] = custom_date_format($data['configuracion']['cierre_ins_jul_sep'], '-', '/', array(2, 1, 0));
 $data['configuracion']['inicio_cur_jul_sep'] = custom_date_format($data['configuracion']['inicio_cur_jul_sep'], '-', '/', array(2, 1, 0));
 
 $data['configuracion']['inicio_ins_oct_dic'] = custom_date_format($data['configuracion']['inicio_ins_oct_dic'], '-', '/', array(2, 1, 0));
+$data['configuracion']['cierre_ins_oct_dic'] = custom_date_format($data['configuracion']['cierre_ins_oct_dic'], '-', '/', array(2, 1, 0));
 $data['configuracion']['inicio_cur_oct_dic'] = custom_date_format($data['configuracion']['inicio_cur_oct_dic'], '-', '/', array(2, 1, 0));
 
 
@@ -151,7 +157,7 @@ recursive_unset_array($users, 'clave');
 
 //Get all notificacions
 $notifications = filter_notifications_by_date_and_status(get_active_notifications());
-// print_array($notifications);
+ print_array($data);
 
 
 //Llamando una vista

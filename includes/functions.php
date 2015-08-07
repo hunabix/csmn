@@ -173,6 +173,18 @@ function genMonth_Text($m) {
 		case '10': $month_text = "Octubre"; break;
 		case '11': $month_text = "Noviembre"; break;
 		case '12': $month_text = "Diciembre"; break;
+		case 01: $month_text = "Enero"; break;
+		case 02: $month_text = "Febrero"; break;
+		case 03: $month_text = "Marzo"; break;
+		case 04: $month_text = "Abril"; break;
+		case 05: $month_text = "Mayo"; break;
+		case 06: $month_text = "Junio"; break;
+		case 07: $month_text = "Julio"; break;
+		case 08: $month_text = "Agosto"; break;
+		case 09: $month_text = "Septiembre"; break;
+		case 10: $month_text = "Octubre"; break;
+		case 11: $month_text = "Noviembre"; break;
+		case 12: $month_text = "Diciembre"; break;
 	}
 	// echo $month_text;
 	return ($month_text);
@@ -680,6 +692,19 @@ function filter_notifications_by_date_and_status( $data = array() ) {
 	}
 
 	return $result;
+
+}
+function get_configuracion() {
+
+	$con = db_con();
+	$query = $con->prepare("SELECT * FROM configuracion_cs ORDER BY id DESC LIMIT 1");
+	$query->execute(array());
+	//$notifications = $query->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_COLUMN|PDO::FETCH_GROUP,4);
+	$data = $query->fetchAll(PDO::FETCH_ASSOC);
+	$data = $data[0];
+	$query->closeCursor();
+
+	return $data;
 
 }
 

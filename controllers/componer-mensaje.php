@@ -243,8 +243,8 @@ if (isset($data['nuevo-mensaje'])) {
 					$username = "AKIAIXA2XV6TZOOCK5KQ";
 					$password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
 					$to = $lead_info['email'];
-					$to = 'musinetwork@gmail.com';
-					$to = 'hibamiru@gmail.com';
+					// $to = 'musinetwork@gmail.com';
+					// $to = 'hibamiru@gmail.com';
 					$subject = $asuntop;
 				
 					//Preparing mail
