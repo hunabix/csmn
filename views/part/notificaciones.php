@@ -157,6 +157,7 @@
 			<?php endif; ?>
 		</div>
 
-		<?php require("notificaciones-form.php"); ?>
+
 	</div>
+	<?php require("notificaciones-form.php"); ?>
 </section>

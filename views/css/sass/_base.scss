@@ -83,6 +83,7 @@ h1, h2, h3, h4, h5, h6 {
 		padding: 2rem 0;
 		@include anim();
 		flex-grow: 1; 
+		width: 80%;
 	}
 
 	.section-title {

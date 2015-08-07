@@ -8,9 +8,19 @@
 	@include anim();
 	margin-top: -68px;
 
+	@media (max-width: 1200px) {
+		position: absolute;
+		right: 0;
+		width: 30%;
+	}
+
 	.Notificaciones-wrapper {
 		position: fixed;
 		width: 18%;
+
+		@media (max-width: 1200px) {
+			width: 30%;
+		}
 
 		.Notificaciones-header {
 			background: $primary-color-dark;
@@ -116,63 +126,61 @@
 				}
 			}
 		}
-
-		.Notificaciones-form {
-			
-			.Notificaciones-formTipo {
-				width: 46%;
-				float: left;
-				margin: 0 4% 1rem 0;
-			}
-			.Notificaciones-formFecha {
-				width: 46%;
-				float: right;
-				margin: 0 0 1rem 4%;
-			}
-			.Notificaciones-formTitulo {
-				margin-bottom: 1rem;
-			}
-			.Notificaciones-formDescripcion {
-			}
-			.Notificaciones-formAcciones {
-				margin-left: 1rem;
-
-				.Notificaciones-formEliminar {
-					background: #fff;
-					border-color: $red;
-					color: $red;
-					&:hover {
-						background: $red;
-						color: #fff;
-						border-color: #AA130B;
-					}
+		
+	}
+	.Notificaciones-form {
+		
+		.Notificaciones-formTipo {
+			width: 46%;
+			float: left;
+			margin: 0 4% 1rem 0;
+		}
+		.Notificaciones-formFecha {
+			width: 46%;
+			float: right;
+			margin: 0 0 1rem 4%;
+		}
+		.Notificaciones-formTitulo {
+			margin-bottom: 1rem;
+		}
+		.Notificaciones-formDescripcion {
+		}
+		.Notificaciones-formAcciones {
+			margin-left: 1rem;
+			.Notificaciones-formEliminar {
+				background: #fff;
+				border-color: $red;
+				color: $red;
+				&:hover {
+					background: $red;
+					color: #fff;
+					border-color: #AA130B;
 				}
-				.Notificaciones-formModificar {
-					background: #fff;
-					border-color: $orange;
-					color: $orange;
-					&:hover {
-						background: $orange;
-						color: #fff;
-						border-color: #CC7700;
-					}
-				}
-				.Notificaciones-formCompletar,
-				.Notificaciones-formCrear {
-					background: #fff;
-					border-color: $green;
-					color: $green;
-					&:hover {
-						background: $green;
-						color: #fff;
-						border-color: #1E6321;
-					}
-				}
-
 			}
-
+			.Notificaciones-formModificar {
+				background: #fff;
+				border-color: $orange;
+				color: $orange;
+				&:hover {
+					background: $orange;
+					color: #fff;
+					border-color: #CC7700;
+				}
+			}
+			.Notificaciones-formCompletar,
+			.Notificaciones-formCrear {
+				background: #fff;
+				border-color: $green;
+				color: $green;
+				&:hover {
+					background: $green;
+					color: #fff;
+					border-color: #1E6321;
+				}
+			}
 		}
 	}
+	
 }
 
 .Notificaciones.is-hidden {
