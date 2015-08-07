@@ -151,7 +151,7 @@ recursive_unset_array($users, 'clave');
 
 //Get all notificacions
 $notifications = filter_notifications_by_date_and_status(get_active_notifications());
-// print_array($data);
+// print_array($notifications);
 
 
 //Llamando una vista

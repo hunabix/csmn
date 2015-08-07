@@ -474,19 +474,39 @@ function filter_notifications_by_date_and_status( $data = array() ) {
 	$result = array(
 				'vencidas' 		=> array(
 										'recordatorio' 	=> array(),
-										'llamada' 		=> array()
+										'llamada' 		=> array(),
+										'estados'		=> array(
+																'vencidas' => FALSE,
+																'recordatorio' => FALSE,
+																'llamada' => FALSE,
+															),
 									),
 				'hoy' 			=> array(
 										'recordatorio' 	=> array(),
-										'llamada' 		=> array()
+										'llamada' 		=> array(),
+										'estados'		=> array(
+																'hoy' => FALSE,
+																'recordatorio' => FALSE,
+																'llamada' => FALSE,
+															),
 									),
 				'proximamente' 	=> array(
 										'recordatorio' 	=> array(),
-										'llamada' 		=> array()
+										'llamada' 		=> array(),
+										'estados'		=> array(
+																'proximamente' => FALSE,
+																'recordatorio' => FALSE,
+																'llamada' => FALSE,
+															),
 									),
 				'mas_adelante' 	=> array(
 										'recordatorio' 	=> array(),
-										'llamada' 		=> array()
+										'llamada' 		=> array(),
+										'estados'		=> array(
+																'mas_adelante' => FALSE,
+																'recordatorio' => FALSE,
+																'llamada' => FALSE,
+															),
 									),
 			);
 
@@ -529,6 +549,18 @@ function filter_notifications_by_date_and_status( $data = array() ) {
 
 			}
 
+			if (isset($result['vencidas']['recordatorio'])) {
+				$result['vencidas']['estados']['recordatorio'] = TRUE;
+			}
+			
+			if (isset($result['vencidas']['llamada'])) {
+				$result['vencidas']['estados']['llamada'] = TRUE;
+			}
+
+			if (isset($result['vencidas']['recordatorio']) OR isset($result['vencidas']['llamada'])) {
+				$result['vencidas']['estados']['vencidas'] = TRUE;
+			}
+
 		}
 		
 		else if ($value['fecha_notificacion'] == $today)
@@ -553,6 +585,18 @@ function filter_notifications_by_date_and_status( $data = array() ) {
 				$result['hoy']['llamada'][$hlcount]['fecha_notificacion'] = custom_date_format($result['hoy']['llamada'][$hlcount]['fecha_notificacion'], '-', '/', array(2,1,0));
 				$hlcount++;
 
+			}
+
+			if (!isset($result['hoy']['recordatorio'])) {
+				$result['hoy']['estados']['recordatorio'] = TRUE;
+			}
+			
+			if (isset($result['hoy']['llamada'])) {
+				$result['hoy']['estados']['llamada'] = TRUE;
+			}
+			
+			if (isset($result['hoy']['recordatorio']) OR isset($result['hoy']['llamada'])) {
+				$result['hoy']['estados']['hoy'] = TRUE;
 			}
 
 		}
@@ -581,6 +625,18 @@ function filter_notifications_by_date_and_status( $data = array() ) {
 
 			}
 
+			if (!isset($result['proximamente']['recordatorio'])) {
+				$result['proximamente']['estados']['recordatorio'] = TRUE;
+			}
+			
+			if (isset($result['proximamente']['llamada'])) {
+				$result['proximamente']['estados']['llamada'] = TRUE;
+			}
+			
+			if (isset($result['proximamente']['recordatorio']) OR isset($result['proximamente']['llamada'])) {
+				$result['proximamente']['estados']['proximamente'] = TRUE;
+			}
+
 		}
 
 		else if ( $value['fecha_notificacion'] >= $mas_adelante )
@@ -605,6 +661,18 @@ function filter_notifications_by_date_and_status( $data = array() ) {
 				$result['mas_adelante']['llamada'][$mlcount]['fecha_notificacion'] = custom_date_format($result['mas_adelante']['llamada'][$mlcount]['fecha_notificacion'], '-', '/', array(2,1,0));
 				$mlcount++;
 
+			}
+
+			if (!isset($result['mas_adelante']['recordatorio'])) {
+				$result['mas_adelante']['estados']['recordatorio'] = TRUE;
+			}
+			
+			if (isset($result['mas_adelante']['llamada'])) {
+				$result['mas_adelante']['estados']['llamada'] = TRUE;
+			}
+			
+			if (isset($result['mas_adelante']['recordatorio']) OR isset($result['mas_adelante']['llamada'])) {
+				$result['mas_adelante']['estados']['mas_adelante'] = TRUE;
 			}
 
 		}

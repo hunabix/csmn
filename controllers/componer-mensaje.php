@@ -74,12 +74,13 @@ if (isset($data['nuevo-mensaje'])) {
 	global $connection;
 	
 	foreach ($leads_info as $lead_info) {
+			// print_array($lead_info);
+			//die;
 
 			$lead_ID = $lead_info['ID'];
 			
 			// Get last interaction
 			$last_interaction = get_last_interaction($lead_info['ID']);
-			//print_array($last_interaction);
 		
 					
 			// ------------------------------------------------------------ ------------//
@@ -241,9 +242,9 @@ if (isset($data['nuevo-mensaje'])) {
 					$port = "465";
 					$username = "AKIAIXA2XV6TZOOCK5KQ";
 					$password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
-					//$to = $email[$i]; DEV
+					$to = $lead_info['email'];
+					$to = 'musinetwork@gmail.com';
 					$to = 'hibamiru@gmail.com';
-					//$to = 'musinetwork@gmail.com';
 					$subject = $asuntop;
 				
 					//Preparing mail
