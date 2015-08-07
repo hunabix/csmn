@@ -15,12 +15,20 @@ $data = readRawPost(array_values($_POST));
 $lead_ids = array();
 
 // Process lead ids
-if ($data['formulario'] == 'em-form') {
-	$lead_ids[0] = $data['lead-id'];
+if (isset($data['formulario'])) { // Individual form
+	if ($data['formulario'] == 'em-form') { // Individual form
+		$lead_ids[0] = $data['lead-id'];
+	}
 }
 
-if ($data['formulario'] == 'em-mag-form' OR isset($data['nuevo-mensaje'])) {
-	$lead_ids = extract_checkbox_ids($data);
+if (isset($data['formulario'])) { // Individual form
+	if ($data['formulario'] == 'em-mag-form') { // Multiform 
+		$lead_ids = extract_checkbox_ids($data);
+	}
+}
+
+if (isset($data['nuevo-mensaje'])) { // Enviar
+	$lead_ids = extract_interesado_ids($data);
 }
 
 // Redirects to home when no ids are available
@@ -35,10 +43,14 @@ foreach ($lead_ids as $lead_id => $id) {
 // Se obtiene las fechas de inscripción e inicio de cursos
 $configuracion = obten_configuracion();
 
+// print_array($configuracion);
+
 // Se guarda la consulta en variables
-$inicio_ins = $configuracion['inicio_ins'];
-$inicio_cur = $configuracion['inicio_cur'];
 $ciclo_esc = $configuracion['ciclo_esc'];
+$current_dates = get_current_dates_by_ce($ciclo_esc, $configuracion);
+$inicio_ins = $current_dates['inicio_ins'];
+$cierre_ins = $current_dates['cierre_ins'];
+$inicio_cur = $current_dates['inicio_cur'];
 
 // Formateamos fecha de inscripción
 $inicio_ins = fecha_inscripcion($inicio_ins);
@@ -49,7 +61,8 @@ $inicio_cur = fecha_inicio_cursos($inicio_cur);
 
 // Process new message if it's send
 if (isset($data['nuevo-mensaje'])) {
-	
+	// echo 'pasó';
+	// die;
 	//Mensajes generales	
 	if(isset($data['tipo'])){  $tipo = utf8_decode($data['tipo']); }
 	if(isset($data['mensaje_op'])){ $mensaje_op = utf8_decode($data['mensaje_op']); }
@@ -61,6 +74,8 @@ if (isset($data['nuevo-mensaje'])) {
 	global $connection;
 	
 	foreach ($leads_info as $lead_info) {
+
+			$lead_ID = $lead_info['ID'];
 			
 			// Get last interaction
 			$last_interaction = get_last_interaction($lead_info['ID']);
@@ -82,7 +97,7 @@ if (isset($data['nuevo-mensaje'])) {
 						 mensaje_int,
 						 observaciones
 						)
-						VALUES ('$tipo','$lead', '$fecha', '$mensaje_op', '', '$comentarios')";
+						VALUES ('$tipo','$lead_ID', '$fecha', '$mensaje_op', '', '$comentarios')";
 			$resultado = mysql_query($consulta, $connection);
 			$lastId = mysql_insert_id();
 			confirm_query($resultado);
@@ -229,7 +244,7 @@ if (isset($data['nuevo-mensaje'])) {
 					//$to = $email[$i]; DEV
 					$to = 'hibamiru@gmail.com';
 					//$to = 'musinetwork@gmail.com';
-					$subject = utf8_encode($asuntop);
+					$subject = $asuntop;
 				
 					//Preparing mail
 					$mail = new PHPMailer();
@@ -250,7 +265,7 @@ if (isset($data['nuevo-mensaje'])) {
 					
 					//Send the message and check for errors
 					if (!$mail->send()) {
-						//echo "Mailer Error: " . $mail->ErrorInfo;
+						echo "Mailer Error: " . $mail->ErrorInfo;
 					} else {
 						update_last_interaction($last_interaction['ID'],$lastId);
 						//echo 'OI'.$last_interaction['ID'];
@@ -335,6 +350,3 @@ $data['leads_info'] = $leads_info;
 //print_array($data);
 //Llamando una vista
 view('componer-mensaje', compact('data', 'user'));
-
-
-

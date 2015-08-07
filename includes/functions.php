@@ -79,8 +79,11 @@ function fecha_inscripcion($inicio_ins) {
 	$y = $inicio_ins[0];
 	$m = $inicio_ins[1];
 	$d = $inicio_ins[2];
-	$m = genMonth_Text($m);
-	return $inicio_ins = $d . ' de ' . $m . ' del ' . $y;
+	$month_text = genMonth_Text($m);
+	//echo $m;
+	//print_array($inicio_ins);
+	//echo $month_text;
+	return $inicio_ins = $d . ' de ' . $month_text . ' del ' . $y;
 }
 
 // Fecha de inicio de cursos
@@ -89,10 +92,26 @@ function fecha_inicio_cursos($inicio_cur) {
 	$y = $inicio_cur[0];
 	$m = $inicio_cur[1];
 	$d = $inicio_cur[2];
-	$m = genMonth_Text($m);
-	$inicio_cur = $d . ' de ' . $m . ' del ' . $y;
+	$month_text = genMonth_Text($m);
+	$inicio_cur = $d . ' de ' . $month_text . ' del ' . $y;
 }
 
+function get_current_dates_by_ce($ciclo_esc, $configuracion) {
+	switch ($ciclo_esc) {
+    
+		case 'ENERO - MARZO': 		$suffix = "ene_mar"; break;
+		case 'ABRIL - JUNIO': 		$suffix = "abr_jun"; break;
+		case 'JULIO - SEPTIEMBRE': 	$suffix = "jul_sep"; break;
+		case 'OCTUBRE - DICIEMBRE': $suffix = "oct_dic"; break;
+			
+    }
+    $current_dates = array();
+    $current_dates['inicio_ins'] = $configuracion['inicio_ins_'.$suffix];
+    $current_dates['cierre_ins'] = $configuracion['cierre_ins_'.$suffix];
+    $current_dates['inicio_cur'] = $configuracion['inicio_cur_'.$suffix];
+
+    return $current_dates;
+}
 
 // Mes en texto corto. Convierte un número en formato 00 a el mes correspondiente.
 function mes_en_texto_corto($num_mes) { 
@@ -139,20 +158,23 @@ function mes_en_texto($num_mes) {
 
 // Función que convierte meses de número a texto
 function genMonth_Text($m) {
+	// echo $m;
+	// print_array($m);
 	switch ($m) {
-		case 01: $month_text = "Enero"; break;
-		case 02: $month_text = "Febrero"; break;
-		case 03: $month_text = "Marzo"; break;
-		case 04: $month_text = "Abril"; break;
-		case 05: $month_text = "Mayo"; break;
-		case 06: $month_text = "Junio"; break;
-		case 07: $month_text = "Julio"; break;
-		case 08: $month_text = "Agosto"; break;
-		case 09: $month_text = "Septiembre"; break;
-		case 10: $month_text = "Octubre"; break;
-		case 11: $month_text = "Noviembre"; break;
-		case 12: $month_text = "Diciembre"; break;
+		case '01': $month_text = "Enero"; break;
+		case '02': $month_text = "Febrero"; break;
+		case '03': $month_text = "Marzo"; break;
+		case '04': $month_text = "Abril"; break;
+		case '05': $month_text = "Mayo"; break;
+		case '06': $month_text = "Junio"; break;
+		case '07': $month_text = "Julio"; break;
+		case '08': $month_text = "Agosto"; break;
+		case '09': $month_text = "Septiembre"; break;
+		case '10': $month_text = "Octubre"; break;
+		case '11': $month_text = "Noviembre"; break;
+		case '12': $month_text = "Diciembre"; break;
 	}
+	// echo $month_text;
 	return ($month_text);
 }
 
@@ -302,6 +324,7 @@ function extract_checkbox_ids($arr_main_array) {
 	}
 	return ($arr_result);
 }
+
 function fecha_reserva ($ciclo_reserva) {
 	
 	//Query reserva date

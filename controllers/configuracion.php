@@ -117,28 +117,7 @@ $data['configuracion']['inicio_cur_jul_sep'] = custom_date_format($data['configu
 
 $data['configuracion']['inicio_ins_oct_dic'] = custom_date_format($data['configuracion']['inicio_ins_oct_dic'], '-', '/', array(2, 1, 0));
 $data['configuracion']['inicio_cur_oct_dic'] = custom_date_format($data['configuracion']['inicio_cur_oct_dic'], '-', '/', array(2, 1, 0));
-	
-	
-/*switch ($configuracion['temporada'] ) {
-	case $configuracion['temporada'] == 'Temporada A';
-	$data['tmpa'] = $tmpa = 'selected';
-	break;
-	case $configuracion['temporada'] == 'Temporada B';
-	$data['tmpb'] = $tmpb = 'selected';
-	break;
-	case $configuracion['temporada'] == 'Temporada C';
-	$data['tmpc'] = $tmpc = 'selected';
-	break;
-	case $configuracion['temporada'] == 'Temporada D';
-	$data['tmpd'] = $tmpd = 'selected';
-	break;
-	case $configuracion['temporada'] == 'Temporada E';
-	$data['tmpe'] = $tmpe = 'selected';
-	break;
-	case $configuracion['temporada'] == 'Temporada F';
-	$data['tmpf'] = $tmpf = 'selected';
-	break;
-}*/
+
 
 switch ($configuracion['ciclo_esc']) {
 	case $configuracion['ciclo_esc'] == 'ENERO - MARZO';
@@ -172,7 +151,7 @@ recursive_unset_array($users, 'clave');
 
 //Get all notificacions
 $notifications = filter_notifications_by_date_and_status(get_active_notifications());
-// print_array($notifications);
+// print_array($data);
 
 
 //Llamando una vista
