@@ -708,6 +708,46 @@ function get_configuracion() {
 
 }
 
+//Se obtienen firmas
+
+function obtener_firmas($user) {
+
+	if ($user['tipo'] == 'administrador') {
+
+		$con = db_con();
+		$query = $con->prepare("SELECT * FROM operador_mn ORDER BY id DESC");
+		$query->execute(array());
+		//$notifications = $query->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_COLUMN|PDO::FETCH_GROUP,4);
+		$data = $query->fetchAll(PDO::FETCH_ASSOC);
+		// $data = $data[0];
+		$query->closeCursor();
+
+		return $data;
+
+	}
+	
+	else if ($user['tipo'] == 'operador')
+
+	{
+		$data = array();
+		$data[0] = array(
+            'ID' => 5,
+            'usuario' => 'musinetwork',
+            'clave' => 'musicalatina',
+            'nombre' => 'Musinetwork',
+            'tipo' => 'administrador',
+            'email' => 'inc@musinetwork.com',
+            'imagen' => '',
+        );
+        
+        $data[1] = $user;
+
+		return $data;
+
+	}
+	
+}
+
 //*******************OLD FUNCTIONS BELOW*******************************
 
 // Confirma si la consulta se realizó con éxito

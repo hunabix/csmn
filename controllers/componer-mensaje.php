@@ -8,7 +8,7 @@ $user = confirm_logged_in(); //revisa si el operador ha ingresado
 //Get post data
 $data = readRawPost(array_values($_POST));
 
-//print_array($data);
+// print_array($user);
 //die;
 
 //Initialize lead_ids
@@ -39,6 +39,10 @@ if (!$lead_ids)
 foreach ($lead_ids as $lead_id => $id) {
 		$leads_info['lead_'.$id] = get_lead_info_by_id($id);
 }
+
+// Se obtienen firmas
+$firmas = obtener_firmas($user);
+//print_array($firmas);
 
 // Se obtiene las fechas de inscripción e inicio de cursos
 $configuracion = obten_configuracion();
@@ -158,7 +162,36 @@ if (isset($data['nuevo-mensaje'])) {
 			<p>Solo haz click en:</strong></p><br>
 			<p style="text-align:center;"><a style="font-size: 16px" href="http://musinetwork.com/registromn/inscripcion-paso2.php">http://musinetwork.com/registromn/inscripcion-paso2.php</a></p><br>';
 			
-			switch  ($firma) {
+			
+			if ($firma == 'Equipo Musinetwork') {
+			
+				$firma = '<strong>Equipo Musinetwork</strong><br />';
+			
+			} else {
+				
+				if ($user['tipo'] == 'administrador') {
+
+					foreach ($firmas as $key => $value) {
+						// print_array($value);
+						if ($value['ID'] == $firma) {
+							$firma = '<strong>'.$firmas[$key]['nombre'].'</strong><br />';
+						}
+					}
+			
+			
+				}
+				
+				else
+				
+				{
+			
+					$firma = '<strong>'.$firmas[1]['nombre'].'</strong><br />';
+			
+				}
+			}
+			// die;
+
+			/*switch  ($firma) {
 			
 				case $firma == 'Equipo Musinetwork';
 				$firma = '<strong>Equipo Musinetwork</strong><br />';
@@ -180,7 +213,7 @@ if (isset($data['nuevo-mensaje'])) {
 						Consejero Académico<br />
 						Oficina de Registro</strong><br />';
 				break;
-			}
+			}*/
 			
 			// -----------------------------------------------------------------//
 			// ---------  SE PREPARA Y ENVÍA EL EMAIL AL ALUMNO  --------------//
@@ -244,7 +277,7 @@ if (isset($data['nuevo-mensaje'])) {
 					$password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
 					$to = $lead_info['email'];
 					// $to = 'musinetwork@gmail.com';
-					// $to = 'hibamiru@gmail.com';
+					$to = 'hibamiru@gmail.com';
 					$subject = $asuntop;
 				
 					//Preparing mail
@@ -350,4 +383,4 @@ if (isset($data['tipo-accion'])) {
 $data['leads_info'] = $leads_info;	
 //print_array($data);
 //Llamando una vista
-view('componer-mensaje', compact('data', 'user'));
+view('componer-mensaje', compact('data', 'user', 'firmas'));
