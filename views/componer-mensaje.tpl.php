@@ -31,7 +31,7 @@ require_once("part/header.php"); ?>
 			</aside>
 
 			<!-- Tipo de mensaje -->				
-			<section class="tipo-mensaje">
+			<section id="plantillasBotones" class="tipo-mensaje">
 					
 				<h4 class="titulo">Tipo de correo electrónico a redactar</h4>
 				
@@ -83,6 +83,17 @@ require_once("part/header.php"); ?>
 			        	Completar inscripción
 		            </span>
 			    </label>
+
+
+			    <?php foreach ($plantillas as $key => $value) : ?>
+			    	<div>
+			    		<input class="btn" onclick="cambiarContenido(<?php echo $value['ID']; ?>);" plantilla="1" value="<?php echo $value['nombre']; ?>" type="button">
+			    		<textarea style="display:none;" id="contenidoPlantilla<?php echo $value['ID']; ?>"><?php echo $value['contenido']; ?></textarea>
+			    		<span id="asuntoPlantilla<?php echo $value['ID']; ?>" style="display:none;"><?php echo $value['asunto']; ?></span>
+			    	</div>
+			    	<br />
+				<?php endforeach; ?>
+
 			</section>
 			
 			<!-- Redactar mensaje -->
@@ -98,10 +109,59 @@ require_once("part/header.php"); ?>
 				<!-- SECCIÓN DEL WYSIWYG -->
 				<div id="mensaje-op">
 					<!-- Se manda a llamar la API de KCeditor -->
-					<script src="lib/ckeditor/ckeditor.js"></script>
+					<script src="lib/ckeditor/ckeditor.js">
+					
+					</script>
 					<!-- Se coloca un <textarea> cualquiera y se le asigna un identificador en el nombre -->
 					<textarea id="mensaje_op"  name="mensaje_op"></textarea>						
 				</div>
+
+
+
+
+				<!-- Comienzan scripts para cambiar contenido de plantillas en el EDITOR -->
+				<script>
+
+					function cambiarContenido($pid) {
+						// Get the editor instance that you want to interact with.
+						var editor = CKEDITOR.instances.mensaje_op;
+						var plantillaID = $pid;
+						console.log(plantillaID);
+						var plantilla = document.getElementById( 'contenidoPlantilla'+$pid ).value;
+						var nuevoAsunto = document.getElementById( 'asuntoPlantilla'+$pid ).innerHTML;
+						var asunto = document.getElementsByName('asunto')[0];
+						asunto.value = nuevoAsunto;
+
+						// Set editor content (replace current content).
+						// http://docs.ckeditor.com/#!/api/CKEDITOR.editor-method-setData
+						editor.setData(plantilla);
+
+						//console.log(asunto); // true
+						
+					}
+
+				</script>
+
+				<script>
+					// Attaching event listeners to the global CKEDITOR object.
+					// The instanceReady event is fired when an instance of CKEditor has finished its initialization.
+					CKEDITOR.on( 'instanceReady', function( ev ) {
+						// The editor is ready, so template buttons can be displayed.
+						document.getElementById( 'plantillasBotones' ).style.display = 'block';
+					});
+
+					// Replace the <textarea id="mensaje_op"> with a CKEditor instance.
+					// A reference to the editor object is returned by CKEDITOR.replace() allowing you to work with editor instances.
+					var editor = CKEDITOR.replace( 'mensaje_op', {
+					} );
+
+				</script>
+				<!-- Terminan scripts para cambiar contenido de plantillas en el EDITOR -->
+
+
+
+
+
 
 			</section>
 

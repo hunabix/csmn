@@ -748,6 +748,18 @@ function obtener_firmas($user) {
 	
 }
 
+function get_custom_templates() {
+
+	$templates = array();
+	$con = db_con();
+	$query = $con->prepare("SELECT * FROM plantillas");
+	$query->execute();
+	$templates = $query->fetchAll(PDO::FETCH_ASSOC);
+	$query->closeCursor();
+
+	return $templates;
+}
+
 //*******************OLD FUNCTIONS BELOW*******************************
 
 // Confirma si la consulta se realizó con éxito

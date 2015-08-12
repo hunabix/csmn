@@ -275,7 +275,7 @@ if (isset($data['nuevo-mensaje'])) {
 					$port = "465";
 					$username = "AKIAIXA2XV6TZOOCK5KQ";
 					$password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
-					$to = $lead_info['email'];
+					//$to = $lead_info['email'];
 					// $to = 'musinetwork@gmail.com';
 					$to = 'hibamiru@gmail.com';
 					$subject = $asuntop;
@@ -321,7 +321,9 @@ if (isset($data['nuevo-mensaje'])) {
 } // End if nuevo-mensaje
 	
 	
-if (isset($data['tipo-accion'])) {  
+if (isset($data['tipo-accion'])) { 
+
+	
 	
 		// Se preparan datos para la vista
 		
@@ -380,7 +382,10 @@ if (isset($data['tipo-accion'])) {
 
 }
 
-$data['leads_info'] = $leads_info;	
+$data['leads_info'] = $leads_info;
+
+$plantillas = get_custom_templates();
+
 //print_array($data);
 //Llamando una vista
-view('componer-mensaje', compact('data', 'user', 'firmas'));
+view('componer-mensaje', compact('data', 'user', 'firmas', 'plantillas'));
