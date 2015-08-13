@@ -75,10 +75,40 @@ if (isset($data['nuevo-mensaje'])) {
 	if(isset($data['comentarios'])){  $comentarios = utf8_decode($data['comentarios']); }
 	if(isset($data['asunto'])){  $asunto = utf8_decode($data['asunto']); }
 
-	$mensaje_op = replace_editor_shorcuts($mensaje_op, $current_dates, $ciclo_esc);
+
+	if ($firma == 'Equipo Musinetwork') {
+	
+		$firma = '<strong>Equipo Musinetwork</strong><br />';
+	
+	} else {
+		
+		if ($user['tipo'] == 'administrador') {
+
+			foreach ($firmas as $key => $value) {
+				// print_array($value);
+				if ($value['ID'] == $firma) {
+					$firma = '<strong>'.$firmas[$key]['nombre'].'</strong><br />';
+				}
+			}
+	
+	
+		}
+		
+		else
+		
+		{
+	
+			$firma = '<strong>'.$firmas[1]['nombre'].'</strong><br />';
+	
+		}
+	}
+//echo $firma;
 	//Enable old connection
 	global $connection;
 	foreach ($leads_info as $lead_info) {
+
+			//Sets dates and name for message fore it's saved to the database
+			$cMessage = replace_editor_shorcuts($mensaje_op, $current_dates, $ciclo_esc, $lead_info['nombre'], $firma);
 			// print_array($lead_info);
 			//die;
 
@@ -103,7 +133,7 @@ if (isset($data['nuevo-mensaje'])) {
 						 mensaje_int,
 						 observaciones
 						)
-						VALUES ('$tipo','$lead_ID', '$fecha', '$mensaje_op', '', '$comentarios')";
+						VALUES ('$tipo','$lead_ID', '$fecha', '$cMessage', '', '$comentarios')";
 			$resultado = mysql_query($consulta, $connection);
 			$lastId = mysql_insert_id();
 			confirm_query($resultado);
@@ -116,85 +146,14 @@ if (isset($data['nuevo-mensaje'])) {
 			// ---------  Envío de emails a los interedados ----------------------------//
 			// -------------------------------------------------------------------------//
 			
-			//Casos posibles: Se respondió al interesado*, Correo de información enviado, Correo de seguimiento enviado, Correo de inicio de cursos enviado, Recordatorio de pago enviado
-			
-			$mail_a_enviar = utf8_encode($tipo);
-			
-			$mensaje_op = stripslashes( $mensaje_op ); // Luego de grabar el mensaje en la DB, elimina los "/" (slashes) insertados por KCEditor para que aparezcan las imágenes y agrega un salto de línea para que se vea bonito en el mail :)
-						
-			
-			if ($firma == 'Equipo Musinetwork') {
-			
-				$firma = '<strong>Equipo Musinetwork</strong><br />';
-			
-			} else {
-				
-				if ($user['tipo'] == 'administrador') {
-
-					foreach ($firmas as $key => $value) {
-						// print_array($value);
-						if ($value['ID'] == $firma) {
-							$firma = '<strong>'.$firmas[$key]['nombre'].'</strong><br />';
-						}
-					}
-			
-			
-				}
-				
-				else
-				
-				{
-			
-					$firma = '<strong>'.$firmas[1]['nombre'].'</strong><br />';
-			
-				}
-			}
+			$cMessage = stripslashes( $cMessage ); // Luego de grabar el mensaje en la DB, elimina los "/" (slashes) insertados por KCEditor para que aparezcan las imágenes y agrega un salto de línea para que se vea bonito en el mail :)
 			
 			// -----------------------------------------------------------------//
 			// ---------  SE PREPARA Y ENVÍA EL EMAIL AL ALUMNO  --------------//
 			// ----------------------------------------------------------------//
 					 
-					/*$message = '<html>';
-					  
-					$message .= '<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">';
-					$message .= '<table width="600px" border="0" cellspacing="0" cellpadding="0" align="center" style="background-color: #fff; '; 
-					$message .= 'font-family: Trebuchet MS, Arial, Helvetica, sans-serif;"><tr><td>';
-					$message .= '<!-- Tabla principal -->';
-					$message .= '<table width="600pxpx" border="0" cellspacing="0" cellpadding="0" align="center" style="background-color: #ffffff; font-size:14px;">';
-					$message .= '<!-- Tabla contenedor -->';
-					$message .= '<tr><td><!-- header -->';
-					$message .= '<a href="http://musinetwork.com"><img src="http://seguimiento.musinetwork.com/imagenes/header-mails-cs.jpg"></a>';
-					$message .= '</td></tr><!-- cierra header -->';
-					$message .= '<tr style="text-align:justify;"><td><!-- Contenedor principal -->';
-					$message .= '<h3 style="padding-top: 30px;"><strong>Hola '. $lead_info['nombre'] . ',</strong></h3>';
-					$message .= $mensaje_op ;
-					$message .= '<p style="margin-bottom: 18px;">También nos puedes localizar en:</p><br>';
-					$message .= '<table width="100%" border="0" cellspacing="0" cellpadding="0">';
-					$message .= '<tr>';
-					$message .= '<td width="36px"><img src="http://musinetwork.com/registromn/imagenes/icon-skype.jpg"></td><td width="200px"><strong style="line-height:33px; display:block;">Skype: Musinetwork</strong></td>';
-					$message .= '<td width="36px"><a style="text-decoration:none;" ';
-					$message .= 'href="http://www.facebook.com/pages/Musinetwork-School-of-Music/116451791642">';
-					$message .= '<img src="http://musinetwork.com/registromn/imagenes/icon-facebook.jpg"></a></td><td><a style="text-decoration:none; color:black !important;" ';
-					$message .= 'href="http://www.facebook.com/pages/Musinetwork-School-of-Music/116451791642"><strong style="line-height:33px; display:block;">Facebook</strong></a></td>';
-					$message .= '<td width="36px"><a style="text-decoration:none;" href="https://twitter.com/Musinetwork">';
-					$message .= '<img style="float:left;" src="http://musinetwork.com/registromn/imagenes/icon-twitter.jpg"></a></td><td><a style="text-decoration:none; color:black !important;" href="https://twitter.com/Musinetwork"><strong style="line-height:33px; display:block;">Twitter</strong></a></td>';
-					$message .= '</tr>';
-					$message .= '</table>';
-					$message .= '<p style="margin-bottom: 18px; margin-top:18px;">Muchas gracias, estamos para servirte.<br /><br />';
-					$message .= $firma .
-					'Musinetwork School of Music<br />
-					"Tu Escuela de Música Online"<br />
-					Tel: (01) 617-440-4373<br />
-					Email: <a href="mailto:registro@musinetwork.com">registro@musinetwork.com</a><br />
-					Boston, MA 02132<br />
-					Estados Unidos</p>';
-					$message .= '</td></tr><!-- Cierra contenedor principal -->';
-					$message .= '<tr><td><!-- footer -->';
-					$message .= '<a href="http://musinetwork.com"><img src="http://seguimiento.musinetwork.com/imagenes/footer-mails-cs.jpg"></a>';
-					$message .= '</td></tr><!-- cierra footer -->';
-					$message .= '</table><!-- Cierra tabla contenedor -->';
-					$message .= '</td></tr></table><!-- Cierra tabla principal -->';
-					$message .= '</body></html>';*/
+	
+					$message = $cMessage;
 			
 					//Calling library and setting up credentials for Amazon SES
 					require_once "lib/PHPMailer/PHPMailerAutoload.php";
@@ -221,9 +180,9 @@ if (isset($data['nuevo-mensaje'])) {
 					$mail->Password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
 					$mail->addAddress($to, '');
 					$mail->Subject = $subject;
-					$mail->Body = $mensaje_op;
-					//echo $message;
-					//die;
+					$mail->Body = $message;
+					$message;
+					
 					$mail->setFrom('informacion@musinetwork.com', 'Musinetwork School of Music');		
 					
 					//Send the message and check for errors
@@ -243,7 +202,6 @@ if (isset($data['nuevo-mensaje'])) {
 	
 		<?php
 	} //end foreach
-	
 		header('Location: ' . cs_url);
 		exit();
 

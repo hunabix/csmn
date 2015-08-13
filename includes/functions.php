@@ -190,13 +190,29 @@ function genMonth_Text($m) {
 	return ($month_text);
 }
 
-//Returns mensaje_op replacing dates in it.
-function replace_editor_shorcuts($mensaje_op = '', $current_dates = array(), $ciclo_esc = '') {
+//Returns mensaje_op replacing shortcodes in it.
+function replace_editor_shorcuts($mensaje_op = '', $current_dates = array(), $ciclo_esc = '', $nombre = '', $firma) {
 
 	$result = '';
-	$shotcodes   = array('[inicio_ins]', '[cierre_ins]', '[inicio_cur]', '[ciclo_esc]');
-	$dates = array($current_dates['inicio_ins'], $current_dates['cierre_ins'], $current_dates['inicio_cur'], $ciclo_esc);
-	$result = str_replace($shotcodes, $dates, $mensaje_op);
+	
+	$shortcodes   = array(
+						'[inicio_ins]',
+						'[cierre_ins]',
+						'[inicio_cur]',
+						'[ciclo_esc]',
+						'[nombre_interesado]',
+						'[firma]'
+						);
+	
+	$values = array(
+				$current_dates['inicio_ins'],
+				$current_dates['cierre_ins'],
+				$current_dates['inicio_cur'],
+				$ciclo_esc,
+				$nombre,
+				$firma
+				);
+	$result = str_replace($shortcodes, $values, $mensaje_op);
 
 	return $result;
 
