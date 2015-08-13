@@ -62,6 +62,11 @@ require_once("part/header.php"); ?>
 					    	    <input name="nombre" type="text" id="plantilla-nombre" class="form-control" placeholder="Título de la plantilla" value="" required>
 					    	    <span class="input-group-addon"><i class="fa"></i></span>
 					    	</div>
+					    	<!-- Asunto -->
+					    	<div class="input-group asunto">
+					    	    <input name="asunto" type="text" id="plantilla-asunto" class="form-control" placeholder="Asunto del correo" value="" required>
+					    	    <span class="input-group-addon"><i class="fa"></i></span>
+					    	</div>
 					    	<!-- Textarea -->
 			                <div class="input contenido-plantilla">
 			                   <textarea name="contenido" id="plantilla-contenido" type="text-area" class="form-control"></textarea>
