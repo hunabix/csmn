@@ -68,7 +68,21 @@ $( document ).ajaxComplete(function() {
 
 // CKEDITOR
 if(!($('#mensaje_op').length == 0)) {
+
+    var asunto = document.getElementsByName('asunto')[0];
+    asunto.value = '';
+
     CKEDITOR.replace( 'mensaje_op', {
+
+        extraPlugins: 'serverpreview,autogrow',
+        serverPreview_Url: 'lib/ckeditor/plugins/serverpreview/preview.php',
+        autoGrow_minHeight: 200,
+        autoGrow_maxHeight: 600,
+        autoGrow_bottomSpace: 50,
+        removePlugins: 'resize',
+
+        // Remove the Resize plugin as it does not make sense to use it in conjunction with the AutoGrow plugin.
+        removePlugins: 'resize',
         toolbar : [
             { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source', '-', 'Preview', '-', 'Templates' ] },
             { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
@@ -85,8 +99,30 @@ if(!($('#mensaje_op').length == 0)) {
             { name: 'others', items: [ '-' ] },
             { name: 'about', items: [ 'About' ] },
             ],
-        templates_files : [ 'lib/ckeditor/plugins/templates/templates/cs-mail-templates.php' ]
+        templates_files : [ 'lib/ckeditor/plugins/templates/templates/cs-mail-templates.php' ],
+        
     } );
 }
+/* Cambia el contenido del editor ckEditor */
+function cambiarContenido($pid) {
+    // Get the editor instance that you want to interact with.
+    var editor = CKEDITOR.instances.mensaje_op;
+    var plantillaID = $pid;
+    console.log(plantillaID);
+    var plantilla = document.getElementById( 'contenidoPlantilla'+$pid ).value;
+    var nuevoAsunto = document.getElementById( 'asuntoPlantilla'+$pid ).innerHTML;
+    var asunto = document.getElementsByName('asunto')[0];
+    asunto.value = nuevoAsunto;
 
+    // Set editor content (replace current content).
+    // http://docs.ckeditor.com/#!/api/CKEDITOR.editor-method-setData
+    editor.setData(plantilla);
 
+    //console.log(asunto); // true
+    
+}
+/* Se asegura de que se carga ckEditor antes de inicializar las funciones */
+CKEDITOR.on( 'instanceReady', function( ev ) {
+    // The editor is ready, so template buttons can be displayed.
+    document.getElementById( 'plantillasBotones' ).style.display = 'block';
+});

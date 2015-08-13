@@ -36,62 +36,23 @@ require_once("part/header.php"); ?>
 				<h4 class="titulo">Tipo de correo electrónico a redactar</h4>
 				
 				<!-- Respuesta personalizada -->
-			    <label class="fancy-radio">
-			        <input name="tipo" value="Se respondió al interesado" type="radio" class="radio">
-			        <span class="fa fa-circle-o  radio-icon"></span>
-			        <span class="name">
-			        	Respuesta personalizada
-		            </span>
-			    </label>
-			    <!-- Información -->
-			    <label class="fancy-radio">
-			        <input name="tipo" value="Correo de información enviado" type="radio" class="radio">
-			        <span class="fa fa-circle-o radio-icon"></span>
-			        <span class="name">
-			        	Información
-		            </span>
-			    </label>
-			    <!-- Seguimiento -->
-			    <label class="fancy-radio">
-			        <input name="tipo" value="Correo de seguimiento enviado" type="radio" class="radio">
-			        <span class="fa fa-circle-o  radio-icon"></span>
-			        <span class="name">
-			        	Seguimiento
-		            </span>
-			    </label>
-			    <!-- Inicio de cursos -->
-			    <label class="fancy-radio">
-			        <input name="tipo" value="Correo de inicio de cursos enviado" type="radio" class="radio">
-			        <span class="fa fa-circle-o radio-icon"></span>
-			        <span class="name">
-			        	Inicio de cursos
-		            </span>
-			    </label>
-			    <!-- Recordatorio de pago -->
-			    <label class="fancy-radio">
-			        <input name="tipo" value="Recordatorio de pago enviado" type="radio" class="radio">
-			        <span class="fa fa-circle-o  radio-icon"></span>
-			        <span class="name">
-			        	Recordatorio de pago
-		            </span>
-			    </label>
-			    <!-- Completar inscripción -->
-			    <label class="fancy-radio">
-			        <input name="tipo" value="Recordatorio de pago enviado" type="radio" class="radio">
-			        <span class="fa fa-circle-o radio-icon"></span>
-			        <span class="name">
-			        	Completar inscripción
-		            </span>
-			    </label>
+		    	<label class="fancy-radio">
+		    		<input class="radio" name="tipo" onclick="cambiarContenido(9999);" value="Respuesta personalizada" type="radio">
+		    		<span class="fa fa-circle-o radio-icon"></span>
+		    		<span class="name">Respuesta personalizada</span>
+		    		<textarea style="display:none;" id="contenidoPlantilla9999"></textarea>
+		    		<span id="asuntoPlantilla9999" style="display:none;"></span>
+		    	</label>
 
 
 			    <?php foreach ($plantillas as $key => $value) : ?>
-			    	<div>
-			    		<input class="btn" onclick="cambiarContenido(<?php echo $value['ID']; ?>);" plantilla="1" value="<?php echo $value['nombre']; ?>" type="button">
+			    	<label class="fancy-radio">
+			    		<input class="radio" name="tipo" onclick="cambiarContenido(<?php echo $value['ID']; ?>);" value="<?php echo $value['nombre']; ?>" type="radio">
+			    		<span class="fa fa-circle-o radio-icon"></span>
+			    		<span class="name"><?php echo $value['nombre']; ?></span>
 			    		<textarea style="display:none;" id="contenidoPlantilla<?php echo $value['ID']; ?>"><?php echo $value['contenido']; ?></textarea>
 			    		<span id="asuntoPlantilla<?php echo $value['ID']; ?>" style="display:none;"><?php echo $value['asunto']; ?></span>
-			    	</div>
-			    	<br />
+			    	</label>
 				<?php endforeach; ?>
 
 			</section>
@@ -113,55 +74,9 @@ require_once("part/header.php"); ?>
 					
 					</script>
 					<!-- Se coloca un <textarea> cualquiera y se le asigna un identificador en el nombre -->
-					<textarea id="mensaje_op"  name="mensaje_op"></textarea>						
+					<textarea id="mensaje_op"  name="mensaje_op"></textarea>
+
 				</div>
-
-
-
-
-				<!-- Comienzan scripts para cambiar contenido de plantillas en el EDITOR -->
-				<script>
-
-					function cambiarContenido($pid) {
-						// Get the editor instance that you want to interact with.
-						var editor = CKEDITOR.instances.mensaje_op;
-						var plantillaID = $pid;
-						console.log(plantillaID);
-						var plantilla = document.getElementById( 'contenidoPlantilla'+$pid ).value;
-						var nuevoAsunto = document.getElementById( 'asuntoPlantilla'+$pid ).innerHTML;
-						var asunto = document.getElementsByName('asunto')[0];
-						asunto.value = nuevoAsunto;
-
-						// Set editor content (replace current content).
-						// http://docs.ckeditor.com/#!/api/CKEDITOR.editor-method-setData
-						editor.setData(plantilla);
-
-						//console.log(asunto); // true
-						
-					}
-
-				</script>
-
-				<script>
-					// Attaching event listeners to the global CKEDITOR object.
-					// The instanceReady event is fired when an instance of CKEditor has finished its initialization.
-					CKEDITOR.on( 'instanceReady', function( ev ) {
-						// The editor is ready, so template buttons can be displayed.
-						document.getElementById( 'plantillasBotones' ).style.display = 'block';
-					});
-
-					// Replace the <textarea id="mensaje_op"> with a CKEditor instance.
-					// A reference to the editor object is returned by CKEDITOR.replace() allowing you to work with editor instances.
-					var editor = CKEDITOR.replace( 'mensaje_op', {
-					} );
-
-				</script>
-				<!-- Terminan scripts para cambiar contenido de plantillas en el EDITOR -->
-
-
-
-
-
 
 			</section>
 

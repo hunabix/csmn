@@ -190,35 +190,16 @@ function genMonth_Text($m) {
 	return ($month_text);
 }
 
-// Obtiene las sugerencia que corresponda segun la temporada
-function obten_sugerencia($temporada, $estatus){
-	if ($temporada == 'Temporada A' || $temporada == 'Temporada B' || $temporada == 'Temporada C') {
-		switch ($estatus) {
-			case "Nuevo caso de seguimiento": return "Responder al interesado"; break;
-			case "Nuevo caso de seguimiento INS": return ""; break;
-			case "Se respondió al interesado": return "Enviar correo de información"; break;
-			case "Correo de información enviado": return "Enviar correo de seguimiento"; break;
-			case "Correo de seguimiento enviado": return "Enviar correo de inicio de cursos"; break;
-			case "Correo de inicio de cursos enviado": return "Llamar al interesado"; break;			
-			case "Se llamó al interesado": return "Enviar recordatorio de pago"; break;
-			case "Recordatorio de pago enviado": return "Eviar caso a lista general"; break;
-			case "Pago de Paypal realizado": return "Revisar operación e inscribir alumno"; break;
-			case "Nota personalizada del operador": return ""; break;				
-		}
-	} else {
-		switch ($estatus) {
-			case "Nuevo caso de seguimiento": return "Responder al interesado"; break;
-			case "Nuevo caso de seguimiento INS": return ""; break;
-			case "Se respondió al interesado": return "Enviar correo de seguimiento"; break;
-			case "Correo de información enviado": return "Enviar correo de seguimiento"; break;
-			case "Correo de seguimiento enviado": return "Enviar correo de inicio de cursos"; break;
-			case "Correo de inicio de cursos enviado": return "Llamar al interesado"; break;			
-			case "Se llamó al interesado": return "Enviar recordatorio de pago"; break;
-			case "Recordatorio de pago enviado": return "Eviar caso a lista general"; break;
-			case "Pago de Paypal realizado": return "Revisar operación e inscribir alumno"; break;
-			case "Nota personalizada del operador": return ""; break;					
-		}
-	}
+//Returns mensaje_op replacing dates in it.
+function replace_editor_shorcuts($mensaje_op = '', $current_dates = array(), $ciclo_esc = '') {
+
+	$result = '';
+	$shotcodes   = array('[inicio_ins]', '[cierre_ins]', '[inicio_cur]', '[ciclo_esc]');
+	$dates = array($current_dates['inicio_ins'], $current_dates['cierre_ins'], $current_dates['inicio_cur'], $ciclo_esc);
+	$result = str_replace($shotcodes, $dates, $mensaje_op);
+
+	return $result;
+
 }
 
 // redirecciona al URL que se le pase por parámetro
