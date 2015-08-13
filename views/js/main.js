@@ -2,6 +2,7 @@
 //@prepros-prepend _magform.js
 //@prepros-prepend _leadform.js
 //@prepros-prepend _configuracion.js
+//@prepros-prepend _plantillas.js
 //@prepros-prepend _notificaciones.js
 
 /* Tootltips
@@ -102,27 +103,28 @@ if(!($('#mensaje_op').length == 0)) {
         templates_files : [ 'lib/ckeditor/plugins/templates/templates/cs-mail-templates.php' ],
         
     } );
-}
-/* Cambia el contenido del editor ckEditor */
-function cambiarContenido($pid) {
-    // Get the editor instance that you want to interact with.
-    var editor = CKEDITOR.instances.mensaje_op;
-    var plantillaID = $pid;
-    console.log(plantillaID);
-    var plantilla = document.getElementById( 'contenidoPlantilla'+$pid ).value;
-    var nuevoAsunto = document.getElementById( 'asuntoPlantilla'+$pid ).innerHTML;
-    var asunto = document.getElementsByName('asunto')[0];
-    asunto.value = nuevoAsunto;
 
-    // Set editor content (replace current content).
-    // http://docs.ckeditor.com/#!/api/CKEDITOR.editor-method-setData
-    editor.setData(plantilla);
+    /* Cambia el contenido del editor ckEditor */
+    function cambiarContenido($pid) {
+        // Get the editor instance that you want to interact with.
+        var editor = CKEDITOR.instances.mensaje_op;
+        var plantillaID = $pid;
+        console.log(plantillaID);
+        var plantilla = document.getElementById( 'contenidoPlantilla'+$pid ).value;
+        var nuevoAsunto = document.getElementById( 'asuntoPlantilla'+$pid ).innerHTML;
+        var asunto = document.getElementsByName('asunto')[0];
+        asunto.value = nuevoAsunto;
 
-    //console.log(asunto); // true
-    
+        // Set editor content (replace current content).
+        // http://docs.ckeditor.com/#!/api/CKEDITOR.editor-method-setData
+        editor.setData(plantilla);
+
+        //console.log(asunto); // true
+        
+    }
+    /* Se asegura de que se carga ckEditor antes de inicializar las funciones */
+    CKEDITOR.on( 'instanceReady', function( ev ) {
+        // The editor is ready, so template buttons can be displayed.
+        document.getElementById( 'plantillasBotones' ).style.display = 'block';
+    });
 }
-/* Se asegura de que se carga ckEditor antes de inicializar las funciones */
-CKEDITOR.on( 'instanceReady', function( ev ) {
-    // The editor is ready, so template buttons can be displayed.
-    document.getElementById( 'plantillasBotones' ).style.display = 'block';
-});

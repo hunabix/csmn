@@ -26,9 +26,6 @@ require_once("part/header.php"); ?>
 		    <li role="presentation" id="conf-tab-usuarios">
 		    	<a href="#usuarios-tab" aria-controls="usuarios-tab" role="tab" data-toggle="tab"><i class="fa fa-user"></i> Usuarios</a>
 		    </li>
-		    <li role="presentation" id="conf-tab-plantillas">
-		    	<a href="#plantillas-tab" aria-controls="plantillas-tab" role="tab" data-toggle="tab"><i class="fa fa-file-text "></i> Plantillas</a>
-		    </li>
 		</ul>
 
 		<!-- Secciones  -->
@@ -47,12 +44,7 @@ require_once("part/header.php"); ?>
 				<?php require("part/configuracion-usuarios.php");  ?>
 
 			</div>
-			<!-- PLANTILLAS -->
-			<div role="tabpanel" class="tab-pane fade" id="plantillas-tab">
-				
-				<?php require("part/configuracion-plantillas.php");  ?>
-
-			</div>
+			
 		</div>
 	</section>
 	
