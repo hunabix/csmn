@@ -30,6 +30,7 @@ $( ".eliminar-plantilla").click(function() {
     $( "#nombre-a-eliminar").html( nombreQueSeElimina );
     $( "#plantilla-id" ).val( plantillaId );
     $( '#plantilla-nombre' ).val( 'xx' );
+    $( '#plantilla-asunto' ).val( 'xx' );
 
 });
 
@@ -58,6 +59,8 @@ $("#plantillas-form").on("submit", function(e){
         {
             $( '#alerta-exito' ).html( data.mensaje );
             $( '#plantilla-nombre' ).val( data.nombre );
+            $( '#plantilla-asunto' ).val( data.asunto );
+            $( '#plantilla-contenido' ).val( data.contenido );
 
             // Actualiza los datos para reenviar la petición de modificación
             $( "#plantilla-tipo-accion" ).val( 'editar-plantilla' );
@@ -67,8 +70,7 @@ $("#plantillas-form").on("submit", function(e){
         {
             $( '#alerta-exito' ).html( data.mensaje );
             plantilla = $('#' + data.plantilla_id);
-            plantilla.find( ".usernamedata" ).html( data.username );
-            plantilla.find( ".nombre" ).html( data.nombre );
+            plantilla.find( ".templatename" ).html( data.nombre );
             $('.modal').modal('hide');
         }
         // Eliminar plantilla
@@ -85,20 +87,16 @@ $("#plantillas-form").on("submit", function(e){
             $( '#alerta-exito' ).html( data.mensaje );
             var plantilla = '';
            
-            plantilla =  plantilla + '<div id=" ' +  data.plantilla_id + '" class="user">';              
+            plantilla =  plantilla + '<div id=" ' +  data.plantilla_id + '" class="template">';              
                 plantilla =  plantilla + '<!-- plantilla -->';
-                plantilla =  plantilla + '<span class="username">';
-                    plantilla =  plantilla + '<i class="fa fa-user userimg"></i>'; 
-                    plantilla =  plantilla + data.username;
+                plantilla =  plantilla + '<span class="templateimg">';
+                    plantilla =  plantilla + '<i class="fa fa-file-code-o userimg"></i>'; 
                 plantilla =  plantilla + '</span>';
                 plantilla =  plantilla + '<!-- Nombre -->';
-                plantilla =  plantilla + '<span class="nombre">';
+                plantilla =  plantilla + '<span class="templatename">';
                     plantilla =  plantilla + data.nombre;
                 plantilla =  plantilla + '</span>';
-                plantilla =  plantilla + '<!-- Correo -->';
-                plantilla =  plantilla + '<span class="correo">';
-                    plantilla =  plantilla + data.email;
-                plantilla =  plantilla + '</span>';
+               
                 plantilla =  plantilla + '<!-- Acciones -->';
                 plantilla =  plantilla + '<aside class="actions">';
                     plantilla =  plantilla + '<!-- Editar plantilla -->';
