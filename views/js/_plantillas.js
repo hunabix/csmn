@@ -77,7 +77,8 @@ $("#plantillas-form").on("submit", function(e){
         if ( data.tipo_accion == "eliminar-plantilla")
         {
             $( '#alerta-exito' ).html( data.mensaje );
-            plantilla = $('#' + data.plantilla_id);
+            plantilla = $('#' + data.plantilla);
+            console.log( data.plantilla );
             plantilla.remove( '' );
             $('.modal').modal('hide');
         }
@@ -106,7 +107,7 @@ $("#plantillas-form").on("submit", function(e){
                 plantilla =  plantilla + '</aside>';
             plantilla = plantilla.concat( '</div>' );   
 
-            $( "#user-list" ).append(plantilla);
+            $( "#template-list" ).append(plantilla);
         }
 
         //  CIERRE DE LAS ACCIONES
