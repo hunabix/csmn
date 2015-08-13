@@ -1,0 +1,91 @@
+/*---------------------------------------------------*/
+/*-------------------[PLANTILLAS]--------------------*/
+/*---------------------------------------------------*/
+.Plantillas {
+	padding: 3rem;
+
+	.plantillas-form {
+				
+		.templates {
+			padding: 2rem 0 0;
+			
+			.template {
+				width: 100%;
+				border-bottom: $divider-color 1px dotted;
+				padding: .5rem 0 0;
+				display: inline-block;
+				font-size: 1.1rem;
+
+				&:hover {
+					background: #FAFAFA;
+				}				
+				.templateimg {
+					@include rounded(50%);
+					width: 2.5rem;
+					height: 2.5rem;
+					line-height: 2.5rem;
+					text-align: center;
+					font-size: 1.5rem; 
+					margin-right: .75rem;	
+					display: inline-block;
+				}
+				.templatename {
+					@include inline-box;
+					line-height: 2.5rem;
+					width: 60%;
+					margin: 0;
+					position: relative;
+					font-weight: 600;					
+				}
+				
+				.actions {
+					@include inline-box;
+					overflow: visible;
+					padding: 0 .5rem;
+					line-height: 3rem;
+					width: 10%;
+					
+					@media (max-width: 1350px) { width: 33%; }
+					@media (max-width: 1300px) { max-width: 420px; float: right; }
+					@media (max-width: 800px) { float: left; max-width: 500px; }
+
+					.action {
+						color: #888;
+						@include rounded(.5rem);
+						text-align: center;
+						font-size: 21px;
+
+						&:hover {
+							color: $primary-color-text;
+							background: $accent-color;
+							text-decoration: none;
+						}
+						&:hover.a-template {
+							background: #FF9500;
+						}
+						&:hover.a-close {
+							background: #FF3B30;
+						}
+						
+						.fa {
+							padding: 0 .35rem;
+						}
+
+					}
+				}
+			}
+		}
+		.modal-plantilla {
+					
+			.modal-body {
+			    display: inline-block;
+			    width: 100%;
+
+				.nombre {
+					margin-bottom: 1rem;
+					width: 100%;
+				}
+			}
+		}
+	}
+}

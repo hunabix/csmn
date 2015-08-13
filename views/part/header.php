@@ -49,6 +49,9 @@
                         <?php if ($user['tipo'] == 'administrador') :?>
                             <li><a href="<?= cs_url; ?>/configuracion"><i class="fa fa-cog"></i></a></li>
                         <?php endif; ?>
+                        <li>
+                            <a href="<?= cs_url; ?>/plantillas"><i class="fa fa-clipboard"></i></a>
+                        </li>
                     </ul>
                 </nav>
             <?php endif; ?>
