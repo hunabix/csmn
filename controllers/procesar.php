@@ -41,3 +41,10 @@ if ($data['formulario'] == 'notificacion-form') {
 	load_modal('n-'.$data['tipo-accion'], compact('data'));
 	exit();
 } //Leads form
+
+// Procces notificaciones form
+if ($data['formulario'] == 'plantillas-form') {
+
+	load_modal('p-'.$data['tipo-accion'], compact('data'));
+	exit();
+} //Leads form
