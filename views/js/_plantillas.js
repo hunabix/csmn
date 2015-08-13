@@ -60,7 +60,7 @@ $("#plantillas-form").on("submit", function(e){
             $( '#alerta-exito' ).html( data.mensaje );
             $( '#plantilla-nombre' ).val( data.nombre );
             $( '#plantilla-asunto' ).val( data.asunto );
-            $( '#plantilla-contenido' ).val( data.contenido );
+            $( '#mensaje_op' ).val( data.contenido );
 
             // Actualiza los datos para reenviar la petición de modificación
             $( "#plantilla-tipo-accion" ).val( 'editar-plantilla' );

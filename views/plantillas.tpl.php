@@ -50,7 +50,7 @@ require_once("part/header.php"); ?>
 
 			<!-- plantilla; modal -->
 			<div class="modal fade modal-plantilla" id="modal-plantilla" tabindex="-1" role="dialog" aria-labelledby="modal-plantilla-label">
-				<div class="modal-dialog" role="document">
+				<div class="modal-dialog modal-lg" role="document">
 				    <div class="modal-content">
 					    <div class="modal-header">
 					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -69,7 +69,9 @@ require_once("part/header.php"); ?>
 					    	</div>
 					    	<!-- Textarea -->
 			                <div class="input contenido-plantilla">
-			                   <textarea name="contenido" id="plantilla-contenido" type="text-area" class="form-control"></textarea>
+			                	<!-- Se manda a llamar la API de KCeditor -->
+								<script src="lib/ckeditor/ckeditor.js"></script>
+			                   <textarea name="contenido" id="mensaje_op" type="text-area" class="form-control"></textarea>
 			                </div>
 					    </div>
 					    <div class="modal-footer">
