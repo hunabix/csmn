@@ -153,48 +153,48 @@ if (isset($data['nuevo-mensaje'])) {
 			// ----------------------------------------------------------------//
 					 
 	
-					$message = $cMessage;
+			$message = $cMessage;
+	
+			//Calling library and setting up credentials for Amazon SES
+			require_once "lib/PHPMailer/PHPMailerAutoload.php";
+			$host = "ssl://email-smtp.us-east-1.amazonaws.com";
+			$port = "465";
+			$username = "AKIAIXA2XV6TZOOCK5KQ";
+			$password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
+			//$to = $lead_info['email'];
+			// $to = 'musinetwork@gmail.com';
+			$to = 'hibamiru@gmail.com';
+			$subject = $asunto;
+		
+			//Preparing mail
+			$mail = new PHPMailer();
+			$mail->CharSet = 'UTF-8';
+			$mail->isSMTP();
+			$mail->isHTML(true);
+			$mail->SMTPDebug = 0;
+			$mail->Debugoutput = 'html';
+			$mail->Host = "ssl://email-smtp.us-east-1.amazonaws.com";
+			$mail->Port = 465;
+			$mail->SMTPAuth = true;
+			$mail->Username = "AKIAIXA2XV6TZOOCK5KQ";
+			$mail->Password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
+			$mail->addAddress($to, '');
+			$mail->Subject = $subject;
+			$mail->Body = $message;
+			$message;
 			
-					//Calling library and setting up credentials for Amazon SES
-					require_once "lib/PHPMailer/PHPMailerAutoload.php";
-					$host = "ssl://email-smtp.us-east-1.amazonaws.com";
-					$port = "465";
-					$username = "AKIAIXA2XV6TZOOCK5KQ";
-					$password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
-					//$to = $lead_info['email'];
-					// $to = 'musinetwork@gmail.com';
-					$to = 'hibamiru@gmail.com';
-					$subject = $asunto;
-				
-					//Preparing mail
-					$mail = new PHPMailer();
-					$mail->CharSet = 'UTF-8';
-					$mail->isSMTP();
-					$mail->isHTML(true);
-					$mail->SMTPDebug = 0;
-					$mail->Debugoutput = 'html';
-					$mail->Host = "ssl://email-smtp.us-east-1.amazonaws.com";
-					$mail->Port = 465;
-					$mail->SMTPAuth = true;
-					$mail->Username = "AKIAIXA2XV6TZOOCK5KQ";
-					$mail->Password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
-					$mail->addAddress($to, '');
-					$mail->Subject = $subject;
-					$mail->Body = $message;
-					$message;
-					
-					$mail->setFrom('informacion@musinetwork.com', 'Musinetwork School of Music');		
-					
-					//Send the message and check for errors
-					if (!$mail->send()) {
-						echo "Mailer Error: " . $mail->ErrorInfo;
-					} else {
-						update_last_interaction($last_interaction['ID'],$lastId);
-						//echo 'OI'.$last_interaction['ID'];
-						//echo 'NI'.$lastId;
-						//die;
-						//echo "Message sent!";
-					}
+			$mail->setFrom('informacion@musinetwork.com', 'Musinetwork School of Music');		
+			
+			//Send the message and check for errors
+			if (!$mail->send()) {
+				echo "Mailer Error: " . $mail->ErrorInfo;
+			} else {
+				update_last_interaction($last_interaction['ID'],$lastId);
+				//echo 'OI'.$last_interaction['ID'];
+				//echo 'NI'.$lastId;
+				//die;
+				//echo "Message sent!";
+			}
 				
 				
 			//fin del EX for

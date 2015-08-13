@@ -19,12 +19,33 @@ $info_cert[1] = ""; $info_cert[2] = ""; $info_cert[3] = ""; $info_cert[4] = ""; 
 $mensaje_int =""; $mensaje_op=""; $asunto="Equipo Musinetwork"; $responder_ahora='no'; $firma='';
 $inicio_ins = ''; $inicio_cur = '';	$ciclo_esc = ''; $tipo_respuesta = '';
 
+// Se obtienen firmas
+$firmas = obtener_firmas($user);
+// Se obtiene las fechas de inscripción e inicio de cursos
+$configuracion = obten_configuracion();
+
+// print_array($configuracion);
+
+// Se guarda la consulta en variables
+$ciclo_esc = $configuracion['ciclo_esc'];
+$current_dates = get_current_dates_by_ce($ciclo_esc, $configuracion);
+$inicio_ins = $current_dates['inicio_ins'];
+$cierre_ins = $current_dates['cierre_ins'];
+$inicio_cur = $current_dates['inicio_cur'];
+
+
+// Formateamos fecha de inscripción
+$inicio_ins = fecha_inscripcion($inicio_ins);
+
+// Formateamos decha de inicio de cursos
+$inicio_cur = fecha_inicio_cursos($inicio_cur);
+
 if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 
 	// ------------------------------------------------------------ ------------//
 	// ---------  SI ESTA CORRECTO TODO, SE PROCESA LA INFORMACIÓN  ------------//
 	// -------------------------------------------------------------------------//
-	if(isset($data['nombre'])){ $nombre = utf8_decode($data['nombre']); }
+	if(isset($data['nombre'])){ $nombre = $data['nombre']; }
 	if(isset($data['apellidos'])){ $apellidos = utf8_decode($data['apellidos']); }
 	if(isset($data['correo'])){ $mail = $data['correo']; }
 	if(isset($data['telefono'])){ $telefono = $data['telefono']; }
@@ -52,8 +73,44 @@ if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 	if(isset($data['info_cert5'])){ $info_cert[5] = 1; }
 	if(isset($data['mensaje_int'])){ $mensaje_int = utf8_decode($data['mensaje_int']); }
 	if(isset($data['responder_ahora'])){ $responder_ahora = utf8_decode($data['responder_ahora']); }	
-	if(isset($data['asunto'])){ $asunto = $data['asunto']; }	
-	if(isset($data['mensaje_op'])){ $mensaje_op = stripslashes( utf8_decode($data['mensaje_op'])); }	
+	if(isset($data['asunto'])){ $asunto = utf8_decode($data['asunto']); }	
+	
+	if(isset($data['mensaje_op'])) {
+	
+		$mensaje_op = stripslashes( utf8_decode($data['mensaje_op']));
+		if ($firma == 'Equipo Musinetwork') {
+		
+			$firma = '<strong>Equipo Musinetwork</strong><br />';
+		
+		} else {
+			
+			if ($user['tipo'] == 'administrador') {
+
+				foreach ($firmas as $key => $value) {
+					// print_array($value);
+					if ($value['ID'] == $firma) {
+						$firma = '<strong>'.$firmas[$key]['nombre'].'</strong><br />';
+					}
+				}
+		
+		
+			}
+			
+			else
+			
+			{
+		
+				$firma = '<strong>'.$firmas[1]['nombre'].'</strong><br />';
+		
+			}
+		}
+		//echo $firma;
+
+		$mensaje_op = replace_editor_shorcuts($mensaje_op, $current_dates, $ciclo_esc, $nombre, $firma);
+	
+	}
+
+
 
 	
 	// ------------------------------------------------------------ ------------//
@@ -170,19 +227,19 @@ if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 	
 	if($responder_ahora == 'si'){
 		
-		/*if(isset($data['nombre'])){  $nombre = $data['nombre']; }*/
 		if(isset($data['tipo'])){  $tipo = utf8_decode($data['tipo']); }
-		if(isset($data['mensaje_op'])){ $mensaje_op = utf8_decode($data['mensaje_op']); }
-		if(isset($data['firma'])){ $firma = $data['firma']; }
 
 		//Obtenemos la información de configuración para imprimirla en mails y scripts de plantillas
 		// ---------  Se obtiene las fechas de inscripción e inicio de cursos --------------//
 		
 		$configuracion = obten_configuracion();
 		// Se guarda la consulta en variables
-		$inicio_ins = $configuracion['inicio_ins'];
-		$inicio_cur = $configuracion['inicio_cur'];
 		$ciclo_esc = $configuracion['ciclo_esc'];
+
+		$current_dates = get_current_dates_by_ce($ciclo_esc, $configuracion);
+		$inicio_ins = $current_dates['inicio_ins'];
+		$cierre_ins = $current_dates['cierre_ins'];
+		$inicio_cur = $current_dates['inicio_cur'];
 		
 		// Formateamos fecha d einscripción
 		$inicio_ins = explode("-",$inicio_ins);
@@ -200,61 +257,93 @@ if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 		$m = genMonth_Text($m);
 		$inicio_cur = $d . ' de ' . $m . ' del ' . $y;
 			
-		//Casos posibles: Se respondió al interesado*, Correo de información enviado, Correo de seguimiento enviado, Correo de inicio de cursos enviado, Recordatorio de pago enviado
-		$mail_a_enviar = utf8_encode($tipo);
-		if ($mensaje_op != '') {
-			$mensaje_op = stripslashes( $mensaje_op ); // Luego de grabar el mensaje en la DB, elimina los "/" (slashes) insertados por KCEditor para que aparezcan las imágenes y agrega un salto de línea para que se vea bonito en el mail :)
-		}
-	
-
-			// -----------------------------------------------------------------//
-			// ---------  SE PREPARA Y ENVÍA EL EMAIL AL ALUMNO  --------------//
-			// ----------------------------------------------------------------//
-			 
-			$message = $mensaje_op;
-
-			//Calling library and setting up credentials for Amazon SES
-			require_once "lib/PHPMailer/PHPMailerAutoload.php";
-			$host = "ssl://email-smtp.us-east-1.amazonaws.com";
-			$port = "465";
-			$username = "AKIAIXA2XV6TZOOCK5KQ";
-			$password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
-			$to = $mail;
-			//$to = 'musinetwork@gmail.com';
-			$to = 'hibamiru@gmail.com';
-			$subject = utf8_encode($asuntop);
-
-			//Preparing mail
-			$mail = new PHPMailer();
-			$mail->CharSet = 'UTF-8';
-			$mail->isSMTP();
-			$mail->isHTML(true);
-			$mail->SMTPDebug = 0;
-			$mail->Debugoutput = 'html';
-			$mail->Host = "ssl://email-smtp.us-east-1.amazonaws.com";
-			$mail->Port = 465;
-			$mail->SMTPAuth = true;
-			$mail->Username = "AKIAIXA2XV6TZOOCK5KQ";
-			$mail->Password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
-			$mail->addAddress($to, '');
-			$mail->Subject = $subject;
-			$mail->Body = $message;
-			$mail->setFrom('informacion@musinetwork.com', 'Musinetwork School of Music');
-
-			//Send the message and check for errors
-			if (!$mail->send()) {
-				//echo "Mailer Error: " . $mail->ErrorInfo;
+		if(isset($data['mensaje_op'])) {
+			
+			$mensaje_op = utf8_decode($data['mensaje_op']);
+			$mensaje_op = stripslashes( utf8_decode($data['mensaje_op']));
+			if ($firma == 'Equipo Musinetwork') {
+			
+				$firma = '<strong>Equipo Musinetwork</strong><br />';
+			
 			} else {
-				//echo "Message sent!";
+				
+				if ($user['tipo'] == 'administrador') {
+
+					foreach ($firmas as $key => $value) {
+						// print_array($value);
+						if ($value['ID'] == $firma) {
+							$firma = '<strong>'.$firmas[$key]['nombre'].'</strong><br />';
+						}
+					}
+			
+			
+				}
+				
+				else
+				
+				{
+			
+					$firma = '<strong>'.$firmas[1]['nombre'].'</strong><br />';
+			
+				}
 			}
 
+			$mensaje_op = replace_editor_shorcuts($mensaje_op, $current_dates, $ciclo_esc, $nombre, $firma);
+
+
+		}	
+
+		// -----------------------------------------------------------------//
+		// ---------  SE PREPARA Y ENVÍA EL EMAIL AL ALUMNO  --------------//
+		// ----------------------------------------------------------------//
+		 
+		$message = $mensaje_op;
+
+		//Calling library and setting up credentials for Amazon SES
+		require_once "lib/PHPMailer/PHPMailerAutoload.php";
+		$host = "ssl://email-smtp.us-east-1.amazonaws.com";
+		$port = "465";
+		$username = "AKIAIXA2XV6TZOOCK5KQ";
+		$password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
+		$to = $mail;
+		//$to = 'musinetwork@gmail.com';
+		$to = 'hibamiru@gmail.com';
+		$subject = utf8_encode($asunto);
+
+		//Preparing mail
+		$mail = new PHPMailer();
+		$mail->CharSet = 'UTF-8';
+		$mail->isSMTP();
+		$mail->isHTML(true);
+		$mail->SMTPDebug = 0;
+		$mail->Debugoutput = 'html';
+		$mail->Host = "ssl://email-smtp.us-east-1.amazonaws.com";
+		$mail->Port = 465;
+		$mail->SMTPAuth = true;
+		$mail->Username = "AKIAIXA2XV6TZOOCK5KQ";
+		$mail->Password = "Amhgery5dXtVT2T1j+DrcewX8MUiWOkIWme8Mchskv5N";
+		$mail->addAddress($to, '');
+		$mail->Subject = $subject;
+		$mail->Body = $message;
+		$mail->setFrom('informacion@musinetwork.com', 'Musinetwork School of Music');
+
+		//Send the message and check for errors
+		if (!$mail->send()) {
+			//echo "Mailer Error: " . $mail->ErrorInfo;
+		} else {
+			//echo "Message sent!";
+		}
+
 	}
+	//echo $message;
+	//die;
 	header('Location: ' . cs_url);
 	
 }
 
 $notifications = filter_notifications_by_date_and_status(get_active_notifications());
+$plantillas = get_custom_templates();
 // print_array($notifications);
 		
 //Llamando una vista
-view('nuevo-registro', compact('user', 'notifications'));
+view('nuevo-registro', compact('user', 'notifications', 'plantillas'));

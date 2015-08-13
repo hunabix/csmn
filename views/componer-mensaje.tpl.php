@@ -44,7 +44,6 @@ require_once("part/header.php"); ?>
 		    		<span id="asuntoPlantilla9999" style="display:none;"></span>
 		    	</label>
 
-
 			    <?php foreach ($plantillas as $key => $value) : ?>
 			    	<label class="fancy-radio">
 			    		<input class="radio" name="tipo" onclick="cambiarContenido(<?php echo $value['ID']; ?>);" value="<?php echo $value['nombre']; ?>" type="radio">

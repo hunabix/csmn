@@ -223,54 +223,8 @@ require_once("part/header.php"); ?>
 
 						<h4 class="titulo">Tipo de correo electrónico a redactar</h4>
 						
-						<!-- Respuesta personalizada -->
-					    <label class="fancy-radio">
-					        <input name="tipo" value="Se respondió al interesado" type="radio" class="radio">
-					        <span class="fa fa-circle-o  radio-icon"></span>
-					        <span class="name">
-					        	Respuesta personalizada
-				            </span>
-					    </label>
-					    <!-- Información -->
-					    <label class="fancy-radio">
-					        <input name="tipo" value="Correo de información enviado" type="radio" class="radio">
-					        <span class="fa fa-circle-o radio-icon"></span>
-					        <span class="name">
-					        	Información
-				            </span>
-					    </label>
-					    <!-- Seguimiento -->
-					    <label class="fancy-radio">
-					        <input name="tipo" value="Correo de seguimiento enviado" type="radio" class="radio">
-					        <span class="fa fa-circle-o  radio-icon"></span>
-					        <span class="name">
-					        	Seguimiento
-				            </span>
-					    </label>
-					    <!-- Inicio de cursos -->
-					    <label class="fancy-radio">
-					        <input name="tipo" value="Correo de inicio de cursos enviado" type="radio" class="radio">
-					        <span class="fa fa-circle-o radio-icon"></span>
-					        <span class="name">
-					        	Inicio de cursos
-				            </span>
-					    </label>
-					    <!-- Recordatorio de pago -->
-					    <label class="fancy-radio">
-					        <input name="tipo" value="Recordatorio de pago enviado" type="radio" class="radio">
-					        <span class="fa fa-circle-o  radio-icon"></span>
-					        <span class="name">
-					        	Recordatorio de pago
-				            </span>
-					    </label>
-					    <!-- Completar inscripción -->
-					    <label class="fancy-radio">
-					        <input name="tipo" value="Recordatorio de pago enviado" type="radio" class="radio">
-					        <span class="fa fa-circle-o radio-icon"></span>
-					        <span class="name">
-					        	Completar inscripción
-				            </span>
-					    </label>
+
+
 					</section>
 					
 					<!-- Redactar mensaje -->
@@ -282,6 +236,26 @@ require_once("part/header.php"); ?>
 						    <input name="asunto" type="text" class="form-control"  placeholder="Asunto" value="">
 						    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 						</div>
+
+						<!-- Respuesta personalizada -->
+				    	<label class="fancy-radio">
+				    		<input class="radio" name="tipo" onclick="cambiarContenido(9999);" value="Respuesta personalizada" type="radio">
+				    		<span class="fa fa-circle-o radio-icon"></span>
+				    		<span class="name">Respuesta personalizada</span>
+				    		<textarea style="display:none;" id="contenidoPlantilla9999"></textarea>
+				    		<span id="asuntoPlantilla9999" style="display:none;"></span>
+				    	</label>
+
+						<!-- Respuesta personalizada -->
+					    <?php foreach ($plantillas as $key => $value) : ?>
+					    	<label class="fancy-radio">
+					    		<input class="radio" name="tipo" onclick="cambiarContenido(<?php echo $value['ID']; ?>);" value="<?php echo $value['nombre']; ?>" type="radio">
+					    		<span class="fa fa-circle-o radio-icon"></span>
+					    		<span class="name"><?php echo $value['nombre']; ?></span>
+					    		<textarea style="display:none;" id="contenidoPlantilla<?php echo $value['ID']; ?>"><?php echo $value['contenido']; ?></textarea>
+					    		<span id="asuntoPlantilla<?php echo $value['ID']; ?>" style="display:none;"><?php echo $value['asunto']; ?></span>
+					    	</label>
+						<?php endforeach; ?>
 
 						<!-- SECCIÓN DEL WYSIWYG -->
 						<div id="mensaje-op">
