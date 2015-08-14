@@ -229,7 +229,7 @@ require_once("part/header.php"); ?>
 					
 					<!-- Redactar mensaje -->
 					<h4 class="titulo">Mensaje personalizado al interesado</h4>	
-					<section class="redactar-mensaje">
+					<section id="plantillasBotones" class="redactar-mensaje">
 
 						<!-- Asunto -->
 						<div class="input-group mensaje-asunto">

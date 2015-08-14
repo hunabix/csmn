@@ -71,7 +71,7 @@ require_once("part/header.php"); ?>
 			                <div class="input contenido-plantilla">
 			                	<!-- Se manda a llamar la API de KCeditor -->
 								<script src="lib/ckeditor/ckeditor.js"></script>
-			                   <textarea name="contenido" id="mensaje_op" type="text-area" class="form-control"></textarea>
+			                   <textarea name="contenido" id="mensaje_modal_op" type="text-area" class="form-control"></textarea>
 			                </div>
 					    </div>
 					    <div class="modal-footer">

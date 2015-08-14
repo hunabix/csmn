@@ -107,6 +107,7 @@ if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 		//echo $firma;
 
 		$mensaje_op = replace_editor_shorcuts($mensaje_op, $current_dates, $ciclo_esc, $nombre, $firma);
+		//echo $mensaje_op; die;
 	
 	}
 
@@ -176,7 +177,7 @@ if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 	confirm_query($resultado);
 	
 	//actualizo el recordatorio
-	$configuracion = obten_configuracion();	
+	//$configuracion = obten_configuracion();	
 	actualiza_recordatorio($configuracion['temporada'], 'Nuevo caso de seguimiento', $fecha, $caso['ID'], 0);
 	
 	// ---------  Se guarda en la tabla de interaccion_cs  si se ha respondido al interesado --------------//
@@ -228,70 +229,6 @@ if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 	if($responder_ahora == 'si'){
 		
 		if(isset($data['tipo'])){  $tipo = utf8_decode($data['tipo']); }
-
-		//Obtenemos la información de configuración para imprimirla en mails y scripts de plantillas
-		// ---------  Se obtiene las fechas de inscripción e inicio de cursos --------------//
-		
-		$configuracion = obten_configuracion();
-		// Se guarda la consulta en variables
-		$ciclo_esc = $configuracion['ciclo_esc'];
-
-		$current_dates = get_current_dates_by_ce($ciclo_esc, $configuracion);
-		$inicio_ins = $current_dates['inicio_ins'];
-		$cierre_ins = $current_dates['cierre_ins'];
-		$inicio_cur = $current_dates['inicio_cur'];
-		
-		// Formateamos fecha d einscripción
-		$inicio_ins = explode("-",$inicio_ins);
-		$y = $inicio_ins[0];
-		$m = $inicio_ins[1];
-		$d = $inicio_ins[2];
-		$m = genMonth_Text($m);
-		$inicio_ins = $d . ' de ' . $m . ' del ' . $y;
-		
-		// Formateamos decha de inicio de cursos
-		$inicio_cur = explode("-",$inicio_cur);
-		$y = $inicio_cur[0];
-		$m = $inicio_cur[1];
-		$d = $inicio_cur[2];
-		$m = genMonth_Text($m);
-		$inicio_cur = $d . ' de ' . $m . ' del ' . $y;
-			
-		if(isset($data['mensaje_op'])) {
-			
-			$mensaje_op = utf8_decode($data['mensaje_op']);
-			$mensaje_op = stripslashes( utf8_decode($data['mensaje_op']));
-			if ($firma == 'Equipo Musinetwork') {
-			
-				$firma = '<strong>Equipo Musinetwork</strong><br />';
-			
-			} else {
-				
-				if ($user['tipo'] == 'administrador') {
-
-					foreach ($firmas as $key => $value) {
-						// print_array($value);
-						if ($value['ID'] == $firma) {
-							$firma = '<strong>'.$firmas[$key]['nombre'].'</strong><br />';
-						}
-					}
-			
-			
-				}
-				
-				else
-				
-				{
-			
-					$firma = '<strong>'.$firmas[1]['nombre'].'</strong><br />';
-			
-				}
-			}
-
-			$mensaje_op = replace_editor_shorcuts($mensaje_op, $current_dates, $ciclo_esc, $nombre, $firma);
-
-
-		}	
 
 		// -----------------------------------------------------------------//
 		// ---------  SE PREPARA Y ENVÍA EL EMAIL AL ALUMNO  --------------//

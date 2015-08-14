@@ -3,7 +3,7 @@
 * Controlador del modal Editar datos
 */
 
-// file_put_contents("post.log",print_r($_POST,true));
+file_put_contents("post.log",print_r($_POST,true));
 
 //echo $data['tipo-accion'];
 
@@ -27,7 +27,7 @@ if ($query->execute(array(
 	$return['asunto'] = $data['asunto'];
 	$return['contenido'] = $data['contenido'];
 
-	// file_put_contents("tracker.log",print_r($return,true));
+	file_put_contents("tracker.log",print_r($return,true));
 
 	echo json_encode($return, JSON_UNESCAPED_UNICODE);
 	

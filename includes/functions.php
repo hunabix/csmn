@@ -204,6 +204,10 @@ function replace_editor_shorcuts($mensaje_op = '', $current_dates = array(), $ci
 						'[firma]'
 						);
 	
+	$current_dates['inicio_ins'] = human_date($current_dates['inicio_ins']);
+	$current_dates['cierre_ins'] = human_date($current_dates['cierre_ins']);
+	$current_dates['inicio_cur'] = human_date($current_dates['inicio_cur']);
+	
 	$values = array(
 				$current_dates['inicio_ins'],
 				$current_dates['cierre_ins'],
@@ -216,6 +220,18 @@ function replace_editor_shorcuts($mensaje_op = '', $current_dates = array(), $ci
 
 	return $result;
 
+}
+
+function human_date($date = '') {
+
+	$date = explode("-",$date);
+	$y = $date[0];
+	$m = $date[1];
+	$d = $date[2];
+	$m = genMonth_Text($m);
+	$result = $d . ' de ' . $m . ' del ' . $y;
+
+	return $result;
 }
 
 // redirecciona al URL que se le pase por parámetro

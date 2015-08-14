@@ -162,6 +162,7 @@ $notifications = filter_notifications_by_date_and_status(get_active_notification
 // Request all custom templates
 
 $plantillas = get_custom_templates();
+// print_array($plantillas);
 
 
 //Llamando una vista

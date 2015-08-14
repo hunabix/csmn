@@ -6,6 +6,11 @@
 ------------------------ */
 // Nuevo plantilla
 $( "#nueva-plantilla").click(function() {
+    $( "#plantilla-nombre" ).val( "" );
+    $( "#plantilla-asunto" ).val( "" );
+    // Get the editor instance that you want to interact with.
+    var editor = CKEDITOR.instances.mensaje_modal_op;    
+    editor.setData('');
     $( "#plantilla-tipo-accion" ).val( "crear-plantilla" );
     $( "#titulo-modal-plantilla").html('Agregar nueva plantilla');
     $( "#modal-plantilla-submit" ).html('Agregar nueva plantilla');
@@ -34,12 +39,55 @@ $( ".eliminar-plantilla").click(function() {
 
 });
 
+// CKEDITOR
+if(!($('#mensaje_modal_op').length == 0)) {
+
+    CKEDITOR.replace( 'mensaje_modal_op', {
+
+        extraPlugins: 'serverpreview,autogrow',
+        serverPreview_Url: 'lib/ckeditor/plugins/serverpreview/preview.php',
+        autoGrow_minHeight: 200,
+        autoGrow_maxHeight: 600,
+        autoGrow_bottomSpace: 50,
+        removePlugins: 'resize',
+
+        // Remove the Resize plugin as it does not make sense to use it in conjunction with the AutoGrow plugin.
+        removePlugins: 'resize',
+        toolbar : [
+            { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source', '-', 'Preview', '-', 'Templates' ] },
+            { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+            { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
+            '/',
+            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
+            { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl' ] },
+            { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+            { name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar' ] },
+            '/',
+            { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+            { name: 'colors', items: [ 'TextColor' ] },
+            { name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
+            { name: 'others', items: [ '-' ] },
+            { name: 'about', items: [ 'About' ] },
+            ],
+        templates_files : [ 'lib/ckeditor/plugins/templates/templates/cs-mail-templates.php' ],
+        
+    } );
+
+}
+
 /* AJAX 
 ------------------------------- */
 $("#plantillas-form").on("submit", function(e){
+
+    for (instance in CKEDITOR.instances) {
+        CKEDITOR.instances[instance].updateElement();
+    }
+
     e.preventDefault();
     $.ajax({
         data: $("#plantillas-form").serialize(),
+
+        
         //Cambiar a type: POST si necesario
         type: "POST",
         // Formato de datos que se espera en la respuesta
@@ -60,7 +108,15 @@ $("#plantillas-form").on("submit", function(e){
             $( '#alerta-exito' ).html( data.mensaje );
             $( '#plantilla-nombre' ).val( data.nombre );
             $( '#plantilla-asunto' ).val( data.asunto );
-            $( '#mensaje_op' ).val( data.contenido );
+            //$( '#mensaje_modal_op' ).val( data.contenido );
+
+
+            // Get the editor instance that you want to interact with.
+            var editor = CKEDITOR.instances.mensaje_modal_op;
+                    
+            
+            editor.setData(data.contenido);
+
 
             // Actualiza los datos para reenviar la petición de modificación
             $( "#plantilla-tipo-accion" ).val( 'editar-plantilla' );

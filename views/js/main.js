@@ -125,6 +125,17 @@ if(!($('#mensaje_op').length == 0)) {
     /* Se asegura de que se carga ckEditor antes de inicializar las funciones */
     CKEDITOR.on( 'instanceReady', function( ev ) {
         // The editor is ready, so template buttons can be displayed.
-        document.getElementById( 'plantillasBotones' ).style.display = 'block';
+        if(($('#plantillasBotones').length === 0)) {
+
+            console.log('Solo en modal');
+
+        }
+
+        if($('#plantillasBotones').length > 0) {
+
+            console.log('La variable existe');
+            document.getElementById( 'plantillasBotones' ).style.display = 'block';
+
+        }
     });
 }
