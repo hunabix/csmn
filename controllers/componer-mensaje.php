@@ -123,6 +123,7 @@ if (isset($data['nuevo-mensaje'])) {
 			// -------------------------------------------------------------------------//	
 				
 			// ---------  Se guardan los datos de la nueva interacción  --------------//
+			$store_mensaje_op = mysql_real_escape_string($cMessage);
 			$fecha = date("Y-m-d H:i:s");
 			$consulta = "INSERT 
 						 INTO interaccion_cs (
@@ -133,7 +134,7 @@ if (isset($data['nuevo-mensaje'])) {
 						 mensaje_int,
 						 observaciones
 						)
-						VALUES ('$tipo','$lead_ID', '$fecha', '$cMessage', '', '$comentarios')";
+						VALUES ('$tipo','$lead_ID', '$fecha', '$store_mensaje_op', '', '$comentarios')";
 			$resultado = mysql_query($consulta, $connection);
 			$lastId = mysql_insert_id();
 			confirm_query($resultado);

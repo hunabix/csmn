@@ -19,6 +19,7 @@ $info_cert[1] = ""; $info_cert[2] = ""; $info_cert[3] = ""; $info_cert[4] = ""; 
 $mensaje_int =""; $mensaje_op=""; $asunto="Equipo Musinetwork"; $responder_ahora='no'; $firma='';
 $inicio_ins = ''; $inicio_cur = '';	$ciclo_esc = ''; $tipo_respuesta = '';
 
+
 // Se obtienen firmas
 $firmas = obtener_firmas($user);
 // Se obtiene las fechas de inscripción e inicio de cursos
@@ -182,6 +183,7 @@ if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 	
 	// ---------  Se guarda en la tabla de interaccion_cs  si se ha respondido al interesado --------------//
 	if($responder_ahora == 'si'){
+		$store_mensaje_op = mysql_real_escape_string($mensaje_op);
 		$fecha = date("Y-m-d H:i:s", (strtotime ("+1 Seconds")));
 		$observaciones = utf8_decode('Se respondió al usuario al momento de registrar elcaso desde "Nuevo registro"');
 		$tipo_estatus = utf8_decode('Se respondió al interesado');
@@ -194,7 +196,7 @@ if (isset($data['nuevo-mensaje'])) { // el formulario ha sido enviado
 					 mensaje_int,
 					 observaciones
 					)
-					VALUES ('$tipo_estatus','$caso[ID]', '$fecha', '$mensaje_op', '', '$observaciones')";
+					VALUES ('$tipo_estatus','$caso[ID]', '$fecha', 'mysql_real_escape_string($store_mensaje_op)', '', '$observaciones')";
 		$resultado = mysql_query($consulta, $connection);
 	confirm_query($resultado);
 	//actualizo el recordatorio
